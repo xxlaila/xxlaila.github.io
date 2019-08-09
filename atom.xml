@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xxlaila.github.io/"/>
-  <updated>2019-08-09T08:13:14.374Z</updated>
+  <updated>2019-08-09T12:06:45.870Z</updated>
   <id>https://xxlaila.github.io/</id>
   
   <author>
@@ -17,19 +17,44 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>jenkins用户权限配置</title>
-    <link href="https://xxlaila.github.io/2019/08/09/jenkins%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/"/>
-    <id>https://xxlaila.github.io/2019/08/09/jenkins用户权限配置/</id>
-    <published>2019-08-09T08:05:59.000Z</published>
-    <updated>2019-08-09T08:13:14.374Z</updated>
+    <title>jenkins job管理</title>
+    <link href="https://xxlaila.github.io/2019/08/09/jenkins-job%E7%AE%A1%E7%90%86/"/>
+    <id>https://xxlaila.github.io/2019/08/09/jenkins-job管理/</id>
+    <published>2019-08-09T11:36:49.000Z</published>
+    <updated>2019-08-09T12:06:45.870Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="1、jenkins用户权限"><a href="#1、jenkins用户权限" class="headerlink" title="1、jenkins用户权限"></a>1、jenkins用户权限</h3><p>可以集成gitlab、jenkins专有账户、LDAP、Servlet容器代理、Unix用户/组数据库</p><h3 id="2、授权策略"><a href="#2、授权策略" class="headerlink" title="2、授权策略"></a>2、授权策略</h3><p>Gitlab Commiter Authorization Strategy<br>Role-Based Strategy<br>任何用户可以做任何事(没有任何限制)<br>安全矩阵<br>登录用户可以做任何事<br>遗留模式<br>项目矩阵授权策略</p><h3 id="3、插件安装"><a href="#3、插件安装" class="headerlink" title="3、插件安装"></a>3、插件安装</h3><p>安装插件：Role-based Authorization Strategy</p><h3 id="4、jenkins设置"><a href="#4、jenkins设置" class="headerlink" title="4、jenkins设置"></a>4、jenkins设置</h3><p>系统管理——&gt;全局安全配置——&gt;<br><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-11_14-26-37.png" alt="img"></p><p>回到系统管理界面，就可以看到多出来一个插件: Mangge and Assing Roles</p><h3 id="权限设置"><a href="#权限设置" class="headerlink" title="权限设置"></a>权限设置</h3><p>进入Manager and Assign Roles——&gt;Manage Roles,这里建立了四个权限，分别来对应不同的人员<br><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-24_11-35-15.png" alt="img"></p><p>创建项目角色:</p><p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-24_11-35-27.png" alt="img"></p><p>回到Manage and Assign Roles界面</p><h3 id="6、配置角色"><a href="#6、配置角色" class="headerlink" title="6、配置角色"></a>6、配置角色</h3><p>选择Assign Roles,用户新建以后，根据用户不同类型的勾选不同的权限,</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ul><li><strong>介绍</strong>: 由于公司的ci用于编译的环境比较多，为了更好的区分，为每一个环境建立了一个view</li><li><strong>痛点</strong>: 运维人员在建立job的时候需要到对应的view下面建立，虽然这不是狠痛苦，但是还是不太方便。</li><li><strong>解决</strong>: 人员登陆默认是在all view下面，每个运维人员在这下面建立job，然后每个view根据自己的规则吧对应的job添加进来。job规则自己提前定义好</li></ul><h2 id="1、安装jenkins插件"><a href="#1、安装jenkins插件" class="headerlink" title="1、安装jenkins插件"></a>1、安装jenkins插件</h2><p>view job 过滤插件view-job-filters，安装过程不累赘</p><h2 id="2、配置view规则"><a href="#2、配置view规则" class="headerlink" title="2、配置view规则"></a>2、配置view规则</h2><p>这里设置两个前端和一个后端实例</p><h3 id="2-1、前端1"><a href="#2-1、前端1" class="headerlink" title="2.1、前端1"></a>2.1、前端1</h3><p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-29_10-47-20.png" alt="img"></p><h3 id="2-2、前端test"><a href="#2-2、前端test" class="headerlink" title="2.2、前端test"></a>2.2、前端test</h3><p>test 我们用安装的这个插件来进行配置,点击Add Job Filter——&gt;会有很多的规则，可以根据不同的状态、栏目来进行却分，这里我们选择</p><p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-29_10-49-46.png" alt="img"><br><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-29_10-52-49.png" alt="img"></p><p>这里添加了两条规则，这个是建立job的时候有点特殊性，用第一种方式实现就会有问题，第一条规则是现实所有test类的job，但是吧下面的一条给加进来了，不现实这类job。保持即可</p><h2 id="后端java程序"><a href="#后端java程序" class="headerlink" title="后端java程序"></a>后端java程序</h2><p>dev环境为例子</p><p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-29_10-54-54.png" alt="img"></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;1、jenkins用户权限&quot;&gt;&lt;a href=&quot;#1、jenkins用户权限&quot; class=&quot;headerlink&quot; title=&quot;1、jenkins用户权限&quot;&gt;&lt;/a&gt;1、jenkins用户权限&lt;/h3&gt;&lt;p&gt;可以集成gitlab、jenkins专有账户、LDA
+        &lt;h1 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;介绍&lt;/strong&gt;: 由于公司的ci用于编译的环境比较多，为了更好的区分，为每一个环境建立了一个view&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="jenkins, jenkins job," scheme="https://xxlaila.github.io/tags/jenkins-jenkins-job/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jenkins用户权限配置</title>
+    <link href="https://xxlaila.github.io/2019/08/09/jenkins%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/"/>
+    <id>https://xxlaila.github.io/2019/08/09/jenkins用户权限配置/</id>
+    <published>2019-08-09T08:05:59.000Z</published>
+    <updated>2019-08-09T11:35:39.312Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1、jenkins用户权限"><a href="#1、jenkins用户权限" class="headerlink" title="1、jenkins用户权限"></a>1、jenkins用户权限</h3><ul><li>可以集成gitlab、jenkins专有账户、LDAP、Servlet容器代理、Unix用户/组数据库</li></ul><h3 id="2、授权策略"><a href="#2、授权策略" class="headerlink" title="2、授权策略"></a>2、授权策略</h3><ul><li>Gitlab Commiter Authorization Strategy</li><li>Role-Based Strategy</li><li>任何用户可以做任何事(没有任何限制)</li><li>安全矩阵</li><li>登录用户可以做任何事</li><li>遗留模式</li><li>项目矩阵授权策略</li></ul><h3 id="3、插件安装"><a href="#3、插件安装" class="headerlink" title="3、插件安装"></a>3、插件安装</h3><p>安装插件：Role-based Authorization Strategy</p><h3 id="4、jenkins设置"><a href="#4、jenkins设置" class="headerlink" title="4、jenkins设置"></a>4、jenkins设置</h3><p>系统管理——&gt;全局安全配置——&gt;<br><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-11_14-26-37.png" alt="img"></p><p>回到系统管理界面，就可以看到多出来一个插件: Mangge and Assing Roles</p><h3 id="5、权限设置"><a href="#5、权限设置" class="headerlink" title="5、权限设置"></a>5、权限设置</h3><p>进入Manager and Assign Roles——&gt;Manage Roles,这里建立了四个权限，分别来对应不同的人员<br><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-24_11-35-15.png" alt="img"></p><ul><li>创建项目角色:</li></ul><p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-24_11-35-27.png" alt="img"></p><p>回到Manage and Assign Roles界面</p><h3 id="6、配置角色"><a href="#6、配置角色" class="headerlink" title="6、配置角色"></a>6、配置角色</h3><p>选择Assign Roles,用户新建以后，根据用户不同类型的勾选不同的权限,</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1、jenkins用户权限&quot;&gt;&lt;a href=&quot;#1、jenkins用户权限&quot; class=&quot;headerlink&quot; title=&quot;1、jenkins用户权限&quot;&gt;&lt;/a&gt;1、jenkins用户权限&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;可以集成gitlab、jenkins专有
       
     
     </summary>

@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>jenkins用户权限配置 | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、jenkins用户权限可以集成gitlab、jenkins专有账户、LDAP、Servlet容器代理、Unix用户/组数据库 2、授权策略Gitlab Commiter Authorization StrategyRole-Based Strategy任何用户可以做任何事(没有任何限制)安全矩阵登录用户可以做任何事遗留模式项目矩阵授权策略 3、插件安装安装插件：Role-based Autho">
+  <meta name="description" content="1、jenkins用户权限 可以集成gitlab、jenkins专有账户、LDAP、Servlet容器代理、Unix用户/组数据库  2、授权策略 Gitlab Commiter Authorization Strategy Role-Based Strategy 任何用户可以做任何事(没有任何限制) 安全矩阵 登录用户可以做任何事 遗留模式 项目矩阵授权策略  3、插件安装安装插件：Role-b">
 <meta name="keywords" content="jenkins,jenkins用户权限">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jenkins用户权限配置">
 <meta property="og:url" content="https://xxlaila.github.io/2019/08/09/jenkins用户权限配置/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="1、jenkins用户权限可以集成gitlab、jenkins专有账户、LDAP、Servlet容器代理、Unix用户/组数据库 2、授权策略Gitlab Commiter Authorization StrategyRole-Based Strategy任何用户可以做任何事(没有任何限制)安全矩阵登录用户可以做任何事遗留模式项目矩阵授权策略 3、插件安装安装插件：Role-based Autho">
+<meta property="og:description" content="1、jenkins用户权限 可以集成gitlab、jenkins专有账户、LDAP、Servlet容器代理、Unix用户/组数据库  2、授权策略 Gitlab Commiter Authorization Strategy Role-Based Strategy 任何用户可以做任何事(没有任何限制) 安全矩阵 登录用户可以做任何事 遗留模式 项目矩阵授权策略  3、插件安装安装插件：Role-b">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-5-11_14-26-37.png">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-5-24_11-35-15.png">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-5-24_11-35-27.png">
-<meta property="og:updated_time" content="2019-08-09T08:13:14.374Z">
+<meta property="og:updated_time" content="2019-08-09T11:35:39.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jenkins用户权限配置">
-<meta name="twitter:description" content="1、jenkins用户权限可以集成gitlab、jenkins专有账户、LDAP、Servlet容器代理、Unix用户/组数据库 2、授权策略Gitlab Commiter Authorization StrategyRole-Based Strategy任何用户可以做任何事(没有任何限制)安全矩阵登录用户可以做任何事遗留模式项目矩阵授权策略 3、插件安装安装插件：Role-based Autho">
+<meta name="twitter:description" content="1、jenkins用户权限 可以集成gitlab、jenkins专有账户、LDAP、Servlet容器代理、Unix用户/组数据库  2、授权策略 Gitlab Commiter Authorization Strategy Role-Based Strategy 任何用户可以做任何事(没有任何限制) 安全矩阵 登录用户可以做任何事 遗留模式 项目矩阵授权策略  3、插件安装安装插件：Role-b">
 <meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-5-11_14-26-37.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
@@ -181,13 +181,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1、jenkins用户权限"><a href="#1、jenkins用户权限" class="headerlink" title="1、jenkins用户权限"></a>1、jenkins用户权限</h3><p>可以集成gitlab、jenkins专有账户、LDAP、Servlet容器代理、Unix用户/组数据库</p>
-<h3 id="2、授权策略"><a href="#2、授权策略" class="headerlink" title="2、授权策略"></a>2、授权策略</h3><p>Gitlab Commiter Authorization Strategy<br>Role-Based Strategy<br>任何用户可以做任何事(没有任何限制)<br>安全矩阵<br>登录用户可以做任何事<br>遗留模式<br>项目矩阵授权策略</p>
+        <h3 id="1、jenkins用户权限"><a href="#1、jenkins用户权限" class="headerlink" title="1、jenkins用户权限"></a>1、jenkins用户权限</h3><ul>
+<li>可以集成gitlab、jenkins专有账户、LDAP、Servlet容器代理、Unix用户/组数据库</li>
+</ul>
+<h3 id="2、授权策略"><a href="#2、授权策略" class="headerlink" title="2、授权策略"></a>2、授权策略</h3><ul>
+<li>Gitlab Commiter Authorization Strategy</li>
+<li>Role-Based Strategy</li>
+<li>任何用户可以做任何事(没有任何限制)</li>
+<li>安全矩阵</li>
+<li>登录用户可以做任何事</li>
+<li>遗留模式</li>
+<li>项目矩阵授权策略</li>
+</ul>
 <h3 id="3、插件安装"><a href="#3、插件安装" class="headerlink" title="3、插件安装"></a>3、插件安装</h3><p>安装插件：Role-based Authorization Strategy</p>
 <h3 id="4、jenkins设置"><a href="#4、jenkins设置" class="headerlink" title="4、jenkins设置"></a>4、jenkins设置</h3><p>系统管理——&gt;全局安全配置——&gt;<br><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-11_14-26-37.png" alt="img"></p>
 <p>回到系统管理界面，就可以看到多出来一个插件: Mangge and Assing Roles</p>
-<h3 id="权限设置"><a href="#权限设置" class="headerlink" title="权限设置"></a>权限设置</h3><p>进入Manager and Assign Roles——&gt;Manage Roles,这里建立了四个权限，分别来对应不同的人员<br><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-24_11-35-15.png" alt="img"></p>
-<p>创建项目角色:</p>
+<h3 id="5、权限设置"><a href="#5、权限设置" class="headerlink" title="5、权限设置"></a>5、权限设置</h3><p>进入Manager and Assign Roles——&gt;Manage Roles,这里建立了四个权限，分别来对应不同的人员<br><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-24_11-35-15.png" alt="img"></p>
+<ul>
+<li>创建项目角色:</li>
+</ul>
 <p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-24_11-35-27.png" alt="img"></p>
 <p>回到Manage and Assign Roles界面</p>
 <h3 id="6、配置角色"><a href="#6、配置角色" class="headerlink" title="6、配置角色"></a>6、配置角色</h3><p>选择Assign Roles,用户新建以后，根据用户不同类型的勾选不同的权限,</p>
@@ -305,6 +317,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/08/09/jenkins-job管理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          jenkins job管理
+        
+      </div>
+    </a>
   
   
     <a href="/2019/08/09/mongodb-replica/" id="article-nav-older" class="article-nav-link-wrap">
@@ -432,6 +453,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
