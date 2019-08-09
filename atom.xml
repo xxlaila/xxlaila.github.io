@@ -1,25 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>懒羊羊</title>
   
-  
+  <subtitle>xxlila</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2019-08-09T03:55:49.327Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="https://xxlaila.github.io/"/>
+  <updated>2019-08-09T07:13:54.906Z</updated>
+  <id>https://xxlaila.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>xxlaila</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>mongodb_replica</title>
+    <link href="https://xxlaila.github.io/2019/08/09/mongodb-replica/"/>
+    <id>https://xxlaila.github.io/2019/08/09/mongodb-replica/</id>
+    <published>2019-08-09T06:46:44.000Z</published>
+    <updated>2019-08-09T07:13:54.906Z</updated>
+    
+    <content type="html"><![CDATA[<p>Mongodb replica set安装加认证，这里使用的是keyFile进行认证，之前看过很多文章，坑一大堆，这里是看了两天的官方文档进行的安装，并用户生产，配置文件参数贴一部分,三个带有数据集的节点组成的复制集拥有，架构图如下，参考官方</p><p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-8-13_15-27-53.png" alt="img"><br>一个主节点，两个从节点，这两个从节点都可以在选举中升级为主节点</p><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>三台服务器</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">primary: 192.168.32.7</span><br><span class="line">secaodray: 192.168.32.11</span><br><span class="line">secondary: 192.168.32.14</span><br></pre></td></tr></table></figure><h2 id="1、安装mongodb"><a href="#1、安装mongodb" class="headerlink" title="1、安装mongodb"></a>1、安装mongodb</h2><h3 id="1-1、每个节点都需要操作"><a href="#1-1、每个节点都需要操作" class="headerlink" title="1.1、每个节点都需要操作"></a>1.1、每个节点都需要操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo vim /etc/yum.repos.d/mongodb-enterprise.repo</span></span><br><span class="line">[mongodb-enterprise]</span><br><span class="line">name=MongoDB Enterprise Repository</span><br><span class="line">baseurl=https://repo.mongodb.com/yum/redhat/<span class="variable">$releasever</span>/mongodb-enterprise/3.4/<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc   </span><br><span class="line"></span><br><span class="line"><span class="comment"># sudo yum install -y mongodb-enterprise</span></span><br></pre></td></tr></table></figure><p>注意：如果采用源码包方式安装需要安装一下插件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo yum install cyrus-sasl cyrus-sasl-plain cyrus-sasl-gssapi krb5-libs lm_sensors-libs net-snmp-agent-libs net-snmp openssl rpm-libs tcp_wrappers-libs libcurl</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Mongodb replica set安装加认证，这里使用的是keyFile进行认证，之前看过很多文章，坑一大堆，这里是看了两天的官方文档进行的安装，并用户生产，配置文件参数贴一部分,三个带有数据集的节点组成的复制集拥有，架构图如下，参考官方&lt;/p&gt;
+&lt;p&gt;&lt;img src
+      
+    
+    </summary>
+    
+    
+      <category term="mongodb,mongodb副本集,mongodb高可用" scheme="https://xxlaila.github.io/tags/mongodb-mongodb%E5%89%AF%E6%9C%AC%E9%9B%86-mongodb%E9%AB%98%E5%8F%AF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2019/08/09/hello-world/"/>
-    <id>http://yoursite.com/2019/08/09/hello-world/</id>
+    <link href="https://xxlaila.github.io/2019/08/09/hello-world/"/>
+    <id>https://xxlaila.github.io/2019/08/09/hello-world/</id>
     <published>2019-08-09T03:55:49.327Z</published>
     <updated>2019-08-09T03:55:49.327Z</updated>
     

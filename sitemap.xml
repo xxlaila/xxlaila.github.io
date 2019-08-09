@@ -2,7 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2019/08/09/hello-world/</loc>
+    <loc>https://xxlaila.github.io/2019/08/09/mongodb-replica/</loc>
+    
+    <lastmod>2019-08-09T07:13:54.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/categories/index.html</loc>
+    
+    <lastmod>2019-08-09T06:15:04.137Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/09/hello-world/</loc>
     
     <lastmod>2019-08-09T03:55:49.327Z</lastmod>
     
