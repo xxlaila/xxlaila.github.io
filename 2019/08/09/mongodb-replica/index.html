@@ -17,7 +17,8 @@
 <meta property="og:description" content="Mongodb replica set安装加认证，这里使用的是keyFile进行认证，之前看过很多文章，坑一大堆，这里是看了两天的官方文档进行的安装，并用户生产，配置文件参数贴一部分,三个带有数据集的节点组成的复制集拥有，架构图如下，参考官方 一个主节点，两个从节点，这两个从节点都可以在选举中升级为主节点 环境三台服务器 123primary: 192.168.32.7secaodray: 192">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-8-13_15-27-53.png">
-<meta property="og:updated_time" content="2019-08-09T07:13:54.906Z">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-8-13_15-37-2.png">
+<meta property="og:updated_time" content="2019-08-09T07:58:29.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongodb_replica">
 <meta name="twitter:description" content="Mongodb replica set安装加认证，这里使用的是keyFile进行认证，之前看过很多文章，坑一大堆，这里是看了两天的官方文档进行的安装，并用户生产，配置文件参数贴一部分,三个带有数据集的节点组成的复制集拥有，架构图如下，参考官方 一个主节点，两个从节点，这两个从节点都可以在选举中升级为主节点 环境三台服务器 123primary: 192.168.32.7secaodray: 192">
@@ -189,6 +190,45 @@
 <p>注意：如果采用源码包方式安装需要安装一下插件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo yum install cyrus-sasl cyrus-sasl-plain cyrus-sasl-gssapi krb5-libs lm_sensors-libs net-snmp-agent-libs net-snmp openssl rpm-libs tcp_wrappers-libs libcurl</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="2、修改mongodb的配置文件-每个节点均操作"><a href="#2、修改mongodb的配置文件-每个节点均操作" class="headerlink" title="2、修改mongodb的配置文件(每个节点均操作)"></a>2、修改mongodb的配置文件(每个节点均操作)</h2><h3 id="自定义mongodb的目录"><a href="#自定义mongodb的目录" class="headerlink" title="自定义mongodb的目录"></a>自定义mongodb的目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mkdir /opt/mongodb/&#123;data,conf,logs&#125; -p</span></span><br><span class="line"><span class="comment"># sudo vim /etc/mongod.conf</span></span><br><span class="line"> systemLog:</span><br><span class="line">  destination: file</span><br><span class="line">  logAppend: <span class="literal">true</span></span><br><span class="line">  path: /opt/mongodb/logs/mongod.log</span><br><span class="line">storage:</span><br><span class="line">  dbPath: /opt/mongodb/data</span><br><span class="line">  journal:</span><br><span class="line">    enabled: <span class="literal">true</span></span><br><span class="line">processManagement:</span><br><span class="line">  fork: <span class="literal">true</span></span><br><span class="line">  pidFilePath: /opt/mongodb/logs/mongod.pid</span><br><span class="line">net:</span><br><span class="line">  port: 27017</span><br><span class="line">  bindIp: 0.0.0.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、生成密钥文件-在mong01上操作"><a href="#3、生成密钥文件-在mong01上操作" class="headerlink" title="3、生成密钥文件(在mong01上操作)"></a>3、生成密钥文件(在mong01上操作)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># openssl rand -base64 756 &gt; ／opt/mongodb/conf/mongo-keyfile</span></span><br><span class="line"><span class="comment"># sudo chmod 400 /opt/mongo/mongo-keyfile</span></span><br><span class="line"><span class="comment"># scp –r mongo-keyfile user@192.168.32.11:/opt/mongodb/conf</span></span><br><span class="line"><span class="comment"># scp –r mongo-keyfile user@192.168.32.14:/opt/mongodb/conf</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4、修改mongodb的配置"><a href="#4、修改mongodb的配置" class="headerlink" title="4、修改mongodb的配置"></a>4、修改mongodb的配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">security:</span><br><span class="line">  keyFile: /opt/mongodb/conf/mongo-keyfile</span><br><span class="line">replication:</span><br><span class="line">  replSetName: xxlaila01（可变化，自定义）</span><br></pre></td></tr></table></figure>
+
+<p>分别在三台服务器上启动mongodb</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mongod --config /etc/mongod.conf</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5、建立集群"><a href="#5、建立集群" class="headerlink" title="5、建立集群"></a>5、建立集群</h3><p>在你需要认为是主节点的服务器进行mongodb的登陆，和账户权限的建立，这里我选择的192.168.32.7</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo --shell --host 127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<p>登陆进去以后可以进行一个简单的命令进行查看</p>
+<p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-8-13_15-37-2.png" alt="img"></p>
+<h3 id="6、把服务器加入副本集"><a href="#6、把服务器加入副本集" class="headerlink" title="6、把服务器加入副本集"></a>6、把服务器加入副本集</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MongoDB Enterprise &gt; config = &#123; _id:<span class="string">"kxlprod01"</span>,members:[ &#123;_id:0,host:<span class="string">"192.168.32.7:27017"</span>&#125;,</span><br><span class="line">...   &#123;_id:1,host:<span class="string">"192.168.32.11:27017"</span>&#125; ,&#123;_id:2,host:<span class="string">"192.168.32.14:27017"</span>&#125;] &#125;</span><br></pre></td></tr></table></figure>
+
+<p>config = { _id:”kxlprod01”,members:[ {_id:0,host:”192.168.32.7:27017”},{_id:1,host:”192.168.32.11:27017”} ,{_id:2,host:”192.168.32.14:27017”}] }，增加内容</p>
+<h4 id="6-1-看当前副本集的状态"><a href="#6-1-看当前副本集的状态" class="headerlink" title="6.1 看当前副本集的状态"></a>6.1 看当前副本集的状态</h4><p>利用rs.status()命令可以查看当前副本集的状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; rs.status()</span><br></pre></td></tr></table></figure>
+
+<p>这里提示配置还没有加载到mongodb副本里面</p>
+<h4 id="6-2、加载配置到副本集"><a href="#6-2、加载配置到副本集" class="headerlink" title="6.2、加载配置到副本集"></a>6.2、加载配置到副本集</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; rs.initiate(config)</span><br></pre></td></tr></table></figure>
+
+<p>再次查看副本的状态就可以看到mongodb的副本集已建立，如果此时主节点未被选举出来，稍微等一会就成功</p>
+<h3 id="7、创建mongodb副本集认证"><a href="#7、创建mongodb副本集认证" class="headerlink" title="7、创建mongodb副本集认证"></a>7、创建mongodb副本集认证</h3><p>下面两行我们可以看到第一次主节点没有选举成功，随即我们在回车PRIMARY节点选举成功了，下面我们创建一个管理员账户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">MongoDB Enterprise xxlaila01:SECONDARY&gt; admin = db.getSiblingDB(<span class="string">"admin"</span>)</span><br><span class="line">MongoDB Enterprise xxlaila01:PRIMARY&gt;</span><br><span class="line">admin.createUser(</span><br><span class="line"></span><br><span class="line">  &#123;</span><br><span class="line"></span><br><span class="line">    user: <span class="string">"root"</span>,</span><br><span class="line"></span><br><span class="line">    <span class="built_in">pwd</span>: <span class="string">"123456"</span>,</span><br><span class="line"></span><br><span class="line">    roles: [ &#123; role: <span class="string">"userAdminAnyDatabase"</span>, db: <span class="string">"admin"</span> &#125; ]</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line">db.getSiblingDB(<span class="string">"admin"</span>).auth(<span class="string">"root"</span>, <span class="string">"123456"</span> )</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-1、创建集群账户"><a href="#7-1、创建集群账户" class="headerlink" title="7.1、创建集群账户"></a>7.1、创建集群账户</h4><p>创建一个集群管理账户，集群账户具有管理整个副本集的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ mongo -u <span class="string">"root"</span> -p <span class="string">"123456"</span> --authenticationDatabase <span class="string">"admin"</span></span><br><span class="line"></span><br><span class="line">db.getSiblingDB(<span class="string">"admin"</span>).createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"user"</span> : <span class="string">"manger"</span>,</span><br><span class="line">    <span class="string">"pwd"</span> : <span class="string">"123456"</span>,</span><br><span class="line">    roles: [ &#123; <span class="string">"role"</span> : <span class="string">"clusterAdmin"</span>, <span class="string">"db"</span> : <span class="string">"admin"</span> &#125; ]</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-2-创建一个程序连接的账户"><a href="#7-2-创建一个程序连接的账户" class="headerlink" title="7.2 创建一个程序连接的账户"></a>7.2 创建一个程序连接的账户</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.getSiblingDB(<span class="string">"admin"</span>).createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"user"</span> : <span class="string">"systemprod"</span>,</span><br><span class="line">    <span class="string">"pwd"</span> : <span class="string">"123456"</span>,</span><br><span class="line">    roles: [ &#123; <span class="string">"role"</span> : <span class="string">"root"</span>, <span class="string">"db"</span> : <span class="string">"admin"</span> &#125; ]</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>至此mongodb的副本集创建完成。测试没有问题,登陆其中一台SECONDARY服务器进行测试,这里测试192.168.32.11服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ mongo</span><br><span class="line"></span><br><span class="line">&gt; rs.status()    <span class="comment"># 这里提示没有权限（登录进来以后如果不是主几点，mognodb就会默认显示未secondary）</span></span><br><span class="line"></span><br><span class="line">&gt; use admin 	<span class="comment">#</span></span><br><span class="line"></span><br><span class="line">&gt; db.getSiblingDB(<span class="string">"admin"</span>).auth(<span class="string">"manger"</span>, <span class="string">"123456"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>完成后我们在执行rs.status()就可以看到副本集的信息</p>
+<h4 id="7-3-测试程序连接账户"><a href="#7-3-测试程序连接账户" class="headerlink" title="7.3 测试程序连接账户"></a>7.3 测试程序连接账户</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MongoDB Enterprise xxlaila01:SECONDARY&gt; db.getSiblingDB(<span class="string">"admin"</span>).auth(<span class="string">"systemprod"</span>, <span class="string">"123456"</span> )</span><br><span class="line">&gt; show dbs;	<span class="comment">#会提示 “not master and slaveok=false”</span></span><br><span class="line"></span><br><span class="line">&gt; db.getMongo().setSlaveOk()</span><br><span class="line">&gt; show dbs;	<span class="comment">#在次执行会显示出结果</span></span><br></pre></td></tr></table></figure>
+
+<p>副本集没有读的权限，需要执行db.getMongo().setSlaveOk()</p>
 
       
 
@@ -230,6 +270,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据库//" class="article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
