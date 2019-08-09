@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="1、 环境准备   ip type docker os k8s version    172.21.17.4 master,etcd  CentOS Linux release 7.4.1708 v1.13.3   172.21.16.230 master,etcd  CentOS Linux release 7.4.1708    172.21.16.240 master,etcd  CentO">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-09T22:54:59.822Z">
+<meta property="og:updated_time" content="2019-08-09T23:06:15.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes v1.13.3安装">
 <meta name="twitter:description" content="1、 环境准备   ip type docker os k8s version    172.21.17.4 master,etcd  CentOS Linux release 7.4.1708 v1.13.3   172.21.16.230 master,etcd  CentOS Linux release 7.4.1708    172.21.16.240 master,etcd  CentO">
@@ -476,7 +476,7 @@
 
 <h3 id="5-6、验证master节点"><a href="#5-6、验证master节点" class="headerlink" title="5.6、验证master节点"></a>5.6、验证master节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get componentstatuses</span></span><br><span class="line">NAME                 STATUS    MESSAGE             ERROR</span><br><span class="line">scheduler            Healthy   ok                  </span><br><span class="line">controller-manager   Healthy   ok                  </span><br><span class="line">etcd-2               Healthy   &#123;<span class="string">"health"</span>:<span class="string">"true"</span>&#125;   </span><br><span class="line">etcd-0               Healthy   &#123;<span class="string">"health"</span>:<span class="string">"true"</span>&#125;   </span><br><span class="line">etcd-1               Healthy   &#123;<span class="string">"health"</span>:<span class="string">"true"</span>&#125;</span><br></pre></td></tr></table></figure>
 
-<p>至此master节点部署完毕</p>
+<p>至此master节点部署完毕<br>More: <a href="https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/">node节点安装</a></p>
 
       
 
