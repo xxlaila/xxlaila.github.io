@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xxlaila.github.io/"/>
-  <updated>2019-08-09T07:58:29.369Z</updated>
+  <updated>2019-08-09T08:13:14.374Z</updated>
   <id>https://xxlaila.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jenkins用户权限配置</title>
+    <link href="https://xxlaila.github.io/2019/08/09/jenkins%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/"/>
+    <id>https://xxlaila.github.io/2019/08/09/jenkins用户权限配置/</id>
+    <published>2019-08-09T08:05:59.000Z</published>
+    <updated>2019-08-09T08:13:14.374Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1、jenkins用户权限"><a href="#1、jenkins用户权限" class="headerlink" title="1、jenkins用户权限"></a>1、jenkins用户权限</h3><p>可以集成gitlab、jenkins专有账户、LDAP、Servlet容器代理、Unix用户/组数据库</p><h3 id="2、授权策略"><a href="#2、授权策略" class="headerlink" title="2、授权策略"></a>2、授权策略</h3><p>Gitlab Commiter Authorization Strategy<br>Role-Based Strategy<br>任何用户可以做任何事(没有任何限制)<br>安全矩阵<br>登录用户可以做任何事<br>遗留模式<br>项目矩阵授权策略</p><h3 id="3、插件安装"><a href="#3、插件安装" class="headerlink" title="3、插件安装"></a>3、插件安装</h3><p>安装插件：Role-based Authorization Strategy</p><h3 id="4、jenkins设置"><a href="#4、jenkins设置" class="headerlink" title="4、jenkins设置"></a>4、jenkins设置</h3><p>系统管理——&gt;全局安全配置——&gt;<br><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-11_14-26-37.png" alt="img"></p><p>回到系统管理界面，就可以看到多出来一个插件: Mangge and Assing Roles</p><h3 id="权限设置"><a href="#权限设置" class="headerlink" title="权限设置"></a>权限设置</h3><p>进入Manager and Assign Roles——&gt;Manage Roles,这里建立了四个权限，分别来对应不同的人员<br><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-24_11-35-15.png" alt="img"></p><p>创建项目角色:</p><p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-24_11-35-27.png" alt="img"></p><p>回到Manage and Assign Roles界面</p><h3 id="6、配置角色"><a href="#6、配置角色" class="headerlink" title="6、配置角色"></a>6、配置角色</h3><p>选择Assign Roles,用户新建以后，根据用户不同类型的勾选不同的权限,</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1、jenkins用户权限&quot;&gt;&lt;a href=&quot;#1、jenkins用户权限&quot; class=&quot;headerlink&quot; title=&quot;1、jenkins用户权限&quot;&gt;&lt;/a&gt;1、jenkins用户权限&lt;/h3&gt;&lt;p&gt;可以集成gitlab、jenkins专有账户、LDA
+      
+    
+    </summary>
+    
+      <category term="jenkins, ci/cd" scheme="https://xxlaila.github.io/categories/jenkins-ci-cd/"/>
+    
+    
+      <category term="jenkins,jenkins用户权限" scheme="https://xxlaila.github.io/tags/jenkins-jenkins%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/"/>
+    
+  </entry>
   
   <entry>
     <title>mongodb_replica</title>
