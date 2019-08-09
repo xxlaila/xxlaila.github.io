@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
-  <title>Archives | 懒羊羊</title>
+  <title>vsftpd安装 | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="知识库">
-<meta property="og:type" content="website">
-<meta property="og:title" content="懒羊羊">
-<meta property="og:url" content="https://xxlaila.github.io/archives/index.html">
+  <meta name="description" content="Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改">
+<meta name="keywords" content="vsftpd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vsftpd安装">
+<meta property="og:url" content="https://xxlaila.github.io/2019/08/09/vsftpd安装/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="知识库">
+<meta property="og:description" content="Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/%E5%9B%BE%E7%89%87%201.png">
+<meta property="og:updated_time" content="2019-08-09T14:08:31.994Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="懒羊羊">
-<meta name="twitter:description" content="知识库">
+<meta name="twitter:title" content="vsftpd安装">
+<meta name="twitter:description" content="Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改">
+<meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/%E5%9B%BE%E7%89%87%201.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -155,123 +159,99 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vsftpd安装" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/10/kubernetes-node节点安装/" class="archive-article-date">
-  	<time datetime="2019-08-09T22:56:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/10/kubernetes-node节点安装/">kubernetes node节点安装</a>
+    <h1 class="article-title" itemprop="name">
+      vsftpd安装
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes, kubernetes v13.3安装</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/kubernetes-v1-13-3安装/" class="archive-article-date">
-  	<time datetime="2019-08-09T14:18:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/kubernetes-v1-13-3安装/">kubernetes v1.13.3安装</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes, kubernetes 安装</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernetes//" class="article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/vsftpd安装/" class="archive-article-date">
+        
+        <a href="/2019/08/09/vsftpd安装/" class="archive-article-date">
   	<time datetime="2019-08-09T13:52:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/vsftpd安装/">vsftpd安装</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改一个用户的权限不会影响到其他用户。<br>centos 系统版本(5.5、5.3、6.0、6.5)</p>
+<h3 id="首先我们安装vsftpd"><a href="#首先我们安装vsftpd" class="headerlink" title="首先我们安装vsftpd"></a>首先我们安装vsftpd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># yum –y install vsftpd</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<h3 id="2、启动和加载vsftp"><a href="#2、启动和加载vsftp" class="headerlink" title="2、启动和加载vsftp"></a>2、启动和加载vsftp</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># service vsftpd restart</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># chkconfig –level 35 vsftpd on</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3、开始配置vsftpd"><a href="#3、开始配置vsftpd" class="headerlink" title="3、开始配置vsftpd"></a>3、开始配置vsftpd</h3><p>Vsftpd的配置文件在/etc/vsftpd下面，在配置之前我们先cp一份做备份用以免发生意外(做什么都要随手备份，因为没有一万，只有万一。)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment">#  cp /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.bak</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># vim /etc/vsftpd/vsftpd.conf</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>vsftpd的参数介绍</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">reverse_lookup_enable=NO <span class="comment">#添加此行，解决客户端登陆缓慢问题！重要！默认vsftpd开启了DNS反响解析！这里需要关闭，如果启动有错误，请注销！</span></span><br><span class="line">listen_port=21 <span class="comment">#默认无此行，ftp端口为21，添加listen_port=2222把默认端口修改为2222，注意：防火墙同时要开启2222端口</span></span><br><span class="line">anonymous_enable=NO　　 <span class="comment">#禁止匿名用户</span></span><br><span class="line">local_enable=YES</span><br><span class="line">设定本地用户可以访问。注意：主要是为虚拟宿主用户，如果该项目设定为NO那么所有虚拟用户将无法访问</span><br><span class="line">write_enable=YES <span class="comment">#全局设置，是否容许写入（无论是匿名用户还是本地用户，若要启用上传权限的话，就要开启他）</span></span><br><span class="line">local_umask=022 设定上传后文件的权限掩码。</span><br><span class="line">anon_upload_enable=NO 禁止匿名用户上传。</span><br><span class="line">anon_mkdir_write_enable=NO 禁止匿名用户建立目录。</span><br><span class="line">dirmessage_enable=YES 设定开启目录标语功能。</span><br><span class="line">xferlog_enable=YES 设定开启日志记录功能。</span><br><span class="line">connect_from_port_20=YES 设定端口20进行数据连接。</span><br><span class="line">chown_uploads=NO 设定禁止上传文件更改宿主。</span><br><span class="line">xferlog_file=/var/<span class="built_in">log</span>/vsftpd.log 日志保存路径（先创建好文件）</span><br><span class="line">xferlog_std_format=YES　　 <span class="comment">#使用标准格式</span></span><br><span class="line">async_abor_enable=YES 设定支持异步传输功能。</span><br><span class="line">ascii_upload_enable=YES</span><br><span class="line">ascii_download_enable=YES 设定支持ASCII模式的上传和下载功能。</span><br><span class="line">ftpd_banner=Welcome to Awei FTP servers 设定Vsftpd的登陆标语。</span><br><span class="line">chroot_local_user=YES 禁止本地用户登出自己的FTP主目录。</span><br><span class="line">pam_service_name=vsftpd 设定PAM服务下Vsftpd的验证配置文件名。因此，PAM验证将参考/etc/pam.d/下的vsftpd文件配置。</span><br><span class="line">userlist_enable=YES 设为YES的时候，如果一个用户名是在userlist_file参数指定的文件中，</span><br><span class="line"> 那么在要求他们输入密码之前，会直接拒绝他们登陆。</span><br><span class="line">tcp_wrappers=YES 是否支持tcp_wrappers</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>以下是我使用的参数</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=No</span><br><span class="line">listen_port=21</span><br><span class="line">local_enable=YES</span><br><span class="line">write_enable=YES</span><br><span class="line">local_umask=022</span><br><span class="line">dirmessage_enable=YES</span><br><span class="line">xferlog_enable=YES</span><br><span class="line">connect_from_port_20=YES</span><br><span class="line"><span class="comment">#chown_uploads=YES</span></span><br><span class="line">xferlog_file=/var/<span class="built_in">log</span>/vsftpd.log</span><br><span class="line">xferlog_std_format=YES</span><br><span class="line">async_abor_enable=YES</span><br><span class="line">ascii_upload_enable=YES</span><br><span class="line">ascii_download_enable=YES</span><br><span class="line">ftpd_banner=Welcome to blah FTP service.</span><br><span class="line">chroot_list_enable=YES</span><br><span class="line">listen=YES</span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line">userlist_enable=YES</span><br><span class="line">tcp_wrappers=YES</span><br><span class="line">reverse_lookup_enable=No</span><br><span class="line">guest_enable=YES</span><br><span class="line">guest_username=vsftpd</span><br><span class="line">user_config_dir=/etc/vsftpd/vconf</span><br><span class="line">virtual_use_local_privs=YES</span><br><span class="line">pasv_min_port=9000</span><br><span class="line">pasv_max_port=9045</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="4、建立虚拟用户名单文件"><a href="#4、建立虚拟用户名单文件" class="headerlink" title="4、建立虚拟用户名单文件"></a>4、建立虚拟用户名单文件</h3><p>编辑虚拟用户的名单：（第一行用户名。第二行密码。不能使用root）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># vim /etc/vsftpd/xuniusers</span></span><br><span class="line"><span class="built_in">test</span></span><br><span class="line">23123213</span><br><span class="line">test1</span><br><span class="line">34dsfds</span><br><span class="line">test2</span><br><span class="line">df43sd</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、开始建立生成虚拟用户数据文件"><a href="#5、开始建立生成虚拟用户数据文件" class="headerlink" title="5、开始建立生成虚拟用户数据文件"></a>5、开始建立生成虚拟用户数据文件</h3><p>这里需要安装db4,设置PAM文件权限，并制定虚拟用户数据库文件读取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># yum –y install db4-utils</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># db_load -T -t hash -f /etc/vsftpd/xuniusers /etc/vsftpd/xuniusers.db</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># chmod 600 /etc/vsftpd/xuniusers.db</span></span><br></pre></td></tr></table></figure>
+
+<p>在/etc/pam.d/vsftpd的文件头部加入以下信息（注*这里一定要在前面，不能再后面，刚开始我也加载到后面登陆的时候提示错误）,修改前先备份</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># cp /etc/pam.d/vsftpd /etc/pam.d/vsftpd.bak</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># vi /etc/pam.d/vsftpd</span></span><br><span class="line">auth sufficient /lib/security/pam_userdb.so db=/etc/vsftpd/xuniusers</span><br><span class="line">account sufficient /lib/security/pam_userdb.so db=/etc/vsftpd/xuniusers</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://pvyidozd0.bkt.clouddn.com/%E5%9B%BE%E7%89%87%201.png" alt="img"></p>
+<ul>
+<li>注*64位的操作系统，则上面lib改为64。不然配置也会无效</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">auth sufficient /lib64/security/pam_userdb.so db=/etc/vsftpd/xuniusers</span><br><span class="line">account sufficient /lib64/security/pam_userdb.so db=/etc/vsftpd/xuniusers</span><br></pre></td></tr></table></figure>
+
+<p>建立一个系统用户vsftpd，用户的主目录可以自己设置，/home/wwwroot，设置用户登陆的终端为/bin/false</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># useradd vsftpd -d /home/wwwroot -s /bin/false</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># chown vsftpd:vsftpd /home/wwwroot -R</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># chown www:www /home/wwwroot –R #如果虚拟用户的宿主用户为nginx，需要这样设置。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6、建立虚拟用户个人vsftp的配置文件"><a href="#6、建立虚拟用户个人vsftp的配置文件" class="headerlink" title="6、建立虚拟用户个人vsftp的配置文件"></a>6、建立虚拟用户个人vsftp的配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># mkdir /etc/vsftpd/vconf</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># cd /etc/vsftpd/vconf</span></span><br><span class="line">touch test1 test2 test3 <span class="comment">#这里创建三个虚拟用户配置文件</span></span><br><span class="line">vi web1 <span class="comment">#编辑用户test1配置文件，其他的跟这个配置文件类似</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># vim test1</span></span><br><span class="line">local_root=/home/wwwroot/test1/</span><br><span class="line">write_enable=YES</span><br><span class="line">anon_umask=022</span><br><span class="line">anon_world_readable_only=NO</span><br><span class="line">anon_upload_enable=YES</span><br><span class="line">anon_mkdir_write_enable=YES</span><br><span class="line">anon_other_write_enable=YES</span><br></pre></td></tr></table></figure>
+
+<p>最后重启vsftpd服务,不关闭Selinux可以执行以下命令通过FTP。防火墙开放端口<figure class="highlight plain"><figcaption><span>-P ftpd_disable_trans 1```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">上述配置完成后还可以通过#adduser -d /目录路径 -g vsftpd -s /sbin/nologin 用户名 这个命令来添加一个用户，不需要配置任何权限都可以进行FTP的访问,最后补充说明，需要安装的其他插件</span><br><span class="line">* 需要安装的的是pan</span><br><span class="line">``` bash</span><br><span class="line">[root@RAID1 ~]# yum install -y pam</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>这里我们还可以查看日志，可以根据提示的提示来判断。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># cat /var/log/secure</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>测试用户登录虚拟用户只能看到自己本身的目录 ，不能去其他目录查看(到这里vsftpd配置结束)</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -283,220 +263,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://xxlaila.github.io/2019/08/09/vsftpd安装/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/TeamViewer-mac破解/" class="archive-article-date">
-  	<time datetime="2019-08-09T12:25:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/08/09/kubernetes-v1-13-3安装/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          kubernetes v1.13.3安装
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/09/TeamViewer-mac破解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">TeamViewer mac破解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/TeamViewer-mac破解/">TeamViewer mac破解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">TeamViewer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/jenkins-job管理/" class="archive-article-date">
-  	<time datetime="2019-08-09T11:36:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/jenkins-job管理/">jenkins job管理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jenkins, jenkins job,</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/jenkins用户权限配置/" class="archive-article-date">
-  	<time datetime="2019-08-09T08:05:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/jenkins用户权限配置/">jenkins用户权限配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jenkins,jenkins用户权限</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/jenkins-ci-cd//" class="article-tag-list-link color5">jenkins, ci/cd</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/mongodb-replica/" class="archive-article-date">
-  	<time datetime="2019-08-09T06:46:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/mongodb-replica/">mongodb_replica</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">mongodb,mongodb副本集,mongodb高可用</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据库//" class="article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/hello-world/" class="archive-article-date">
-  	<time datetime="2019-08-09T03:55:49.327Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -519,8 +394,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
