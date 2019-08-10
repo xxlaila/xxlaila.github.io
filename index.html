@@ -157,6 +157,176 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-oracle-ORA-12519" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/10/oracle-ORA-12519/">oracle ORA-12519</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/10/oracle-ORA-12519/" class="archive-article-date">
+  	<time datetime="2019-08-10T09:01:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>oracle ORA-12519错误解决<br>今天遇到做系统压力测试的时候，系统报了一个错误<br>OERR: ORA-12519 TNS:no appropriate service handler found</p>
+</blockquote>
+<p><img src="http://pvyidozd0.bkt.clouddn.com/ORA-12519-error.png" alt="img"></p>
+<p>在网上搜索了一下oralc的错误信息ORA-12519，解决办法挺多的，这里记录一下</p>
+<h3 id="登陆oracle的服务器，在登陆oracle数据库"><a href="#登陆oracle的服务器，在登陆oracle数据库" class="headerlink" title="登陆oracle的服务器，在登陆oracle数据库"></a>登陆oracle的服务器，在登陆oracle数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlplus <span class="string">"/as sysdba"</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>首先检查process和session的使用情况</p>
+</blockquote>
+<p><img src="http://pvyidozd0.bkt.clouddn.com/parameter_%20processes_1.png" alt="img"><br><img src="http://pvyidozd0.bkt.clouddn.com/parameter_%20session_3.png" alt="img"></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ORA-12519</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/10/oracle-ORA-12519/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-nginx-https" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/10/nginx-https/">nginx https</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/10/nginx-https/" class="archive-article-date">
+  	<time datetime="2019-08-10T08:00:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>nginx http 强制跳转到https</p>
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$scheme</span> = http ) &#123;</span><br><span class="line">    <span class="built_in">return</span> 301 https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>列子</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name xxx.test.com;</span><br><span class="line">    index index.html index.php index.htm;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$scheme</span> = http ) &#123;</span><br><span class="line">        <span class="built_in">return</span> 301 https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$server_port</span> = 80 ) &#123;</span><br><span class="line">    <span class="built_in">return</span> 301 https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>列子</li>
+</ul>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/10/nginx-https/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-haproxy-keepalived" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -415,12 +585,11 @@
 <li><strong>kubelet</strong></li>
 <li><strong>kube-proxy</strong></li>
 </ul>
-<ul>
-<li></li>
-<li>node节点需要的文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls /etc/kubernetes/ssl</span></span><br><span class="line">bootstrap.kubeconfig  kube-proxy.kubeconfig  ssl  token.csv</span><br><span class="line"><span class="comment"># ls /etc/kubernetes</span></span><br><span class="line">admin-key.pem  admin.pem  ca-key.pem  ca.pem  kube-proxy-key.pem  kube-proxy.pem  kubernetes-csr.json  kubernetes-key.pem  kubernetes.pem</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>node节点需要的文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls /etc/kubernetes/ssl</span></span><br><span class="line">bootstrap.kubeconfig  kube-proxy.kubeconfig  ssl  token.csv</span><br><span class="line"><span class="comment"># ls /etc/kubernetes</span></span><br><span class="line">admin-key.pem  admin.pem  ca-key.pem  ca.pem  kube-proxy-key.pem  kube-proxy.pem  kubernetes-csr.json  kubernetes-key.pem  kubernetes.pem</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
 <h3 id="1-1、安装flanneld"><a href="#1-1、安装flanneld" class="headerlink" title="1.1、安装flanneld"></a>1.1、安装flanneld</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mv kubernetes  /etc/ &amp;&amp; chown -R root: /etc/kubernetes</span></span><br><span class="line"><span class="comment"># wget https://github.com/coreos/flannel/releases/download/v0.11.0/flannel-v0.11.0-linux-amd64.tar.gz</span></span><br><span class="line"><span class="comment"># tar zxf flannel-v0.11.0-linux-amd64.tar.gz &amp;&amp; mv flanneld mk-docker-opts.sh /usr/bin/ &amp;&amp; rm -rf flannel-v0.11.0-linux-amd64.tar.gz</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="1-1-1、flanneld启动配置文件"><a href="#1-1-1、flanneld启动配置文件" class="headerlink" title="1.1.1、flanneld启动配置文件"></a>1.1.1、flanneld启动配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /lib/systemd/system/flanneld.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=Flanneld overlay address etcd agent</span><br><span class="line">After=network.target</span><br><span class="line">After=network-online.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line">After=etcd.service</span><br><span class="line">Before=docker.service</span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">EnvironmentFile=/etc/sysconfig/flanneld</span><br><span class="line">ExecStart=/usr/bin/flanneld -etcd-endpoints=<span class="variable">$&#123;FLANNEL_ETCD&#125;</span> <span class="variable">$FLANNEL_OPTIONS</span></span><br><span class="line">ExecStartPost=/usr/bin/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/subnet.env</span><br><span class="line">Restart=on-failure</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">RequiredBy=docker.service</span><br></pre></td></tr></table></figure>
@@ -550,7 +719,18 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id="2、增加docker-源"><a href="#2、增加docker-源" class="headerlink" title="2、增加docker 源"></a>2、增加docker 源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum-config-manager \</span></span><br><span class="line">  --add-repo \</span><br><span class="line">  https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line">2.1、根据实际查找当前版本 (可选)</span><br><span class="line"><span class="comment"># yum list docker-ce --showduplicates | sort -r</span></span><br><span class="line">2.2、<span class="comment">#4.如果确定了版本,直接安装,如果要装17。03直接修改下面数字即可</span></span><br><span class="line"><span class="comment"># yum -y install docker-ce-18.06.2.ce-3.el7  # 主意版本填写包名的格式.</span></span><br><span class="line">2.3、<span class="comment">#5.开启docker服务,和开机启动</span></span><br><span class="line"><span class="comment"># systemctl start docker &amp;&amp; systemctl enable docker</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、增加docker-源"><a href="#2、增加docker-源" class="headerlink" title="2、增加docker 源"></a>2、增加docker 源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum-config-manager \</span></span><br><span class="line">  --add-repo \</span><br><span class="line">  https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>2.1、根据实际查找当前版本 (可选)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum list docker-ce --showduplicates | sort -r</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.2.如果确定了版本,直接安装,如果要装17。03直接修改下面数字即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install docker-ce-18.06.2.ce-3.el7  # 主意版本填写包名的格式.</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2-3-开启docker服务-和开机启动"><a href="#2-3-开启docker服务-和开机启动" class="headerlink" title="2.3 开启docker服务,和开机启动"></a>2.3 开启docker服务,和开机启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start docker &amp;&amp; systemctl enable docker</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="3、部署ETC集群"><a href="#3、部署ETC集群" class="headerlink" title="3、部署ETC集群"></a>3、部署ETC集群</h2>
         
@@ -855,195 +1035,6 @@
 
 
   
-    <article id="post-jenkins用户权限配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/09/jenkins用户权限配置/">jenkins用户权限配置</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/09/jenkins用户权限配置/" class="archive-article-date">
-  	<time datetime="2019-08-09T08:05:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1、jenkins用户权限"><a href="#1、jenkins用户权限" class="headerlink" title="1、jenkins用户权限"></a>1、jenkins用户权限</h3><ul>
-<li>可以集成gitlab、jenkins专有账户、LDAP、Servlet容器代理、Unix用户/组数据库</li>
-</ul>
-<h3 id="2、授权策略"><a href="#2、授权策略" class="headerlink" title="2、授权策略"></a>2、授权策略</h3><ul>
-<li>Gitlab Commiter Authorization Strategy</li>
-<li>Role-Based Strategy</li>
-<li>任何用户可以做任何事(没有任何限制)</li>
-<li>安全矩阵</li>
-<li>登录用户可以做任何事</li>
-<li>遗留模式</li>
-<li>项目矩阵授权策略</li>
-</ul>
-<h3 id="3、插件安装"><a href="#3、插件安装" class="headerlink" title="3、插件安装"></a>3、插件安装</h3><p>安装插件：Role-based Authorization Strategy</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jenkins,jenkins用户权限</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/jenkins-ci-cd//" class="article-tag-list-link color5">jenkins, ci/cd</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/09/jenkins用户权限配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mongodb-replica" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/09/mongodb-replica/">mongodb_replica</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/09/mongodb-replica/" class="archive-article-date">
-  	<time datetime="2019-08-09T06:46:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Mongodb replica set安装加认证，这里使用的是keyFile进行认证，之前看过很多文章，坑一大堆，这里是看了两天的官方文档进行的安装，并用户生产，配置文件参数贴一部分,三个带有数据集的节点组成的复制集拥有，架构图如下，参考官方</p>
-<p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-8-13_15-27-53.png" alt="img"><br>一个主节点，两个从节点，这两个从节点都可以在选举中升级为主节点</p>
-<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>三台服务器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">primary: 192.168.32.7</span><br><span class="line">secaodray: 192.168.32.11</span><br><span class="line">secondary: 192.168.32.14</span><br></pre></td></tr></table></figure>
-
-<h2 id="1、安装mongodb"><a href="#1、安装mongodb" class="headerlink" title="1、安装mongodb"></a>1、安装mongodb</h2><h3 id="1-1、每个节点都需要操作"><a href="#1-1、每个节点都需要操作" class="headerlink" title="1.1、每个节点都需要操作"></a>1.1、每个节点都需要操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo vim /etc/yum.repos.d/mongodb-enterprise.repo</span></span><br><span class="line">[mongodb-enterprise]</span><br><span class="line">name=MongoDB Enterprise Repository</span><br><span class="line">baseurl=https://repo.mongodb.com/yum/redhat/<span class="variable">$releasever</span>/mongodb-enterprise/3.4/<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc   </span><br><span class="line"></span><br><span class="line"><span class="comment"># sudo yum install -y mongodb-enterprise</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：如果采用源码包方式安装需要安装一下插件</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">mongodb,mongodb副本集,mongodb高可用</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据库//" class="article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/09/mongodb-replica/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1161,7 +1152,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1229,7 +1228,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
+              <a href="https://xuchao918.github.io/2019/03/01/Kubernetes-traefik-ingress%E4%BD%BF%E7%94%A8/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>traefik ingress使用</a>
             </li>
           
             <li class="search-li">

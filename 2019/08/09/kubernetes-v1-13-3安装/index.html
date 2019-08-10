@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="1、 环境准备   ip type docker os k8s version    172.21.17.4 master,etcd  CentOS Linux release 7.4.1708 v1.13.3   172.21.16.230 master,etcd  CentOS Linux release 7.4.1708    172.21.16.240 master,etcd  CentO">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-10T06:44:33.325Z">
+<meta property="og:updated_time" content="2019-08-10T06:59:35.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes v1.13.3安装">
 <meta name="twitter:description" content="1、 环境准备   ip type docker os k8s version    172.21.17.4 master,etcd  CentOS Linux release 7.4.1708 v1.13.3   172.21.16.230 master,etcd  CentOS Linux release 7.4.1708    172.21.16.240 master,etcd  CentO">
@@ -230,7 +230,18 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id="2、增加docker-源"><a href="#2、增加docker-源" class="headerlink" title="2、增加docker 源"></a>2、增加docker 源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum-config-manager \</span></span><br><span class="line">  --add-repo \</span><br><span class="line">  https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line">2.1、根据实际查找当前版本 (可选)</span><br><span class="line"><span class="comment"># yum list docker-ce --showduplicates | sort -r</span></span><br><span class="line">2.2、<span class="comment">#4.如果确定了版本,直接安装,如果要装17。03直接修改下面数字即可</span></span><br><span class="line"><span class="comment"># yum -y install docker-ce-18.06.2.ce-3.el7  # 主意版本填写包名的格式.</span></span><br><span class="line">2.3、<span class="comment">#5.开启docker服务,和开机启动</span></span><br><span class="line"><span class="comment"># systemctl start docker &amp;&amp; systemctl enable docker</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、增加docker-源"><a href="#2、增加docker-源" class="headerlink" title="2、增加docker 源"></a>2、增加docker 源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum-config-manager \</span></span><br><span class="line">  --add-repo \</span><br><span class="line">  https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>2.1、根据实际查找当前版本 (可选)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum list docker-ce --showduplicates | sort -r</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.2.如果确定了版本,直接安装,如果要装17。03直接修改下面数字即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install docker-ce-18.06.2.ce-3.el7  # 主意版本填写包名的格式.</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2-3-开启docker服务-和开机启动"><a href="#2-3-开启docker服务-和开机启动" class="headerlink" title="2.3 开启docker服务,和开机启动"></a>2.3 开启docker服务,和开机启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start docker &amp;&amp; systemctl enable docker</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="3、部署ETC集群"><a href="#3、部署ETC集群" class="headerlink" title="3、部署ETC集群"></a>3、部署ETC集群</h2><a id="more"></a>
 
@@ -753,7 +764,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -821,7 +840,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
+              <a href="https://xuchao918.github.io/2019/03/01/Kubernetes-traefik-ingress%E4%BD%BF%E7%94%A8/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>traefik ingress使用</a>
             </li>
           
             <li class="search-li">
