@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="知识库">
+  <meta name="description" content="星际拾荒者">
 <meta property="og:type" content="website">
 <meta property="og:title" content="懒羊羊">
 <meta property="og:url" content="https://xxlaila.github.io/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="知识库">
+<meta property="og:description" content="星际拾荒者">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="懒羊羊">
-<meta name="twitter:description" content="知识库">
+<meta name="twitter:description" content="星际拾荒者">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -157,6 +157,291 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-haproxy-keepalived" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/10/haproxy-keepalived/">haproxy keepalived </a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/10/haproxy-keepalived/" class="archive-article-date">
+  	<time datetime="2019-08-10T03:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装haproxy和keepalived"><a href="#安装haproxy和keepalived" class="headerlink" title="安装haproxy和keepalived"></a>安装haproxy和keepalived</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install keepalived.x86_64</span></span><br><span class="line"><span class="comment"># yum -y install haproxy18u.x86_64</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 2、配置haproxy</span></span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line"><span class="comment"># cat /etc/haproxy/haproxy.cfg</span></span><br><span class="line">global</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local0 err</span><br><span class="line">  maxconn 50000</span><br><span class="line">  uid 99</span><br><span class="line">  gid 99</span><br><span class="line">  <span class="comment">#daemon</span></span><br><span class="line">  nbproc 1</span><br><span class="line">  pidfile haproxy.pid</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">  mode http</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local0 err</span><br><span class="line">  maxconn 50000</span><br><span class="line">  retries 3</span><br><span class="line">  timeout connect 5s</span><br><span class="line">  timeout client 30s</span><br><span class="line">  timeout server 30s</span><br><span class="line">  timeout check 2s</span><br><span class="line"></span><br><span class="line">listen admin_stats</span><br><span class="line">  mode http</span><br><span class="line">  <span class="built_in">bind</span> 0.0.0.0:1080</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local0 err</span><br><span class="line">  stats refresh 30s</span><br><span class="line">  stats uri     /haproxy-status</span><br><span class="line">  stats realm   Haproxy\ Statistics</span><br><span class="line">  stats auth    admin:admin1</span><br><span class="line">  stats hide-version</span><br><span class="line">  stats admin <span class="keyword">if</span> TRUE</span><br><span class="line"></span><br><span class="line">frontend k8s-https</span><br><span class="line">  <span class="built_in">bind</span> 0.0.0.0:8443</span><br><span class="line">  mode tcp</span><br><span class="line">  <span class="comment">#maxconn 50000</span></span><br><span class="line">  default_backend k8s-https</span><br><span class="line"></span><br><span class="line">backend k8s-https</span><br><span class="line">  mode tcp</span><br><span class="line">  balance roundrobin</span><br><span class="line">  server k8s-master-01 172.21.17.4:6443 weight 1 maxconn 1000 check inter 2000 rise 2 fall 3</span><br><span class="line">  server k8s-master-02 172.21.16.231:6443 weight 1 maxconn 1000 check inter 2000 rise 2 fall 3</span><br><span class="line">  server k8s-master-03 172.21.16.240:6443 weight 1 maxconn 1000 check inter 2000 rise 2 fall 3</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、keepalived配置"><a href="#3、keepalived配置" class="headerlink" title="3、keepalived配置"></a>3、keepalived配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat keepalived.conf </span></span><br><span class="line">! Configuration File <span class="keyword">for</span> keepalived</span><br><span class="line">global_defs &#123;</span><br><span class="line">  notification_email &#123;</span><br><span class="line">    cq_xxlaila@163.com</span><br><span class="line">    &#125;</span><br><span class="line">  notification_email_from cq_xxlaila@163.com</span><br><span class="line">  smtp_server 127.0.0.1</span><br><span class="line">  smtp_connect_timeout 30</span><br><span class="line">  router_id haproxy-01</span><br><span class="line">&#125;</span><br><span class="line">vrrp_script chk_haproxy &#123;</span><br><span class="line">  script <span class="string">"/etc/keepalived/haproxy_check.sh"</span></span><br><span class="line">  interval 2</span><br><span class="line">  timeout 2</span><br><span class="line">  fall 3</span><br><span class="line">&#125;</span><br><span class="line">vrrp_instance VI_1 &#123;</span><br><span class="line">    state MASTER</span><br><span class="line">    interface eth0</span><br><span class="line">    virtual_router_id 51</span><br><span class="line">    priority 99</span><br><span class="line">    advert_int 1</span><br><span class="line">    dont_track_primary</span><br><span class="line">    nopreempt</span><br><span class="line">    authentication &#123;</span><br><span class="line">      auth_type PASS</span><br><span class="line">      auth_pass 57D0BC82E074C9D6</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">      172.21.16.45</span><br><span class="line">    &#125;</span><br><span class="line">    track_script &#123;</span><br><span class="line">      chk_haproxy</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>监测脚本</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat haproxy_check.sh </span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">A=`ps -C haproxy --no-header | wc -l`</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$A</span> -eq 0 ];<span class="keyword">then</span></span><br><span class="line">    systemctl start haproxy</span><br><span class="line">    sleep 3</span><br><span class="line">    <span class="keyword">if</span> [ `ps -C haproxy --no-header | wc -l ` -eq 0 ];<span class="keyword">then</span></span><br><span class="line">        systemctl stop haproxy</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>local 配置</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /etc/rc/local</span></span><br><span class="line">modprobe ip_vs</span><br><span class="line">modprobe ip_vs_rr</span><br><span class="line">modprobe ip_vs_wrr</span><br><span class="line">modprobe ip_vs_sh</span><br><span class="line">modprobe nf_conntrack_ipv4</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动服务</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl enable haproxy &amp;&amp;systemctl enable keepalived</span></span><br><span class="line"><span class="comment"># systemctl start keepalived &amp;&amp;systemctl start haproxy</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/10/haproxy-keepalived/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-k8s-prometheus" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/10/k8s-prometheus/">k8s-prometheus</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/10/k8s-prometheus/" class="archive-article-date">
+  	<time datetime="2019-08-10T03:37:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://prometheus.io/" target="_blank" rel="noopener">Prometheus</a>是一个集数据收集存储、数据查询和数据图表显示于一身的开源监控组件。本文主要讲解如何搭建Prometheus，并使用它监控Kubernetes集群。</p>
+<h2 id="1、下载相关yaml"><a href="#1、下载相关yaml" class="headerlink" title="1、下载相关yaml"></a>1、下载相关yaml</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://github.com/xxlaila/kubernetes-yaml/tree/master/prometheus-grafana</span></span><br><span class="line"><span class="comment"># ls -l</span></span><br><span class="line">configmap.yaml</span><br><span class="line">grafana-deploy.yaml</span><br><span class="line">grafana-ingress.yaml</span><br><span class="line">grafana-svc.yaml</span><br><span class="line">node-exporter.yaml</span><br><span class="line">prometheus-deploy.yaml</span><br><span class="line">prometheus-svc.yaml</span><br><span class="line">rbac-setup.yaml</span><br><span class="line">prometheus-ingress.yaml</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、开始部署"><a href="#2、开始部署" class="headerlink" title="2、开始部署"></a>2、开始部署</h2><h3 id="2-1、采用daemonset方式部署node-exporter组件"><a href="#2-1、采用daemonset方式部署node-exporter组件" class="headerlink" title="2.1、采用daemonset方式部署node-exporter组件"></a>2.1、采用daemonset方式部署node-exporter组件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f  node-exporter.yaml</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2、部署prometheus组件"><a href="#2-2、部署prometheus组件" class="headerlink" title="2.2、部署prometheus组件"></a>2.2、部署prometheus组件</h3><h4 id="2-2-1、rbac文件"><a href="#2-2-1、rbac文件" class="headerlink" title="2.2.1、rbac文件"></a>2.2.1、rbac文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f rbac-setup.yaml</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-2、以configmap的形式管理prometheus组件的配置文件"><a href="#2-2-2、以configmap的形式管理prometheus组件的配置文件" class="headerlink" title="2.2.2、以configmap的形式管理prometheus组件的配置文件"></a>2.2.2、以configmap的形式管理prometheus组件的配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f configmap.yaml</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-3、Prometheus-deployment-文件"><a href="#2-2-3、Prometheus-deployment-文件" class="headerlink" title="2.2.3、Prometheus deployment 文件"></a>2.2.3、Prometheus deployment 文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f  prometheus-deploy.yaml</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-4、Prometheus-service文件"><a href="#2-2-4、Prometheus-service文件" class="headerlink" title="2.2.4、Prometheus service文件"></a>2.2.4、Prometheus service文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f prometheus-svc.yaml</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-5、配置Ingress"><a href="#2-2-5、配置Ingress" class="headerlink" title="2.2.5、配置Ingress"></a>2.2.5、配置Ingress</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f prometheus-ingress.yaml</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3、部署grafana组件"><a href="#2-3、部署grafana组件" class="headerlink" title="2.3、部署grafana组件"></a>2.3、部署grafana组件</h3><h4 id="2-3-1、grafana-deployment配置文件"><a href="#2-3-1、grafana-deployment配置文件" class="headerlink" title="2.3.1、grafana deployment配置文件"></a>2.3.1、grafana deployment配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f grafana-deploy.yaml</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-2、grafana-service配置文件"><a href="#2-3-2、grafana-service配置文件" class="headerlink" title="2.3.2、grafana service配置文件"></a>2.3.2、grafana service配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f grafana-svc.yaml</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-3、grafana-ingress配置文件"><a href="#2-3-3、grafana-ingress配置文件" class="headerlink" title="2.3.3、grafana ingress配置文件"></a>2.3.3、grafana ingress配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f grafana-ingress.yaml</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4、WEB界面配置"><a href="#2-4、WEB界面配置" class="headerlink" title="2.4、WEB界面配置"></a>2.4、WEB界面配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get svc,pods -n kube-ops</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="http://pvyidozd0.bkt.clouddn.com/46ds9824.png" alt="img"></p>
+<h4 id="2-4-1-查看node-exporter"><a href="#2-4-1-查看node-exporter" class="headerlink" title="2.4.1 查看node-exporter"></a>2.4.1 查看node-exporter</h4><p><img src="http://pvyidozd0.bkt.clouddn.com/8764kjfnks.png" alt="img"></p>
+<h4 id="2-4-2、查看promethues"><a href="#2-4-2、查看promethues" class="headerlink" title="2.4.2、查看promethues"></a>2.4.2、查看promethues</h4><p>prometheus对应的nodeport端口为30005，通过访问<a href="http://172.21.17.4:30005/targets" target="_blank" rel="noopener">http://172.21.17.4:30005/targets</a> 可以看到prometheus已经成功连接上了k8s的apiserver,这里我们前面增加了prometheus的ingress，这里可以直接通过域名进行访问</p>
+<p><img src="http://pvyidozd0.bkt.clouddn.com/skd9234342.png" alt="img"></p>
+<h4 id="2-4-3、访问grafana"><a href="#2-4-3、访问grafana" class="headerlink" title="2.4.3、访问grafana"></a>2.4.3、访问grafana</h4><p>通过域名访问grafana，默认用户名密码均为admin，配置数据源<br><img src="http://pvyidozd0.bkt.clouddn.com/sld023423.png" alt="img"></p>
+<ul>
+<li>到grafana官方<a href="https://grafana.com/dashboards/315" target="_blank" rel="noopener">下载模版</a>，导入json模版</li>
+</ul>
+<p><img src="http://pvyidozd0.bkt.clouddn.com/kf24skdsfds.png" alt="img"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Prometheus, kubernetes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/10/k8s-prometheus/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-kubedns插件配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/10/kubedns插件配置/">kubedns插件配置</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/10/kubedns插件配置/" class="archive-article-date">
+  	<time datetime="2019-08-10T03:25:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装和配置kubedns插件"><a href="#安装和配置kubedns插件" class="headerlink" title="安装和配置kubedns插件"></a>安装和配置kubedns插件</h1><h2 id="1、配置文件准备"><a href="#1、配置文件准备" class="headerlink" title="1、配置文件准备"></a>1、配置文件准备</h2><p>下载官方的yaml文件目录：kubernetes/cluster/addons/dns。该插件直接使用kubernetes部署,yaml文件经过修改完成部署</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git clone https://github.com/xxlaila/kubernetes-yaml.git</span></span><br><span class="line"><span class="comment"># cd kubernetes-yaml/coredns</span></span><br><span class="line"><span class="comment"># sed -i 's/10.96.0.10/10.254.0.2/g' coredns-service.yaml</span></span><br><span class="line"><span class="comment"># kubectl create -f ./</span></span><br><span class="line"><span class="comment"># kubectl get pods,svc,rs -n kube-system</span></span><br><span class="line">NAME                           READY   STATUS    RESTARTS   AGE</span><br><span class="line">pod/coredns-68676b6b88-l7b5g   1/1     Running   0          16m</span><br><span class="line"></span><br><span class="line">NAME              TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)         AGE</span><br><span class="line">service/coredns   ClusterIP   10.254.0.2   &lt;none&gt;        53/UDP,53/TCP   16m</span><br><span class="line"></span><br><span class="line">NAME                                       DESIRED   CURRENT   READY   AGE</span><br><span class="line">replicaset.extensions/coredns-68676b6b88   1         1         1       16m</span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl get pods -o wide -n kube-system</span></span><br><span class="line">NAME                                    READY   STATUS    RESTARTS   AGE     IP            NODE            NOMINATED NODE   READINESS GATES</span><br><span class="line">coredns-68676b6b88-l7b5g                1/1     Running   0          40m     10.254.28.2   172.21.16.248   &lt;none&gt;           &lt;none&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、安装和配置dashboard"><a href="#2、安装和配置dashboard" class="headerlink" title="2、安装和配置dashboard"></a>2、安装和配置dashboard</h2><p>官方配置文件kubernetes/cluster/addons/dashboard，这里已经修改过了，经过测试部署，直接进入dashboard目录，修改inages参数进行部署</p>
+<h3 id="2-1、安装dashboard"><a href="#2-1、安装dashboard" class="headerlink" title="2.1、安装dashboard"></a>2.1、安装dashboard</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd ../kubernetes-dashboard</span></span><br><span class="line"><span class="comment"># kubectl create -f kubernetes-dashboard.yaml </span></span><br><span class="line">secret/kubernetes-dashboard-certs created</span><br><span class="line">serviceaccount/kubernetes-dashboard created</span><br><span class="line">role.rbac.authorization.k8s.io/kubernetes-dashboard-minimal created</span><br><span class="line">rolebinding.rbac.authorization.k8s.io/kubernetes-dashboard-minimal created</span><br><span class="line">deployment.apps/kubernetes-dashboard created</span><br><span class="line">service/kubernetes-dashboard created</span><br><span class="line"><span class="comment"># kubectl get pods -o wide -n kube-system</span></span><br><span class="line">NAME                                    READY   STATUS    RESTARTS   AGE     IP            NODE            NOMINATED NODE   READINESS GATES</span><br><span class="line">kubernetes-dashboard-6c655d9445-4557x   1/1     Running   0          6m54s   10.254.90.2   172.21.16.110   &lt;none&gt;           &lt;none&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2、配置账户授权"><a href="#2-2、配置账户授权" class="headerlink" title="2.2、配置账户授权"></a>2.2、配置账户授权</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f admin-user.yaml </span></span><br><span class="line">serviceaccount/admin created</span><br><span class="line">clusterrolebinding.rbac.authorization.k8s.io/admin created</span><br><span class="line"><span class="comment"># kubectl describe serviceaccount admin -n kube-system</span></span><br><span class="line">Name:                admin</span><br><span class="line">Namespace:           kube-system</span><br><span class="line">Labels:              k8s-app=kubernetes-dashboard</span><br><span class="line">Annotations:         &lt;none&gt;</span><br><span class="line">Image pull secrets:  &lt;none&gt;</span><br><span class="line">Mountable secrets:   admin-token-wwjw8</span><br><span class="line">Tokens:              admin-token-wwjw8</span><br><span class="line">Events:              &lt;none&gt;</span><br><span class="line"><span class="comment"># kubectl describe secret admin-token-wwjw8 -n kube-system</span></span><br><span class="line">在浏览器访问任意节点IP地址http://&lt;node_ip&gt;:30001</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、监控安装"><a href="#3、监控安装" class="headerlink" title="3、监控安装"></a>3、监控安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd ../heapster-influxdb-grafana</span></span><br><span class="line"><span class="comment"># kubectl create -f ./</span></span><br><span class="line"><span class="comment"># kubectl get pods -o wide -n kube-system</span></span><br><span class="line">NAME                                    READY   STATUS    RESTARTS   AGE   IP            NODE            NOMINATED NODE   READINESS GATES</span><br><span class="line">heapster-658646db69-lh5tx               1/1     Running   0          11m   10.254.28.3   172.21.16.248   &lt;none&gt;           &lt;none&gt;</span><br><span class="line">monitoring-grafana-7bfc56ffcd-kgh56     1/1     Running   0          11m   10.254.90.3   172.21.16.110   &lt;none&gt;           &lt;none&gt;</span><br><span class="line">monitoring-influxdb-7478d7675c-9255v    1/1     Running   0          11m   10.254.85.2   172.21.16.244   &lt;none&gt;           &lt;none&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这里遇到一个怪事情；heapster安装以后图始终无法出来，这里折腾差不多大半天。最后在dashboard的yaml文件里面添加了以下参数，图就可以了，</p>
+<p><img src="http://pvyidozd0.bkt.clouddn.com/4udfs93.png" alt="img"></p>
+<p>args:<br>          - –auto-generate-certificates<br>          - –token-ttl=43200<br>          <em>- –heapster-host=<a href="http://heapster" target="_blank" rel="noopener">http://heapster</a></em></p>
+<p><img src="http://pvyidozd0.bkt.clouddn.com/ds832948dk.png" alt="img"></p>
+<p>Prometheus的安装请参考<a href="http://xxlaila.github.io/2019/08/10/k8s-prometheus/">《Prometheus 入门》</a>文章，grafana不需要重复部署。只需要在grafana里面增加目录挂在，吧kube-ops 修改kube-system即可</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/10/kubedns插件配置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-kubernetes-node节点安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -177,7 +462,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>More: <a href="https://xxlaila.github.io/2019/08/09/kubernetes-v1-13-3%E5%AE%89%E8%A3%85/">master节点安装请参考</a></p>
+        <a id="more"></a>
+<p>More: <a href="https://xxlaila.github.io/2019/08/09/kubernetes-v1-13-3%E5%AE%89%E8%A3%85/">master节点安装请参考</a></p>
 <h2 id="1、部署kubernetes-node节点"><a href="#1、部署kubernetes-node节点" class="headerlink" title="1、部署kubernetes node节点"></a>1、部署kubernetes node节点</h2><p>Kubernetes node节点包含如下组件：</p>
 <ul>
 <li><strong>Flanneld</strong>: 之前单机节点安装没有配置TLS，现在需要在service配置文件中增加TLS配置</li>
@@ -194,6 +480,8 @@
 <h3 id="1-1、安装flanneld"><a href="#1-1、安装flanneld" class="headerlink" title="1.1、安装flanneld"></a>1.1、安装flanneld</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mv kubernetes  /etc/ &amp;&amp; chown -R root: /etc/kubernetes</span></span><br><span class="line"><span class="comment"># wget https://github.com/coreos/flannel/releases/download/v0.11.0/flannel-v0.11.0-linux-amd64.tar.gz</span></span><br><span class="line"><span class="comment"># tar zxf flannel-v0.11.0-linux-amd64.tar.gz &amp;&amp; mv flanneld mk-docker-opts.sh /usr/bin/ &amp;&amp; rm -rf flannel-v0.11.0-linux-amd64.tar.gz</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="1-1-1、flanneld启动配置文件"><a href="#1-1-1、flanneld启动配置文件" class="headerlink" title="1.1.1、flanneld启动配置文件"></a>1.1.1、flanneld启动配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /lib/systemd/system/flanneld.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=Flanneld overlay address etcd agent</span><br><span class="line">After=network.target</span><br><span class="line">After=network-online.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line">After=etcd.service</span><br><span class="line">Before=docker.service</span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">EnvironmentFile=/etc/sysconfig/flanneld</span><br><span class="line">ExecStart=/usr/bin/flanneld -etcd-endpoints=<span class="variable">$&#123;FLANNEL_ETCD&#125;</span> <span class="variable">$FLANNEL_OPTIONS</span></span><br><span class="line">ExecStartPost=/usr/bin/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/subnet.env</span><br><span class="line">Restart=on-failure</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">RequiredBy=docker.service</span><br></pre></td></tr></table></figure>
+
+<!-- more -->
 
 <h4 id="1-1-2、flanneld配置文件"><a href="#1-1-2、flanneld配置文件" class="headerlink" title="1.1.2、flanneld配置文件"></a>1.1.2、flanneld配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/sysconfig/flanneld</span></span><br><span class="line"><span class="comment"># Flanneld configuration options</span></span><br><span class="line"><span class="comment"># etcd url location.  Point this to the server where etcd runs</span></span><br><span class="line">FLANNEL_ETCD=<span class="string">"https://172.21.17.4:2379,https://172.21.16.231:2379,https://172.21.16.240:2379"</span></span><br><span class="line"><span class="comment"># etcd config key.  This is the configuration key that flannel queries</span></span><br><span class="line"><span class="comment"># For address range assignment</span></span><br><span class="line">FLANNEL_ETCD_PREFIX=<span class="string">"/coreos.com/network"</span></span><br><span class="line"><span class="comment"># Any additional options that you want to pass</span></span><br><span class="line">FLANNEL_OPTIONS=<span class="string">"-etcd-cafile=/etc/kubernetes/ssl/ca.pem -etcd-certfile=/etc/kubernetes/ssl/kubernetes.pem -etcd-keyfile=/etc/kubernetes/ssl/kubernetes-key.pem"</span></span><br></pre></td></tr></table></figure>
 
@@ -248,7 +536,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># journalctl -f -u kubelet</span></span><br><span class="line"><span class="comment"># systemctl  status kubelet -l</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="http://pvyidozd0.bkt.clouddn.com/2ds.png" alt="img"></p>
-<p>1.8版本之前.开启rbac后,apiserver默认绑定system:nodes组到system:node的clusterrole。v1.8之后,此绑定默认不存在,需要手工绑定,否则kubelet启动后会报认证错误，使用kubectl get nodes查看无法成为Ready状态。<br><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#service-account-permissions" target="_blank" rel="noopener">https://kubernetes.io/docs/reference/access-authn-authz/rbac/#service-account-permissions</a></p>
+<p>1.8版本之前.开启rbac后,apiserver默认绑定system:nodes组到system:node的clusterrole。v1.8之后,此绑定默认不存在,需要手工绑定,否则kubelet启动后会报认证错误，使用kubectl get nodes查看无法成为Ready状态。<br>More: <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#service-account-permissions" target="_blank" rel="noopener">官方介绍</a></p>
 <p><strong>默认角色与默认角色绑定</strong><br>API Server会创建一组默认的 ClusterRole和 ClusterRoleBinding对象。 这些默认对象中有许多包含 system:前缀，表明这些资源由Kubernetes基础组件”拥有”。 对这些资源的修改可能导致非功能性集群（non-functional cluster） 。一个例子是 system:node ClusterRole对象。这个角色定义了kubelets的权限。如果这个角色被修改，可能会导致kubelets无法正常工作。 所有默认的ClusterRole和ClusterRoleBinding对象都会被标记为kubernetes.io/bootstrapping=rbac-defaults。<br>使用命令kubectl get clusterrolebinding和kubectl get clusterrole可以查看系统中的角色与角色绑定<br>使用命令kubectl get clusterrolebindings system:node -o yaml或kubectl describe clusterrolebindings system:node查看system:node角色绑定的详细信息：</p>
 <ul>
 <li>在任意master节点上执行<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get clusterrolebindings system:node -o yaml</span></span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">kind: ClusterRoleBinding</span><br><span class="line">metadata:</span><br><span class="line">  annotations:</span><br><span class="line">    rbac.authorization.kubernetes.io/autoupdate: <span class="string">"true"</span></span><br><span class="line">  creationTimestamp: <span class="string">"2019-02-22T03:27:47Z"</span></span><br><span class="line">  labels:</span><br><span class="line">    kubernetes.io/bootstrapping: rbac-defaults</span><br><span class="line">  name: system:node</span><br><span class="line">  resourceVersion: <span class="string">"102"</span></span><br><span class="line">  selfLink: /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/system%3Anode</span><br><span class="line">  uid: d2fba0b3-3651-11e9-96a9-fa163e14c5bd</span><br><span class="line">roleRef:</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line">  kind: ClusterRole</span><br><span class="line">  name: system:node</span><br><span class="line"><span class="comment"># kubectl describe clusterrolebindings system:node</span></span><br><span class="line">Name:         system:node</span><br><span class="line">Labels:       kubernetes.io/bootstrapping=rbac-defaults</span><br><span class="line">Annotations:  rbac.authorization.kubernetes.io/autoupdate: <span class="literal">true</span></span><br><span class="line">Role:</span><br><span class="line">  Kind:  ClusterRole</span><br><span class="line">  Name:  system:node</span><br><span class="line">Subjects:</span><br><span class="line">  Kind  Name  Namespace</span><br><span class="line">  ----  ----  ---------</span><br><span class="line">system:node角色默认绑定为空</span><br></pre></td></tr></table></figure>
@@ -275,7 +563,7 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get svc nginx</span></span><br><span class="line">NAME    TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE</span><br><span class="line">nginx   NodePort   10.254.11.147   &lt;none&gt;        80:48713/TCP   31s</span><br></pre></td></tr></table></figure>
 
-<p>部署完成后，通过任意node节点IP的地址加端口48713即可访问<br>http://<node-ip>:48713/</node-ip></p>
+<p>部署完成后，通过任意node节点IP的地址加端口48713即可访问<br><a href="http://node-ip:48713/" target="_blank" rel="noopener">http://node-ip:48713/</a></p>
 
       
 
@@ -648,7 +936,9 @@
 
 <h3 id="5-6、验证master节点"><a href="#5-6、验证master节点" class="headerlink" title="5.6、验证master节点"></a>5.6、验证master节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get componentstatuses</span></span><br><span class="line">NAME                 STATUS    MESSAGE             ERROR</span><br><span class="line">scheduler            Healthy   ok                  </span><br><span class="line">controller-manager   Healthy   ok                  </span><br><span class="line">etcd-2               Healthy   &#123;<span class="string">"health"</span>:<span class="string">"true"</span>&#125;   </span><br><span class="line">etcd-0               Healthy   &#123;<span class="string">"health"</span>:<span class="string">"true"</span>&#125;   </span><br><span class="line">etcd-1               Healthy   &#123;<span class="string">"health"</span>:<span class="string">"true"</span>&#125;</span><br></pre></td></tr></table></figure>
 
-<p>至此master节点部署完毕<br>More: <a href="https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/">node节点安装</a></p>
+<p>至此master节点部署完毕</p>
+<p>高可用<a href="http://xxlaila.github.io/2019/08/10/haproxy+keepalived/">haproxy</a></p>
+<p>More: <a href="https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/">node节点安装</a></p>
 
       
 
@@ -1232,81 +1522,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/09/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/09/hello-world/" class="archive-article-date">
-  	<time datetime="2019-08-09T03:55:49.327Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/09/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -1404,6 +1623,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
@@ -1412,7 +1635,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1421,6 +1648,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
               </li>
              
               <li class="article-tag-list-item">

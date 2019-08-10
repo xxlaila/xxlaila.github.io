@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>kubernetes node节点安装 | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="More: master节点安装请参考 1、部署kubernetes node节点Kubernetes node节点包含如下组件：  Flanneld: 之前单机节点安装没有配置TLS，现在需要在service配置文件中增加TLS配置 Docker: version 18.06.2-ce kubelet kube-proxy    node节点需要的文件1234# ls /etc/kubernet">
+  <meta name="description" content="More: master节点安装请参考 1、部署kubernetes node节点Kubernetes node节点包含如下组件：  Flanneld: 之前单机节点安装没有配置TLS，现在需要在service配置文件中增加TLS配置 Docker: version 18.06.2-ce kubelet kube-proxy    node节点需要的文件1234# ls /etc/kuberne">
 <meta name="keywords" content="kubernetes, kubernetes v13.3安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kubernetes node节点安装">
 <meta property="og:url" content="https://xxlaila.github.io/2019/08/10/kubernetes-node节点安装/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="More: master节点安装请参考 1、部署kubernetes node节点Kubernetes node节点包含如下组件：  Flanneld: 之前单机节点安装没有配置TLS，现在需要在service配置文件中增加TLS配置 Docker: version 18.06.2-ce kubelet kube-proxy    node节点需要的文件1234# ls /etc/kubernet">
+<meta property="og:description" content="More: master节点安装请参考 1、部署kubernetes node节点Kubernetes node节点包含如下组件：  Flanneld: 之前单机节点安装没有配置TLS，现在需要在service配置文件中增加TLS配置 Docker: version 18.06.2-ce kubelet kube-proxy    node节点需要的文件1234# ls /etc/kuberne">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/2ds.png">
-<meta property="og:updated_time" content="2019-08-10T00:31:45.620Z">
+<meta property="og:updated_time" content="2019-08-10T03:20:53.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes node节点安装">
-<meta name="twitter:description" content="More: master节点安装请参考 1、部署kubernetes node节点Kubernetes node节点包含如下组件：  Flanneld: 之前单机节点安装没有配置TLS，现在需要在service配置文件中增加TLS配置 Docker: version 18.06.2-ce kubelet kube-proxy    node节点需要的文件1234# ls /etc/kubernet">
+<meta name="twitter:description" content="More: master节点安装请参考 1、部署kubernetes node节点Kubernetes node节点包含如下组件：  Flanneld: 之前单机节点安装没有配置TLS，现在需要在service配置文件中增加TLS配置 Docker: version 18.06.2-ce kubelet kube-proxy    node节点需要的文件1234# ls /etc/kuberne">
 <meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/2ds.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
@@ -179,7 +179,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>More: <a href="https://xxlaila.github.io/2019/08/09/kubernetes-v1-13-3%E5%AE%89%E8%A3%85/">master节点安装请参考</a></p>
+        <a id="more"></a>
+<p>More: <a href="https://xxlaila.github.io/2019/08/09/kubernetes-v1-13-3%E5%AE%89%E8%A3%85/">master节点安装请参考</a></p>
 <h2 id="1、部署kubernetes-node节点"><a href="#1、部署kubernetes-node节点" class="headerlink" title="1、部署kubernetes node节点"></a>1、部署kubernetes node节点</h2><p>Kubernetes node节点包含如下组件：</p>
 <ul>
 <li><strong>Flanneld</strong>: 之前单机节点安装没有配置TLS，现在需要在service配置文件中增加TLS配置</li>
@@ -196,6 +197,8 @@
 <h3 id="1-1、安装flanneld"><a href="#1-1、安装flanneld" class="headerlink" title="1.1、安装flanneld"></a>1.1、安装flanneld</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mv kubernetes  /etc/ &amp;&amp; chown -R root: /etc/kubernetes</span></span><br><span class="line"><span class="comment"># wget https://github.com/coreos/flannel/releases/download/v0.11.0/flannel-v0.11.0-linux-amd64.tar.gz</span></span><br><span class="line"><span class="comment"># tar zxf flannel-v0.11.0-linux-amd64.tar.gz &amp;&amp; mv flanneld mk-docker-opts.sh /usr/bin/ &amp;&amp; rm -rf flannel-v0.11.0-linux-amd64.tar.gz</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="1-1-1、flanneld启动配置文件"><a href="#1-1-1、flanneld启动配置文件" class="headerlink" title="1.1.1、flanneld启动配置文件"></a>1.1.1、flanneld启动配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /lib/systemd/system/flanneld.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=Flanneld overlay address etcd agent</span><br><span class="line">After=network.target</span><br><span class="line">After=network-online.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line">After=etcd.service</span><br><span class="line">Before=docker.service</span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">EnvironmentFile=/etc/sysconfig/flanneld</span><br><span class="line">ExecStart=/usr/bin/flanneld -etcd-endpoints=<span class="variable">$&#123;FLANNEL_ETCD&#125;</span> <span class="variable">$FLANNEL_OPTIONS</span></span><br><span class="line">ExecStartPost=/usr/bin/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/subnet.env</span><br><span class="line">Restart=on-failure</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">RequiredBy=docker.service</span><br></pre></td></tr></table></figure>
+
+<!-- more -->
 
 <h4 id="1-1-2、flanneld配置文件"><a href="#1-1-2、flanneld配置文件" class="headerlink" title="1.1.2、flanneld配置文件"></a>1.1.2、flanneld配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/sysconfig/flanneld</span></span><br><span class="line"><span class="comment"># Flanneld configuration options</span></span><br><span class="line"><span class="comment"># etcd url location.  Point this to the server where etcd runs</span></span><br><span class="line">FLANNEL_ETCD=<span class="string">"https://172.21.17.4:2379,https://172.21.16.231:2379,https://172.21.16.240:2379"</span></span><br><span class="line"><span class="comment"># etcd config key.  This is the configuration key that flannel queries</span></span><br><span class="line"><span class="comment"># For address range assignment</span></span><br><span class="line">FLANNEL_ETCD_PREFIX=<span class="string">"/coreos.com/network"</span></span><br><span class="line"><span class="comment"># Any additional options that you want to pass</span></span><br><span class="line">FLANNEL_OPTIONS=<span class="string">"-etcd-cafile=/etc/kubernetes/ssl/ca.pem -etcd-certfile=/etc/kubernetes/ssl/kubernetes.pem -etcd-keyfile=/etc/kubernetes/ssl/kubernetes-key.pem"</span></span><br></pre></td></tr></table></figure>
 
@@ -250,7 +253,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># journalctl -f -u kubelet</span></span><br><span class="line"><span class="comment"># systemctl  status kubelet -l</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="http://pvyidozd0.bkt.clouddn.com/2ds.png" alt="img"></p>
-<p>1.8版本之前.开启rbac后,apiserver默认绑定system:nodes组到system:node的clusterrole。v1.8之后,此绑定默认不存在,需要手工绑定,否则kubelet启动后会报认证错误，使用kubectl get nodes查看无法成为Ready状态。<br><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#service-account-permissions" target="_blank" rel="noopener">https://kubernetes.io/docs/reference/access-authn-authz/rbac/#service-account-permissions</a></p>
+<p>1.8版本之前.开启rbac后,apiserver默认绑定system:nodes组到system:node的clusterrole。v1.8之后,此绑定默认不存在,需要手工绑定,否则kubelet启动后会报认证错误，使用kubectl get nodes查看无法成为Ready状态。<br>More: <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#service-account-permissions" target="_blank" rel="noopener">官方介绍</a></p>
 <p><strong>默认角色与默认角色绑定</strong><br>API Server会创建一组默认的 ClusterRole和 ClusterRoleBinding对象。 这些默认对象中有许多包含 system:前缀，表明这些资源由Kubernetes基础组件”拥有”。 对这些资源的修改可能导致非功能性集群（non-functional cluster） 。一个例子是 system:node ClusterRole对象。这个角色定义了kubelets的权限。如果这个角色被修改，可能会导致kubelets无法正常工作。 所有默认的ClusterRole和ClusterRoleBinding对象都会被标记为kubernetes.io/bootstrapping=rbac-defaults。<br>使用命令kubectl get clusterrolebinding和kubectl get clusterrole可以查看系统中的角色与角色绑定<br>使用命令kubectl get clusterrolebindings system:node -o yaml或kubectl describe clusterrolebindings system:node查看system:node角色绑定的详细信息：</p>
 <ul>
 <li>在任意master节点上执行<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get clusterrolebindings system:node -o yaml</span></span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">kind: ClusterRoleBinding</span><br><span class="line">metadata:</span><br><span class="line">  annotations:</span><br><span class="line">    rbac.authorization.kubernetes.io/autoupdate: <span class="string">"true"</span></span><br><span class="line">  creationTimestamp: <span class="string">"2019-02-22T03:27:47Z"</span></span><br><span class="line">  labels:</span><br><span class="line">    kubernetes.io/bootstrapping: rbac-defaults</span><br><span class="line">  name: system:node</span><br><span class="line">  resourceVersion: <span class="string">"102"</span></span><br><span class="line">  selfLink: /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/system%3Anode</span><br><span class="line">  uid: d2fba0b3-3651-11e9-96a9-fa163e14c5bd</span><br><span class="line">roleRef:</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line">  kind: ClusterRole</span><br><span class="line">  name: system:node</span><br><span class="line"><span class="comment"># kubectl describe clusterrolebindings system:node</span></span><br><span class="line">Name:         system:node</span><br><span class="line">Labels:       kubernetes.io/bootstrapping=rbac-defaults</span><br><span class="line">Annotations:  rbac.authorization.kubernetes.io/autoupdate: <span class="literal">true</span></span><br><span class="line">Role:</span><br><span class="line">  Kind:  ClusterRole</span><br><span class="line">  Name:  system:node</span><br><span class="line">Subjects:</span><br><span class="line">  Kind  Name  Namespace</span><br><span class="line">  ----  ----  ---------</span><br><span class="line">system:node角色默认绑定为空</span><br></pre></td></tr></table></figure>
@@ -277,7 +280,7 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get svc nginx</span></span><br><span class="line">NAME    TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE</span><br><span class="line">nginx   NodePort   10.254.11.147   &lt;none&gt;        80:48713/TCP   31s</span><br></pre></td></tr></table></figure>
 
-<p>部署完成后，通过任意node节点IP的地址加端口48713即可访问<br>http://<node-ip>:48713/</node-ip></p>
+<p>部署完成后，通过任意node节点IP的地址加端口48713即可访问<br><a href="http://node-ip:48713/" target="_blank" rel="noopener">http://node-ip:48713/</a></p>
 
       
 
@@ -381,6 +384,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/08/10/kubedns插件配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          kubedns插件配置
+        
+      </div>
+    </a>
   
   
     <a href="/2019/08/09/kubernetes-v1-13-3安装/" id="article-nav-older" class="article-nav-link-wrap">
@@ -514,6 +526,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
@@ -522,7 +538,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,6 +551,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
               </li>
              
               <li class="article-tag-list-item">
