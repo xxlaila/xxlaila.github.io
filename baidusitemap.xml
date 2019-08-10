@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xxlaila.github.io/2019/08/10/haproxy-keepalived/</loc>
+    <lastmod>2019-08-10</lastmod>
+  </url>  <url>
+    <loc>https://xxlaila.github.io/2019/08/09/mongodb-replica/</loc>
+    <lastmod>2019-08-10</lastmod>
+  </url>  <url>
+    <loc>https://xxlaila.github.io/2019/08/09/jenkins%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2019-08-10</lastmod>
+  </url>  <url>
+    <loc>https://xxlaila.github.io/2019/08/09/jenkins-job%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2019-08-10</lastmod>
+  </url>  <url>
+    <loc>https://xxlaila.github.io/2019/08/09/TeamViewer-mac%E7%A0%B4%E8%A7%A3/</loc>
+    <lastmod>2019-08-10</lastmod>
+  </url>  <url>
+    <loc>https://xxlaila.github.io/2019/08/09/vsftpd%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2019-08-10</lastmod>
+  </url>  <url>
     <loc>https://xxlaila.github.io/2019/08/09/kubernetes-v1-13-3%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2019-08-10</lastmod>
   </url>  <url>
-    <loc>https://xxlaila.github.io/2019/08/10/haproxy-keepalived/</loc>
+    <loc>https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2019-08-10</lastmod>
   </url>  <url>
     <loc>https://xxlaila.github.io/2019/08/10/kubedns%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/</loc>
@@ -12,24 +30,6 @@
   </url>  <url>
     <loc>https://xxlaila.github.io/2019/08/10/k8s-prometheus/</loc>
     <lastmod>2019-08-10</lastmod>
-  </url>  <url>
-    <loc>https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2019-08-10</lastmod>
-  </url>  <url>
-    <loc>https://xxlaila.github.io/2019/08/09/vsftpd%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2019-08-09</lastmod>
-  </url>  <url>
-    <loc>https://xxlaila.github.io/2019/08/09/TeamViewer-mac%E7%A0%B4%E8%A7%A3/</loc>
-    <lastmod>2019-08-09</lastmod>
-  </url>  <url>
-    <loc>https://xxlaila.github.io/2019/08/09/jenkins-job%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2019-08-09</lastmod>
-  </url>  <url>
-    <loc>https://xxlaila.github.io/2019/08/09/jenkins%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2019-08-09</lastmod>
-  </url>  <url>
-    <loc>https://xxlaila.github.io/2019/08/09/mongodb-replica/</loc>
-    <lastmod>2019-08-09</lastmod>
   </url>  <url>
     <loc>https://xxlaila.github.io/2019/08/09/hello-world/</loc>
     <lastmod>2019-08-09</lastmod>
