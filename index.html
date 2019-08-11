@@ -157,6 +157,118 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Centos-5-5-安装DRBD" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/11/Centos-5-5-安装DRBD/">Centos 5.5 安装DRBD</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/11/Centos-5-5-安装DRBD/" class="archive-article-date">
+  	<time datetime="2019-08-10T23:42:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Centos5.5 32bit安装DRBD</p>
+<ul>
+<li>安装前准备</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>节点类型</th>
+<th>IP地址规划</th>
+<th>主机名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主用节点</td>
+<td>192.168.1.101</td>
+<td>node2</td>
+</tr>
+<tr>
+<td>备用节点</td>
+<td>192.168.1.102</td>
+<td>node1</td>
+</tr>
+<tr>
+<td>磁盘</td>
+<td>两台10G磁盘</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="在主节点安装DRBD"><a href="#在主节点安装DRBD" class="headerlink" title="在主节点安装DRBD"></a>在主节点安装DRBD</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node2 ~]<span class="comment"># yum -y install kmod-drbd83 drbd83</span></span><br></pre></td></tr></table></figure>
+
+<p>安装成功之后/sbin目录下面有drbdadm，drbdmeta，drbdsetup命令，以及/etc /init.d/drbd启动脚本。</p>
+<ul>
+<li>备用节点安装DRBD</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># yum -y install kmod-drbd83 drbd83</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>安装完成后。默认配置文件/etc/drbd.conf，以下是两台的主机配置实例:</p>
+</blockquote>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">DRBD</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/11/Centos-5-5-安装DRBD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-oracle-ORA-12519" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -347,7 +459,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="安装haproxy和keepalived"><a href="#安装haproxy和keepalived" class="headerlink" title="安装haproxy和keepalived"></a>安装haproxy和keepalived</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install keepalived.x86_64</span></span><br><span class="line"><span class="comment"># yum -y install haproxy18u.x86_64</span></span><br></pre></td></tr></table></figure>
+        <p>本文主要是代理kubernetes master的高可用。</p>
+<h2 id="安装haproxy和keepalived"><a href="#安装haproxy和keepalived" class="headerlink" title="安装haproxy和keepalived"></a>安装haproxy和keepalived</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install keepalived.x86_64</span></span><br><span class="line"><span class="comment"># yum -y install haproxy18u.x86_64</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="2、配置haproxy"><a href="#2、配置haproxy" class="headerlink" title="2、配置haproxy"></a>2、配置haproxy</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/haproxy/haproxy.cfg</span></span><br><span class="line">global</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local0 err</span><br><span class="line">  maxconn 50000</span><br><span class="line">  uid 99</span><br><span class="line">  gid 99</span><br><span class="line">  <span class="comment">#daemon</span></span><br><span class="line">  nbproc 1</span><br><span class="line">  pidfile haproxy.pid</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">  mode http</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local0 err</span><br><span class="line">  maxconn 50000</span><br><span class="line">  retries 3</span><br><span class="line">  timeout connect 5s</span><br><span class="line">  timeout client 30s</span><br><span class="line">  timeout server 30s</span><br><span class="line">  timeout check 2s</span><br><span class="line"></span><br><span class="line">listen admin_stats</span><br><span class="line">  mode http</span><br><span class="line">  <span class="built_in">bind</span> 0.0.0.0:1080</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local0 err</span><br><span class="line">  stats refresh 30s</span><br><span class="line">  stats uri     /haproxy-status</span><br><span class="line">  stats realm   Haproxy\ Statistics</span><br><span class="line">  stats auth    admin:admin1</span><br><span class="line">  stats hide-version</span><br><span class="line">  stats admin <span class="keyword">if</span> TRUE</span><br><span class="line"></span><br><span class="line">frontend k8s-https</span><br><span class="line">  <span class="built_in">bind</span> 0.0.0.0:8443</span><br><span class="line">  mode tcp</span><br><span class="line">  <span class="comment">#maxconn 50000</span></span><br><span class="line">  default_backend k8s-https</span><br><span class="line"></span><br><span class="line">backend k8s-https</span><br><span class="line">  mode tcp</span><br><span class="line">  balance roundrobin</span><br><span class="line">  server k8s-master-01 172.21.17.4:6443 weight 1 maxconn 1000 check inter 2000 rise 2 fall 3</span><br><span class="line">  server k8s-master-02 172.21.16.231:6443 weight 1 maxconn 1000 check inter 2000 rise 2 fall 3</span><br><span class="line">  server k8s-master-03 172.21.16.240:6443 weight 1 maxconn 1000 check inter 2000 rise 2 fall 3</span><br></pre></td></tr></table></figure>
         
@@ -955,86 +1068,6 @@
 
 
   
-    <article id="post-jenkins-job管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/09/jenkins-job管理/">jenkins job管理</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/09/jenkins-job管理/" class="archive-article-date">
-  	<time datetime="2019-08-09T11:36:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ul>
-<li><strong>介绍</strong>: 由于公司的ci用于编译的环境比较多，为了更好的区分，为每一个环境建立了一个view</li>
-<li><strong>痛点</strong>: 运维人员在建立job的时候需要到对应的view下面建立，虽然这不是狠痛苦，但是还是不太方便。</li>
-<li><strong>解决</strong>: 人员登陆默认是在all view下面，每个运维人员在这下面建立job，然后每个view根据自己的规则吧对应的job添加进来。job规则自己提前定义好</li>
-</ul>
-<h2 id="1、安装jenkins插件"><a href="#1、安装jenkins插件" class="headerlink" title="1、安装jenkins插件"></a>1、安装jenkins插件</h2><p>view job 过滤插件view-job-filters，安装过程不累赘</p>
-<h2 id="2、配置view规则"><a href="#2、配置view规则" class="headerlink" title="2、配置view规则"></a>2、配置view规则</h2><p>这里设置两个前端和一个后端实例</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jenkins, jenkins job,</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/09/jenkins-job管理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1132,7 +1165,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color5">DRBD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1144,6 +1177,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
@@ -1152,15 +1189,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1168,7 +1197,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">

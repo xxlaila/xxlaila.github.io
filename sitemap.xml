@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/08/11/Centos-5-5-%E5%AE%89%E8%A3%85DRBD/</loc>
+    
+    <lastmod>2019-08-11T00:13:39.719Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/10/haproxy-keepalived/</loc>
+    
+    <lastmod>2019-08-10T09:34:25.066Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/08/10/nginx-https/</loc>
     
     <lastmod>2019-08-10T09:09:21.112Z</lastmod>
@@ -33,13 +47,6 @@
     <loc>https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/</loc>
     
     <lastmod>2019-08-10T06:55:19.502Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/10/haproxy-keepalived/</loc>
-    
-    <lastmod>2019-08-10T06:50:09.914Z</lastmod>
     
   </url>
   
