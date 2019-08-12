@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/08/12/kube-nfs-%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8/</loc>
+    
+    <lastmod>2019-08-12T06:51:11.708Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/12/pvc-pv/</loc>
+    
+    <lastmod>2019-08-12T06:42:28.982Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/08/12/kubernetes-%E5%8D%95%E6%9C%BA%E5%AE%89%E8%A3%85/</loc>
     
     <lastmod>2019-08-12T03:35:53.045Z</lastmod>

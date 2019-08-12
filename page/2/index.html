@@ -157,6 +157,249 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-kubernetes-v1-13-3安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/09/kubernetes-v1-13-3安装/">kubernetes v1.13.3安装</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/09/kubernetes-v1-13-3安装/" class="archive-article-date">
+  	<time datetime="2019-08-09T14:18:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、-环境准备"><a href="#1、-环境准备" class="headerlink" title="1、 环境准备"></a>1、 环境准备</h2><table>
+<thead>
+<tr>
+<th>ip</th>
+<th>type</th>
+<th>docker</th>
+<th>os</th>
+<th>k8s version</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>172.21.17.4</td>
+<td>master,etcd</td>
+<td></td>
+<td>CentOS Linux release 7.4.1708</td>
+<td>v1.13.3</td>
+</tr>
+<tr>
+<td>172.21.16.230</td>
+<td>master,etcd</td>
+<td></td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.240</td>
+<td>master,etcd</td>
+<td></td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.244</td>
+<td>node,flanneld,ha+kee</td>
+<td>18.06.2-ce</td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.248</td>
+<td>node,flanneld,ha+kee</td>
+<td>18.06.2-ce</td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.45</td>
+<td>vip</td>
+<td></td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="2、增加docker-源"><a href="#2、增加docker-源" class="headerlink" title="2、增加docker 源"></a>2、增加docker 源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum-config-manager \</span></span><br><span class="line">  --add-repo \</span><br><span class="line">  https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>2.1、根据实际查找当前版本 (可选)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum list docker-ce --showduplicates | sort -r</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.2.如果确定了版本,直接安装,如果要装17。03直接修改下面数字即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install docker-ce-18.06.2.ce-3.el7  # 主意版本填写包名的格式.</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2-3-开启docker服务-和开机启动"><a href="#2-3-开启docker服务-和开机启动" class="headerlink" title="2.3 开启docker服务,和开机启动"></a>2.3 开启docker服务,和开机启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start docker &amp;&amp; systemctl enable docker</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3、部署ETC集群"><a href="#3、部署ETC集群" class="headerlink" title="3、部署ETC集群"></a>3、部署ETC集群</h2>
+        
+      
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes, kubernetes 安装</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kubernetes//" class="article-tag-list-link color1">kubernetes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/09/kubernetes-v1-13-3安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vsftpd安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/09/vsftpd安装/">vsftpd安装</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/09/vsftpd安装/" class="archive-article-date">
+  	<time datetime="2019-08-09T13:52:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改一个用户的权限不会影响到其他用户。<br>centos 系统版本(5.5、5.3、6.0、6.5)</p>
+<h3 id="首先我们安装vsftpd"><a href="#首先我们安装vsftpd" class="headerlink" title="首先我们安装vsftpd"></a>首先我们安装vsftpd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># yum –y install vsftpd</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2、启动和加载vsftp"><a href="#2、启动和加载vsftp" class="headerlink" title="2、启动和加载vsftp"></a>2、启动和加载vsftp</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># service vsftpd restart</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># chkconfig –level 35 vsftpd on</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3、开始配置vsftpd"><a href="#3、开始配置vsftpd" class="headerlink" title="3、开始配置vsftpd"></a>3、开始配置vsftpd</h3><p>Vsftpd的配置文件在/etc/vsftpd下面，在配置之前我们先cp一份做备份用以免发生意外(做什么都要随手备份，因为没有一万，只有万一。)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment">#  cp /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.bak</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># vim /etc/vsftpd/vsftpd.conf</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>vsftpd的参数介绍</strong></li>
+</ul>
+        
+      
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vsftpd</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/09/vsftpd安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-TeamViewer-mac破解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -728,11 +971,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color5">DRBD</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">DRBD</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -752,6 +995,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
@@ -764,19 +1011,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
