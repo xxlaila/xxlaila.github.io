@@ -210,6 +210,13 @@
         
       
 
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
       
     </div>
 
@@ -256,7 +263,6 @@
         
     </div>
 </aside>
-
 
 
 
@@ -308,6 +314,13 @@
         
       
 
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
       
     </div>
 
@@ -354,7 +367,6 @@
         
     </div>
 </aside>
-
 
 
 
@@ -424,6 +436,13 @@
         
       
 
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
       
     </div>
 
@@ -473,7 +492,6 @@
 
 
 
-
   
     <article id="post-oracle-ORA-12519" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -511,6 +529,13 @@
 <p><img src="http://pvyidozd0.bkt.clouddn.com/parameter_%20processes_1.png" alt="img"><br><img src="http://pvyidozd0.bkt.clouddn.com/parameter_%20session_3.png" alt="img"></p>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -561,7 +586,6 @@
 
 
 
-
   
     <article id="post-nginx-https" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -601,6 +625,13 @@
 </ul>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -651,7 +682,6 @@
 
 
 
-
   
     <article id="post-haproxy-keepalived" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -682,6 +712,13 @@
 <h2 id="2、配置haproxy"><a href="#2、配置haproxy" class="headerlink" title="2、配置haproxy"></a>2、配置haproxy</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/haproxy/haproxy.cfg</span></span><br><span class="line">global</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local0 err</span><br><span class="line">  maxconn 50000</span><br><span class="line">  uid 99</span><br><span class="line">  gid 99</span><br><span class="line">  <span class="comment">#daemon</span></span><br><span class="line">  nbproc 1</span><br><span class="line">  pidfile haproxy.pid</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">  mode http</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local0 err</span><br><span class="line">  maxconn 50000</span><br><span class="line">  retries 3</span><br><span class="line">  timeout connect 5s</span><br><span class="line">  timeout client 30s</span><br><span class="line">  timeout server 30s</span><br><span class="line">  timeout check 2s</span><br><span class="line"></span><br><span class="line">listen admin_stats</span><br><span class="line">  mode http</span><br><span class="line">  <span class="built_in">bind</span> 0.0.0.0:1080</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local0 err</span><br><span class="line">  stats refresh 30s</span><br><span class="line">  stats uri     /haproxy-status</span><br><span class="line">  stats realm   Haproxy\ Statistics</span><br><span class="line">  stats auth    admin:admin1</span><br><span class="line">  stats hide-version</span><br><span class="line">  stats admin <span class="keyword">if</span> TRUE</span><br><span class="line"></span><br><span class="line">frontend k8s-https</span><br><span class="line">  <span class="built_in">bind</span> 0.0.0.0:8443</span><br><span class="line">  mode tcp</span><br><span class="line">  <span class="comment">#maxconn 50000</span></span><br><span class="line">  default_backend k8s-https</span><br><span class="line"></span><br><span class="line">backend k8s-https</span><br><span class="line">  mode tcp</span><br><span class="line">  balance roundrobin</span><br><span class="line">  server k8s-master-01 172.21.17.4:6443 weight 1 maxconn 1000 check inter 2000 rise 2 fall 3</span><br><span class="line">  server k8s-master-02 172.21.16.231:6443 weight 1 maxconn 1000 check inter 2000 rise 2 fall 3</span><br><span class="line">  server k8s-master-03 172.21.16.240:6443 weight 1 maxconn 1000 check inter 2000 rise 2 fall 3</span><br></pre></td></tr></table></figure>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -732,7 +769,6 @@
 
 
 
-
   
     <article id="post-k8s-prometheus" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -763,6 +799,13 @@
 <h2 id="2、开始部署"><a href="#2、开始部署" class="headerlink" title="2、开始部署"></a>2、开始部署</h2><h3 id="2-1、采用daemonset方式部署node-exporter组件"><a href="#2-1、采用daemonset方式部署node-exporter组件" class="headerlink" title="2.1、采用daemonset方式部署node-exporter组件"></a>2.1、采用daemonset方式部署node-exporter组件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f  node-exporter.yaml</span></span><br></pre></td></tr></table></figure>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -813,7 +856,6 @@
 
 
 
-
   
     <article id="post-kubedns插件配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -844,6 +886,13 @@
 <h2 id="2、安装和配置dashboard"><a href="#2、安装和配置dashboard" class="headerlink" title="2、安装和配置dashboard"></a>2、安装和配置dashboard</h2><p>官方配置文件kubernetes/cluster/addons/dashboard，这里已经修改过了，经过测试部署，直接进入dashboard目录，修改inages参数进行部署</p>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -894,7 +943,6 @@
 
 
 
-
   
     <article id="post-kubernetes-node节点安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -937,6 +985,13 @@
 <h4 id="1-1-1、flanneld启动配置文件"><a href="#1-1-1、flanneld启动配置文件" class="headerlink" title="1.1.1、flanneld启动配置文件"></a>1.1.1、flanneld启动配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /lib/systemd/system/flanneld.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=Flanneld overlay address etcd agent</span><br><span class="line">After=network.target</span><br><span class="line">After=network-online.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line">After=etcd.service</span><br><span class="line">Before=docker.service</span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">EnvironmentFile=/etc/sysconfig/flanneld</span><br><span class="line">ExecStart=/usr/bin/flanneld -etcd-endpoints=<span class="variable">$&#123;FLANNEL_ETCD&#125;</span> <span class="variable">$FLANNEL_OPTIONS</span></span><br><span class="line">ExecStartPost=/usr/bin/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/subnet.env</span><br><span class="line">Restart=on-failure</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">RequiredBy=docker.service</span><br></pre></td></tr></table></figure>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -984,7 +1039,6 @@
         
     </div>
 </aside>
-
 
 
 
@@ -1082,6 +1136,13 @@
         
       
 
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
       
     </div>
 
@@ -1139,7 +1200,6 @@
         
     </div>
 </aside>
-
 
 
 

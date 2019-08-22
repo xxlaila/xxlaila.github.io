@@ -189,6 +189,13 @@
         
       
 
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
       
     </div>
 
@@ -238,7 +245,6 @@
 
 
 
-
   
     <article id="post-openstack认证服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -271,6 +277,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据库</span></span><br><span class="line"><span class="comment"># mysql -u root -p</span></span><br><span class="line"></span><br><span class="line">&gt; CREATE DATABASE keystone;</span><br><span class="line"></span><br><span class="line">&gt; GRANT ALL PRIVILEGES ON keystone.* TO <span class="string">'keystone'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'123456'</span>;</span><br><span class="line">&gt; GRANT ALL PRIVILEGES ON keystone.* TO <span class="string">'keystone'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'123456'</span>;</span><br></pre></td></tr></table></figure>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -321,7 +334,6 @@
 
 
 
-
   
     <article id="post-openstack环境准备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -360,6 +372,13 @@
 </ul>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -410,7 +429,6 @@
 
 
 
-
   
     <article id="post-kubernetes-ci-cd-四" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -447,6 +465,13 @@
 <p>这儿，只有一个分支存在于jenkinsfile，所以只显示一个分支，如下图：</p>
 
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -497,7 +522,6 @@
 
 
 
-
   
     <article id="post-kubernetes-ci-cd-三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -527,6 +551,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># cat Dockerfile</span><br><span class="line">FROM docker.io/centos:latest</span><br><span class="line">MAINTAINER xxlaila &quot;cq_xxlaila@163.com&quot;</span><br><span class="line"># Install dependent plugin</span><br><span class="line">ENV VERSION v10.15.1</span><br><span class="line">RUN yum install -y wget \</span><br><span class="line">    git \</span><br><span class="line">    java-1.8.0-openjdk.x86_64 \</span><br><span class="line">    &amp;&amp; curl -sL https://rpm.nodesource.com/setup_11.x | bash - \</span><br><span class="line">    &amp;&amp; yum install -y gcc gcc-c++ make \</span><br><span class="line">    &amp;&amp; yum install -y nodejs \</span><br><span class="line">    &amp;&amp; yum clean all</span><br><span class="line"># System variable setting</span><br><span class="line">RUN echo &quot;LANG=zh_CN.UTF-8&quot; &gt;&gt; /etc/locale.conf \</span><br><span class="line">    &amp;&amp; source /etc/locale.conf \</span><br><span class="line">    &amp;&amp; cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span><br><span class="line">    &amp;&amp; echo &quot;Asia/shanghai&quot; &gt;&gt; /etc/timezone \</span><br><span class="line">    &amp;&amp; groupadd -g 10000 jenkins \</span><br><span class="line">    &amp;&amp; useradd -g jenkins -u 10000 jenkins</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">EXPOSE 50000</span><br></pre></td></tr></table></figure>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -577,7 +608,6 @@
 
 
 
-
   
     <article id="post-kubernetes-ci-cd-二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -623,6 +653,13 @@
 </ul>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -673,7 +710,6 @@
 
 
 
-
   
     <article id="post-zabbix企业微信告警" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -702,6 +738,13 @@
 <h3 id="1、脚本存放目录"><a href="#1、脚本存放目录" class="headerlink" title="1、脚本存放目录"></a>1、脚本存放目录</h3><p>/usr/lib/zabbix/alertscripts，脚本的权限是zabbix 账户，具有可执行权限</p>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -752,7 +795,6 @@
 
 
 
-
   
     <article id="post-帧中继配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -789,6 +831,13 @@
 </ul>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -839,7 +888,6 @@
 
 
 
-
   
     <article id="post-kubernetes-ci-cd-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -885,6 +933,13 @@
 <p>可以看到 Jenkins Master 和 Jenkins Slave 以 Pod 形式运行在 Kubernetes 集群的 Node 上，Master 运行在其中一个节点，并且将其配置数据存储到一个 Volume 上去，Slave 运行在各个节点上，并且它不是一直处于运行状态，它会按照需求动态的创建并自动删除。</p>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -935,7 +990,6 @@
 
 
 
-
   
     <article id="post-kube-nfs-动态存储" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -970,6 +1024,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat serviceaccount.yaml </span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ServiceAccount</span><br><span class="line">metadata:</span><br><span class="line">  name: nfs-client-provisioner</span><br><span class="line">  namespace: kube-test</span><br></pre></td></tr></table></figure>
         
       
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
 
       
     </div>
@@ -1017,7 +1078,6 @@
         
     </div>
 </aside>
-
 
 
 
