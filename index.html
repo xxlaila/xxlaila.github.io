@@ -157,6 +157,178 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-openstack认证服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/20/openstack认证服务/">openstack认证服务</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/20/openstack认证服务/" class="archive-article-date">
+  	<time datetime="2019-08-20T11:53:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>添加认证服务(Identity Service)</p>
+<blockquote>
+<p>Controller 节点</p>
+</blockquote>
+<h3 id="1、配置先决条件"><a href="#1、配置先决条件" class="headerlink" title="1、配置先决条件"></a>1、配置先决条件</h3><p>在配置OpenStack Identity服务之前，必须创建一个数据库和一个管理令牌</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据库</span></span><br><span class="line"><span class="comment"># mysql -u root -p</span></span><br><span class="line"></span><br><span class="line">&gt; CREATE DATABASE keystone;</span><br><span class="line"></span><br><span class="line">&gt; GRANT ALL PRIVILEGES ON keystone.* TO <span class="string">'keystone'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'123456'</span>;</span><br><span class="line">&gt; GRANT ALL PRIVILEGES ON keystone.* TO <span class="string">'keystone'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'123456'</span>;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/20/openstack认证服务/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-openstack环境准备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/20/openstack环境准备/">openstack环境准备</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/20/openstack环境准备/" class="archive-article-date">
+  	<time datetime="2019-08-20T08:35:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、基础环境配置"><a href="#1、基础环境配置" class="headerlink" title="1、基础环境配置"></a>1、基础环境配置</h2><p>服务器做好read，安装好操作系统(centos7.4)</p>
+<ul>
+<li><p>设置服务器的主机名</p>
+<ul>
+<li>控制节点: controller</li>
+<li>计算节点: computerr</li>
+<li>存储节点: block</li>
+</ul>
+</li>
+<li><p>主机信息列表</p>
+</li>
+</ul>
+        
+      
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/20/openstack环境准备/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-kubernetes-ci-cd-四" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -871,220 +1043,6 @@
 
 
   
-    <article id="post-kubernetes-单机安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/12/kubernetes-单机安装/">kubernetes 单机安装</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/12/kubernetes-单机安装/" class="archive-article-date">
-  	<time datetime="2019-08-12T03:06:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h2><blockquote>
-<p>一个master节点，四个node节点<br>master节点ip</p>
-<ul>
-<li>172.21.16.244<br>node节点ip</li>
-<li>172.21.16.24</li>
-<li>172.21.16.231</li>
-<li>172.21.16.202</li>
-<li>172.21.16.55</li>
-</ul>
-</blockquote>
-<ul>
-<li>以下是每一个节点上均进行操作</li>
-</ul>
-<h2 id="2、服务器添加阿里云yum源"><a href="#2、服务器添加阿里云yum源" class="headerlink" title="2、服务器添加阿里云yum源"></a>2、服务器添加阿里云yum源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg</span><br><span class="line">  http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、重新建立yum缓存"><a href="#3、重新建立yum缓存" class="headerlink" title="3、重新建立yum缓存"></a>3、重新建立yum缓存</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install epel-release &amp;&amp;yum clean all &amp;&amp;yum makecach</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>记得同步系统的时间</li>
-</ul>
-<h2 id="3、配置转发请求"><a href="#3、配置转发请求" class="headerlink" title="3、配置转发请求"></a>3、配置转发请求</h2>
-        
-      
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/12/kubernetes-单机安装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Centos-5-5-安装DRBD" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/11/Centos-5-5-安装DRBD/">Centos 5.5 安装DRBD</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/11/Centos-5-5-安装DRBD/" class="archive-article-date">
-  	<time datetime="2019-08-10T23:42:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Centos5.5 32bit安装DRBD</p>
-<ul>
-<li>安装前准备</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>节点类型</th>
-<th>IP地址规划</th>
-<th>主机名</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>主用节点</td>
-<td>192.168.1.101</td>
-<td>node2</td>
-</tr>
-<tr>
-<td>备用节点</td>
-<td>192.168.1.102</td>
-<td>node1</td>
-</tr>
-<tr>
-<td>磁盘</td>
-<td>两台10G磁盘</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="在主节点安装DRBD"><a href="#在主节点安装DRBD" class="headerlink" title="在主节点安装DRBD"></a>在主节点安装DRBD</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node2 ~]<span class="comment"># yum -y install kmod-drbd83 drbd83</span></span><br></pre></td></tr></table></figure>
-
-<p>安装成功之后/sbin目录下面有drbdadm，drbdmeta，drbdsetup命令，以及/etc /init.d/drbd启动脚本。</p>
-<ul>
-<li>备用节点安装DRBD</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># yum -y install kmod-drbd83 drbd83</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>安装完成后。默认配置文件/etc/drbd.conf，以下是两台的主机配置实例:</p>
-</blockquote>
-        
-      
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">DRBD</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/11/Centos-5-5-安装DRBD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1218,15 +1176,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">DRBD</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1238,6 +1196,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
@@ -1246,15 +1212,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1266,11 +1224,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
               <li class="article-tag-list-item">

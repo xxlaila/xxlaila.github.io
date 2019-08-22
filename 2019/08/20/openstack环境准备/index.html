@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
-  <title>Tag: TeamViewer | 懒羊羊</title>
+  <title>openstack环境准备 | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="星际拾荒者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="懒羊羊">
-<meta property="og:url" content="https://xxlaila.github.io/tags/TeamViewer/index.html">
+  <meta name="description" content="1、基础环境配置服务器做好read，安装好操作系统(centos7.4)  设置服务器的主机名  控制节点: controller 计算节点: computerr 存储节点: block   主机信息列表">
+<meta name="keywords" content="openstack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openstack环境准备">
+<meta property="og:url" content="https://xxlaila.github.io/2019/08/20/openstack环境准备/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="星际拾荒者">
+<meta property="og:description" content="1、基础环境配置服务器做好read，安装好操作系统(centos7.4)  设置服务器的主机名  控制节点: controller 计算节点: computerr 存储节点: block   主机信息列表">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-20T12:02:50.848Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="懒羊羊">
-<meta name="twitter:description" content="星际拾荒者">
+<meta name="twitter:title" content="openstack环境准备">
+<meta name="twitter:description" content="1、基础环境配置服务器做好read，安装好操作系统(centos7.4)  设置服务器的主机名  控制节点: controller 计算节点: computerr 存储节点: block   主机信息列表">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -155,60 +157,280 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-openstack环境准备" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/TeamViewer-mac破解/" class="archive-article-date">
-  	<time datetime="2019-08-09T12:25:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/TeamViewer-mac破解/">TeamViewer mac破解</a>
+    <h1 class="article-title" itemprop="name">
+      openstack环境准备
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/20/openstack环境准备/" class="archive-article-date">
+  	<time datetime="2019-08-20T08:35:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
+</a>
+        
+
+	
+    <span class="archive-article-date">
+        阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、基础环境配置"><a href="#1、基础环境配置" class="headerlink" title="1、基础环境配置"></a>1、基础环境配置</h2><p>服务器做好read，安装好操作系统(centos7.4)</p>
+<ul>
+<li><p>设置服务器的主机名</p>
+<ul>
+<li>控制节点: controller</li>
+<li>计算节点: computerr</li>
+<li>存储节点: block</li>
+</ul>
+</li>
+<li><p>主机信息列表</p>
+</li>
+</ul>
+<a id="more"></a>
+
+<table>
+<thead>
+<tr>
+<th>ip</th>
+<th>类型</th>
+<th>主机名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>192.168.16.10</td>
+<td>controller</td>
+<td>controller-01</td>
+</tr>
+<tr>
+<td>192.168.16.11</td>
+<td>computerr</td>
+<td>computerr-01</td>
+</tr>
+<tr>
+<td>192.168.16.12</td>
+<td>computerr</td>
+<td>computerr-02</td>
+</tr>
+<tr>
+<td>192.168.16.13</td>
+<td>computerr</td>
+<td>computerr-03</td>
+</tr>
+<tr>
+<td>192.168.16.14</td>
+<td>computerr</td>
+<td>computerr-04</td>
+</tr>
+<tr>
+<td>192.168.16.15</td>
+<td>computerr</td>
+<td>computerr-05</td>
+</tr>
+<tr>
+<td>192.168.16.16</td>
+<td>computerr</td>
+<td>computerr-06</td>
+</tr>
+<tr>
+<td>192.168.16.16</td>
+<td>block</td>
+<td>block-01</td>
+</tr>
+</tbody></table>
+<h2 id="2、设置网卡为bond模式"><a href="#2、设置网卡为bond模式" class="headerlink" title="2、设置网卡为bond模式"></a>2、设置网卡为bond模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop NetworkManager.service</span><br><span class="line">systemctl disable NetworkManager.service</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-em1</span><br><span class="line">----------------------------------------------</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">BOOTPROTO=none</span><br><span class="line">NAME=em1</span><br><span class="line">DEVICE=em1</span><br><span class="line">ONBOOT=yes</span><br><span class="line">MASTER=bond0</span><br><span class="line">SLAVE=yes</span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-em2</span><br><span class="line">----------------------------------------------</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">BOOTPROTO=none</span><br><span class="line">NAME=em2</span><br><span class="line">DEVICE=em2</span><br><span class="line">ONBOOT=yes</span><br><span class="line">MASTER=bond0</span><br><span class="line">SLAVE=yes</span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-bond0</span><br><span class="line">----------------------------------------------</span><br><span class="line">TYPE=Bond</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">PEERDNS=no</span><br><span class="line">PEERROUTES=yes</span><br><span class="line">IPV4_FAILURE_FATAL=yes</span><br><span class="line">IPV6INIT=no</span><br><span class="line">DEVICE=bond0</span><br><span class="line">ONBOOT=yes</span><br><span class="line">IPADDR=192.168.16.10</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.16.1</span><br><span class="line">BONDING_OPTS=&quot;miimon=100 mode=6&quot;</span><br><span class="line">BONDING_MASTER=yes</span><br><span class="line">USERCTL=no</span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vi /etc/resolv.conf</span><br><span class="line">----------------------------------------------</span><br><span class="line">nameserver 61.128.128.68</span><br><span class="line">----------------------------------------------</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、添加hosts并配置主机名"><a href="#3、添加hosts并配置主机名" class="headerlink" title="3、添加hosts并配置主机名"></a>3、添加hosts并配置主机名</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/hosts</span><br><span class="line">----------------------------------------------</span><br><span class="line"><span class="comment"># controller</span></span><br><span class="line">192.168.16.10  controller-01</span><br><span class="line"></span><br><span class="line"><span class="comment"># computer</span></span><br><span class="line">192.168.16.11  computer-01</span><br><span class="line">192.168.16.12  computer-02</span><br><span class="line">192.168.16.13  computer-03</span><br><span class="line">192.168.16.14  computer-04</span><br><span class="line">192.168.16.14  computer-05</span><br><span class="line">192.168.16.14  computer-06</span><br><span class="line"></span><br><span class="line"><span class="comment"># block</span></span><br><span class="line">192.168.16.21  block-01</span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line">hostnamectl <span class="built_in">set</span>-hostname controller-01</span><br><span class="line">hostnamectl <span class="built_in">set</span>-hostname computer-01</span><br><span class="line">hostnamectl <span class="built_in">set</span>-hostname computer-02</span><br><span class="line">hostnamectl <span class="built_in">set</span>-hostname computer-03</span><br><span class="line">hostnamectl <span class="built_in">set</span>-hostname computer-04</span><br><span class="line">hostnamectl <span class="built_in">set</span>-hostname computer-05</span><br><span class="line">hostnamectl <span class="built_in">set</span>-hostname computer-06</span><br><span class="line">hostnamectl <span class="built_in">set</span>-hostname block-01</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、系统配置"><a href="#4、系统配置" class="headerlink" title="4、系统配置"></a>4、系统配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装基本工具</span></span><br><span class="line">yum install vim curl wget net-tools ntpdate lvm2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭防火墙</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更改字符集</span></span><br><span class="line">sed -i <span class="string">'s/zh_CN/en_US/g'</span> /etc/locale.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭 selinux</span></span><br><span class="line">sed -i <span class="string">'s/SELINUX=enforcing/SELINUX=disabled/g'</span> /etc/selinux/config</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更改进程和打开文件限制</span></span><br><span class="line">vim /etc/security/limits.d/20-nofile.conf</span><br><span class="line">----------------------------------------------</span><br><span class="line"><span class="comment"># Default limit for number of user's open file descriptors to prevent</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">*                soft    nofile          102400</span><br><span class="line">*                hard    nofile          102400</span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line">vim /etc/security/limits.d/20-nproc.conf</span><br><span class="line">----------------------------------------------</span><br><span class="line"><span class="comment"># Default limit for number of user's processes to prevent</span></span><br><span class="line"><span class="comment"># accidental fork bombs.</span></span><br><span class="line"><span class="comment"># See rhbz #432903 for reasoning.</span></span><br><span class="line"></span><br><span class="line">*          soft    nproc     16384</span><br><span class="line">root       soft    nproc     unlimited</span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 挂载磁盘 (Compute Node)</span></span><br><span class="line"><span class="comment">## 分区</span></span><br><span class="line">parted -s /dev/sdb mklabel gpt</span><br><span class="line">fdisk /dev/sdb</span><br><span class="line">&gt; n</span><br><span class="line"><span class="comment"># Partition number</span></span><br><span class="line">&gt; 1</span><br><span class="line"><span class="comment"># First sector</span></span><br><span class="line">&gt; <span class="string">"默认"</span></span><br><span class="line"><span class="comment"># Last sector</span></span><br><span class="line">&gt; <span class="string">"默认"</span></span><br><span class="line"><span class="comment"># 将修改写入分区</span></span><br><span class="line">&gt; w</span><br><span class="line"></span><br><span class="line"><span class="comment">## 制作虚拟卷</span></span><br><span class="line">pvcreate /dev/sdb1</span><br><span class="line">vgcreate VolGroup00 /dev/sdb1</span><br><span class="line">lvcreate --name nova -l 100%FREE VolGroup00</span><br><span class="line">mkfs.xfs -f /dev/VolGroup00/nova</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看虚拟卷UUID</span></span><br><span class="line">ll /dev/disk/by-uuid/ | grep `ll /dev/VolGroup00/nova | awk <span class="string">'&#123;print $11&#125;'</span>`</span><br><span class="line"></span><br><span class="line"><span class="comment">## 挂载</span></span><br><span class="line">mkdir /var/lib/nova</span><br><span class="line">mount /dev/VolGroup00/nova /var/lib/nova</span><br><span class="line"></span><br><span class="line">vi /etc/fstab       <span class="comment"># Add</span></span><br><span class="line">--------------------------------------------------------------------------------------------</span><br><span class="line">UUID=ab3d6992-b1e7-4479-bb1f-13703eb87989 /var/lib/nova           xfs     defaults        0 0</span><br><span class="line">--------------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看分区</span></span><br><span class="line">df -Th</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、在-controller-上安装并配置时间服务"><a href="#5、在-controller-上安装并配置时间服务" class="headerlink" title="5、在 [controller] 上安装并配置时间服务"></a>5、在 [controller] 上安装并配置时间服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">yum install chrony</span><br><span class="line"></span><br><span class="line">vim /etc/chrony.conf</span><br><span class="line">----------------------------------------------</span><br><span class="line">server ntp.ubuntu.com iburst</span><br><span class="line"></span><br><span class="line">allow 192.168.16.0/24</span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">enable</span> chronyd.service</span><br><span class="line">systemctl start chronyd.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># verify NTP synchronization</span></span><br><span class="line">chronyc sources</span><br><span class="line"></span><br><span class="line">ntpdate ntp.ubuntu.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、在其他节点配置时间同步"><a href="#6、在其他节点配置时间同步" class="headerlink" title="6、在其他节点配置时间同步"></a>6、在其他节点配置时间同步</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">yum install chrony</span><br><span class="line"></span><br><span class="line">vim /etc/chrony.conf</span><br><span class="line">----------------------------------------------</span><br><span class="line">server controller1 iburst</span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line">systemctl enable chronyd.service</span><br><span class="line">systemctl start chronyd.service</span><br><span class="line"></span><br><span class="line"># verify NTP synchronization</span><br><span class="line">chronyc sources</span><br><span class="line"></span><br><span class="line">ntpdate ntp.ubuntu.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="7、配置openstack源"><a href="#7、配置openstack源" class="headerlink" title="7、配置openstack源"></a>7、配置openstack源</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 关闭EPEL源</span><br><span class="line"># EPEL中的更新会破坏向后兼容性</span><br><span class="line">yum remove epel-release</span><br><span class="line"></span><br><span class="line">yum install centos-release-openstack-ocata</span><br><span class="line"></span><br><span class="line">yum upgrade</span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line">yum install python-openstackclient openstack-selinux</span><br></pre></td></tr></table></figure>
+
+<h1 id="SQL数据库"><a href="#SQL数据库" class="headerlink" title="SQL数据库"></a>SQL数据库</h1><blockquote>
+<blockquote>
+<p>在 Controller 节点上操作</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">yum install mariadb mariadb-server python2-PyMySQL</span><br><span class="line"></span><br><span class="line">vim /etc/my.cnf.d/auth_gssapi.cnf</span><br><span class="line">----------------------------------------------</span><br><span class="line">[mariadb]</span><br><span class="line">#plugin-load-add=auth_gssapi.so</span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line">vim /etc/my.cnf.d/openstack.cnf</span><br><span class="line">----------------------------------------------</span><br><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">binlog_format=ROW</span><br><span class="line">bind-address = 192.168.16.10</span><br><span class="line">max_connections = 4096</span><br><span class="line">default_storage_engine = innodb</span><br><span class="line">innodb_file_per_table = on</span><br><span class="line">collation-server = utf8_general_ci</span><br><span class="line">character-set-server = utf8</span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line">vim /usr/lib/systemd/system/mariadb.service     # Add</span><br><span class="line">----------------------------------------------</span><br><span class="line"># [Service]</span><br><span class="line"># Type=notify</span><br><span class="line"># User=mysql</span><br><span class="line"># Group=mysql</span><br><span class="line"># 以下为添加内容</span><br><span class="line">LimitNOFILE=10000</span><br><span class="line">LimitNPROC=10000</span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">systemctl enable mariadb.service</span><br><span class="line">systemctl start mariadb.service</span><br><span class="line"></span><br><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+
+<h1 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h1><blockquote>
+<blockquote>
+<p>Controller 节点安装</p>
+</blockquote>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">yum install rabbitmq-server</span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">enable</span> rabbitmq-server.service</span><br><span class="line">systemctl start rabbitmq-server.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 guest 账户的密码</span></span><br><span class="line">rabbitmqctl change_password guest &#123;password见git相同路径的文档&#125;</span><br><span class="line"><span class="comment"># 添加用户</span></span><br><span class="line">rabbitmqctl add_user openstack &#123;password见git相同路径的文档&#125;</span><br><span class="line">rabbitmqctl set_permissions openstack <span class="string">".*"</span> <span class="string">".*"</span> <span class="string">".*"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装插件管理界面</span></span><br><span class="line">rabbitmq-plugins <span class="built_in">enable</span> rabbitmq_management</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line"><span class="comment"># rabbitmqctl status | grep rabbit</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启用 guest 帐户远程访问</span></span><br><span class="line">vim /etc/rabbitmq/rabbitmq.config</span><br><span class="line">----------------------------------------------</span><br><span class="line"><span class="comment"># loopback_users 引用一个空列表</span></span><br><span class="line"><span class="comment"># 注意： &#123;loopback_users, []&#125; 后面不加逗号</span></span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">    &#123;rabbit, </span><br><span class="line">    [</span><br><span class="line">        &#123;loopback_users, []&#125;</span><br><span class="line">    ]</span><br><span class="line">    &#125;</span><br><span class="line">].</span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line">systemctl restart rabbitmq-server.service</span><br></pre></td></tr></table></figure>
+
+<h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><blockquote>
+<blockquote>
+<p>Controller 节点</p>
+</blockquote>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum install memcached python-memcached</span><br><span class="line"></span><br><span class="line">vim /etc/sysconfig/memcached     <span class="comment"># Edit</span></span><br><span class="line">----------------------------------------------</span><br><span class="line">OPTIONS=<span class="string">"-l 127.0.0.1,::1,controller-01"</span></span><br><span class="line">----------------------------------------------</span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">enable</span> memcached.service</span><br><span class="line">systemctl start memcached.service</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">TeamViewer</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://xxlaila.github.io/2019/08/20/openstack环境准备/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/08/20/openstack认证服务/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          openstack认证服务
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/08/20/kubernetes-ci-cd-四/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">kubernetes-ci/cd-(四)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -263,9 +485,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

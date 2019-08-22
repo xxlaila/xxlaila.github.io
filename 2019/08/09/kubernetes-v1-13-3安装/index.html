@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="1、 环境准备   ip type docker os k8s version    172.21.17.4 master,etcd  CentOS Linux release 7.4.1708 v1.13.3   172.21.16.230 master,etcd  CentOS Linux release 7.4.1708    172.21.16.240 master,etcd  CentO">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-10T06:59:35.461Z">
+<meta property="og:updated_time" content="2019-08-22T00:57:46.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes v1.13.3安装">
 <meta name="twitter:description" content="1、 环境准备   ip type docker os k8s version    172.21.17.4 master,etcd  CentOS Linux release 7.4.1708 v1.13.3   172.21.16.230 master,etcd  CentOS Linux release 7.4.1708    172.21.16.240 master,etcd  CentO">
@@ -497,7 +497,7 @@
 <h3 id="5-6、验证master节点"><a href="#5-6、验证master节点" class="headerlink" title="5.6、验证master节点"></a>5.6、验证master节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get componentstatuses</span></span><br><span class="line">NAME                 STATUS    MESSAGE             ERROR</span><br><span class="line">scheduler            Healthy   ok                  </span><br><span class="line">controller-manager   Healthy   ok                  </span><br><span class="line">etcd-2               Healthy   &#123;<span class="string">"health"</span>:<span class="string">"true"</span>&#125;   </span><br><span class="line">etcd-0               Healthy   &#123;<span class="string">"health"</span>:<span class="string">"true"</span>&#125;   </span><br><span class="line">etcd-1               Healthy   &#123;<span class="string">"health"</span>:<span class="string">"true"</span>&#125;</span><br></pre></td></tr></table></figure>
 
 <p>至此master节点部署完毕</p>
-<p>高可用<a href="http://xxlaila.github.io/2019/08/10/haproxy+keepalived/">haproxy</a></p>
+<p>kubernetes高可用使用haproxy进行代理,<a href="https://xxlaila.github.io/2019/08/10/haproxy-keepalived/">haproxy</a>代理安装</p>
 <p><a href="https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/">node节点安装</a></p>
 
       
@@ -789,15 +789,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">DRBD</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -809,6 +809,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
@@ -817,15 +825,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -837,11 +837,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
               <li class="article-tag-list-item">
