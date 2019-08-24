@@ -268,7 +268,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="1、rbac介绍"><a href="#1、rbac介绍" class="headerlink" title="1、rbac介绍"></a>1、rbac介绍</h3><p>Kubernetes中的两个用于配置信息的重要资源对象：ConfigMap和Secret，其实到这里我们基本上学习的内容已经覆盖到Kubernetes中一些重要的资源对象了，来部署一个应用程序是完全没有问题的了。在我们演示一个完整的示例之前，我们还需要给大家讲解一个重要的概念：RBAC - 基于角色的访问控制。<br>RBAC使用rbac.authorization.k8s.io API Group 来实现授权决策，允许管理员通过 Kubernetes API 动态配置策略，要启用RBAC，需要在 apiserver 中添加参数–authorization-mode=RBAC，如果使用的kubeadm安装的集群，1.6 版本以上的都默认开启了RBAC，可以通过查看 Master 节点上 apiserver 的静态Pod定义文件：</p>
-<h3 id="2、-kubernetes-关于空间权限赋予"><a href="#2、-kubernetes-关于空间权限赋予" class="headerlink" title="2、 kubernetes 关于空间权限赋予"></a>2、 kubernetes 关于空间权限赋予</h3><h4 id="1、获取并查看Role-ClusterRole-RoleBinding-ClusterRoleBinding的信息"><a href="#1、获取并查看Role-ClusterRole-RoleBinding-ClusterRoleBinding的信息" class="headerlink" title="1、获取并查看Role/ClusterRole/RoleBinding/ClusterRoleBinding的信息"></a>1、获取并查看Role/ClusterRole/RoleBinding/ClusterRoleBinding的信息</h4>
+<h3 id="2、-kubernetes-关于空间权限赋予"><a href="#2、-kubernetes-关于空间权限赋予" class="headerlink" title="2、 kubernetes 关于空间权限赋予"></a>2、 kubernetes 关于空间权限赋予</h3><h4 id="1、获取并查看"><a href="#1、获取并查看" class="headerlink" title="1、获取并查看"></a>1、获取并查看</h4><ul>
+<li>Role</li>
+<li>ClusterRole</li>
+<li>RoleBinding</li>
+<li>ClusterRoleBinding</li>
+</ul>
         
       
 
