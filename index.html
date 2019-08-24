@@ -157,6 +157,176 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-k8s部署zookeeper集群" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/k8s部署zookeeper集群/">k8s部署zookeeper集群</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/24/k8s部署zookeeper集群/" class="archive-article-date">
+  	<time datetime="2019-08-24T07:00:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>zk属于有状态服务，需要连接外部存储，吧数据存放在数据盘里面，否则容器挂了，数据没有了</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>准备zk的yaml文件</p>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/24/k8s部署zookeeper集群/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-k8s部署coredns" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/k8s部署coredns/">k8s部署coredns</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/24/k8s部署coredns/" class="archive-article-date">
+  	<time datetime="2019-08-24T06:54:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>k8s集群中的应用通常是通过ingress实现微服务发布的，前文介绍过在K8S集群中使用traefik实现服务的自动发布，其实现方式是traefik通过集群的DNS服务来解析service对应的集群地址（clusterip），从而将用户的访问请求转发到集群地址上。因此，在部署完集群后的第一件事情应该是配置DNS服务，目前可选的方案有skydns, kube-dns, coredns。<br>kubedns是Kubernetes中的一个内置插件，目前作为一个独立的开源项目维护，见<a href="https://github.com/kubernetes/dns。该DNS服务器利用SkyDNS的库来为Kubernetes" target="_blank" rel="noopener">https://github.com/kubernetes/dns。该DNS服务器利用SkyDNS的库来为Kubernetes</a> pod和服务提供DNS请求。CoreDNS项目是SkyDNS2的作者，Miek Gieben采用更模块化，可扩展的框架构建,将此DNS服务器作为KubeDNS的替代品。CoreDNS作为CNCF中的托管的一个项目，在Kuberentes1.9版本中，使用kubeadm方式安装的集群可以通过以下命令直接安装CoreDNS。kubeadm init –feature-gates=CoreDNS=true</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>准备coredns的<a href="https://github.com/xxlaila/kubernetes-yaml/tree/master/coredns" target="_blank" rel="noopener">yaml文件</a></p>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/24/k8s部署coredns/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-k8s部署mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -878,208 +1048,6 @@
 
 
   
-    <article id="post-git清空commit记录方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/24/git清空commit记录方法/">git清空commit记录方法</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/24/git清空commit记录方法/" class="archive-article-date">
-  	<time datetime="2019-08-24T01:36:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>说明：例如将代码提交到git仓库，将一些敏感信息提交，所以需要删除提交记录以彻底清除提交信息，以得到一个干净的仓库且代码不变</p>
-</blockquote>
-<h3 id="1-Checkout"><a href="#1-Checkout" class="headerlink" title="1.Checkout"></a>1.Checkout</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout --orphan latest_branch</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-Add-all-the-files"><a href="#2-Add-all-the-files" class="headerlink" title="2. Add all the files"></a>2. Add all the files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add -A</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-Commit-the-changes"><a href="#3-Commit-the-changes" class="headerlink" title="3. Commit the changes"></a>3. Commit the changes</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -am <span class="string">"commit message"</span></span><br></pre></td></tr></table></figure>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/24/git清空commit记录方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-confluence-install" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/24/confluence-install/">confluence_install</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/24/confluence-install/" class="archive-article-date">
-  	<time datetime="2019-08-24T00:57:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Confluence是一个专业的企业知识管理与协同软件，也可以用于构建企业wiki。使用简单，但它强大的编辑和站点管理特征能够帮助团队成员之间共享信息、文档协作、集体讨论，信息推送。为团队提供一个协作环境。在这里，团队成员齐心协力，各擅其能，协同地编写文档和管理项目。从此打破不同团队、不同部门以及个人之间信息孤岛的僵局，Confluence真正实现了组织资源共享。</p>
-<p>环境准备</p>
-<table>
-<thead>
-<tr>
-<th>系统版本</th>
-<th>插件</th>
-<th>软件</th>
-<th>版本</th>
-<th>服务配置</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>centos 7.4</td>
-<td></td>
-<td>mysql</td>
-<td>5.6+</td>
-<td>2/4G/50G</td>
-</tr>
-<tr>
-<td>centos 7.4</td>
-<td>jdk 1.8</td>
-<td>confluence</td>
-<td>6.12.2</td>
-<td>4/8G/200G</td>
-</tr>
-</tbody></table>
-<p>confluence 6.12.2安装并破解，mysql 版本这里使用的是5.7.24</p>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">confluence</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/24/confluence-install/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1229,15 +1197,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1249,11 +1213,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1261,11 +1225,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1289,19 +1257,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">

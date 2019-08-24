@@ -157,6 +157,207 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-kube-nfs-动态存储" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/12/kube-nfs-动态存储/">kube nfs 动态存储</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/12/kube-nfs-动态存储/" class="archive-article-date">
+  	<time datetime="2019-08-12T06:43:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>nfs-client-provisioner是一个automatic provisioner，使用NFS作为存储，自动创建PV和对应的PVC，本身不提供NFS存储，需要外部先有一套NFS存储服务。</p>
+<ul>
+<li>PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器上）</li>
+<li>PV回收的时候以 archieved-${namespace}-${pvcName}-${pvName} 的命名格式（在NFS服务器上）</li>
+</ul>
+<p><a href="https://github.com/kubernetes-incubator/external-storage/tree/master/nfs-client" target="_blank" rel="noopener">官方访问地址</a></p>
+<h2 id="1、权限体系构建"><a href="#1、权限体系构建" class="headerlink" title="1、权限体系构建"></a>1、权限体系构建</h2><h3 id="1-1、创建serviceaccount"><a href="#1-1、创建serviceaccount" class="headerlink" title="1.1、创建serviceaccount"></a>1.1、创建serviceaccount</h3><p>ServiceAccount也是一种账号, 供运行在pod中的进程使用, 为pod中的进程提供必要的身份证明.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat serviceaccount.yaml </span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ServiceAccount</span><br><span class="line">metadata:</span><br><span class="line">  name: nfs-client-provisioner</span><br><span class="line">  namespace: kube-test</span><br></pre></td></tr></table></figure>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">kubernetes,nfs</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/12/kube-nfs-动态存储/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-pvc-pv" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/12/pvc-pv/">pvc pv</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/12/pvc-pv/" class="archive-article-date">
+  	<time datetime="2019-08-12T06:04:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h2><p>PersistentVolume（pv）和PersistentVolumeClaim（pvc）是k8s提供的两种API资源，用于抽象存储细节。管理员关注于如何通过pv提供存储功能而无需关注用户如何使用，同样的用户只需要挂载pvc到容器中而不需要关注存储卷采用何种技术实现。<br>pvc和pv的关系与pod和node关系类似，前者消耗后者的资源。pvc可以向pv申请指定大小的存储资源并设置访问模式,这就可以通过Provision -&gt; Claim 的方式，来对存储资源进行控制。</p>
+<h2 id="2、生命周期"><a href="#2、生命周期" class="headerlink" title="2、生命周期"></a>2、生命周期</h2><p>pv和pvc遵循以下生命周期：</p>
+<ul>
+<li>供应准备。通过集群外的存储系统或者云平台来提供存储持久化支持。</li>
+</ul>
+<ul>
+<li><p>静态提供：管理员手动创建多个PV，供PVC使用。</p>
+</li>
+<li><p>动态提供：动态创建PVC特定的PV，并绑定。</p>
+<ul>
+<li>绑定。用户创建pvc并指定需要的资源和访问模式。在找到可用pv之前，pvc会保持未绑定状态。</li>
+<li>使用。用户可在pod中像volume一样使用pvc。</li>
+<li>释放。用户删除pvc来回收存储资源，pv将变成“released”状态。由于还保留着之前的数据，这些数据需要根据不同的策略来处理，否则这些存储资源无法被其他pvc使用。</li>
+<li>回收(Reclaiming)。pv可以设置三种回收策略：保留（Retain），回收（Recycle）和删除（Delete）。</li>
+</ul>
+</li>
+<li><p>保留策略：允许人工处理保留的数据。</p>
+</li>
+<li><p>删除策略：将删除pv和外部关联的存储资源，需要插件支持。</p>
+</li>
+<li><p>回收策略：将执行清除操作，之后可以被新的pvc使用，需要插件支持。</p>
+</li>
+</ul>
+<blockquote>
+<p><em>目前只有NFS和HostPath类型卷支持回收策略，AWS EBS,GCE PD,Azure Disk和Cinder支持删除(Delete)策略。</em></p>
+</blockquote>
+<h3 id="2-1、Provisioning"><a href="#2-1、Provisioning" class="headerlink" title="2.1、Provisioning"></a>2.1、Provisioning</h3><p>两种方式提供的PV资源供给</p>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">pvc,pv,kubernetes,存储</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/12/pvc-pv/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-kubernetes-单机安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -933,261 +1134,6 @@
 
 
   
-    <article id="post-kubernetes-v1-13-3安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/09/kubernetes-v1-13-3安装/">kubernetes v1.13.3安装</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/09/kubernetes-v1-13-3安装/" class="archive-article-date">
-  	<time datetime="2019-08-09T14:18:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1、-环境准备"><a href="#1、-环境准备" class="headerlink" title="1、 环境准备"></a>1、 环境准备</h2><table>
-<thead>
-<tr>
-<th>ip</th>
-<th>type</th>
-<th>docker</th>
-<th>os</th>
-<th>k8s version</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>172.21.17.4</td>
-<td>master,etcd</td>
-<td></td>
-<td>CentOS Linux release 7.4.1708</td>
-<td>v1.13.3</td>
-</tr>
-<tr>
-<td>172.21.16.230</td>
-<td>master,etcd</td>
-<td></td>
-<td>CentOS Linux release 7.4.1708</td>
-<td></td>
-</tr>
-<tr>
-<td>172.21.16.240</td>
-<td>master,etcd</td>
-<td></td>
-<td>CentOS Linux release 7.4.1708</td>
-<td></td>
-</tr>
-<tr>
-<td>172.21.16.244</td>
-<td>node,flanneld,ha+kee</td>
-<td>18.06.2-ce</td>
-<td>CentOS Linux release 7.4.1708</td>
-<td></td>
-</tr>
-<tr>
-<td>172.21.16.248</td>
-<td>node,flanneld,ha+kee</td>
-<td>18.06.2-ce</td>
-<td>CentOS Linux release 7.4.1708</td>
-<td></td>
-</tr>
-<tr>
-<td>172.21.16.45</td>
-<td>vip</td>
-<td></td>
-<td>CentOS Linux release 7.4.1708</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="2、增加docker-源"><a href="#2、增加docker-源" class="headerlink" title="2、增加docker 源"></a>2、增加docker 源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum-config-manager \</span></span><br><span class="line">  --add-repo \</span><br><span class="line">  https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>2.1、根据实际查找当前版本 (可选)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum list docker-ce --showduplicates | sort -r</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2.2.如果确定了版本,直接安装,如果要装17。03直接修改下面数字即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install docker-ce-18.06.2.ce-3.el7  # 主意版本填写包名的格式.</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="2-3-开启docker服务-和开机启动"><a href="#2-3-开启docker服务-和开机启动" class="headerlink" title="2.3 开启docker服务,和开机启动"></a>2.3 开启docker服务,和开机启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start docker &amp;&amp; systemctl enable docker</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3、部署ETC集群"><a href="#3、部署ETC集群" class="headerlink" title="3、部署ETC集群"></a>3、部署ETC集群</h2>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes, kubernetes 安装</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernetes//" class="article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/09/kubernetes-v1-13-3安装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-vsftpd安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/09/vsftpd安装/">vsftpd安装</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/09/vsftpd安装/" class="archive-article-date">
-  	<time datetime="2019-08-09T13:52:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改一个用户的权限不会影响到其他用户。<br>centos 系统版本(5.5、5.3、6.0、6.5)</p>
-<h3 id="首先我们安装vsftpd"><a href="#首先我们安装vsftpd" class="headerlink" title="首先我们安装vsftpd"></a>首先我们安装vsftpd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># yum –y install vsftpd</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2、启动和加载vsftp"><a href="#2、启动和加载vsftp" class="headerlink" title="2、启动和加载vsftp"></a>2、启动和加载vsftp</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># service vsftpd restart</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># chkconfig –level 35 vsftpd on</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3、开始配置vsftpd"><a href="#3、开始配置vsftpd" class="headerlink" title="3、开始配置vsftpd"></a>3、开始配置vsftpd</h3><p>Vsftpd的配置文件在/etc/vsftpd下面，在配置之前我们先cp一份做备份用以免发生意外(做什么都要随手备份，因为没有一万，只有万一。)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment">#  cp /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.bak</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># vim /etc/vsftpd/vsftpd.conf</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>vsftpd的参数介绍</strong></li>
-</ul>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vsftpd</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/09/vsftpd安装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1337,15 +1283,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1357,11 +1299,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1369,11 +1311,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1397,19 +1343,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">

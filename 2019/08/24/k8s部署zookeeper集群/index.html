@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
-  <title>Tag: kubernetes, kubernetes 安装 | 懒羊羊</title>
+  <title>k8s部署zookeeper集群 | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="星际拾荒者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="懒羊羊">
-<meta property="og:url" content="https://xxlaila.github.io/tags/kubernetes-kubernetes-安装/index.html">
+  <meta name="description" content="zk属于有状态服务，需要连接外部存储，吧数据存放在数据盘里面，否则容器挂了，数据没有了 准备工作准备zk的yaml文件">
+<meta name="keywords" content="kubernetes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k8s部署zookeeper集群">
+<meta property="og:url" content="https://xxlaila.github.io/2019/08/24/k8s部署zookeeper集群/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="星际拾荒者">
+<meta property="og:description" content="zk属于有状态服务，需要连接外部存储，吧数据存放在数据盘里面，否则容器挂了，数据没有了 准备工作准备zk的yaml文件">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-24T07:05:34.610Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="懒羊羊">
-<meta name="twitter:description" content="星际拾荒者">
+<meta name="twitter:title" content="k8s部署zookeeper集群">
+<meta name="twitter:description" content="zk属于有状态服务，需要连接外部存储，吧数据存放在数据盘里面，否则容器挂了，数据没有了 准备工作准备zk的yaml文件">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -155,71 +157,213 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-k8s部署zookeeper集群" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/kubernetes-v1-13-3安装/" class="archive-article-date">
-  	<time datetime="2019-08-09T14:18:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/kubernetes-v1-13-3安装/">kubernetes v1.13.3安装</a>
+    <h1 class="article-title" itemprop="name">
+      k8s部署zookeeper集群
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/24/k8s部署zookeeper集群/" class="archive-article-date">
+  	<time datetime="2019-08-24T07:00:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
+</a>
+        
+
+	
+    <span class="archive-article-date">
+        阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>zk属于有状态服务，需要连接外部存储，吧数据存放在数据盘里面，否则容器挂了，数据没有了</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>准备zk的yaml文件</p>
+<a id="more"></a>
+
+<h3 id="1、配置zk-data文件"><a href="#1、配置zk-data文件" class="headerlink" title="1、配置zk-data文件"></a>1、配置zk-data文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat zk-data.yaml</span></span><br><span class="line">kind: PersistentVolume</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">  name: k8s-pv-zk1</span><br><span class="line">  annotations:</span><br><span class="line">    volume.beta.kubernetes.io/storage-class: <span class="string">"anything"</span></span><br><span class="line">  labels:</span><br><span class="line">    <span class="built_in">type</span>: <span class="built_in">local</span></span><br><span class="line">spec:</span><br><span class="line">  capacity:</span><br><span class="line">    storage: 3Gi</span><br><span class="line">  accessModes:</span><br><span class="line">    - ReadWriteOnce</span><br><span class="line">  hostPath:</span><br><span class="line">    path: <span class="string">"/var/lib/zookeeper"</span></span><br><span class="line">  persistentVolumeReclaimPolicy: Recycle</span><br><span class="line">---</span><br><span class="line">kind: PersistentVolume</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">  name: k8s-pv-zk2</span><br><span class="line">  annotations:</span><br><span class="line">    volume.beta.kubernetes.io/storage-class: <span class="string">"anything"</span></span><br><span class="line">  labels:</span><br><span class="line">    <span class="built_in">type</span>: <span class="built_in">local</span></span><br><span class="line">spec:</span><br><span class="line">  capacity:</span><br><span class="line">    storage: 3Gi</span><br><span class="line">  accessModes:</span><br><span class="line">    - ReadWriteOnce</span><br><span class="line">  hostPath:</span><br><span class="line">    path: <span class="string">"/var/lib/zookeeper"</span></span><br><span class="line">  persistentVolumeReclaimPolicy: Recycle</span><br><span class="line">---</span><br><span class="line">kind: PersistentVolume</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">  name: k8s-pv-zk3</span><br><span class="line">  annotations:</span><br><span class="line">    volume.beta.kubernetes.io/storage-class: <span class="string">"anything"</span></span><br><span class="line">  labels:</span><br><span class="line">    <span class="built_in">type</span>: <span class="built_in">local</span></span><br><span class="line">spec:</span><br><span class="line">  capacity:</span><br><span class="line">    storage: 3Gi</span><br><span class="line">  accessModes:</span><br><span class="line">    - ReadWriteOnce</span><br><span class="line">  hostPath:</span><br><span class="line">    path: <span class="string">"/var/lib/zookeeper"</span></span><br><span class="line">  persistentVolumeReclaimPolicy: Recycle</span><br><span class="line"><span class="comment"># cat zookeeper.yaml </span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: zk-hs</span><br><span class="line">  labels:</span><br><span class="line">    app: zk</span><br><span class="line">spec:</span><br><span class="line">  ports:</span><br><span class="line">  - port: 2888</span><br><span class="line">    name: server</span><br><span class="line">  - port: 3888</span><br><span class="line">    name: leader-election</span><br><span class="line">  clusterIP: None</span><br><span class="line">  selector:</span><br><span class="line">    app: zk</span><br><span class="line">---</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: zk-cs</span><br><span class="line">  labels:</span><br><span class="line">    app: zk</span><br><span class="line">spec:</span><br><span class="line">  ports:</span><br><span class="line">  - port: 2181</span><br><span class="line">    name: client</span><br><span class="line">  selector:</span><br><span class="line">    app: zk</span><br><span class="line">---</span><br><span class="line">apiVersion: policy/v1beta1</span><br><span class="line">kind: PodDisruptionBudget</span><br><span class="line">metadata:</span><br><span class="line">  name: zk-pdb</span><br><span class="line">spec:</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app: zk</span><br><span class="line">  maxUnavailable: 1</span><br><span class="line">---</span><br><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: StatefulSet</span><br><span class="line">metadata:</span><br><span class="line">  name: zk</span><br><span class="line">spec:</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app: zk</span><br><span class="line">  serviceName: zk-hs</span><br><span class="line">  replicas: 3</span><br><span class="line">  updateStrategy:</span><br><span class="line">    <span class="built_in">type</span>: RollingUpdate</span><br><span class="line">  podManagementPolicy: Parallel</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: zk</span><br><span class="line">    spec:</span><br><span class="line">      affinity:</span><br><span class="line">        podAntiAffinity:</span><br><span class="line">          requiredDuringSchedulingIgnoredDuringExecution:</span><br><span class="line">            - labelSelector:</span><br><span class="line">                matchExpressions:</span><br><span class="line">                  - key: <span class="string">"app"</span></span><br><span class="line">                    operator: In</span><br><span class="line">                    values:</span><br><span class="line">                    - zk</span><br><span class="line">              topologyKey: <span class="string">"kubernetes.io/hostname"</span></span><br><span class="line">      containers:</span><br><span class="line">      - name: kubernetes-zookeeper</span><br><span class="line">        imagePullPolicy: Always</span><br><span class="line">        image: <span class="string">"xxlaila/kubernetes-zookeeper:1.0-3.4.10"</span></span><br><span class="line">        resources:</span><br><span class="line">          requests:</span><br><span class="line">            memory: <span class="string">"1Gi"</span></span><br><span class="line">            cpu: <span class="string">"0.5"</span></span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 2181</span><br><span class="line">          name: client</span><br><span class="line">        - containerPort: 2888</span><br><span class="line">          name: server</span><br><span class="line">        - containerPort: 3888</span><br><span class="line">          name: leader-election</span><br><span class="line">        <span class="built_in">command</span>:</span><br><span class="line">        - sh</span><br><span class="line">        - -c</span><br><span class="line">        - <span class="string">"start-zookeeper \</span></span><br><span class="line"><span class="string">          --servers=3 \</span></span><br><span class="line"><span class="string">          --data_dir=/var/lib/zookeeper/data \</span></span><br><span class="line"><span class="string">          --data_log_dir=/var/lib/zookeeper/data/log \</span></span><br><span class="line"><span class="string">          --conf_dir=/opt/zookeeper/conf \</span></span><br><span class="line"><span class="string">          --client_port=2181 \</span></span><br><span class="line"><span class="string">          --election_port=3888 \</span></span><br><span class="line"><span class="string">          --server_port=2888 \</span></span><br><span class="line"><span class="string">          --tick_time=2000 \</span></span><br><span class="line"><span class="string">          --init_limit=10 \</span></span><br><span class="line"><span class="string">          --sync_limit=5 \</span></span><br><span class="line"><span class="string">          --heap=512M \</span></span><br><span class="line"><span class="string">          --max_client_cnxns=60 \</span></span><br><span class="line"><span class="string">          --snap_retain_count=3 \</span></span><br><span class="line"><span class="string">          --purge_interval=12 \</span></span><br><span class="line"><span class="string">          --max_session_timeout=40000 \</span></span><br><span class="line"><span class="string">          --min_session_timeout=4000 \</span></span><br><span class="line"><span class="string">          --log_level=INFO"</span></span><br><span class="line">        readinessProbe:</span><br><span class="line">          <span class="built_in">exec</span>:</span><br><span class="line">            <span class="built_in">command</span>:</span><br><span class="line">            - sh</span><br><span class="line">            - -c</span><br><span class="line">            - <span class="string">"zookeeper-ready 2181"</span></span><br><span class="line">          initialDelaySeconds: 10</span><br><span class="line">          timeoutSeconds: 5</span><br><span class="line">        livenessProbe:</span><br><span class="line">          <span class="built_in">exec</span>:</span><br><span class="line">            <span class="built_in">command</span>:</span><br><span class="line">            - sh</span><br><span class="line">            - -c</span><br><span class="line">            - <span class="string">"zookeeper-ready 2181"</span></span><br><span class="line">          initialDelaySeconds: 10</span><br><span class="line">          timeoutSeconds: 5</span><br><span class="line">        volumeMounts:</span><br><span class="line">        - name: datadir</span><br><span class="line">          mountPath: /var/lib/zookeeper</span><br><span class="line">      securityContext:</span><br><span class="line">        runAsUser: 1000</span><br><span class="line">        fsGroup: 1000</span><br><span class="line">  volumeClaimTemplates:</span><br><span class="line">  - metadata:</span><br><span class="line">      name: datadir</span><br><span class="line">      annotations:</span><br><span class="line">        volume.beta.kubernetes.io/storage-class: <span class="string">"managed-nfs-storage"</span></span><br><span class="line">    spec:</span><br><span class="line">      accessModes: [ <span class="string">"ReadWriteOnce"</span> ]</span><br><span class="line">      resources:</span><br><span class="line">        requests:</span><br><span class="line">          storage: 3Gi</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、执行部署"><a href="#2、执行部署" class="headerlink" title="2、执行部署"></a>2、执行部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f zookeeper.yaml -n kube-dev</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3、查看部署"><a href="#3、查看部署" class="headerlink" title="3、查看部署"></a>3、查看部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get pod -o wide -n kube-dev</span></span><br><span class="line">NAME                            READY   STATUS    RESTARTS   AGE     IP            NODE            NOMINATED NODE   READINESS GATES</span><br><span class="line">zk-0                            1/1     Running   0          6m13s   10.254.62.4   172.21.17.15    &lt;none&gt;           &lt;none&gt;</span><br><span class="line">zk-1                            1/1     Running   0          6m12s   10.254.21.4   172.21.16.96    &lt;none&gt;           &lt;none&gt;</span><br><span class="line">zk-2                            1/1     Running   0          6m12s   10.254.96.4   172.21.16.193   &lt;none&gt;           &lt;none&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、查看持久卷申明"><a href="#4、查看持久卷申明" class="headerlink" title="4、查看持久卷申明"></a>4、查看持久卷申明</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get pv -o wide -n kube-dev</span></span><br><span class="line">NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                             STORAGECLASS          REASON   AGE</span><br><span class="line">pvc-d1cb6a1c-407d-11e9-9436-fa163e14c5bd   3Gi        RWO            Delete           Bound    kube-dev/datadir-zk-0             managed-nfs-storage            6m18s</span><br><span class="line">pvc-d20a95ec-407d-11e9-9436-fa163e14c5bd   3Gi        RWO            Delete           Bound    kube-dev/datadir-zk-1             managed-nfs-storage            6m18s</span><br><span class="line">pvc-d23577af-407d-11e9-9436-fa163e14c5bd   3Gi        RWO            Delete           Bound    kube-dev/datadir-zk-2             managed-nfs-storage            6m23s</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、查看pvc"><a href="#5、查看pvc" class="headerlink" title="5、查看pvc"></a>5、查看pvc</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get pvc -o wide -n kube-dev</span></span><br><span class="line">NAME                     STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          AGE</span><br><span class="line">datadir-zk-0             Bound    pvc-d1cb6a1c-407d-11e9-9436-fa163e14c5bd   3Gi        RWO            managed-nfs-storage   6m38s</span><br><span class="line">datadir-zk-1             Bound    pvc-d20a95ec-407d-11e9-9436-fa163e14c5bd   3Gi        RWO            managed-nfs-storage   6m37s</span><br><span class="line">datadir-zk-2             Bound    pvc-d23577af-407d-11e9-9436-fa163e14c5bd   3Gi        RWO            managed-nfs-storage   6m37s</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、验证集群是否工作正常"><a href="#6、验证集群是否工作正常" class="headerlink" title="6、验证集群是否工作正常"></a>6、验证集群是否工作正常</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for i in 0 1 2; do kubectl exec zk-$i zkServer.sh status -n kube-dev; done</span></span><br><span class="line">ZooKeeper JMX enabled by default</span><br><span class="line">Using config: /usr/bin/../etc/zookeeper/zoo.cfg</span><br><span class="line">Mode: follower</span><br><span class="line">ZooKeeper JMX enabled by default</span><br><span class="line">Using config: /usr/bin/../etc/zookeeper/zoo.cfg</span><br><span class="line">Mode: leader</span><br><span class="line">ZooKeeper JMX enabled by default</span><br><span class="line">Using config: /usr/bin/../etc/zookeeper/zoo.cfg</span><br><span class="line">Mode: follower</span><br></pre></td></tr></table></figure>
+
+<h3 id="7、集群的访问地址"><a href="#7、集群的访问地址" class="headerlink" title="7、集群的访问地址"></a>7、集群的访问地址</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server.1=zk-0.zk-hs.kube-dev.svc.cluster.local.:2888:3888</span><br><span class="line">server.2=zk-1.zk-hs.kube-dev.svc.cluster.local.:2888:3888</span><br><span class="line">server.3=zk-2.zk-hs.kube-dev.svc.cluster.local.:2888:3888</span><br></pre></td></tr></table></figure>
+
+
+      
+
+
+
+
+  <div class="declare">
+    <strong>本文作者：</strong>
+    
+      xxlaila
+    
+    <br>
+    <strong>本文链接：</strong>
+    https://xxlaila.github.io/2019/08/24/k8s部署zookeeper集群/
+    <br>
+    <strong>版权声明：</strong>
+    本作品采用
+    <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    进行许可。转载请注明出处！
+    
+  </div>
+
+
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes, kubernetes 安装</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernetes//" class="article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://xxlaila.github.io/2019/08/24/k8s部署zookeeper集群/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/08/24/k8s部署coredns/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">k8s部署coredns</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -274,9 +418,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
