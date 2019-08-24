@@ -821,190 +821,6 @@
 
 
   
-    <article id="post-openstack认证服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/20/openstack认证服务/">openstack认证服务</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/20/openstack认证服务/" class="archive-article-date">
-  	<time datetime="2019-08-20T11:53:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>添加认证服务(Identity Service)</p>
-<blockquote>
-<p>Controller 节点</p>
-</blockquote>
-<h3 id="1、配置先决条件"><a href="#1、配置先决条件" class="headerlink" title="1、配置先决条件"></a>1、配置先决条件</h3><p>在配置OpenStack Identity服务之前，必须创建一个数据库和一个管理令牌</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据库</span></span><br><span class="line"><span class="comment"># mysql -u root -p</span></span><br><span class="line"></span><br><span class="line">&gt; CREATE DATABASE keystone;</span><br><span class="line"></span><br><span class="line">&gt; GRANT ALL PRIVILEGES ON keystone.* TO <span class="string">'keystone'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'123456'</span>;</span><br><span class="line">&gt; GRANT ALL PRIVILEGES ON keystone.* TO <span class="string">'keystone'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'123456'</span>;</span><br></pre></td></tr></table></figure>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/20/openstack认证服务/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-openstack环境准备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/20/openstack环境准备/">openstack环境准备</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/20/openstack环境准备/" class="archive-article-date">
-  	<time datetime="2019-08-20T08:35:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1、基础环境配置"><a href="#1、基础环境配置" class="headerlink" title="1、基础环境配置"></a>1、基础环境配置</h2><p>服务器做好read，安装好操作系统(centos7.4)</p>
-<ul>
-<li><p>设置服务器的主机名</p>
-<ul>
-<li>控制节点: controller</li>
-<li>计算节点: computer</li>
-<li>存储节点: block</li>
-</ul>
-</li>
-<li><p>主机信息列表</p>
-</li>
-</ul>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/20/openstack环境准备/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
     <article id="post-kubernetes-ci-cd-四" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1098,9 +914,197 @@
 
 
   
+    <article id="post-kubernetes-ci-cd-三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/20/kubernetes-ci-cd-三/">kubernetes-ci/cd-(三)</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/20/kubernetes-ci-cd-三/" class="archive-article-date">
+  	<time datetime="2019-08-20T06:17:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>jenkins 配置完成后，最终实现的是ci/cd，在编译的过程中，经常会遇到后端java的，前端nodejs的，这里就需要进行一个k8s在调度的时候生产pod来进行指定pod进行编译</p>
+<h3 id="1、制作容器"><a href="#1、制作容器" class="headerlink" title="1、制作容器"></a>1、制作容器</h3><p>自定义一个容器，里面包含了 java，nodejs的所需要的环境，同时需要同步容器的时间，包含来jenkins的node</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># cat Dockerfile</span><br><span class="line">FROM docker.io/centos:latest</span><br><span class="line">MAINTAINER xxlaila &quot;cq_xxlaila@163.com&quot;</span><br><span class="line"># Install dependent plugin</span><br><span class="line">ENV VERSION v10.15.1</span><br><span class="line">RUN yum install -y wget \</span><br><span class="line">    git \</span><br><span class="line">    java-1.8.0-openjdk.x86_64 \</span><br><span class="line">    &amp;&amp; curl -sL https://rpm.nodesource.com/setup_11.x | bash - \</span><br><span class="line">    &amp;&amp; yum install -y gcc gcc-c++ make \</span><br><span class="line">    &amp;&amp; yum install -y nodejs \</span><br><span class="line">    &amp;&amp; yum clean all</span><br><span class="line"># System variable setting</span><br><span class="line">RUN echo &quot;LANG=zh_CN.UTF-8&quot; &gt;&gt; /etc/locale.conf \</span><br><span class="line">    &amp;&amp; source /etc/locale.conf \</span><br><span class="line">    &amp;&amp; cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span><br><span class="line">    &amp;&amp; echo &quot;Asia/shanghai&quot; &gt;&gt; /etc/timezone \</span><br><span class="line">    &amp;&amp; groupadd -g 10000 jenkins \</span><br><span class="line">    &amp;&amp; useradd -g jenkins -u 10000 jenkins</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">EXPOSE 50000</span><br></pre></td></tr></table></figure>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jenkins ci/cd</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/20/kubernetes-ci-cd-三/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-kubernetes-ci-cd-二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/20/kubernetes-ci-cd-二/">kubernetes-ci/cd-(二)</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/20/kubernetes-ci-cd-二/" class="archive-article-date">
+  	<time datetime="2019-08-20T05:46:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基于jenkins-pipeline进行部署"><a href="#基于jenkins-pipeline进行部署" class="headerlink" title="基于jenkins  pipeline进行部署"></a>基于jenkins  pipeline进行部署</h1><h2 id="1、jenkins-pipeline介绍"><a href="#1、jenkins-pipeline介绍" class="headerlink" title="1、jenkins pipeline介绍"></a>1、jenkins pipeline介绍</h2><p>要实现在 Jenkins 中的构建工作，可以有多种方式，我们这里采用比较常用的 Pipeline 这种方式。Pipeline，简单来说，就是一套运行在 Jenkins 上的工作流框架，将原来独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂流程编排和可视化的工作。</p>
+<p>Jenkins Pipeline 有几个核心概念:</p>
+<ul>
+<li>Node：节点，一个 Node 就是一个 Jenkins 节点，Master 或者 Agent，是执行 Step 的具体运行环境，比如我们之前动态运行的 Jenkins Slave 就是一个 Node 节点</li>
+<li>Stage：阶段，一个 Pipeline 可以划分为若干个 Stage，每个 Stage 代表一组操作，比如：Build、Test、Deploy，Stage 是一个逻辑分组的概念，可以跨多个 Node</li>
+<li>Step：步骤，Step 是最基本的操作单元，可以是打印一句话，也可以是构建一个 Docker 镜像，由各类 Jenkins 插件提供，比如命令：sh ‘make’，就相当于我们平时 shell 终端中执行 make 命令一样。</li>
+</ul>
+<p>那么我们如何创建 Jenkins Pipline 呢？</p>
+<ul>
+<li>Pipeline 脚本是由 Groovy 语言实现的，但是我们没必要单独去学习 Groovy，当然你会的话最好</li>
+<li>Pipeline 支持两种语法：Declarative(声明式)和 Scripted Pipeline(脚本式)语法</li>
+<li>Pipeline 也有两种创建方法：可以直接在 Jenkins 的 Web UI 界面中输入脚本；也可以通过创建一个 Jenkinsfile 脚本文件放入项目源码库中</li>
+<li>一般我们都推荐在 Jenkins 中直接从源代码控制(SCMD)中直接载入 Jenkinsfile Pipeline 这种方法创建一个简单的 Pipeline<blockquote>
+<p>我们这里来给大家快速创建一个简单的 Pipeline，直接在 Jenkins 的 Web UI 界面中输入脚本运行。</p>
+</blockquote>
+</li>
+<li>新建 Job：在 Web UI 中点击 New Item -&gt; 输入名称：pipeline-demo -&gt; 选择下面的 Pipeline -&gt; 点击 OK</li>
+<li>配置：在最下方的 Pipeline 区域输入如下 Script 脚本，然后点击保存。 </li>
+</ul>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jenkins, ci/cd</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/20/kubernetes-ci-cd-二/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1287,19 +1291,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1308,10 +1312,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
