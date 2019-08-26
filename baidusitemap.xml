@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xxlaila.github.io/2019/08/26/k8s%E9%83%A8%E7%BD%B2Weave-Scope/</loc>
+    <lastmod>2019-08-26</lastmod>
+  </url>  <url>
+    <loc>https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2019-08-26</lastmod>
+  </url>  <url>
     <loc>https://xxlaila.github.io/2019/08/24/k8s%E9%83%A8%E7%BD%B2zookeeper%E9%9B%86%E7%BE%A4/</loc>
     <lastmod>2019-08-24</lastmod>
   </url>  <url>
@@ -74,9 +80,6 @@
     <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://xxlaila.github.io/2019/08/10/oracle-ORA-12519/</loc>
-    <lastmod>2019-08-22</lastmod>
-  </url>  <url>
-    <loc>https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://xxlaila.github.io/2019/08/12/kubernetes-ci-cd-%E4%B8%80/</loc>
