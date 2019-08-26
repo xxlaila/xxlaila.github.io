@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/3o4wndk9234sd.png">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/34873i24dfsd.png">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/458dskjfhu2y4skdsds.png">
-<meta property="og:updated_time" content="2019-08-26T08:22:52.177Z">
+<meta property="og:updated_time" content="2019-08-26T08:41:24.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s部署Weave Scope">
 <meta name="twitter:description" content="1、Weave Scope介绍weave scope 是Docker和Kubernetes的故障排除和监控，自动生成应用程序的地图，能够直观地了解，监控和控制基于容器的，基于微服务的应用程序。可以实时的了解docker容器，选择容器基础架构的概述，或关注特定的微服务。轻松识别和纠正问题，确保集装箱化应用的稳定性和性能，查看容器的上下文指标，标记和元数据。轻松地在容器内的进程之间导航，以运行容器，在">
@@ -194,6 +194,8 @@
         <h3 id="1、Weave-Scope介绍"><a href="#1、Weave-Scope介绍" class="headerlink" title="1、Weave Scope介绍"></a>1、Weave Scope介绍</h3><p>weave scope 是Docker和Kubernetes的故障排除和监控，自动生成应用程序的地图，能够直观地了解，监控和控制基于容器的，基于微服务的应用程序。可以实时的了解docker容器，选择容器基础架构的概述，或关注特定的微服务。轻松识别和纠正问题，确保集装箱化应用的稳定性和性能，查看容器的上下文指标，标记和元数据。轻松地在容器内的进程之间导航，以运行容器，在可扩展的可排序表中进行排列。使用给定主机或服务的最大CPU或内存轻松找到容器。直接与您的容器交互：暂停，重新启动和停止容器。启动命令行。全部不离开范围浏览器窗口。</p>
 <p><img src="http://pvyidozd0.bkt.clouddn.com/378246bsjfhsajkdq.png" alt="img"></p>
 <h3 id="2、部署weave-scope"><a href="#2、部署weave-scope" class="headerlink" title="2、部署weave scope"></a>2、部署weave scope</h3><p>初次学习，直接下载官方配置文件，没有经过任何修改，不过相信自己随着学习的进步，会逐渐深入。<a href="https://github.com/weaveworks/scope" target="_blank" rel="noopener">github地址</a>，<a href="https://www.weave.works/docs/cloud/latest/overview/" target="_blank" rel="noopener">官方地址</a></p>
+<a id="more"></a>
+
 <h4 id="2-1、下载配置文件"><a href="#2-1、下载配置文件" class="headerlink" title="2.1、下载配置文件"></a>2.1、下载配置文件</h4><p><a href="https://github.com/weaveworks/scope/tree/master/examples/k8s" target="_blank" rel="noopener">下载配置文件</a>,配置文件如下列表:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls -l</span></span><br><span class="line">cluster-role-binding.yaml</span><br><span class="line">cluster-role.yaml</span><br><span class="line">deploy.yaml</span><br><span class="line">ds.yaml</span><br><span class="line">ns.yaml</span><br><span class="line">psp.yaml</span><br><span class="line">sa.yaml</span><br><span class="line">scope.yaml</span><br><span class="line">svc.yaml</span><br></pre></td></tr></table></figure>
 
@@ -341,6 +343,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/08/26/k8s部署ingress/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          k8s部署ingress
+        
+      </div>
+    </a>
   
   
     <a href="/2019/08/24/k8s部署zookeeper集群/" id="article-nav-older" class="article-nav-link-wrap">
@@ -513,10 +524,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -525,11 +532,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jira</a>
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,11 +544,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
+                <a href="javascript:void(0)" class="js-tag color5">jira</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,10 +565,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,6 +621,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">

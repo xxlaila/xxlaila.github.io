@@ -6,18 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
-  <title>懒羊羊</title>
+  <title>k8s部署ingress | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="星际拾荒者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="懒羊羊">
-<meta property="og:url" content="https://xxlaila.github.io/page/3/index.html">
+  <meta name="description" content="在kubernetes 集群中，一个服务安装以后怎么对外提供访问，外部用户怎么来访问我们容器中业务。  1、Ingress 介绍Kubernetes 暴露服务的方式目前只有三种：LoadBlancer Service、NodePort Service、Ingress；本文主要通过Ingress来访问 2、Ingress 是什么Ingress 就是能利用 Nginx、Haproxy 啥的负载均衡器暴">
+<meta name="keywords" content="kubernetes, Ingress">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k8s部署ingress">
+<meta property="og:url" content="https://xxlaila.github.io/2019/08/26/k8s部署ingress/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="星际拾荒者">
+<meta property="og:description" content="在kubernetes 集群中，一个服务安装以后怎么对外提供访问，外部用户怎么来访问我们容器中业务。  1、Ingress 介绍Kubernetes 暴露服务的方式目前只有三种：LoadBlancer Service、NodePort Service、Ingress；本文主要通过Ingress来访问 2、Ingress 是什么Ingress 就是能利用 Nginx、Haproxy 啥的负载均衡器暴">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/2373874sds43.png">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/4dfs98347sdhsfs.png">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/85793kdfksdo43.png">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/3248kjfiy4789wodjkshf3.png">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/34dnksjfh384yksfkjdsfsd.png">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/786jg656iojhf0.png">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/34324kjsdfh8234ks.png">
+<meta property="og:updated_time" content="2019-08-26T08:41:10.183Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="懒羊羊">
-<meta name="twitter:description" content="星际拾荒者">
+<meta name="twitter:title" content="k8s部署ingress">
+<meta name="twitter:description" content="在kubernetes 集群中，一个服务安装以后怎么对外提供访问，外部用户怎么来访问我们容器中业务。  1、Ingress 介绍Kubernetes 暴露服务的方式目前只有三种：LoadBlancer Service、NodePort Service、Ingress；本文主要通过Ingress来访问 2、Ingress 是什么Ingress 就是能利用 Nginx、Haproxy 啥的负载均衡器暴">
+<meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/2373874sds43.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -155,354 +165,179 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-帧中继配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-k8s部署ingress" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/19/帧中继配置/">帧中继配置</a>
+    <h1 class="article-title" itemprop="name">
+      k8s部署ingress
     </h1>
   
 
         
-        <a href="/2019/08/19/帧中继配置/" class="archive-article-date">
-  	<time datetime="2019-08-19T13:43:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
+        <a href="/2019/08/26/k8s部署ingress/" class="archive-article-date">
+  	<time datetime="2019-08-26T08:24:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
 </a>
         
 
 	
+    <span class="archive-article-date">
+        阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
 
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="点对点配置"><a href="#点对点配置" class="headerlink" title="点对点配置"></a>点对点配置</h3><p><img src="http://pvyidozd0.bkt.clouddn.com/1566222269423.jpg" alt="img"></p>
-<ul>
-<li><p>RA配置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[RA]int s0/0</span><br><span class="line">[RA-s0/0]encap frame-relay    封装帧中继协议</span><br><span class="line">[RA-s0/0] frame-relay intf dte</span><br><span class="line">[RA-s0/0]frame-relay interface-dlci 102      设置本接口对应的INTERFACE-DLCI号</span><br><span class="line">[RA-s0/0]frame-relay map ip 172.16.1.2 102  建立对端协议地址与本地INTERFACE-DLCI号的映射关系</span><br><span class="line">[RA-s0/0]ip add 172.16.1.1 255.255.255.0        配置本接口IP地址</span><br><span class="line">[RA-s0/0]no sh                     打开此物理接口</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>RB配置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[RB]int s0/0</span><br><span class="line">[RB-s0/0]encap frame-relay    封装帧中继协议</span><br><span class="line">[RA-s0/0] frame-relay intf dte</span><br><span class="line">[RB-s0/0]frame-relay interface-dlci 201       设置本接口对应的INTERFACE-DLCI号</span><br><span class="line">[RB-s0/0]frame-relay map ip 172.16.1.1 201  建立对端协议地址与本地INTERFACE-DLCI号的映射关系</span><br><span class="line">[RB-s0/0]ip add 172.16.1.2 255.255.255.0        配置本接口IP地址</span><br><span class="line">[RB-s0/0]no sh                     打开此物理接口</span><br></pre></td></tr></table></figure>
+        <p>在kubernetes 集群中，一个服务安装以后怎么对外提供访问，外部用户怎么来访问我们容器中业务。</p>
+<p><img src="http://pvyidozd0.bkt.clouddn.com/2373874sds43.png" alt="img"></p>
+<h3 id="1、Ingress-介绍"><a href="#1、Ingress-介绍" class="headerlink" title="1、Ingress 介绍"></a>1、Ingress 介绍</h3><p>Kubernetes 暴露服务的方式目前只有三种：LoadBlancer Service、NodePort Service、Ingress；本文主要通过Ingress来访问</p>
+<h3 id="2、Ingress-是什么"><a href="#2、Ingress-是什么" class="headerlink" title="2、Ingress 是什么"></a>2、Ingress 是什么</h3><p>Ingress 就是能利用 Nginx、Haproxy 啥的负载均衡器暴露集群内服务的工具问题来了，集群内服务想要暴露出去面临着几个问题：</p>
+<a id="more"></a>
 
+<ul>
+<li><p>Pod 漂移问题<br>众所周知 Kubernetes 具有强大的副本控制能力，能保证在任意副本(Pod)挂掉时自动从其他机器启动一个新的，还可以动态扩容等，总之一句话，这个 Pod 可能在任何时刻出现在任何节点上，也可能在任何时刻死在任何节点上；那么自然随着 Pod 的创建和销毁，Pod IP 肯定会动态变化；那么如何把这个动态的 Pod IP 暴露出去？这里借助于 Kubernetes 的 Service 机制，Service 可以以标签的形式选定一组带有指定标签的 Pod，并监控和自动负载他们的 Pod IP，那么我们向外暴露只暴露 Service IP 就行了；这就是 NodePort 模式：即在每个节点上开起一个端口，然后转发到内部 Service IP 上，如下图所示：<br><img src="http://pvyidozd0.bkt.clouddn.com/4dfs98347sdhsfs.png" alt="img"></p>
+</li>
+<li><p>端口管理问题<br>采用 NodePort 方式暴露服务面临一个坑爹的问题是，服务一旦多起来，NodePort 在每个节点上开启的端口会及其庞大，而且难以维护；这时候引出的思考问题是 “能不能使用 Nginx 啥的只监听一个端口，比如 80，然后按照域名向后转发？” 简单的实现就是使用 DaemonSet 在每个 node 上监听 80，然后写好规则，因为 Nginx 外面绑定了宿主机 80 端口(就像 NodePort)，本身又在集群内，那么向后直接转发到相应 Service IP 就行了，如下图所示<br><img src="http://pvyidozd0.bkt.clouddn.com/85793kdfksdo43.png" alt="img"></p>
+</li>
+<li><p>域名分配及动态更新问题<br>从上面的思路，采用 Nginx 似乎已经解决了问题，但是其实这里面有一个很大缺陷：每次有新服务加入怎么改 Nginx 配置？总不能手动改或者来个 Rolling Update 前端 Nginx Pod 吧？这时候 “伟大而又正直勇敢的” Ingress 登场，如果不算上面的 Nginx，Ingress 只有两大组件：Ingress Controller 和 Ingress<br>Ingress 简单的理解就是 你原来要改 Nginx 配置，然后配置各种域名对应哪个 Service，现在把这个动作抽象出来，变成一个 Ingress 对象，你可以用 yml 创建，每次不要去改 Nginx 了，直接改 yml 然后创建/更新就行了；那么问题来了：”Nginx 咋整？”<br>Ingress Controller 这东西就是解决 “Nginx 咋整” 的；Ingress Controoler 通过与 Kubernetes API 交互，动态的去感知集群中 Ingress 规则变化，然后读取他，按照他自己模板生成一段 Nginx 配置，再写到 Nginx Pod 里，最后 reload 一下，工作流程如下图:</p>
 </li>
 </ul>
-        
-      
+<p><img src="http://pvyidozd0.bkt.clouddn.com/3248kjfiy4789wodjkshf3.png" alt="img"><br>当然在实际应用中，最新版本 Kubernetes 已经将 Nginx 与 Ingress Controller 合并为一个组件，所以 Nginx 无需单独部署，只需要部署 Ingress Controller 即可。</p>
+<h3 id="3、Nginx-Ingress"><a href="#3、Nginx-Ingress" class="headerlink" title="3、Nginx Ingress"></a>3、Nginx Ingress</h3><h4 id="3-1、下载官方文件"><a href="#3-1、下载官方文件" class="headerlink" title="3.1、下载官方文件"></a>3.1、下载官方文件</h4><p>官方的mandatory.yaml文件里面包含了ingress RBAC，重要的组件 <a href="https://github.com/kubernetes/ingress-nginx/tree/nginx-0.20.0/deploy" target="_blank" rel="noopener">Nginx+Ingres Controller</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat mandatory.yaml</span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Namespace</span><br><span class="line">metadata:</span><br><span class="line">  name: ingress-nginx</span><br><span class="line">  labels:</span><br><span class="line">    app.kubernetes.io/name: ingress-nginx</span><br><span class="line">    app.kubernetes.io/part-of: ingress-nginx</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">kind: ConfigMap</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-configuration</span><br><span class="line">  namespace: ingress-nginx</span><br><span class="line">  labels:</span><br><span class="line">    app.kubernetes.io/name: ingress-nginx</span><br><span class="line">    app.kubernetes.io/part-of: ingress-nginx</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">kind: ConfigMap</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">  name: tcp-services</span><br><span class="line">  namespace: ingress-nginx</span><br><span class="line">  labels:</span><br><span class="line">    app.kubernetes.io/name: ingress-nginx</span><br><span class="line">    app.kubernetes.io/part-of: ingress-nginx</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">kind: ConfigMap</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">  name: udp-services</span><br><span class="line">  namespace: ingress-nginx</span><br><span class="line">  labels:</span><br><span class="line">    app.kubernetes.io/name: ingress-nginx</span><br><span class="line">    app.kubernetes.io/part-of: ingress-nginx</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ServiceAccount</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-ingress-serviceaccount</span><br><span class="line">  namespace: ingress-nginx</span><br><span class="line">  labels:</span><br><span class="line">    app.kubernetes.io/name: ingress-nginx</span><br><span class="line">    app.kubernetes.io/part-of: ingress-nginx</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1beta1</span><br><span class="line">kind: ClusterRole</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-ingress-clusterrole</span><br><span class="line">  labels:</span><br><span class="line">    app.kubernetes.io/name: ingress-nginx</span><br><span class="line">    app.kubernetes.io/part-of: ingress-nginx</span><br><span class="line">rules:</span><br><span class="line">  - apiGroups:</span><br><span class="line">      - <span class="string">""</span></span><br><span class="line">    resources:</span><br><span class="line">      - configmaps</span><br><span class="line">      - endpoints</span><br><span class="line">      - nodes</span><br><span class="line">      - pods</span><br><span class="line">      - secrets</span><br><span class="line">    verbs:</span><br><span class="line">      - list</span><br><span class="line">      - watch</span><br><span class="line">  - apiGroups:</span><br><span class="line">      - <span class="string">""</span></span><br><span class="line">    resources:</span><br><span class="line">      - nodes</span><br><span class="line">    verbs:</span><br><span class="line">      - get</span><br><span class="line">  - apiGroups:</span><br><span class="line">      - <span class="string">""</span></span><br><span class="line">    resources:</span><br><span class="line">      - services</span><br><span class="line">    verbs:</span><br><span class="line">      - get</span><br><span class="line">      - list</span><br><span class="line">      - watch</span><br><span class="line">  - apiGroups:</span><br><span class="line">      - <span class="string">"extensions"</span></span><br><span class="line">    resources:</span><br><span class="line">      - ingresses</span><br><span class="line">    verbs:</span><br><span class="line">      - get</span><br><span class="line">      - list</span><br><span class="line">      - watch</span><br><span class="line">  - apiGroups:</span><br><span class="line">      - <span class="string">""</span></span><br><span class="line">    resources:</span><br><span class="line">      - events</span><br><span class="line">    verbs:</span><br><span class="line">      - create</span><br><span class="line">      - patch</span><br><span class="line">  - apiGroups:</span><br><span class="line">      - <span class="string">"extensions"</span></span><br><span class="line">    resources:</span><br><span class="line">      - ingresses/status</span><br><span class="line">    verbs:</span><br><span class="line">      - update</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1beta1</span><br><span class="line">kind: Role</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-ingress-role</span><br><span class="line">  namespace: ingress-nginx</span><br><span class="line">  labels:</span><br><span class="line">    app.kubernetes.io/name: ingress-nginx</span><br><span class="line">    app.kubernetes.io/part-of: ingress-nginx</span><br><span class="line">rules:</span><br><span class="line">  - apiGroups:</span><br><span class="line">      - <span class="string">""</span></span><br><span class="line">    resources:</span><br><span class="line">      - configmaps</span><br><span class="line">      - pods</span><br><span class="line">      - secrets</span><br><span class="line">      - namespaces</span><br><span class="line">    verbs:</span><br><span class="line">      - get</span><br><span class="line">  - apiGroups:</span><br><span class="line">      - <span class="string">""</span></span><br><span class="line">    resources:</span><br><span class="line">      - configmaps</span><br><span class="line">    resourceNames:</span><br><span class="line">      <span class="comment"># Defaults to "&lt;election-id&gt;-&lt;ingress-class&gt;"</span></span><br><span class="line">      <span class="comment"># Here: "&lt;ingress-controller-leader&gt;-&lt;nginx&gt;"</span></span><br><span class="line">      <span class="comment"># This has to be adapted if you change either parameter</span></span><br><span class="line">      <span class="comment"># when launching the nginx-ingress-controller.</span></span><br><span class="line">      - <span class="string">"ingress-controller-leader-nginx"</span></span><br><span class="line">    verbs:</span><br><span class="line">      - get</span><br><span class="line">      - update</span><br><span class="line">  - apiGroups:</span><br><span class="line">      - <span class="string">""</span></span><br><span class="line">    resources:</span><br><span class="line">      - configmaps</span><br><span class="line">    verbs:</span><br><span class="line">      - create</span><br><span class="line">  - apiGroups:</span><br><span class="line">      - <span class="string">""</span></span><br><span class="line">    resources:</span><br><span class="line">      - endpoints</span><br><span class="line">    verbs:</span><br><span class="line">      - get</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1beta1</span><br><span class="line">kind: RoleBinding</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-ingress-role-nisa-binding</span><br><span class="line">  namespace: ingress-nginx</span><br><span class="line">  labels:</span><br><span class="line">    app.kubernetes.io/name: ingress-nginx</span><br><span class="line">    app.kubernetes.io/part-of: ingress-nginx</span><br><span class="line">roleRef:</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line">  kind: Role</span><br><span class="line">  name: nginx-ingress-role</span><br><span class="line">subjects:</span><br><span class="line">  - kind: ServiceAccount</span><br><span class="line">    name: nginx-ingress-serviceaccount</span><br><span class="line">    namespace: ingress-nginx</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1beta1</span><br><span class="line">kind: ClusterRoleBinding</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-ingress-clusterrole-nisa-binding</span><br><span class="line">  labels:</span><br><span class="line">    app.kubernetes.io/name: ingress-nginx</span><br><span class="line">    app.kubernetes.io/part-of: ingress-nginx</span><br><span class="line">roleRef:</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line">  kind: ClusterRole</span><br><span class="line">  name: nginx-ingress-clusterrole</span><br><span class="line">subjects:</span><br><span class="line">  - kind: ServiceAccount</span><br><span class="line">    name: nginx-ingress-serviceaccount</span><br><span class="line">    namespace: ingress-nginx</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-ingress-controller</span><br><span class="line">  namespace: ingress-nginx</span><br><span class="line">  labels:</span><br><span class="line">    app.kubernetes.io/name: ingress-nginx</span><br><span class="line">    app.kubernetes.io/part-of: ingress-nginx</span><br><span class="line">spec:</span><br><span class="line">  replicas: 1</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app.kubernetes.io/name: ingress-nginx</span><br><span class="line">      app.kubernetes.io/part-of: ingress-nginx</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app.kubernetes.io/name: ingress-nginx</span><br><span class="line">        app.kubernetes.io/part-of: ingress-nginx</span><br><span class="line">      annotations:</span><br><span class="line">        prometheus.io/port: <span class="string">"10254"</span></span><br><span class="line">        prometheus.io/scrape: <span class="string">"true"</span></span><br><span class="line">    spec:</span><br><span class="line">      serviceAccountName: nginx-ingress-serviceaccount</span><br><span class="line">      hostNetwork: <span class="literal">true</span></span><br><span class="line">      containers:</span><br><span class="line">        - name: nginx-ingress-controller</span><br><span class="line">          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.22.0</span><br><span class="line">          args:</span><br><span class="line">            - /nginx-ingress-controller</span><br><span class="line">            - --configmap=$(POD_NAMESPACE)/nginx-configuration</span><br><span class="line">            - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services</span><br><span class="line">            - --udp-services-configmap=$(POD_NAMESPACE)/udp-services</span><br><span class="line">            - --publish-service=$(POD_NAMESPACE)/ingress-nginx</span><br><span class="line">            - --annotations-prefix=nginx.ingress.kubernetes.io</span><br><span class="line">     --default-ssl-certificate=$(POD_NAMESPACE)/ingress-secret</span><br><span class="line">      --default-backend-service=$(POD_NAMESPACE)/default-http-backend</span><br><span class="line">          securityContext:</span><br><span class="line">            allowPrivilegeEscalation: <span class="literal">true</span></span><br><span class="line">            capabilities:</span><br><span class="line">              drop:</span><br><span class="line">                - ALL</span><br><span class="line">              add:</span><br><span class="line">                - NET_BIND_SERVICE</span><br><span class="line">            <span class="comment"># www-data -&gt; 33</span></span><br><span class="line">            runAsUser: 33</span><br><span class="line">          env:</span><br><span class="line">            - name: POD_NAME</span><br><span class="line">              valueFrom:</span><br><span class="line">                fieldRef:</span><br><span class="line">                  fieldPath: metadata.name</span><br><span class="line">            - name: POD_NAMESPACE</span><br><span class="line">              valueFrom:</span><br><span class="line">                fieldRef:</span><br><span class="line">                  fieldPath: metadata.namespace</span><br><span class="line">          ports:</span><br><span class="line">            - name: http</span><br><span class="line">              containerPort: 80</span><br><span class="line">              hostPort: 80</span><br><span class="line">            - name: https</span><br><span class="line">              containerPort: 443</span><br><span class="line">              hostPort: 443</span><br><span class="line">          livenessProbe:</span><br><span class="line">            failureThreshold: 3</span><br><span class="line">            httpGet:</span><br><span class="line">              path: /healthz</span><br><span class="line">              port: 10254</span><br><span class="line">              scheme: HTTP</span><br><span class="line">            initialDelaySeconds: 10</span><br><span class="line">            periodSeconds: 10</span><br><span class="line">            successThreshold: 1</span><br><span class="line">            timeoutSeconds: 1</span><br><span class="line">          readinessProbe:</span><br><span class="line">            failureThreshold: 3</span><br><span class="line">            httpGet:</span><br><span class="line">              path: /healthz</span><br><span class="line">              port: 10254</span><br><span class="line">              scheme: HTTP</span><br><span class="line">            periodSeconds: 10</span><br><span class="line">            successThreshold: 1</span><br><span class="line">            timeoutSeconds: 1</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
+<p><code>hostNetwork: true</code>是增加的， 官方的 Ingress Controller 有个坑，默认注释了hostNetwork 工作方式。以防止端口的在宿主机的冲突。没有绑定到宿主机 80 端口，也就是说前端 Nginx 没有监听宿主机 80 端口；所以需要把配置搞下来自己加一下 hostNetwork。</p>
+<h4 id="3-2、部署默认后端"><a href="#3-2、部署默认后端" class="headerlink" title="3.2、部署默认后端"></a>3.2、部署默认后端</h4><p>我们知道 前端的 Nginx 最终要负载到后端 service 上，那么如果访问不存在的域名咋整？官方给出的建议是部署一个 默认后端，对于未知请求全部负载到这个默认后端上；这个后端啥也不干，就是返回 404，部署如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat default-backend.yaml </span></span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: default-http-backend</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: default-http-backend</span><br><span class="line">  namespace: ingress-nginx</span><br><span class="line">spec:</span><br><span class="line">  replicas: 1</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        k8s-app: default-http-backend</span><br><span class="line">    spec:</span><br><span class="line">      terminationGracePeriodSeconds: 60</span><br><span class="line">      containers:</span><br><span class="line">      - name: default-http-backend</span><br><span class="line">        <span class="comment"># Any image is permissable as long as:</span></span><br><span class="line">        <span class="comment"># 1. It serves a 404 page at /</span></span><br><span class="line">        <span class="comment"># 2. It serves 200 on a /healthz endpoint</span></span><br><span class="line">        image: docker.io/xxlaila/defaultbackend:1.4</span><br><span class="line">        livenessProbe:</span><br><span class="line">          httpGet:</span><br><span class="line">            path: /healthz</span><br><span class="line">            port: 8080</span><br><span class="line">            scheme: HTTP</span><br><span class="line">          initialDelaySeconds: 30</span><br><span class="line">          timeoutSeconds: 5</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 8080</span><br><span class="line">        resources:</span><br><span class="line">          limits:</span><br><span class="line">            cpu: 10m</span><br><span class="line">            memory: 20Mi</span><br><span class="line">          requests:</span><br><span class="line">            cpu: 10m</span><br><span class="line">            memory: 20Mi</span><br><span class="line"><span class="comment">#      nodeSelector:</span></span><br><span class="line"><span class="comment">#        kubernetes.io/hostname: 172.21.16.231</span></span><br><span class="line">---</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: default-http-backend</span><br><span class="line">  namespace: ingress-nginx</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: default-http-backend</span><br><span class="line">spec:</span><br><span class="line">  ports:</span><br><span class="line">  - port: 80</span><br><span class="line">    targetPort: 8080</span><br><span class="line">  selector:</span><br><span class="line">    k8s-app: default-http-backend</span><br></pre></td></tr></table></figure>
 
+<h4 id="3-3、执行创建-完成后可以看到"><a href="#3-3、执行创建-完成后可以看到" class="headerlink" title="3.3、执行创建,完成后可以看到"></a>3.3、执行创建,完成后可以看到</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f mandatory.yaml </span></span><br><span class="line"><span class="comment"># kubectl create -f default-backend.yaml</span></span><br></pre></td></tr></table></figure>
 
+<p><img src="http://pvyidozd0.bkt.clouddn.com/34dnksjfh384yksfkjdsfsd.png" alt="img"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get pods -n ingress-nginx</span></span><br><span class="line">NAME                                       READY   STATUS    RESTARTS   AGE</span><br><span class="line">default-http-backend-66cdcb6c7d-pb9sp      1/1     Running   0          8h</span><br><span class="line">nginx-ingress-controller-69585dbb4-m6fcm   1/1     Running   0          8h</span><br><span class="line"><span class="comment"># kubectl get svc -n ingress-nginx</span></span><br><span class="line">NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE</span><br><span class="line">default-http-backend   ClusterIP   10.102.60.154   &lt;none&gt;        80/TCP    8h</span><br></pre></td></tr></table></figure>
 
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">帧中继, 网络设备</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/19/帧中继配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-kubernetes-ci-cd-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/12/kubernetes-ci-cd-一/">kubernetes ci/cd(一)</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/12/kubernetes-ci-cd-一/" class="archive-article-date">
-  	<time datetime="2019-08-12T06:56:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>基于jenkins的CI/CD安装</p>
-</blockquote>
-<p>jenkins一个流行的持续集成/发布工具，在Kubernetes使用,持续构建与发布是我们日常工作中必不可少的一个步骤，目前大多公司都采用 Jenkins 集群来搭建符合需求的 CI/CD 流程，然而传统的 Jenkins Slave 一主多从方式会存在一些痛点，比如：主 Master 发生单点故障时，整个流程都不可用了；每个 Slave 的配置环境不一样，来完成不同语言的编译打包等操作，但是这些差异化的配置导致管理起来非常不方便，维护起来也是比较费劲；资源分配不均衡，有的 Slave 要运行的 job 出现排队等待，而有的 Slave 处于空闲状态；最后资源有浪费，每台 Slave 可能是实体机或者 VM，当 Slave 处于空闲状态时，也不会完全释放掉资源。</p>
-<p>提到基于Kubernete的CI/CD，可以使用的工具有很多，比如Jenkins、Gitlab CI已经新兴的drone之类的，我们这里会使用大家最为熟悉的Jenins来做CI/CD的工具。</p>
+<h3 id="4、部署-Ingress"><a href="#4、部署-Ingress" class="headerlink" title="4、部署 Ingress"></a>4、部署 Ingress</h3><p>从上面可以知道 Ingress 就是个规则，指定哪个域名转发到哪个 Service，所以说首先我们得有个 Service，当然 Service 去哪找这里就不管了；这里默认为已经有了两个可用的 Service，以下以 jenkins、Dashboard 为例<br>先写一个 Ingress 文件，语法格式啥的请参考 官方文档，由于我的 jenkins在kube-ops，Dashboard 在kube-system 这个命名空间，所以要指定 namespace.参考下面实例</p>
+<h4 id="4-1、部署jenkins实例"><a href="#4-1、部署jenkins实例" class="headerlink" title="4.1、部署jenkins实例"></a>4.1、部署jenkins实例</h4><h1 id="cat-jenkins-ingress-yaml"><a href="#cat-jenkins-ingress-yaml" class="headerlink" title="cat jenkins-ingress.yaml"></a>cat jenkins-ingress.yaml</h1><p>apiVersion: extensions/v1beta1<br>kind: Ingress<br>metadata:<br>  name: jenkins-ingress<br>  namespace: kube-ops<br>  annotations:<br>    kubernetes.io/ingress.class: “nginx”<br>spec:<br>  rules:</p>
 <ul>
-<li>优点:<ul>
-<li>Jenkins 安装完成了，接下来我们不用急着就去使用，我们要了解下在 Kubernetes 环境下面使用 Jenkins 有什么好处。都知道持续构建与发布是我们日常工作中必不可少的一个步骤，目前大多公司都采用 Jenkins 集群来搭建符合需求的 CI/CD 流程，然而传统的 Jenkins Slave 一主多从方式会存在一些痛点，比如:<ul>
-<li>E 主 Master 发生单点故障时，整个流程都不可用了。</li>
-<li>E 每个 Slave 的配置环境不一样，来完成不同语言的编译打包等操作，但是这些差异化的配置导致管理起来非常不方便，维护起来也是比较费劲。</li>
-<li>E 资源分配不均衡，有的 Slave 要运行的 job 出现排队等待，而有的 Slave 处于空闲状态。</li>
-<li>E 资源有浪费，每台 Slave 可能是物理机或者虚拟机，当 Slave 处于空闲状态时，也不会完全释放掉资源。</li>
-</ul>
+<li>host: ci.xxlaila.io<br>http:<br>  paths:<ul>
+<li>backend:<br>  serviceName: jenkins2<br>  servicePort: 8080<h1 id="kubectl-create-f-jenkins-ingress-yaml"><a href="#kubectl-create-f-jenkins-ingress-yaml" class="headerlink" title="kubectl create -f jenkins-ingress.yaml"></a>kubectl create -f jenkins-ingress.yaml</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">执行域名解析到ip地址，访问jenkins</span><br><span class="line"></span><br><span class="line">![img](http://pvyidozd0.bkt.clouddn.com/1566808344775.jpg)</span><br><span class="line"></span><br><span class="line">#### 4.2、部署kubernetes-dashboard</span><br><span class="line">``` bash</span><br><span class="line"># cat nginx-kubernetes-dashboard.yaml </span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: dashboard-ingress</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  annotations:</span><br><span class="line">    nginx.ingress.kubernetes.io/ingress.class: nginx</span><br><span class="line">    nginx.ingress.kubernetes.io/secure-backends: &quot;true&quot;</span><br><span class="line">    nginx.ingress.kubernetes.io/ssl-passthrough: &quot;true&quot;</span><br><span class="line">spec:</span><br><span class="line">  tls:</span><br><span class="line">  - hosts:</span><br><span class="line">    - k8s.xxlaila.io</span><br><span class="line">    secretName: ingress-secret</span><br><span class="line">  rules:</span><br><span class="line">    - host: dashboard.xxlaila.io</span><br><span class="line">      http:</span><br><span class="line">        paths:</span><br><span class="line">        - path: /</span><br><span class="line">          backend:</span><br><span class="line">            serviceName: kubernetes-dashboard</span><br><span class="line">            servicePort: 443</span><br></pre></td></tr></table></figure>
+
 </li>
-<li>正因为这些种种痛点，我们渴望一种更高效更可靠的方式来完成这个 CI/CD 流程，而 Docker 虚拟化容器技术能很好的解决这个痛点，又特别是在 Kubernetes 集群环境下面能够更好来解决上面的问题，下图是基于 Kubernetes 搭建 Jenkins 集群的简单示意图<br><img src="http://pvyidozd0.bkt.clouddn.com/xjfhs84we.png" alt="img"></li>
 </ul>
 </li>
 </ul>
-<p>可以看到 Jenkins Master 和 Jenkins Slave 以 Pod 形式运行在 Kubernetes 集群的 Node 上，Master 运行在其中一个节点，并且将其配置数据存储到一个 Volume 上去，Slave 运行在各个节点上，并且它不是一直处于运行状态，它会按照需求动态的创建并自动删除。</p>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">kubernetes,k8s,ci/cd,jenkins</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/12/kubernetes-ci-cd-一/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-kube-nfs-动态存储" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/12/kube-nfs-动态存储/">kube nfs 动态存储</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/12/kube-nfs-动态存储/" class="archive-article-date">
-  	<time datetime="2019-08-12T06:43:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>nfs-client-provisioner是一个automatic provisioner，使用NFS作为存储，自动创建PV和对应的PVC，本身不提供NFS存储，需要外部先有一套NFS存储服务。</p>
+<p><img src="http://pvyidozd0.bkt.clouddn.com/786jg656iojhf0.png" alt="img"></p>
+<h3 id="5、部署-Ingress-TLS"><a href="#5、部署-Ingress-TLS" class="headerlink" title="5、部署 Ingress TLS"></a>5、部署 Ingress TLS</h3><p>上面已经做好了 Ingress，接下来配置TLS ；官方给出的样例很简单，大致步骤就两步：创建一个含有证书的 secret、在 Ingress 开启证书；但是官方的有坑，下面是操作步骤</p>
+<h4 id="5-1、创建证书"><a href="#5-1、创建证书" class="headerlink" title="5.1、创建证书"></a>5.1、创建证书</h4><p>首先第一步当然要有个证书，由于我这个 Ingress 有两个服务域名，所以证书要支持两个域名；生成证书命令如下：</p>
 <ul>
-<li>PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器上）</li>
-<li>PV回收的时候以 archieved-${namespace}-${pvcName}-${pvName} 的命名格式（在NFS服务器上）</li>
-</ul>
-<p><a href="https://github.com/kubernetes-incubator/external-storage/tree/master/nfs-client" target="_blank" rel="noopener">官方访问地址</a></p>
-<h2 id="1、权限体系构建"><a href="#1、权限体系构建" class="headerlink" title="1、权限体系构建"></a>1、权限体系构建</h2><h3 id="1-1、创建serviceaccount"><a href="#1-1、创建serviceaccount" class="headerlink" title="1.1、创建serviceaccount"></a>1.1、创建serviceaccount</h3><p>ServiceAccount也是一种账号, 供运行在pod中的进程使用, 为pod中的进程提供必要的身份证明.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat serviceaccount.yaml </span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ServiceAccount</span><br><span class="line">metadata:</span><br><span class="line">  name: nfs-client-provisioner</span><br><span class="line">  namespace: kube-test</span><br></pre></td></tr></table></figure>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">kubernetes,nfs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/12/kube-nfs-动态存储/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-pvc-pv" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/12/pvc-pv/">pvc pv</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/12/pvc-pv/" class="archive-article-date">
-  	<time datetime="2019-08-12T06:04:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h2><p>PersistentVolume（pv）和PersistentVolumeClaim（pvc）是k8s提供的两种API资源，用于抽象存储细节。管理员关注于如何通过pv提供存储功能而无需关注用户如何使用，同样的用户只需要挂载pvc到容器中而不需要关注存储卷采用何种技术实现。<br>pvc和pv的关系与pod和node关系类似，前者消耗后者的资源。pvc可以向pv申请指定大小的存储资源并设置访问模式,这就可以通过Provision -&gt; Claim 的方式，来对存储资源进行控制。</p>
-<h2 id="2、生命周期"><a href="#2、生命周期" class="headerlink" title="2、生命周期"></a>2、生命周期</h2><p>pv和pvc遵循以下生命周期：</p>
-<ul>
-<li>供应准备。通过集群外的存储系统或者云平台来提供存储持久化支持。</li>
-</ul>
-<ul>
-<li><p>静态提供：管理员手动创建多个PV，供PVC使用。</p>
+<li><p>生成CA证书</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mkdir cert &amp;&amp; cd cert</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>动态提供：动态创建PVC特定的PV，并绑定。</p>
-<ul>
-<li>绑定。用户创建pvc并指定需要的资源和访问模式。在找到可用pv之前，pvc会保持未绑定状态。</li>
-<li>使用。用户可在pod中像volume一样使用pvc。</li>
-<li>释放。用户删除pvc来回收存储资源，pv将变成“released”状态。由于还保留着之前的数据，这些数据需要根据不同的策略来处理，否则这些存储资源无法被其他pvc使用。</li>
-<li>回收(Reclaiming)。pv可以设置三种回收策略：保留（Retain），回收（Recycle）和删除（Delete）。</li>
-</ul>
+<li><p>编辑 openssl 配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cp /etc/pki/tls/openssl.cnf .</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>保留策略：允许人工处理保留的数据。</p>
+<li><p>修改主要配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vi openssl.cnf</span></span><br><span class="line">	[req]</span><br><span class="line">	req_extensions = v3_req <span class="comment"># 这行默认注释关着的 把注释删掉</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>删除策略：将删除pv和外部关联的存储资源，需要插件支持。</p>
+<li><p>增加配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vi openssl.cnf</span></span><br><span class="line">[ v3_req ]</span><br><span class="line">basicConstraints = CA:FALSE</span><br><span class="line">keyUsage = nonRepudiation, digitalSignature, keyEncipherment</span><br><span class="line">subjectAltName = @alt_names</span><br><span class="line">[alt_names]</span><br><span class="line">DNS.1 = dashboard.mritd.me		<span class="comment">#需要增加的域名</span></span><br><span class="line">DNS.2 = kibana.mritd.me</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>回收策略：将执行清除操作，之后可以被新的pvc使用，需要插件支持。</p>
+<li><p>生成证书</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># openssl genrsa -out ingress-key.pem 2048</span></span><br><span class="line"><span class="comment"># openssl req -new -key ingress-key.pem -out ingress.csr -subj "/CN=kube-ingress" -config openssl.cnf</span></span><br><span class="line"><span class="comment"># openssl x509 -req -in ingress.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out ingress.pem -days 365 -extensions v3_req -extfile openssl.cnf</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看生成后的证书</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls</span></span><br><span class="line">ca-key.pem  ca.pem  ca.srl  ingress-key.pem  ingress.csr  ingress.pem  openssl.cnf</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<blockquote>
-<p><em>目前只有NFS和HostPath类型卷支持回收策略，AWS EBS,GCE PD,Azure Disk和Cinder支持删除(Delete)策略。</em></p>
-</blockquote>
-<h3 id="2-1、Provisioning"><a href="#2-1、Provisioning" class="headerlink" title="2.1、Provisioning"></a>2.1、Provisioning</h3><p>两种方式提供的PV资源供给</p>
-        
+<h4 id="5-2、创建-secret"><a href="#5-2、创建-secret" class="headerlink" title="5.2、创建 secret"></a>5.2、创建 secret</h4><p>创建好证书以后，需要将证书内容放到 secret 中，secret 中全部内容需要 base64 编码，然后注意去掉换行符(变成一行)；以下是我的 secret 样例(上一步中 ingress.pem 是证书crt，ingress-key.pem 是证书的 key)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim ingress-secret.yml</span></span><br><span class="line">apiVersion: v1</span><br><span class="line">data:</span><br><span class="line">  tls.crt: MIIDAjCCAeqgAwIBAgIJAIUNBpFKFrg4MA0GCSqGSIb3DQEBCwUAMBIxEDAOBgNVBAMMB2t1YmUtY2EwHhcNMTkwMTI5MTAzMzQ3WhcNMjAwMTI5MTAzMzQ3WjAXMRUwEwYDVQQDDAxrdWJlLWluZ3Jlc3MwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC0rLcpYHdqVjN84vCJYF2l61F+LYuPRczPNWyo8Rba4XpT6MMMqoGqgmI164r4of2klBEMPZ0dm1mJaYnjb1Zq/qzVUlqaednxfXsr6u8Xm0a6l7ep+Yr+XcRISZC9AjgyqlFtgjzbNJauHkHTy0i+jqV2A4SkVUT2whBqF00WEKC6kQLhw4Ab1XBG5aOK2Jz4TZdP+Mw4n3AsihycHgjhFvhGNixKl4mpfHfLvFeKxmBa8ZoWT+3AGgkX186EXhdhsfdYqHeLT2TvwsqbUJI8E8F7nleo5VMifr9KGHxaCJ+ynr/WFX1c+0wYAGmSKsw4CnXh4EE+IvaeQjBz8O2HAgMBAAGjVjBUMAkGA1UdEwQCMAAwCwYDVR0PBAQDAgXgMDoGA1UdEQQzMDGCFmNpLnp4Yy5raW5neHVubGlhbi5jb22CF2s4cy56eGMua2luZ3h1bmxpYW4uY29tMA0GCSqGSIb3DQEBCwUAA4IBAQCShThVXg3Fnkrm82sHowxCEc9UG9uzOY2LbxhVN7mcm8U0cXy3acAXdKWLHUwdZnOxNJytpaBBWb/6KFFKrIekaSK+tSD+oRISJf43c1tbt0QEpplUaDagQ35NANyQY2VHQntDdVK4/NNJULbHNEqsu19vDDvmDFi0aLHvqPFAvlGnEBPgO1Ac297pDR2thHyMCGBzRKTQOJy2q3HKexa1pItHjAVmv/k71HBeTJ1en2tFHLUlR0kEhYYPBeRclVZ1oYWn7THRaBW8NtugdM6mxVNFAWQTq5goP0VcW44lWYiUF6mX/UZa2c+5FwsGWdSwbTqmZj7ptA2QcveUcN2/</span><br><span class="line">  tls.key: MIIEowIBAAKCAQEAtKy3KWB3alYzfOLwiWBdpetRfi2Lj0XMzzVsqPEW2uF6U+jDDKqBqoJiNeuK+KH9pJQRDD2dHZtZiWmJ429Wav6s1VJamnnZ8X17K+rvF5tGupe3qfmK/l3ESEmQvQI4MqpRbYI82zSWrh5B08tIvo6ldgOEpFVE9sIQahdNFhCgupEC4cOAG9VwRuWjitic+E2XT/jMOJ9wLIocnB4I4Rb4RjYsSpeJqXx3y7xXisZgWvGaFk/twBoJF9fOhF4XYbH3WKh3i09k78LKm1CSPBPBe55XqOVTIn6/Shh8Wgifsp6/1hV9XPtMGABpkirMOAp14eBBPiL2nkIwc/DthwIDAQABAoIBACLj97sV1fnDC85iRPFCmtMfzmz/fqP8ZsDdIE6/wBok0OrDWGdpxgCXjT+8bOn23nSZ43DptR2ykmfm6anyJk4jQF0xui16uovYH6ErjWCRq+b8xYsdlanpka4kBr95XkDqgy8Sp43taevWDABKkZG7Gljf9Q2HKfo9H85dEZXg7RKKz77wahcHpZofthNo0s5kkH2ckVpjwh5svM+M/gm8KhZkKayndr1ezEAmndT+K/P4EVuYbpPQyk5A6E1G7Dh9M2TczZZa6oiR5etloDk2sOIYxysIZqAblyMN2IrIO0hf4nGqSmfe0TZMCKzSXoVOV2Qe+ckJ+mSyOPcdbIECgYEA3EMWrrr4oc9R8o35mQ2FDCG0FUyXrCo9SN/CyhScdeUx1IRV00CBwL340H1CwzEpj5g4bj6LGGSeEw2g8qfPoPdzr1yxNnCv43dhaGrWRrSxGL6kGfKmIlbgHTPIuzRkAXGWiCgo5JnzPjQtjmpUTmwmxXwqDih8kpRsBSTsmx0CgYEA0f1ORGtmrj/bRBQU0NF+ztTVFJQbPV3lTHl21Qgd8QcEIcOHqzpI2fmkeGZdyYQXIfODA/X+PFng+Z6J5ubtvplN5jPzpQuQRtIZ47NRmtgn4DoH+GAqxIb2hFbwXpXuSR/LelFtzxb91nGiVKpdizvuwnitgOuAIbgGHYbgpfMCgYAvvA5fYb/eeWq+EUzFgauS3H8FmqrIMgNEFtJFL0BVQI2TC/b5qGI2XjVdIbhlSvNB3nBkXAOTDsM/R9XYoMubi+UzXPg+3x8PQeEHWxgDDMfQoAg6Y17j1EYPrhhTkeAWfAJukZ2DJWYU1gQFeD+7Gy8v31/R365XqfjbCIyKdQKBgD+/3tr2oB2WVUK9tfQPJag1BNtSe1KOBubImULjS/O4ZZC6g51//E3wc/X5Xc+nwj4UZ1n0fFJmFt6xOrxWryaF9BhG/VjFwe8+KY3vCn8v0CtKctD8oP842e4jVqXgbo7UkDl6LxQHrthDdzys2+lBMKLpcAMLe8LA01pzcA/xAoGBAK3KXGXz0AsM+5FBbUFVZFOROUQLcd+N8esHnSqD8i7/J0PJsxm9irutuLht0cYK7Fcq65fYmZ4lrJO7bpiBRzONR78lMgm/rcKfCCNr4o4n6almvuFxA+jGgEM2W7iYb9pW+FFOqIOjl0cSHy2hsN7seGv3JBcz5StRjtwuSWf6</span><br><span class="line">kind: Secret</span><br><span class="line">metadata:</span><br><span class="line">  name: ingress-secret</span><br><span class="line">  namespace: kube-system</span><br><span class="line"><span class="built_in">type</span>: Opaque</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建完成后 create <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f ingress-secret.yml</span></span><br><span class="line">secret/ingress-secret created</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="5-3、快速创建"><a href="#5-3、快速创建" class="headerlink" title="5.3、快速创建"></a>5.3、快速创建</h4><p>5.2步骤可以简化创建，可以执行一条命令进行创建，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create secret tls ingress-secret --key cert/ingress-key.pem --cert cert/ingress.pem</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-4、重新部署-Ingress"><a href="#5-4、重新部署-Ingress" class="headerlink" title="5.4、重新部署 Ingress"></a>5.4、重新部署 Ingress</h4><p>在tls生成完成后，需要重新部署Ingress，让Ingress能够家在tls。修改配置文件</p>
+<h5 id="5-4-1、jenkins-tls"><a href="#5-4-1、jenkins-tls" class="headerlink" title="5.4.1、jenkins tls"></a>5.4.1、jenkins tls</h5><h1 id="vi-jenkins-ingress-yaml"><a href="#vi-jenkins-ingress-yaml" class="headerlink" title="vi jenkins-ingress.yaml"></a>vi jenkins-ingress.yaml</h1><p>apiVersion: extensions/v1beta1<br>kind: Ingress<br>metadata:<br>  name: jenkins-ingress<br>  namespace: kube-ops<br>  annotations:<br>    kubernetes.io/ingress.class: “nginx”<br>spec:<br>  tls:</p>
+<ul>
+<li>hosts:<ul>
+<li>ci.xxlaila.io<br>secretName: ingress-secret<br>rules:</li>
+</ul>
+</li>
+<li>host: ci.xxlaila.io<br>http:<br>  paths:<ul>
+<li>backend:<br>  serviceName: jenkins2<br>  servicePort: 8080<h1 id="kubect-create-f-jenkins-ingress-yaml"><a href="#kubect-create-f-jenkins-ingress-yaml" class="headerlink" title="kubect create -f jenkins-ingress.yaml"></a>kubect create -f jenkins-ingress.yaml</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">访问jenkins域名，这里输入http访问会强制跳转到https</span><br><span class="line">![img](http://pvyidozd0.bkt.clouddn.com/1566808668453.jpg)</span><br><span class="line">![img](http://pvyidozd0.bkt.clouddn.com/1566808711171.jpg)</span><br><span class="line"></span><br><span class="line">##### 5.4.2、kubernetes dashboard tls</span><br><span class="line">``` bash</span><br><span class="line"># vim nginx-kubernetes-dashboard.yaml </span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: dashboard-ingress</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  annotations:</span><br><span class="line">    kubernetes.io/ingress.class: &quot;nginx&quot;</span><br><span class="line">spec:</span><br><span class="line">  tls:</span><br><span class="line">  - hosts:</span><br><span class="line">    - k8s.xxlaila.io</span><br><span class="line">    secretName: ingress-secret</span><br><span class="line">  rules:</span><br><span class="line">  - host: k8s.xxlaila.io</span><br><span class="line">    http:</span><br><span class="line">      paths:</span><br><span class="line">      - backend:</span><br><span class="line">          serviceName: kubernetes-dashboard</span><br><span class="line">          servicePort: 80</span><br><span class="line"># kubectl create -f nginx-kubernetes-dashboard.yaml</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6、ingress-高级用法"><a href="#6、ingress-高级用法" class="headerlink" title="6、ingress 高级用法"></a>6、ingress 高级用法</h3><p><img src="http://pvyidozd0.bkt.clouddn.com/34324kjsdfh8234ks.png" alt="img"></p>
+<ul>
+<li>lvs 反向代理到 物理nginx。完成https拆包，继承nginx所有功能</li>
+<li>nginx 反向代理到ingress-control。 ingress-control 有两种部署方式 。<ul>
+<li>ingress-control 使用nodePort 方式暴漏服务</li>
+<li>ingress-control 使用hostNetwork 方式暴漏服务</li>
+</ul>
+</li>
+</ul>
+<h3 id="7、总结分析"><a href="#7、总结分析" class="headerlink" title="7、总结分析"></a>7、总结分析</h3><ul>
+<li>ingress-control 在自己的所属的namespace=ingress, 是可以夸不同namespace提供反向代理服.</li>
+<li>如果需要提供夸NS 访问ingress，先给 ingress-control创建RBAC </li>
+<li>ingress-control 使用hostnetwork 模式 性能比使用service nodePort 性能好很多。因为hostnetwork 是直接获取pod 的IP？</li>
+</ul>
+
       
 
 
 
 
-  <div class="declare" hidden="hidden"></div>
+  <div class="declare">
+    <strong>本文作者：</strong>
+    
+      xxlaila
+    
+    <br>
+    <strong>本文链接：</strong>
+    https://xxlaila.github.io/2019/08/26/k8s部署ingress/
+    <br>
+    <strong>版权声明：</strong>
+    本作品采用
+    <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    进行许可。转载请注明出处！
+    
+  </div>
 
 
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
 
@@ -514,7 +349,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">pvc,pv,kubernetes,存储</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">kubernetes, Ingress</a>
         		</li>
       		
 		</ul>
@@ -523,16 +358,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/12/pvc-pv/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://xxlaila.github.io/2019/08/26/k8s部署ingress/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/26/k8s部署Weave-Scope/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">k8s部署Weave Scope</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -551,602 +445,14 @@
 </aside>
 
 
-
-  
-    <article id="post-kubernetes-单机安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/12/kubernetes-单机安装/">kubernetes 单机安装</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/12/kubernetes-单机安装/" class="archive-article-date">
-  	<time datetime="2019-08-12T03:06:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h2><blockquote>
-<p>一个master节点，四个node节点<br>master节点ip</p>
-<ul>
-<li>172.21.16.244<br>node节点ip</li>
-<li>172.21.16.24</li>
-<li>172.21.16.231</li>
-<li>172.21.16.202</li>
-<li>172.21.16.55</li>
-</ul>
-</blockquote>
-<ul>
-<li>以下是每一个节点上均进行操作</li>
-</ul>
-<h2 id="2、服务器添加阿里云yum源"><a href="#2、服务器添加阿里云yum源" class="headerlink" title="2、服务器添加阿里云yum源"></a>2、服务器添加阿里云yum源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg</span><br><span class="line">  http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、重新建立yum缓存"><a href="#3、重新建立yum缓存" class="headerlink" title="3、重新建立yum缓存"></a>3、重新建立yum缓存</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install epel-release &amp;&amp;yum clean all &amp;&amp;yum makecach</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>记得同步系统的时间</li>
-</ul>
-<h2 id="3、配置转发请求"><a href="#3、配置转发请求" class="headerlink" title="3、配置转发请求"></a>3、配置转发请求</h2>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/12/kubernetes-单机安装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Centos-5-5-安装DRBD" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/11/Centos-5-5-安装DRBD/">Centos 5.5 安装DRBD</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/11/Centos-5-5-安装DRBD/" class="archive-article-date">
-  	<time datetime="2019-08-10T23:42:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Centos5.5 32bit安装DRBD</p>
-<ul>
-<li>安装前准备</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>节点类型</th>
-<th>IP地址规划</th>
-<th>主机名</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>主用节点</td>
-<td>192.168.1.101</td>
-<td>node2</td>
-</tr>
-<tr>
-<td>备用节点</td>
-<td>192.168.1.102</td>
-<td>node1</td>
-</tr>
-<tr>
-<td>磁盘</td>
-<td>两台10G磁盘</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="在主节点安装DRBD"><a href="#在主节点安装DRBD" class="headerlink" title="在主节点安装DRBD"></a>在主节点安装DRBD</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node2 ~]<span class="comment"># yum -y install kmod-drbd83 drbd83</span></span><br></pre></td></tr></table></figure>
-
-<p>安装成功之后/sbin目录下面有drbdadm，drbdmeta，drbdsetup命令，以及/etc /init.d/drbd启动脚本。</p>
-<ul>
-<li>备用节点安装DRBD</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># yum -y install kmod-drbd83 drbd83</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>安装完成后。默认配置文件/etc/drbd.conf，以下是两台的主机配置实例:</p>
-</blockquote>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">DRBD</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/11/Centos-5-5-安装DRBD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-oracle-ORA-12519" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/oracle-ORA-12519/">oracle ORA-12519</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/10/oracle-ORA-12519/" class="archive-article-date">
-  	<time datetime="2019-08-10T09:01:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>oracle ORA-12519错误解决<br>今天遇到做系统压力测试的时候，系统报了一个错误<br>OERR: ORA-12519 TNS:no appropriate service handler found</p>
-</blockquote>
-<p><img src="http://pvyidozd0.bkt.clouddn.com/ORA-12519-error.png" alt="img"></p>
-<p>在网上搜索了一下oralc的错误信息ORA-12519，解决办法挺多的，这里记录一下</p>
-<h3 id="登陆oracle的服务器，在登陆oracle数据库"><a href="#登陆oracle的服务器，在登陆oracle数据库" class="headerlink" title="登陆oracle的服务器，在登陆oracle数据库"></a>登陆oracle的服务器，在登陆oracle数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlplus <span class="string">"/as sysdba"</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>首先检查process和session的使用情况</p>
-</blockquote>
-<p><img src="http://pvyidozd0.bkt.clouddn.com/parameter_%20processes_1.png" alt="img"><br><img src="http://pvyidozd0.bkt.clouddn.com/parameter_%20session_3.png" alt="img"></p>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ORA-12519</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/10/oracle-ORA-12519/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-nginx-https" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/nginx-https/">nginx https</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/10/nginx-https/" class="archive-article-date">
-  	<time datetime="2019-08-10T08:00:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>nginx http 强制跳转到https</p>
-<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$scheme</span> = http ) &#123;</span><br><span class="line">    <span class="built_in">return</span> 301 https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>列子</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name xxx.test.com;</span><br><span class="line">    index index.html index.php index.htm;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$scheme</span> = http ) &#123;</span><br><span class="line">        <span class="built_in">return</span> 301 https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$server_port</span> = 80 ) &#123;</span><br><span class="line">    <span class="built_in">return</span> 301 https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>列子</li>
-</ul>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/10/nginx-https/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-haproxy-keepalived" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/haproxy-keepalived/">haproxy keepalived </a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/10/haproxy-keepalived/" class="archive-article-date">
-  	<time datetime="2019-08-10T03:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文主要是代理kubernetes master的高可用。</p>
-<h2 id="安装haproxy和keepalived"><a href="#安装haproxy和keepalived" class="headerlink" title="安装haproxy和keepalived"></a>安装haproxy和keepalived</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install keepalived.x86_64</span></span><br><span class="line"><span class="comment"># yum -y install haproxy18u.x86_64</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2、配置haproxy"><a href="#2、配置haproxy" class="headerlink" title="2、配置haproxy"></a>2、配置haproxy</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/haproxy/haproxy.cfg</span></span><br><span class="line">global</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local0 err</span><br><span class="line">  maxconn 50000</span><br><span class="line">  uid 99</span><br><span class="line">  gid 99</span><br><span class="line">  <span class="comment">#daemon</span></span><br><span class="line">  nbproc 1</span><br><span class="line">  pidfile haproxy.pid</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">  mode http</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local0 err</span><br><span class="line">  maxconn 50000</span><br><span class="line">  retries 3</span><br><span class="line">  timeout connect 5s</span><br><span class="line">  timeout client 30s</span><br><span class="line">  timeout server 30s</span><br><span class="line">  timeout check 2s</span><br><span class="line"></span><br><span class="line">listen admin_stats</span><br><span class="line">  mode http</span><br><span class="line">  <span class="built_in">bind</span> 0.0.0.0:1080</span><br><span class="line">  <span class="built_in">log</span> 127.0.0.1 local0 err</span><br><span class="line">  stats refresh 30s</span><br><span class="line">  stats uri     /haproxy-status</span><br><span class="line">  stats realm   Haproxy\ Statistics</span><br><span class="line">  stats auth    admin:admin1</span><br><span class="line">  stats hide-version</span><br><span class="line">  stats admin <span class="keyword">if</span> TRUE</span><br><span class="line"></span><br><span class="line">frontend k8s-https</span><br><span class="line">  <span class="built_in">bind</span> 0.0.0.0:8443</span><br><span class="line">  mode tcp</span><br><span class="line">  <span class="comment">#maxconn 50000</span></span><br><span class="line">  default_backend k8s-https</span><br><span class="line"></span><br><span class="line">backend k8s-https</span><br><span class="line">  mode tcp</span><br><span class="line">  balance roundrobin</span><br><span class="line">  server k8s-master-01 172.21.17.4:6443 weight 1 maxconn 1000 check inter 2000 rise 2 fall 3</span><br><span class="line">  server k8s-master-02 172.21.16.231:6443 weight 1 maxconn 1000 check inter 2000 rise 2 fall 3</span><br><span class="line">  server k8s-master-03 172.21.16.240:6443 weight 1 maxconn 1000 check inter 2000 rise 2 fall 3</span><br></pre></td></tr></table></figure>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/10/haproxy-keepalived/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-k8s-prometheus" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/k8s-prometheus/">k8s-prometheus</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/10/k8s-prometheus/" class="archive-article-date">
-  	<time datetime="2019-08-10T03:37:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://prometheus.io/" target="_blank" rel="noopener">Prometheus</a>是一个集数据收集存储、数据查询和数据图表显示于一身的开源监控组件。本文主要讲解如何搭建Prometheus，并使用它监控Kubernetes集群。</p>
-<h2 id="1、下载相关yaml"><a href="#1、下载相关yaml" class="headerlink" title="1、下载相关yaml"></a>1、下载相关yaml</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://github.com/xxlaila/kubernetes-yaml/tree/master/prometheus-grafana</span></span><br><span class="line"><span class="comment"># ls -l</span></span><br><span class="line">configmap.yaml</span><br><span class="line">grafana-deploy.yaml</span><br><span class="line">grafana-ingress.yaml</span><br><span class="line">grafana-svc.yaml</span><br><span class="line">node-exporter.yaml</span><br><span class="line">prometheus-deploy.yaml</span><br><span class="line">prometheus-svc.yaml</span><br><span class="line">rbac-setup.yaml</span><br><span class="line">prometheus-ingress.yaml</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、开始部署"><a href="#2、开始部署" class="headerlink" title="2、开始部署"></a>2、开始部署</h2><h3 id="2-1、采用daemonset方式部署node-exporter组件"><a href="#2-1、采用daemonset方式部署node-exporter组件" class="headerlink" title="2.1、采用daemonset方式部署node-exporter组件"></a>2.1、采用daemonset方式部署node-exporter组件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f  node-exporter.yaml</span></span><br></pre></td></tr></table></figure>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Prometheus, kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/10/k8s-prometheus/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1201,8 +507,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
