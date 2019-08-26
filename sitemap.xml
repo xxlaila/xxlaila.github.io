@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://xxlaila.github.io/2019/08/26/k8s%E9%83%A8%E7%BD%B2Weave-Scope/</loc>
+    <loc>https://xxlaila.github.io/2019/08/26/k8s%E9%83%A8%E7%BD%B2ingress/</loc>
     
-    <lastmod>2019-08-26T08:41:24.486Z</lastmod>
+    <lastmod>2019-08-26T08:47:41.959Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xxlaila.github.io/2019/08/26/k8s%E9%83%A8%E7%BD%B2ingress/</loc>
+    <loc>https://xxlaila.github.io/2019/08/26/k8s%E9%83%A8%E7%BD%B2Weave-Scope/</loc>
     
-    <lastmod>2019-08-26T08:41:10.183Z</lastmod>
+    <lastmod>2019-08-26T08:41:24.486Z</lastmod>
     
   </url>
   
