@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xxlaila.github.io/2019/08/11/Centos-5-5-%E5%AE%89%E8%A3%85DRBD/</loc>
+    <lastmod>2019-08-27</lastmod>
+  </url>  <url>
     <loc>https://xxlaila.github.io/2019/08/26/k8s%E9%83%A8%E7%BD%B2ingress/</loc>
     <lastmod>2019-08-26</lastmod>
   </url>  <url>
@@ -107,9 +110,6 @@
     <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://xxlaila.github.io/2019/08/09/jenkins-job%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2019-08-22</lastmod>
-  </url>  <url>
-    <loc>https://xxlaila.github.io/2019/08/11/Centos-5-5-%E5%AE%89%E8%A3%85DRBD/</loc>
     <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://xxlaila.github.io/2019/08/22/nginx-URL-%E6%96%9C%E6%9D%A0%E9%97%AE%E9%A2%98/</loc>
