@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="说明:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;例如将代码提交到git仓库，将一些敏感信息提交，所以需要删除提交记录以彻底清除提交信息，以得到一个干净的仓库且代码不变  1.Checkout1$ git checkout --orphan latest_branch  2. Add all the files1$ git add -A  3. Commit the changes1$ gi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T03:06:55.358Z">
+<meta property="og:updated_time" content="2019-08-28T06:10:51.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git清空commit记录方法">
 <meta name="twitter:description" content="说明:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;例如将代码提交到git仓库，将一些敏感信息提交，所以需要删除提交记录以彻底清除提交信息，以得到一个干净的仓库且代码不变  1.Checkout1$ git checkout --orphan latest_branch  2. Add all the files1$ git add -A  3. Commit the changes1$ gi">
@@ -315,6 +315,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -408,6 +419,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Checkout"><span class="toc-number">1.</span> <span class="toc-text">1.Checkout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Add-all-the-files"><span class="toc-number">2.</span> <span class="toc-text">2. Add all the files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Commit-the-changes"><span class="toc-number">3.</span> <span class="toc-text">3. Commit the changes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Delete-the-branch"><span class="toc-number">4.</span> <span class="toc-text">4. Delete the branch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Rename-the-current-branch-to-master"><span class="toc-number">5.</span> <span class="toc-text">5.Rename the current branch to master</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Finally-force-update-your-repository"><span class="toc-number">6.</span> <span class="toc-text">6.Finally, force update your repository</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-主干和分支同步"><span class="toc-number"></span> <span class="toc-text">git 主干和分支同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、远程分支"><span class="toc-number">1.</span> <span class="toc-text">1、远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、增加远程分支"><span class="toc-number">2.</span> <span class="toc-text">2、增加远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、更新主库的远程分支"><span class="toc-number">3.</span> <span class="toc-text">3、更新主库的远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、合并主库的最新代码"><span class="toc-number">4.</span> <span class="toc-text">4、合并主库的最新代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、推送本地代码到自身远程仓库"><span class="toc-number">5.</span> <span class="toc-text">5、推送本地代码到自身远程仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-代码信息统计"><span class="toc-number"></span> <span class="toc-text">git 代码信息统计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#统计时间区间commit数量"><span class="toc-number">1.</span> <span class="toc-text">统计时间区间commit数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#统计添加修改的代码行数"><span class="toc-number">2.</span> <span class="toc-text">统计添加修改的代码行数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-stash使用"><span class="toc-number"></span> <span class="toc-text">git stash使用</span></a>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -550,11 +574,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,15 +598,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jira</a>
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,7 +610,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jira</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -598,19 +630,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,7 +650,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,15 +658,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,6 +678,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -666,19 +698,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

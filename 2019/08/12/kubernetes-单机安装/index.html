@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="1.环境准备 一个master节点，四个node节点master节点ip  172.21.16.244node节点ip 172.21.16.24 172.21.16.231 172.21.16.202 172.21.16.55    以下是每一个节点上均进行操作  2、服务器添加阿里云yum源12345678910cat &amp;lt;&amp;lt;EOF &amp;gt; /etc/yum.repos.d/kube">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T03:15:46.433Z">
+<meta property="og:updated_time" content="2019-08-28T06:24:35.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes 单机安装">
 <meta name="twitter:description" content="1.环境准备 一个master节点，四个node节点master节点ip  172.21.16.244node节点ip 172.21.16.24 172.21.16.231 172.21.16.202 172.21.16.55    以下是每一个节点上均进行操作  2、服务器添加阿里云yum源12345678910cat &amp;lt;&amp;lt;EOF &amp;gt; /etc/yum.repos.d/kube">
@@ -361,6 +361,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kubernetes//" class="article-tag-list-link color1">kubernetes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -454,6 +465,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-环境准备"><span class="toc-number">1.</span> <span class="toc-text">1.环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、服务器添加阿里云yum源"><span class="toc-number">2.</span> <span class="toc-text">2、服务器添加阿里云yum源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、重新建立yum缓存"><span class="toc-number">3.</span> <span class="toc-text">3、重新建立yum缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、配置转发请求"><span class="toc-number">4.</span> <span class="toc-text">3、配置转发请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、安装docker"><span class="toc-number">5.</span> <span class="toc-text">4、安装docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、安装k8s-需要的插件"><span class="toc-number">6.</span> <span class="toc-text">5、安装k8s 需要的插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、拉取镜像"><span class="toc-number">7.</span> <span class="toc-text">6、拉取镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、初始化相关镜像"><span class="toc-number">8.</span> <span class="toc-text">7、初始化相关镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1、执行创建目录"><span class="toc-number">8.1.</span> <span class="toc-text">7.1、执行创建目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2、查看验证"><span class="toc-number">8.2.</span> <span class="toc-text">7.2、查看验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、安装flannel-网络"><span class="toc-number">9.</span> <span class="toc-text">8、安装flannel 网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-创建flannel配置文件"><span class="toc-number">9.1.</span> <span class="toc-text">8.1 创建flannel配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-创建网络配置"><span class="toc-number">9.2.</span> <span class="toc-text">8.2 创建网络配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9、查看命名空间"><span class="toc-number">10.</span> <span class="toc-text">9、查看命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10、查看system的pod"><span class="toc-number">11.</span> <span class="toc-text">10、查看system的pod</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11、节点加入到kuberneter"><span class="toc-number">12.</span> <span class="toc-text">11、节点加入到kuberneter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12、安装kubernetes-dashboard"><span class="toc-number">13.</span> <span class="toc-text">12、安装kubernetes dashboard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13、查看dashboard部署是否成功"><span class="toc-number">14.</span> <span class="toc-text">13、查看dashboard部署是否成功</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#13-1、查看dashboard-info"><span class="toc-number">14.1.</span> <span class="toc-text">13.1、查看dashboard info</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-2、查看dashboard部署在那个节点"><span class="toc-number">14.2.</span> <span class="toc-text">13.2、查看dashboard部署在那个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-3、查看service-节点端口"><span class="toc-number">14.3.</span> <span class="toc-text">13.3、查看service 节点端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-4、创建dashboard-admin-账户"><span class="toc-number">14.4.</span> <span class="toc-text">13.4、创建dashboard admin 账户</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14、dashboard-访问"><span class="toc-number">15.</span> <span class="toc-text">14、dashboard 访问</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#14-1、生成证书"><span class="toc-number">15.1.</span> <span class="toc-text">14.1、生成证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-2、dashboard-配置修改"><span class="toc-number">15.2.</span> <span class="toc-text">14.2、dashboard 配置修改</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -596,11 +620,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,15 +644,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jira</a>
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,7 +656,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jira</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,19 +676,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -668,7 +696,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,15 +704,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -704,6 +724,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -712,19 +744,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

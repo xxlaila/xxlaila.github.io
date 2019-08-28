@@ -9,14 +9,14 @@
   <title>k8s角色访问RBAC | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1、rbac介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Kubernetes中的两个用于配置信息的重要资源对象：ConfigMap和Secret，其实到这里我们基本上学习的内容已经覆盖到Kubernetes中一些重要的资源对象了，来部署一个应用程序是完全没有问题的了。在我们演示一个完整的示例之前，我们还需要给大家讲解一个重要的概念：RBAC - 基于角色的访问控制。&amp;nbsp;&amp;nbsp;">
-<meta name="keywords" content="kubernetes,RBAC">
+<meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="k8s角色访问RBAC">
 <meta property="og:url" content="https://xxlaila.github.io/2019/08/24/k8s角色访问RBAC/index.html">
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="1、rbac介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Kubernetes中的两个用于配置信息的重要资源对象：ConfigMap和Secret，其实到这里我们基本上学习的内容已经覆盖到Kubernetes中一些重要的资源对象了，来部署一个应用程序是完全没有问题的了。在我们演示一个完整的示例之前，我们还需要给大家讲解一个重要的概念：RBAC - 基于角色的访问控制。&amp;nbsp;&amp;nbsp;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T03:09:59.560Z">
+<meta property="og:updated_time" content="2019-08-28T06:23:51.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s角色访问RBAC">
 <meta name="twitter:description" content="1、rbac介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Kubernetes中的两个用于配置信息的重要资源对象：ConfigMap和Secret，其实到这里我们基本上学习的内容已经覆盖到Kubernetes中一些重要的资源对象了，来部署一个应用程序是完全没有问题的了。在我们演示一个完整的示例之前，我们还需要给大家讲解一个重要的概念：RBAC - 基于角色的访问控制。&amp;nbsp;&amp;nbsp;">
@@ -332,13 +332,24 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes,RBAC</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/RBAC//" class="article-tag-list-link color5">RBAC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -432,6 +443,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、rbac介绍"><span class="toc-number">1.</span> <span class="toc-text">1、rbac介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、-kubernetes-关于空间权限赋予"><span class="toc-number">2.</span> <span class="toc-text">2、 kubernetes 关于空间权限赋予</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、获取并查看"><span class="toc-number">2.1.</span> <span class="toc-text">1、获取并查看</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、kubectl命令可以用于在命名空间内或者整个集群内授予角色。"><span class="toc-number">2.2.</span> <span class="toc-text">2、kubectl命令可以用于在命名空间内或者整个集群内授予角色。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、在整个集群中授予ClusterRole，包括所有名字空间。示例如下："><span class="toc-number">2.3.</span> <span class="toc-text">3、在整个集群中授予ClusterRole，包括所有名字空间。示例如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、对某一个namespace赋予jenkins部署权限"><span class="toc-number">2.4.</span> <span class="toc-text">4、对某一个namespace赋予jenkins部署权限</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -574,11 +598,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,15 +622,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jira</a>
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,7 +634,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jira</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,19 +654,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,7 +674,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -654,15 +682,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -682,6 +702,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -690,19 +722,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>
