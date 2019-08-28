@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>kube nfs 动态存储 | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nfs-client-provisioner是一个automatic provisioner，使用NFS作为存储，自动创建PV和对应的PVC，本身不提供NFS存储，需要外部先有一套NFS存储服务。  PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器上） PV回收的时候以 archieved-${namespace}-${pvcName}-${">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nfs-client-provisioner是一个automatic provisioner，使用NFS作为存储，自动创建PV和对应的PVC，本身不提供NFS存储，需要外部先有一套NFS存储服务。  PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器上） PV回收的时候以 archieved-${">
 <meta name="keywords" content="kubernetes,nfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kube nfs 动态存储">
 <meta property="og:url" content="https://xxlaila.github.io/2019/08/12/kube-nfs-动态存储/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="nfs-client-provisioner是一个automatic provisioner，使用NFS作为存储，自动创建PV和对应的PVC，本身不提供NFS存储，需要外部先有一套NFS存储服务。  PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器上） PV回收的时候以 archieved-${namespace}-${pvcName}-${">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nfs-client-provisioner是一个automatic provisioner，使用NFS作为存储，自动创建PV和对应的PVC，本身不提供NFS存储，需要外部先有一套NFS存储服务。  PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器上） PV回收的时候以 archieved-${">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/%E6%88%AA%E5%9B%BE.png">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/8934nsdlsa.png">
-<meta property="og:updated_time" content="2019-08-22T13:07:56.120Z">
+<meta property="og:updated_time" content="2019-08-28T03:25:05.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kube nfs 动态存储">
-<meta name="twitter:description" content="nfs-client-provisioner是一个automatic provisioner，使用NFS作为存储，自动创建PV和对应的PVC，本身不提供NFS存储，需要外部先有一套NFS存储服务。  PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器上） PV回收的时候以 archieved-${namespace}-${pvcName}-${">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nfs-client-provisioner是一个automatic provisioner，使用NFS作为存储，自动创建PV和对应的PVC，本身不提供NFS存储，需要外部先有一套NFS存储服务。  PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器上） PV回收的时候以 archieved-${">
 <meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/%E6%88%AA%E5%9B%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
@@ -193,7 +193,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>nfs-client-provisioner是一个automatic provisioner，使用NFS作为存储，自动创建PV和对应的PVC，本身不提供NFS存储，需要外部先有一套NFS存储服务。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;nfs-client-provisioner是一个automatic provisioner，使用NFS作为存储，自动创建PV和对应的PVC，本身不提供NFS存储，需要外部先有一套NFS存储服务。</p>
 <ul>
 <li>PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器上）</li>
 <li>PV回收的时候以 archieved-${namespace}-${pvcName}-${pvName} 的命名格式（在NFS服务器上）</li>
@@ -208,7 +208,7 @@
 
 <h3 id="1-3、账户和角色绑定"><a href="#1-3、账户和角色绑定" class="headerlink" title="1.3、账户和角色绑定"></a>1.3、账户和角色绑定</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat clusterrolebinding.yaml </span></span><br><span class="line">kind: ClusterRoleBinding</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">metadata:</span><br><span class="line">  name: run-nfs-client-provisioner</span><br><span class="line">subjects:</span><br><span class="line">  - kind: ServiceAccount</span><br><span class="line">    name: nfs-client-provisioner</span><br><span class="line">    namespace: kube-test</span><br><span class="line">roleRef:</span><br><span class="line">  kind: ClusterRole</span><br><span class="line">  name: nfs-client-provisioner-runner</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line">执行创建</span><br><span class="line">kubectl create -f serviceaccount.yaml -f clusterrole.yaml -f clusterrolebinding.yaml</span><br></pre></td></tr></table></figure>
 
-<h2 id="2、安装部署"><a href="#2、安装部署" class="headerlink" title="2、安装部署"></a>2、安装部署</h2><p>下载deployment.yaml文件,需要修改NFS服务器所在的IP地址（10.10.10.60），以及NFS服务器共享的路径（/ifs/kubernetes），两处都需要修改为你实际的NFS服务器和共享目录</p>
+<h2 id="2、安装部署"><a href="#2、安装部署" class="headerlink" title="2、安装部署"></a>2、安装部署</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;下载deployment.yaml文件,需要修改NFS服务器所在的IP地址（10.10.10.60），以及NFS服务器共享的路径（/ifs/kubernetes），两处都需要修改为你实际的NFS服务器和共享目录</p>
 <h3 id="2-1、部署存储供应卷"><a href="#2-1、部署存储供应卷" class="headerlink" title="2.1、部署存储供应卷"></a>2.1、部署存储供应卷</h3><blockquote>
 <p>根据PVC的请求, 动态创建PV存储.</p>
 </blockquote>
@@ -541,11 +541,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,15 +561,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,7 +573,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,11 +581,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,19 +613,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,18 +649,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -657,7 +657,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

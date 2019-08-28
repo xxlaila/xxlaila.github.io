@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>pvc pv | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、介绍PersistentVolume（pv）和PersistentVolumeClaim（pvc）是k8s提供的两种API资源，用于抽象存储细节。管理员关注于如何通过pv提供存储功能而无需关注用户如何使用，同样的用户只需要挂载pvc到容器中而不需要关注存储卷采用何种技术实现。pvc和pv的关系与pod和node关系类似，前者消耗后者的资源。pvc可以向pv申请指定大小的存储资源并设置访问模式,">
+  <meta name="description" content="1、介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;PersistentVolume（pv）和PersistentVolumeClaim（pvc）是k8s提供的两种API资源，用于抽象存储细节。管理员关注于如何通过pv提供存储功能而无需关注用户如何使用，同样的用户只需要挂载pvc到容器中而不需要关注存储卷采用何种技术实现。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;pvc和pv的关系与po">
 <meta name="keywords" content="pvc,pv,kubernetes,存储">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pvc pv">
 <meta property="og:url" content="https://xxlaila.github.io/2019/08/12/pvc-pv/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="1、介绍PersistentVolume（pv）和PersistentVolumeClaim（pvc）是k8s提供的两种API资源，用于抽象存储细节。管理员关注于如何通过pv提供存储功能而无需关注用户如何使用，同样的用户只需要挂载pvc到容器中而不需要关注存储卷采用何种技术实现。pvc和pv的关系与pod和node关系类似，前者消耗后者的资源。pvc可以向pv申请指定大小的存储资源并设置访问模式,">
+<meta property="og:description" content="1、介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;PersistentVolume（pv）和PersistentVolumeClaim（pvc）是k8s提供的两种API资源，用于抽象存储细节。管理员关注于如何通过pv提供存储功能而无需关注用户如何使用，同样的用户只需要挂载pvc到容器中而不需要关注存储卷采用何种技术实现。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;pvc和pv的关系与po">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-22T13:07:46.993Z">
+<meta property="og:updated_time" content="2019-08-28T03:21:10.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pvc pv">
-<meta name="twitter:description" content="1、介绍PersistentVolume（pv）和PersistentVolumeClaim（pvc）是k8s提供的两种API资源，用于抽象存储细节。管理员关注于如何通过pv提供存储功能而无需关注用户如何使用，同样的用户只需要挂载pvc到容器中而不需要关注存储卷采用何种技术实现。pvc和pv的关系与pod和node关系类似，前者消耗后者的资源。pvc可以向pv申请指定大小的存储资源并设置访问模式,">
+<meta name="twitter:description" content="1、介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;PersistentVolume（pv）和PersistentVolumeClaim（pvc）是k8s提供的两种API资源，用于抽象存储细节。管理员关注于如何通过pv提供存储功能而无需关注用户如何使用，同样的用户只需要挂载pvc到容器中而不需要关注存储卷采用何种技术实现。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;pvc和pv的关系与po">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -190,7 +190,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h2><p>PersistentVolume（pv）和PersistentVolumeClaim（pvc）是k8s提供的两种API资源，用于抽象存储细节。管理员关注于如何通过pv提供存储功能而无需关注用户如何使用，同样的用户只需要挂载pvc到容器中而不需要关注存储卷采用何种技术实现。<br>pvc和pv的关系与pod和node关系类似，前者消耗后者的资源。pvc可以向pv申请指定大小的存储资源并设置访问模式,这就可以通过Provision -&gt; Claim 的方式，来对存储资源进行控制。</p>
+        <h2 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;PersistentVolume（pv）和PersistentVolumeClaim（pvc）是k8s提供的两种API资源，用于抽象存储细节。管理员关注于如何通过pv提供存储功能而无需关注用户如何使用，同样的用户只需要挂载pvc到容器中而不需要关注存储卷采用何种技术实现。<br>&nbsp;&nbsp;&nbsp;&nbsp;pvc和pv的关系与pod和node关系类似，前者消耗后者的资源。pvc可以向pv申请指定大小的存储资源并设置访问模式,这就可以通过Provision -&gt; Claim 的方式，来对存储资源进行控制。</p>
 <h2 id="2、生命周期"><a href="#2、生命周期" class="headerlink" title="2、生命周期"></a>2、生命周期</h2><p>pv和pvc遵循以下生命周期：</p>
 <ul>
 <li>供应准备。通过集群外的存储系统或者云平台来提供存储持久化支持。</li>
@@ -561,11 +561,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,15 +581,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,7 +593,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,11 +601,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,19 +633,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,18 +669,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -677,7 +677,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

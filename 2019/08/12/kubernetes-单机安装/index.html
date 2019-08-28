@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="1.环境准备 一个master节点，四个node节点master节点ip  172.21.16.244node节点ip 172.21.16.24 172.21.16.231 172.21.16.202 172.21.16.55    以下是每一个节点上均进行操作  2、服务器添加阿里云yum源12345678910cat &amp;lt;&amp;lt;EOF &amp;gt; /etc/yum.repos.d/kube">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-22T13:08:07.647Z">
+<meta property="og:updated_time" content="2019-08-28T03:15:46.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes 单机安装">
 <meta name="twitter:description" content="1.环境准备 一个master节点，四个node节点master节点ip  172.21.16.244node节点ip 172.21.16.24 172.21.16.231 172.21.16.202 172.21.16.55    以下是每一个节点上均进行操作  2、服务器添加阿里云yum源12345678910cat &amp;lt;&amp;lt;EOF &amp;gt; /etc/yum.repos.d/kube">
@@ -273,10 +273,10 @@
 
 <h3 id="13-4、创建dashboard-admin-账户"><a href="#13-4、创建dashboard-admin-账户" class="headerlink" title="13.4、创建dashboard admin 账户"></a>13.4、创建dashboard admin 账户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl apply -f admin-user.yaml</span></span><br><span class="line">获取tokens</span><br><span class="line"><span class="comment"># kubectl describe serviceaccount admin -n kube-system</span></span><br><span class="line">Name:                admin</span><br><span class="line">Namespace:           kube-system</span><br><span class="line">Labels:              k8s-app=kubernetes-dashboard</span><br><span class="line">Annotations:         kubectl.kubernetes.io/last-applied-configuration:</span><br><span class="line">                       &#123;<span class="string">"apiVersion"</span>:<span class="string">"v1"</span>,<span class="string">"kind"</span>:<span class="string">"ServiceAccount"</span>,<span class="string">"metadata"</span>:&#123;<span class="string">"annotations"</span>:&#123;&#125;,<span class="string">"labels"</span>:&#123;<span class="string">"k8s-app"</span>:<span class="string">"kubernetes-dashboard"</span>&#125;,<span class="string">"name"</span>:<span class="string">"admin"</span>,<span class="string">"namesp...</span></span><br><span class="line"><span class="string">Image pull secrets:  &lt;none&gt;</span></span><br><span class="line"><span class="string">Mountable secrets:   admin-token-kxs6k</span></span><br><span class="line"><span class="string">Tokens:              admin-token-kxs6k</span></span><br><span class="line"><span class="string">Events:              &lt;none&gt;</span></span><br><span class="line"><span class="string">查看token 信息</span></span><br><span class="line"><span class="string"># kubectl describe secret admin-token-kxs6k -n kube-system</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="14、dashboard-访问"><a href="#14、dashboard-访问" class="headerlink" title="14、dashboard 访问"></a>14、dashboard 访问</h2><p>利用节点ip+30001 端口进行访问。访问之前需要在master节点生成证书，把证书(kubecfg.p12)下载到本地，进行导入到浏览器，这里使用火狐浏览器，google浏览器导入,不成功，生产证书之前记得第9步已操作</p>
+<h2 id="14、dashboard-访问"><a href="#14、dashboard-访问" class="headerlink" title="14、dashboard 访问"></a>14、dashboard 访问</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;利用节点ip+30001 端口进行访问。访问之前需要在master节点生成证书，把证书(kubecfg.p12)下载到本地，进行导入到浏览器，这里使用火狐浏览器，google浏览器导入,不成功，生产证书之前记得第9步已操作</p>
 <h3 id="14-1、生成证书"><a href="#14-1、生成证书" class="headerlink" title="14.1、生成证书"></a>14.1、生成证书</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># grep 'client-certificate-data' ~/.kube/config | head -n 1 | awk '&#123;print $2&#125;' | base64 -d &gt;&gt; kubecfg.crt</span></span><br><span class="line"><span class="comment"># grep 'client-key-data' ~/.kube/config | head -n 1 | awk '&#123;print $2&#125;' | base64 -d &gt;&gt; kubecfg.key</span></span><br><span class="line"><span class="comment"># openssl pkcs12 -export -clcerts -inkey kubecfg.key -in kubecfg.crt -out kubecfg.p12 -name "kubernetes-client"</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="14-2、dashboard-配置修改"><a href="#14-2、dashboard-配置修改" class="headerlink" title="14.2、dashboard 配置修改"></a>14.2、dashboard 配置修改</h3><p>kubernetes dashboard v1.10.0使用的是双因子登陆，默认token失效的时间是900秒，15分钟，每15分钟就要进行一次认证。我们可以功过修改token-ttl参数来设置，主要是修改dashboard.yaml文件，并重新建立即可</p>
+<h3 id="14-2、dashboard-配置修改"><a href="#14-2、dashboard-配置修改" class="headerlink" title="14.2、dashboard 配置修改"></a>14.2、dashboard 配置修改</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;kubernetes dashboard v1.10.0使用的是双因子登陆，默认token失效的时间是900秒，15分钟，每15分钟就要进行一次认证。我们可以功过修改token-ttl参数来设置，主要是修改dashboard.yaml文件，并重新建立即可</p>
 <ul>
 <li>在配置文件里面添加<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ports:</span><br><span class="line">- containerPort: 8443</span><br><span class="line">  protocol: TCP</span><br><span class="line">args:</span><br><span class="line">  - --auto-generate-certificates</span><br><span class="line">  - --token-ttl=43200</span><br></pre></td></tr></table></figure>
 
@@ -586,11 +586,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,15 +606,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -618,7 +618,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,11 +626,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -654,19 +658,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -682,18 +694,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -702,7 +702,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

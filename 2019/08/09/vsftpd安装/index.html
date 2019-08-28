@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>vsftpd安装 | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得">
 <meta name="keywords" content="vsftpd">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vsftpd安装">
 <meta property="og:url" content="https://xxlaila.github.io/2019/08/09/vsftpd安装/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/%E5%9B%BE%E7%89%87%201.png">
-<meta property="og:updated_time" content="2019-08-22T13:08:13.208Z">
+<meta property="og:updated_time" content="2019-08-28T03:27:27.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vsftpd安装">
-<meta name="twitter:description" content="Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得">
 <meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/%E5%9B%BE%E7%89%87%201.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
@@ -192,12 +192,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改一个用户的权限不会影响到其他用户。<br>centos 系统版本(5.5、5.3、6.0、6.5)</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改一个用户的权限不会影响到其他用户。<br>centos 系统版本(5.5、5.3、6.0、6.5)</p>
 <h3 id="首先我们安装vsftpd"><a href="#首先我们安装vsftpd" class="headerlink" title="首先我们安装vsftpd"></a>首先我们安装vsftpd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># yum –y install vsftpd</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="2、启动和加载vsftp"><a href="#2、启动和加载vsftp" class="headerlink" title="2、启动和加载vsftp"></a>2、启动和加载vsftp</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># service vsftpd restart</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># chkconfig –level 35 vsftpd on</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="3、开始配置vsftpd"><a href="#3、开始配置vsftpd" class="headerlink" title="3、开始配置vsftpd"></a>3、开始配置vsftpd</h3><p>Vsftpd的配置文件在/etc/vsftpd下面，在配置之前我们先cp一份做备份用以免发生意外(做什么都要随手备份，因为没有一万，只有万一。)</p>
+<h3 id="3、开始配置vsftpd"><a href="#3、开始配置vsftpd" class="headerlink" title="3、开始配置vsftpd"></a>3、开始配置vsftpd</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Vsftpd的配置文件在/etc/vsftpd下面，在配置之前我们先cp一份做备份用以免发生意外(做什么都要随手备份，因为没有一万，只有万一。)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment">#  cp /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.bak</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># vim /etc/vsftpd/vsftpd.conf</span></span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -218,7 +218,7 @@
 <h3 id="5、开始建立生成虚拟用户数据文件"><a href="#5、开始建立生成虚拟用户数据文件" class="headerlink" title="5、开始建立生成虚拟用户数据文件"></a>5、开始建立生成虚拟用户数据文件</h3><p>这里需要安装db4,设置PAM文件权限，并制定虚拟用户数据库文件读取</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># yum –y install db4-utils</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># db_load -T -t hash -f /etc/vsftpd/xuniusers /etc/vsftpd/xuniusers.db</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># chmod 600 /etc/vsftpd/xuniusers.db</span></span><br></pre></td></tr></table></figure>
 
-<p>在/etc/pam.d/vsftpd的文件头部加入以下信息（注*这里一定要在前面，不能再后面，刚开始我也加载到后面登陆的时候提示错误）,修改前先备份</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;在/etc/pam.d/vsftpd的文件头部加入以下信息（注*这里一定要在前面，不能再后面，刚开始我也加载到后面登陆的时候提示错误）,修改前先备份</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># cp /etc/pam.d/vsftpd /etc/pam.d/vsftpd.bak</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># vi /etc/pam.d/vsftpd</span></span><br><span class="line">auth sufficient /lib/security/pam_userdb.so db=/etc/vsftpd/xuniusers</span><br><span class="line">account sufficient /lib/security/pam_userdb.so db=/etc/vsftpd/xuniusers</span><br></pre></td></tr></table></figure>
 
 <p><img src="http://pvyidozd0.bkt.clouddn.com/%E5%9B%BE%E7%89%87%201.png" alt="img"></p>
@@ -227,14 +227,18 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">auth sufficient /lib64/security/pam_userdb.so db=/etc/vsftpd/xuniusers</span><br><span class="line">account sufficient /lib64/security/pam_userdb.so db=/etc/vsftpd/xuniusers</span><br></pre></td></tr></table></figure>
 
-<p>建立一个系统用户vsftpd，用户的主目录可以自己设置，/home/wwwroot，设置用户登陆的终端为/bin/false</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;建立一个系统用户vsftpd，用户的主目录可以自己设置，/home/wwwroot，设置用户登陆的终端为/bin/false</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># useradd vsftpd -d /home/wwwroot -s /bin/false</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># chown vsftpd:vsftpd /home/wwwroot -R</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># chown www:www /home/wwwroot –R #如果虚拟用户的宿主用户为nginx，需要这样设置。</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="6、建立虚拟用户个人vsftp的配置文件"><a href="#6、建立虚拟用户个人vsftp的配置文件" class="headerlink" title="6、建立虚拟用户个人vsftp的配置文件"></a>6、建立虚拟用户个人vsftp的配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># mkdir /etc/vsftpd/vconf</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># cd /etc/vsftpd/vconf</span></span><br><span class="line">touch test1 test2 test3 <span class="comment">#这里创建三个虚拟用户配置文件</span></span><br><span class="line">vi web1 <span class="comment">#编辑用户test1配置文件，其他的跟这个配置文件类似</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># vim test1</span></span><br><span class="line">local_root=/home/wwwroot/test1/</span><br><span class="line">write_enable=YES</span><br><span class="line">anon_umask=022</span><br><span class="line">anon_world_readable_only=NO</span><br><span class="line">anon_upload_enable=YES</span><br><span class="line">anon_mkdir_write_enable=YES</span><br><span class="line">anon_other_write_enable=YES</span><br></pre></td></tr></table></figure>
 
-<p>最后重启vsftpd服务,不关闭Selinux可以执行以下命令通过FTP。防火墙开放端口<figure class="highlight plain"><figcaption><span>-P ftpd_disable_trans 1```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">上述配置完成后还可以通过#adduser -d /目录路径 -g vsftpd -s /sbin/nologin 用户名 这个命令来添加一个用户，不需要配置任何权限都可以进行FTP的访问,最后补充说明，需要安装的其他插件</span><br><span class="line">* 需要安装的的是pan</span><br><span class="line">``` bash</span><br><span class="line">[root@RAID1 ~]# yum install -y pam</span><br></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;最后重启vsftpd服务,不关闭Selinux可以执行以下命令通过FTP。防火墙开放端口<code>setsebool -P ftpd_disable_trans 1</code><br>&nbsp;&nbsp;&nbsp;&nbsp;上述配置完成后还可以通过#adduser -d /目录路径 -g vsftpd -s /sbin/nologin 用户名 这个命令来添加一个用户，不需要配置任何权限都可以进行FTP的访问,最后补充说明，需要安装的其他插件</p>
 <ul>
-<li>这里我们还可以查看日志，可以根据提示的提示来判断。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># cat /var/log/secure</span></span><br></pre></td></tr></table></figure>
+<li><p>需要安装的的是pan</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># yum install -y pam</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这里我们还可以查看日志，可以根据提示的提示来判断。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># cat /var/log/secure</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -538,11 +542,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,15 +562,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,7 +574,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,11 +582,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,19 +614,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,18 +650,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -654,7 +658,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

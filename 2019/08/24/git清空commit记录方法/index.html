@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>git清空commit记录方法 | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="说明：例如将代码提交到git仓库，将一些敏感信息提交，所以需要删除提交记录以彻底清除提交信息，以得到一个干净的仓库且代码不变  1.Checkout1$ git checkout --orphan latest_branch  2. Add all the files1$ git add -A  3. Commit the changes1$ git commit -am &quot;commit mes">
+  <meta name="description" content="说明:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;例如将代码提交到git仓库，将一些敏感信息提交，所以需要删除提交记录以彻底清除提交信息，以得到一个干净的仓库且代码不变  1.Checkout1$ git checkout --orphan latest_branch  2. Add all the files1$ git add -A  3. Commit the changes1$ gi">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git清空commit记录方法">
 <meta property="og:url" content="https://xxlaila.github.io/2019/08/24/git清空commit记录方法/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="说明：例如将代码提交到git仓库，将一些敏感信息提交，所以需要删除提交记录以彻底清除提交信息，以得到一个干净的仓库且代码不变  1.Checkout1$ git checkout --orphan latest_branch  2. Add all the files1$ git add -A  3. Commit the changes1$ git commit -am &quot;commit mes">
+<meta property="og:description" content="说明:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;例如将代码提交到git仓库，将一些敏感信息提交，所以需要删除提交记录以彻底清除提交信息，以得到一个干净的仓库且代码不变  1.Checkout1$ git checkout --orphan latest_branch  2. Add all the files1$ git add -A  3. Commit the changes1$ gi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-24T01:55:46.546Z">
+<meta property="og:updated_time" content="2019-08-28T03:06:55.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git清空commit记录方法">
-<meta name="twitter:description" content="说明：例如将代码提交到git仓库，将一些敏感信息提交，所以需要删除提交记录以彻底清除提交信息，以得到一个干净的仓库且代码不变  1.Checkout1$ git checkout --orphan latest_branch  2. Add all the files1$ git add -A  3. Commit the changes1$ git commit -am &quot;commit mes">
+<meta name="twitter:description" content="说明:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;例如将代码提交到git仓库，将一些敏感信息提交，所以需要删除提交记录以彻底清除提交信息，以得到一个干净的仓库且代码不变  1.Checkout1$ git checkout --orphan latest_branch  2. Add all the files1$ git add -A  3. Commit the changes1$ gi">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -191,7 +191,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>说明：例如将代码提交到git仓库，将一些敏感信息提交，所以需要删除提交记录以彻底清除提交信息，以得到一个干净的仓库且代码不变</p>
+<p>说明:<br>&nbsp;&nbsp;&nbsp;&nbsp;例如将代码提交到git仓库，将一些敏感信息提交，所以需要删除提交记录以彻底清除提交信息，以得到一个干净的仓库且代码不变</p>
 </blockquote>
 <h3 id="1-Checkout"><a href="#1-Checkout" class="headerlink" title="1.Checkout"></a>1.Checkout</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout --orphan latest_branch</span><br></pre></td></tr></table></figure>
 
@@ -225,7 +225,7 @@
 <h3 id="统计添加修改的代码行数"><a href="#统计添加修改的代码行数" class="headerlink" title="统计添加修改的代码行数"></a>统计添加修改的代码行数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --<span class="built_in">stat</span> --since=<span class="string">"2019-4-01"</span> --before=<span class="string">"2019-06-30"</span> |perl -ne <span class="string">'END &#123; print $c &#125; $c += $1 if /(\d+) insertions/'</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="git-stash使用"><a href="#git-stash使用" class="headerlink" title="git stash使用"></a>git stash使用</h2><blockquote>
-<p>场景: 今天遇到一个特殊的场景，写的一个python程序到服务器上有一个小bug运行报错，然后就直接在服务器上调试，修改了程序，程序正常跑起，然而本地也要修改，修改的时候同时修改了其他的地方，然后提交了git上，这时，需要在服务器上更新最新的代码，但是服务器上的代码和git上的不一致，这就会导致错误，这时git的强大之处就体现出来了。</p>
+<p>场景:<br>&nbsp;&nbsp;&nbsp;&nbsp;今天遇到一个特殊的场景，写的一个python程序到服务器上有一个小bug运行报错，然后就直接在服务器上调试，修改了程序，程序正常跑起，然而本地也要修改，修改的时候同时修改了其他的地方，然后提交了git上，这时，需要在服务器上更新最新的代码，但是服务器上的代码和git上的不一致，这就会导致错误，这时git的强大之处就体现出来了。</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">能够将所有未提交的修改（工作区和暂存区）保存至堆栈中，用于后续恢复当前工作目录。</span><br></pre></td></tr></table></figure>
 
@@ -236,7 +236,7 @@
 </ul>
 <p>将当前stash中的内容弹出，并应用到当前分支对应的工作目录上。 </p>
 <blockquote>
-<p>注：该命令将堆栈中最近保存的内容删除（栈是先进后出）</p>
+<p>注:<br>&nbsp;&nbsp;&nbsp;&nbsp;该命令将堆栈中最近保存的内容删除（栈是先进后出）</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash pop</span><br></pre></td></tr></table></figure>
 
@@ -540,11 +540,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,15 +560,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,7 +572,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,11 +580,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,19 +612,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,18 +648,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -656,7 +656,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

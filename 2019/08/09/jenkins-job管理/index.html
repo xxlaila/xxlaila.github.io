@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-5-29_10-49-46.png">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-5-29_10-52-49.png">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-5-29_10-54-54.png">
-<meta property="og:updated_time" content="2019-08-22T13:04:37.224Z">
+<meta property="og:updated_time" content="2019-08-28T03:27:58.005Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jenkins job管理">
 <meta name="twitter:description" content="需求 介绍: 由于公司的ci用于编译的环境比较多，为了更好的区分，为每一个环境建立了一个view 痛点: 运维人员在建立job的时候需要到对应的view下面建立，虽然这不是狠痛苦，但是还是不太方便。 解决: 人员登陆默认是在all view下面，每个运维人员在这下面建立job，然后每个view根据自己的规则吧对应的job添加进来。job规则自己提前定义好  1、安装jenkins插件view jo">
@@ -207,7 +207,7 @@
 <h3 id="2-1、前端1"><a href="#2-1、前端1" class="headerlink" title="2.1、前端1"></a>2.1、前端1</h3><p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-29_10-47-20.png" alt="img"></p>
 <h3 id="2-2、前端test"><a href="#2-2、前端test" class="headerlink" title="2.2、前端test"></a>2.2、前端test</h3><p>test 我们用安装的这个插件来进行配置,点击Add Job Filter——&gt;会有很多的规则，可以根据不同的状态、栏目来进行却分，这里我们选择</p>
 <p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-29_10-49-46.png" alt="img"><br><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-29_10-52-49.png" alt="img"></p>
-<p>这里添加了两条规则，这个是建立job的时候有点特殊性，用第一种方式实现就会有问题，第一条规则是现实所有test类的job，但是吧下面的一条给加进来了，不现实这类job。保持即可</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;这里添加了两条规则，这个是建立job的时候有点特殊性，用第一种方式实现就会有问题，第一条规则是现实所有test类的job，但是吧下面的一条给加进来了，不现实这类job。保持即可</p>
 <h2 id="后端java程序"><a href="#后端java程序" class="headerlink" title="后端java程序"></a>后端java程序</h2><p>dev环境为例子</p>
 <p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-5-29_10-54-54.png" alt="img"></p>
 
@@ -509,11 +509,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,15 +529,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,7 +541,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,11 +549,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,19 +581,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,18 +617,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -625,7 +625,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

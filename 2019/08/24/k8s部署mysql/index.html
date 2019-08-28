@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>k8s部署mysql | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="后端存储利用nfs来进行存储数据，nfs安装不阐述，需要注意注意的是在创建mysql 的共享目录的时候参数设定/data/mysql *(rw,sync,no_root_squash,no_subtree_check) 12$ sudo systemctl  restart nfs.service$ sudo exportfs -arv  1、创建mysql存储123456789101112131">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;后端存储利用nfs来进行存储数据，nfs安装不阐述，需要注意注意的是在创建mysql 的共享目录的时候参数设定/data/mysql *(rw,sync,no_root_squash,no_subtree_check) 12$ sudo systemctl  restart nfs.service$ sudo exportfs -arv  1、创建m">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="k8s部署mysql">
 <meta property="og:url" content="https://xxlaila.github.io/2019/08/24/k8s部署mysql/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="后端存储利用nfs来进行存储数据，nfs安装不阐述，需要注意注意的是在创建mysql 的共享目录的时候参数设定/data/mysql *(rw,sync,no_root_squash,no_subtree_check) 12$ sudo systemctl  restart nfs.service$ sudo exportfs -arv  1、创建mysql存储123456789101112131">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;后端存储利用nfs来进行存储数据，nfs安装不阐述，需要注意注意的是在创建mysql 的共享目录的时候参数设定/data/mysql *(rw,sync,no_root_squash,no_subtree_check) 12$ sudo systemctl  restart nfs.service$ sudo exportfs -arv  1、创建m">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/8364iqhkdaskda.png">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/42joud02jef24.png">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/2348wndssmadklj3.png">
-<meta property="og:updated_time" content="2019-08-24T06:47:58.915Z">
+<meta property="og:updated_time" content="2019-08-28T03:28:32.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s部署mysql">
-<meta name="twitter:description" content="后端存储利用nfs来进行存储数据，nfs安装不阐述，需要注意注意的是在创建mysql 的共享目录的时候参数设定/data/mysql *(rw,sync,no_root_squash,no_subtree_check) 12$ sudo systemctl  restart nfs.service$ sudo exportfs -arv  1、创建mysql存储123456789101112131">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;后端存储利用nfs来进行存储数据，nfs安装不阐述，需要注意注意的是在创建mysql 的共享目录的时候参数设定/data/mysql *(rw,sync,no_root_squash,no_subtree_check) 12$ sudo systemctl  restart nfs.service$ sudo exportfs -arv  1、创建m">
 <meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/8364iqhkdaskda.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
@@ -194,7 +194,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>后端存储利用nfs来进行存储数据，nfs安装不阐述，需要注意注意的是在创建mysql 的共享目录的时候参数设定<code>/data/mysql *(rw,sync,no_root_squash,no_subtree_check)</code></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;后端存储利用nfs来进行存储数据，nfs安装不阐述，需要注意注意的是在创建mysql 的共享目录的时候参数设定<code>/data/mysql *(rw,sync,no_root_squash,no_subtree_check)</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl  restart nfs.service</span><br><span class="line">$ sudo exportfs -arv</span><br></pre></td></tr></table></figure>
 
 <h3 id="1、创建mysql存储"><a href="#1、创建mysql存储" class="headerlink" title="1、创建mysql存储"></a>1、创建mysql存储</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat mysql-pvc.yaml</span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: PersistentVolume</span><br><span class="line">metadata:</span><br><span class="line">  name: pvc001</span><br><span class="line">  namespace: kube-ops</span><br><span class="line">spec:</span><br><span class="line">  capacity:</span><br><span class="line">    storage: 10Gi</span><br><span class="line">  accessModes:</span><br><span class="line">  - ReadWriteMany</span><br><span class="line">  persistentVolumeReclaimPolicy: Delete</span><br><span class="line">  nfs:</span><br><span class="line">    server: 172.21.16.240</span><br><span class="line">    path: /data/mysql</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">kind: PersistentVolumeClaim</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">  name: mysql-pvc</span><br><span class="line">  namespace: kube-ops</span><br><span class="line">spec:</span><br><span class="line">  accessModes:</span><br><span class="line">    - ReadWriteMany</span><br><span class="line">  resources:</span><br><span class="line">    requests:</span><br><span class="line">      storage: 10Gi</span><br></pre></td></tr></table></figure>
@@ -215,7 +215,7 @@
 
 <h4 id="6-1、设置mysql"><a href="#6-1、设置mysql" class="headerlink" title="6.1、设置mysql"></a>6.1、设置mysql</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; alter user <span class="string">'root'</span>@<span class="string">'%'</span> identified with mysql_native_password by<span class="string">'root'</span>;</span><br><span class="line">mysql&gt; alter  user <span class="string">'root'</span>@<span class="string">'%'</span> identified by <span class="string">'mysql'</span>;</span><br><span class="line">mysql&gt; alter  user <span class="string">'root'</span>@<span class="string">'%'</span> identified by <span class="string">'noc-mysql'</span>;</span><br></pre></td></tr></table></figure>
 
-<p>退出mysql和容器，执行quit;退出mysql，按ctrl+p+q从容器中返回node主机。利用navicat 通过node主机的ip地址和端口30003连接mysql数据库<br><img src="http://pvyidozd0.bkt.clouddn.com/2348wndssmadklj3.png" alt="img"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;退出mysql和容器，执行quit;退出mysql，按ctrl+p+q从容器中返回node主机。利用navicat 通过node主机的ip地址和端口30003连接mysql数据库<br><img src="http://pvyidozd0.bkt.clouddn.com/2348wndssmadklj3.png" alt="img"></p>
 
       
 
@@ -515,11 +515,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,15 +535,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,7 +547,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,11 +555,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,19 +587,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,18 +623,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -631,7 +631,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

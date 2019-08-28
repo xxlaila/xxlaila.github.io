@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>nexus3搭建npm私服 | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="介绍公司前端全是nodejs的，nodejs在install的时候往往是连接外网，或者是设置taobao源，即使是设置了taobao源，但是还是解决不了慢的问题，为此搭建了一个内部的npm私服，这里用google一下有很多都可以来进行搭建npm私服，然后也看到了nexus也可以来做，正好maven私服也是用的这个，都是3版本，为此选择了nexus来做npm的私服，和maven一套便于维护。 nex">
+  <meta name="description" content="介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;公司前端全是nodejs的，nodejs在install的时候往往是连接外网，或者是设置taobao源，即使是设置了taobao源，但是还是解决不了慢的问题，为此搭建了一个内部的npm私服，这里用google一下有很多都可以来进行搭建npm私服，然后也看到了nexus也可以来做，正好maven私服也是用的这个，都是3版本，为此选择了nexus来做">
 <meta name="keywords" content="nexus,npm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nexus3搭建npm私服">
 <meta property="og:url" content="https://xxlaila.github.io/2019/08/23/nexus3搭建npm私服/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="介绍公司前端全是nodejs的，nodejs在install的时候往往是连接外网，或者是设置taobao源，即使是设置了taobao源，但是还是解决不了慢的问题，为此搭建了一个内部的npm私服，这里用google一下有很多都可以来进行搭建npm私服，然后也看到了nexus也可以来做，正好maven私服也是用的这个，都是3版本，为此选择了nexus来做npm的私服，和maven一套便于维护。 nex">
+<meta property="og:description" content="介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;公司前端全是nodejs的，nodejs在install的时候往往是连接外网，或者是设置taobao源，即使是设置了taobao源，但是还是解决不了慢的问题，为此搭建了一个内部的npm私服，这里用google一下有很多都可以来进行搭建npm私服，然后也看到了nexus也可以来做，正好maven私服也是用的这个，都是3版本，为此选择了nexus来做">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1566524933898.jpg">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1566525058628.jpg">
@@ -26,10 +26,10 @@
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1566528241640.jpg">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1566528346695.jpg">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1566528452423.jpg">
-<meta property="og:updated_time" content="2019-08-23T03:17:20.058Z">
+<meta property="og:updated_time" content="2019-08-28T03:25:53.185Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nexus3搭建npm私服">
-<meta name="twitter:description" content="介绍公司前端全是nodejs的，nodejs在install的时候往往是连接外网，或者是设置taobao源，即使是设置了taobao源，但是还是解决不了慢的问题，为此搭建了一个内部的npm私服，这里用google一下有很多都可以来进行搭建npm私服，然后也看到了nexus也可以来做，正好maven私服也是用的这个，都是3版本，为此选择了nexus来做npm的私服，和maven一套便于维护。 nex">
+<meta name="twitter:description" content="介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;公司前端全是nodejs的，nodejs在install的时候往往是连接外网，或者是设置taobao源，即使是设置了taobao源，但是还是解决不了慢的问题，为此搭建了一个内部的npm私服，这里用google一下有很多都可以来进行搭建npm私服，然后也看到了nexus也可以来做，正好maven私服也是用的这个，都是3版本，为此选择了nexus来做">
 <meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/1566524933898.jpg">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
@@ -201,15 +201,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>公司前端全是nodejs的，nodejs在install的时候往往是连接外网，或者是设置taobao源，即使是设置了taobao源，但是还是解决不了慢的问题，为此搭建了一个内部的npm私服，这里用google一下有很多都可以来进行搭建npm私服，然后也看到了nexus也可以来做，正好maven私服也是用的这个，都是3版本，为此选择了nexus来做npm的私服，和maven一套便于维护。</p>
-<h3 id="nexus安装"><a href="#nexus安装" class="headerlink" title="nexus安装"></a>nexus安装</h3><p>不介绍，安装完成nexus后，在浏览器打开并进行登录，第一次安装登录nexus的默认用户<code>admin</code>,默认密码是<code>admin123</code></p>
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;公司前端全是nodejs的，nodejs在install的时候往往是连接外网，或者是设置taobao源，即使是设置了taobao源，但是还是解决不了慢的问题，为此搭建了一个内部的npm私服，这里用google一下有很多都可以来进行搭建npm私服，然后也看到了nexus也可以来做，正好maven私服也是用的这个，都是3版本，为此选择了nexus来做npm的私服，和maven一套便于维护。</p>
+<h3 id="nexus安装"><a href="#nexus安装" class="headerlink" title="nexus安装"></a>nexus安装</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;不介绍，安装完成nexus后，在浏览器打开并进行登录，第一次安装登录nexus的默认用户<code>admin</code>,默认密码是<code>admin123</code></p>
 <a id="more"></a>
 
-<h3 id="1、创建repository"><a href="#1、创建repository" class="headerlink" title="1、创建repository"></a>1、创建repository</h3><p>Nexus Repository Manager 3 可以用于多种类型的包管理。此处我们要搭建的是npm包管理私服。登录在界面点击下图所示按钮。<br><img src="http://pvyidozd0.bkt.clouddn.com/1566524933898.jpg" alt="img"></p>
+<h3 id="1、创建repository"><a href="#1、创建repository" class="headerlink" title="1、创建repository"></a>1、创建repository</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Nexus Repository Manager 3 可以用于多种类型的包管理。此处我们要搭建的是npm包管理私服。登录在界面点击下图所示按钮。<br><img src="http://pvyidozd0.bkt.clouddn.com/1566524933898.jpg" alt="img"></p>
 <ul>
 <li>进入设置界面<br><img src="http://pvyidozd0.bkt.clouddn.com/1566525058628.jpg" alt="img"></li>
 </ul>
-<p>上图中左面菜单有很多功能。可以在 Security 下的 Users 可以创建用户并设置用户权限，修改用户信息。Logging 下的 Log Viewer 可以查看运行日志。而本次配置主要用到了 Repository -&gt; Repositories 和 Security -&gt; Realms 两项</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;上图中左面菜单有很多功能。可以在 Security 下的 Users 可以创建用户并设置用户权限，修改用户信息。Logging 下的 Log Viewer 可以查看运行日志。而本次配置主要用到了 Repository -&gt; Repositories 和 Security -&gt; Realms 两项</p>
 <ul>
 <li>首先在 Repositories 创建仓库</li>
 </ul>
@@ -221,19 +221,19 @@
 </li>
 </ul>
 <p><a href="https://help.sonatype.com/repomanager3/formats/npm-registry" target="_blank" rel="noopener">Proxying npm Registries</a>可产看官方文档</p>
-<p>将公共 npm 服务器的资源代理缓存，减少重复下载，加快开发人员和CI服务器的下载速度。创建时选择 npm(proxy) ，只需填写 Name 和 Remote storage （公有库域名）即可。<br><img src="http://pvyidozd0.bkt.clouddn.com/1566526375641.jpg" alt="img"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;将公共 npm 服务器的资源代理缓存，减少重复下载，加快开发人员和CI服务器的下载速度。创建时选择 npm(proxy) ，只需填写 Name 和 Remote storage （公有库域名）即可。<br><img src="http://pvyidozd0.bkt.clouddn.com/1566526375641.jpg" alt="img"></p>
 <ul>
 <li>第二种：私有 npm 仓库<br><a href="https://help.sonatype.com/repomanager3/formats/npm-registry" target="_blank" rel="noopener">Private npm Registries</a>官方文档</li>
 </ul>
-<p>用于 上传自己的npm包 以及第三方npm包。同样的创建步骤，只不过选择的 仓库类型为 npm(hosted)。 只填写 Name 即可</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;用于 上传自己的npm包 以及第三方npm包。同样的创建步骤，只不过选择的 仓库类型为 npm(hosted)。 只填写 Name 即可</p>
 <p><img src="http://pvyidozd0.bkt.clouddn.com/1566526835511.jpg" alt="img"></p>
 <ul>
 <li>第三种：npm 仓库组<br><a href="https://help.sonatype.com/repomanager3/formats/npm-registry" target="_blank" rel="noopener">Grouping npm Registries</a>官方文档</li>
 </ul>
-<p>用于将多个内部或外部 npm 仓库统一为一个 npm仓库。被添加到 npm仓库组 中的 其他仓库内的包都能够通过该 npm仓库组 访问到。</p>
-<p>例如：可以新建一个npm仓库组将 上面两个刚刚创建的 npm 仓库都添加进去。这样可以通过这个 npm仓库组，既可以访问 公有npm仓库 又可以访问自己的 私有npm仓库。<br>仓库类型为 npm(group)，起一个名字 Name，然后选择需要添加到组里的 其他 npm 仓库。此处我选择的是 npm-kxl-external 和 npm-kxl-internal</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;用于将多个内部或外部 npm 仓库统一为一个 npm仓库。被添加到 npm仓库组 中的 其他仓库内的包都能够通过该 npm仓库组 访问到。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;例如：可以新建一个npm仓库组将 上面两个刚刚创建的 npm 仓库都添加进去。这样可以通过这个 npm仓库组，既可以访问 公有npm仓库 又可以访问自己的 私有npm仓库。<br>&nbsp;&nbsp;&nbsp;&nbsp;仓库类型为 npm(group)，起一个名字 Name，然后选择需要添加到组里的 其他 npm 仓库。此处我选择的是 npm-kxl-external 和 npm-kxl-internal</p>
 <p><img src="http://pvyidozd0.bkt.clouddn.com/1566527053731.jpg" alt="img"></p>
-<p>仓库都创建完毕了。接下来需要验证一下是否可用,在 Repositories 中点击创建的 仓库。可以查看该仓库的 URL。<br>在项目目录下创建 .npmrc 文件。文件内容为：</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;仓库都创建完毕了。接下来需要验证一下是否可用,在 Repositories 中点击创建的 仓库。可以查看该仓库的 URL。<br>在项目目录下创建 .npmrc 文件。文件内容为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">registry=http://172.21.16.90:8081/repository/npm-kxl-all/</span><br></pre></td></tr></table></figure>
 
 <p>然后随便安装一个 包 试试（日志级别设置为 info）：</p>
@@ -551,11 +551,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,15 +571,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,7 +583,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,11 +591,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,19 +623,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,18 +659,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -667,7 +667,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

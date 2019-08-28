@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>k8s角色访问RBAC | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、rbac介绍Kubernetes中的两个用于配置信息的重要资源对象：ConfigMap和Secret，其实到这里我们基本上学习的内容已经覆盖到Kubernetes中一些重要的资源对象了，来部署一个应用程序是完全没有问题的了。在我们演示一个完整的示例之前，我们还需要给大家讲解一个重要的概念：RBAC - 基于角色的访问控制。RBAC使用rbac.authorization.k8s.io API">
+  <meta name="description" content="1、rbac介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Kubernetes中的两个用于配置信息的重要资源对象：ConfigMap和Secret，其实到这里我们基本上学习的内容已经覆盖到Kubernetes中一些重要的资源对象了，来部署一个应用程序是完全没有问题的了。在我们演示一个完整的示例之前，我们还需要给大家讲解一个重要的概念：RBAC - 基于角色的访问控制。&amp;nbsp;&amp;nbsp;">
 <meta name="keywords" content="kubernetes,RBAC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="k8s角色访问RBAC">
 <meta property="og:url" content="https://xxlaila.github.io/2019/08/24/k8s角色访问RBAC/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="1、rbac介绍Kubernetes中的两个用于配置信息的重要资源对象：ConfigMap和Secret，其实到这里我们基本上学习的内容已经覆盖到Kubernetes中一些重要的资源对象了，来部署一个应用程序是完全没有问题的了。在我们演示一个完整的示例之前，我们还需要给大家讲解一个重要的概念：RBAC - 基于角色的访问控制。RBAC使用rbac.authorization.k8s.io API">
+<meta property="og:description" content="1、rbac介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Kubernetes中的两个用于配置信息的重要资源对象：ConfigMap和Secret，其实到这里我们基本上学习的内容已经覆盖到Kubernetes中一些重要的资源对象了，来部署一个应用程序是完全没有问题的了。在我们演示一个完整的示例之前，我们还需要给大家讲解一个重要的概念：RBAC - 基于角色的访问控制。&amp;nbsp;&amp;nbsp;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-24T06:50:16.632Z">
+<meta property="og:updated_time" content="2019-08-28T03:09:59.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s角色访问RBAC">
-<meta name="twitter:description" content="1、rbac介绍Kubernetes中的两个用于配置信息的重要资源对象：ConfigMap和Secret，其实到这里我们基本上学习的内容已经覆盖到Kubernetes中一些重要的资源对象了，来部署一个应用程序是完全没有问题的了。在我们演示一个完整的示例之前，我们还需要给大家讲解一个重要的概念：RBAC - 基于角色的访问控制。RBAC使用rbac.authorization.k8s.io API">
+<meta name="twitter:description" content="1、rbac介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Kubernetes中的两个用于配置信息的重要资源对象：ConfigMap和Secret，其实到这里我们基本上学习的内容已经覆盖到Kubernetes中一些重要的资源对象了，来部署一个应用程序是完全没有问题的了。在我们演示一个完整的示例之前，我们还需要给大家讲解一个重要的概念：RBAC - 基于角色的访问控制。&amp;nbsp;&amp;nbsp;">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -190,7 +190,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1、rbac介绍"><a href="#1、rbac介绍" class="headerlink" title="1、rbac介绍"></a>1、rbac介绍</h3><p>Kubernetes中的两个用于配置信息的重要资源对象：ConfigMap和Secret，其实到这里我们基本上学习的内容已经覆盖到Kubernetes中一些重要的资源对象了，来部署一个应用程序是完全没有问题的了。在我们演示一个完整的示例之前，我们还需要给大家讲解一个重要的概念：RBAC - 基于角色的访问控制。<br>RBAC使用rbac.authorization.k8s.io API Group 来实现授权决策，允许管理员通过 Kubernetes API 动态配置策略，要启用RBAC，需要在 apiserver 中添加参数–authorization-mode=RBAC，如果使用的kubeadm安装的集群，1.6 版本以上的都默认开启了RBAC，可以通过查看 Master 节点上 apiserver 的静态Pod定义文件：</p>
+        <h3 id="1、rbac介绍"><a href="#1、rbac介绍" class="headerlink" title="1、rbac介绍"></a>1、rbac介绍</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Kubernetes中的两个用于配置信息的重要资源对象：ConfigMap和Secret，其实到这里我们基本上学习的内容已经覆盖到Kubernetes中一些重要的资源对象了，来部署一个应用程序是完全没有问题的了。在我们演示一个完整的示例之前，我们还需要给大家讲解一个重要的概念：RBAC - 基于角色的访问控制。<br>&nbsp;&nbsp;&nbsp;&nbsp;RBAC使用rbac.authorization.k8s.io API Group 来实现授权决策，允许管理员通过 Kubernetes API 动态配置策略，要启用RBAC，需要在 apiserver 中添加参数–authorization-mode=RBAC，如果使用的kubeadm安装的集群，1.6 版本以上的都默认开启了RBAC，可以通过查看 Master 节点上 apiserver 的静态Pod定义文件：</p>
 <h3 id="2、-kubernetes-关于空间权限赋予"><a href="#2、-kubernetes-关于空间权限赋予" class="headerlink" title="2、 kubernetes 关于空间权限赋予"></a>2、 kubernetes 关于空间权限赋予</h3><h4 id="1、获取并查看"><a href="#1、获取并查看" class="headerlink" title="1、获取并查看"></a>1、获取并查看</h4><ul>
 <li>Role</li>
 <li>ClusterRole</li>
@@ -564,11 +564,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,15 +584,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,7 +596,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,11 +604,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,19 +636,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,18 +672,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -680,7 +680,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

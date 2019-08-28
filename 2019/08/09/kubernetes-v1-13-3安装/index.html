@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="1、 环境准备   ip type docker os k8s version    172.21.17.4 master,etcd  CentOS Linux release 7.4.1708 v1.13.3   172.21.16.230 master,etcd  CentOS Linux release 7.4.1708    172.21.16.240 master,etcd  CentO">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-22T13:07:35.721Z">
+<meta property="og:updated_time" content="2019-08-28T03:34:16.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes v1.13.3安装">
 <meta name="twitter:description" content="1、 环境准备   ip type docker os k8s version    172.21.17.4 master,etcd  CentOS Linux release 7.4.1708 v1.13.3   172.21.16.230 master,etcd  CentOS Linux release 7.4.1708    172.21.16.240 master,etcd  CentO">
@@ -258,7 +258,7 @@
 
 <h2 id="3、部署ETC集群"><a href="#3、部署ETC集群" class="headerlink" title="3、部署ETC集群"></a>3、部署ETC集群</h2><a id="more"></a>
 
-<p>etcd的正常运行是k8s集群运行的提前条件，因此部署k8s集群首先部署etcd集群。安装CA证书，安装CFSSL证书管理工具。直接下载二进制安装包</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;etcd的正常运行是k8s集群运行的提前条件，因此部署k8s集群首先部署etcd集群。安装CA证书，安装CFSSL证书管理工具。直接下载二进制安装包</p>
 <h3 id="3-1、下载cfssl"><a href="#3-1、下载cfssl" class="headerlink" title="3.1、下载cfssl"></a>3.1、下载cfssl</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># curl -LO https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 -o cfssl</span></span><br><span class="line"><span class="comment"># curl -LO https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 -o cfssljson</span></span><br><span class="line"><span class="comment"># curl -LO https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64 -o cfssl-certinfo</span></span><br><span class="line"><span class="comment"># chmod +x *</span></span><br><span class="line"><span class="comment"># mv cfssl* /usr/bin/</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="3-2、创建CA"><a href="#3-2、创建CA" class="headerlink" title="3.2、创建CA"></a>3.2、创建CA</h3><h4 id="3-2-1、创建CA配置文件"><a href="#3-2-1、创建CA配置文件" class="headerlink" title="3.2.1、创建CA配置文件"></a>3.2.1、创建CA配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mkdir ssl &amp;&amp; cd ssl/</span></span><br><span class="line"><span class="comment"># cfssl print-defaults config &gt; config.json</span></span><br><span class="line"><span class="comment"># cfssl print-defaults csr &gt; csr.json</span></span><br><span class="line">* 根据config.json文件的格式创建如下的ca-config.json文件</span><br><span class="line">* 过期时间设置成了 87600h</span><br><span class="line"><span class="comment"># cat ca-config.json</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"signing"</span>: &#123;</span><br><span class="line">        <span class="string">"default"</span>: &#123;</span><br><span class="line">            <span class="string">"expiry"</span>: <span class="string">"87600h"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">"profiles"</span>: &#123;</span><br><span class="line">            <span class="string">"kubernetes"</span>: &#123;</span><br><span class="line">                <span class="string">"usages"</span>: [</span><br><span class="line">                    <span class="string">"signing"</span>,</span><br><span class="line">                    <span class="string">"key encipherment"</span>,</span><br><span class="line">                    <span class="string">"server auth"</span>,</span><br><span class="line">                    <span class="string">"client auth"</span></span><br><span class="line">                ],</span><br><span class="line">                <span class="string">"expiry"</span>: <span class="string">"87600h"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -346,7 +346,7 @@
 </ul>
 <h2 id="3-5、开始配置etcd"><a href="#3-5、开始配置etcd" class="headerlink" title="3.5、开始配置etcd"></a>3.5、开始配置etcd</h2><h3 id="3-5-1、下载etcd"><a href="#3-5-1、下载etcd" class="headerlink" title="3.5.1、下载etcd"></a>3.5.1、下载etcd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># wget https://github.com/etcd-io/etcd/releases/download/v3.3.12/etcd-v3.3.12-linux-amd64.tar.gz</span></span><br><span class="line"><span class="comment"># tar zxf etcd-v3.3.12-linux-amd64.tar.gz</span></span><br><span class="line"><span class="comment"># cd etcd-v3.3.12-linux-amd64</span></span><br><span class="line"><span class="comment"># cp -arp etcd* /usr/bin/</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="3-5-2、创建etcd的Systemd-unit-文件"><a href="#3-5-2、创建etcd的Systemd-unit-文件" class="headerlink" title="3.5.2、创建etcd的Systemd unit 文件"></a>3.5.2、创建etcd的Systemd unit 文件</h3><p>Etcd 这里采用最新的 3.3.12 版本，安装方式直接复制二进制文件、systemd service 配置即可，不过需要注意相关用户权限问题，以下脚本配置等参考了 etcd rpm 安装包</p>
+<h3 id="3-5-2、创建etcd的Systemd-unit-文件"><a href="#3-5-2、创建etcd的Systemd-unit-文件" class="headerlink" title="3.5.2、创建etcd的Systemd unit 文件"></a>3.5.2、创建etcd的Systemd unit 文件</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Etcd 这里采用最新的 3.3.12 版本，安装方式直接复制二进制文件、systemd service 配置即可，不过需要注意相关用户权限问题，以下脚本配置等参考了 etcd rpm 安装包</p>
 <h3 id="3-5-3、配置etcd-conf"><a href="#3-5-3、配置etcd-conf" class="headerlink" title="3.5.3、配置etcd.conf"></a>3.5.3、配置etcd.conf</h3><ul>
 <li>k8s-master-01</li>
 </ul>
@@ -375,7 +375,7 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># etcdctl --key-file /etc/etcd/ssl/etcd-key.pem --cert-file /etc/etcd/ssl/etcd.pem --ca-file /etc/kubernetes/ssl/ca.pem cluster-health</span></span><br><span class="line">member 93c04a995ff8aa8 is healthy: got healthy result from https://172.21.16.240:2379</span><br><span class="line">member 7cc4daf6e4db3a8a is healthy: got healthy result from https://172.21.16.231:2379</span><br><span class="line">member ec7ea930930d012e is healthy: got healthy result from https://172.21.17.4:2379</span><br><span class="line">cluster is healthy</span><br></pre></td></tr></table></figure>
 
-<h2 id="4、创建kube-config文件"><a href="#4、创建kube-config文件" class="headerlink" title="4、创建kube config文件"></a>4、创建kube config文件</h2><p>kubelet、kube-proxy等Node机器上的经常与master机器的kube-apiserver进程通信时需要认证和授权；kubernetes 1.4 开始支持有kube-apiserver为客户端生成tls证书的 TLS Bootstrapping功能，这样就不需要为每个客户端生成证书了，该功能当前仅支持为kuelet生成证书；</p>
+<h2 id="4、创建kube-config文件"><a href="#4、创建kube-config文件" class="headerlink" title="4、创建kube config文件"></a>4、创建kube config文件</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;kubelet、kube-proxy等Node机器上的经常与master机器的kube-apiserver进程通信时需要认证和授权；kubernetes 1.4 开始支持有kube-apiserver为客户端生成tls证书的 TLS Bootstrapping功能，这样就不需要为每个客户端生成证书了，该功能当前仅支持为kuelet生成证书；</p>
 <h3 id="4-1、创建TLS-Bootstrapping-Toekn"><a href="#4-1、创建TLS-Bootstrapping-Toekn" class="headerlink" title="4.1、创建TLS Bootstrapping Toekn"></a>4.1、创建TLS Bootstrapping Toekn</h3><p>Token auth file，Token可以时任意的包含128bit的字符串，可以使用安全的随机数发生器生成；</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># export BOOTSTRAP_TOKEN=$(head -c 16 /dev/urandom | od -An -t x | tr -d ' ')</span></span><br><span class="line"><span class="comment"># cat &gt; token.csv &lt;&lt;EOF</span></span><br><span class="line"><span class="variable">$&#123;BOOTSTRAP_TOKEN&#125;</span>,kubelet-bootstrap,10001,<span class="string">"system:kubelet-bootstrap"</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
@@ -396,9 +396,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mv kubectl kube-proxy /usr/bin/ &amp;&amp; cd &amp;&amp;rm -rf kubernetes kubernetes-server-linux-amd64.tar.gz</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="4-2-1、生成文件bootstrapping"><a href="#4-2-1、生成文件bootstrapping" class="headerlink" title="4.2.1、生成文件bootstrapping"></a>4.2.1、生成文件bootstrapping</h3><ul>
-<li>master-01</li>
+<li>master-01<br>&nbsp;&nbsp;&nbsp;&nbsp;config 是一个通用配置文件要连接本地的 6443 加密端口；而这个变量将会覆盖 kubeconfig 中指定的master_vip地址172.21.16.45:6443 地址</li>
 </ul>
-<p>config 是一个通用配置文件要连接本地的 6443 加密端口；而这个变量将会覆盖 kubeconfig 中指定的master_vip地址172.21.16.45:6443 地址</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># export KUBE_APISERVER="https://172.21.16.45:6443"</span></span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -815,11 +814,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -831,15 +834,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -847,7 +846,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -855,11 +854,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -883,19 +886,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -911,18 +922,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -931,7 +930,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

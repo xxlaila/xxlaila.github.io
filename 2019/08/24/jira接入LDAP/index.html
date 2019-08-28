@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>jira接入LDAP | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="场景: 之前介绍了jira 和confluence的账户结合，jira和confluence可以使用一个账户，有人员离职之后直接在jira吧用户禁用即可，一端操作，方便两端，但是随着公司人员越来越多，这样的方式已经不在适合这种了，来一个用户就需要去创建，对运维来说，这是重复的工作，提升不了任何效率，而且枯草无味。这里我们就可以使用ldap，jira和confluence都是支持ldap，ldap">
+  <meta name="description" content="场景:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;之前介绍了jira 和confluence的账户结合，jira和confluence可以使用一个账户，有人员离职之后直接在jira吧用户禁用即可，一端操作，方便两端，但是随着公司人员越来越多，这样的方式已经不在适合这种了，来一个用户就需要去创建，对运维来说，这是重复的工作，提升不了任何效率，而且枯草无味。这里我们就可以使用ldap，jira和">
 <meta name="keywords" content="jira">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jira接入LDAP">
 <meta property="og:url" content="https://xxlaila.github.io/2019/08/24/jira接入LDAP/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="场景: 之前介绍了jira 和confluence的账户结合，jira和confluence可以使用一个账户，有人员离职之后直接在jira吧用户禁用即可，一端操作，方便两端，但是随着公司人员越来越多，这样的方式已经不在适合这种了，来一个用户就需要去创建，对运维来说，这是重复的工作，提升不了任何效率，而且枯草无味。这里我们就可以使用ldap，jira和confluence都是支持ldap，ldap">
+<meta property="og:description" content="场景:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;之前介绍了jira 和confluence的账户结合，jira和confluence可以使用一个账户，有人员离职之后直接在jira吧用户禁用即可，一端操作，方便两端，但是随着公司人员越来越多，这样的方式已经不在适合这种了，来一个用户就需要去创建，对运维来说，这是重复的工作，提升不了任何效率，而且枯草无味。这里我们就可以使用ldap，jira和">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-7-12_11-12-55.png">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2019-6-12_15-32-32.png">
@@ -29,10 +29,10 @@
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1566617986314.jpg">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1566618124910.jpg">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2019-6-13_10-0-47.png">
-<meta property="og:updated_time" content="2019-08-24T03:45:21.192Z">
+<meta property="og:updated_time" content="2019-08-28T03:08:52.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jira接入LDAP">
-<meta name="twitter:description" content="场景: 之前介绍了jira 和confluence的账户结合，jira和confluence可以使用一个账户，有人员离职之后直接在jira吧用户禁用即可，一端操作，方便两端，但是随着公司人员越来越多，这样的方式已经不在适合这种了，来一个用户就需要去创建，对运维来说，这是重复的工作，提升不了任何效率，而且枯草无味。这里我们就可以使用ldap，jira和confluence都是支持ldap，ldap">
+<meta name="twitter:description" content="场景:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;之前介绍了jira 和confluence的账户结合，jira和confluence可以使用一个账户，有人员离职之后直接在jira吧用户禁用即可，一端操作，方便两端，但是随着公司人员越来越多，这样的方式已经不在适合这种了，来一个用户就需要去创建，对运维来说，这是重复的工作，提升不了任何效率，而且枯草无味。这里我们就可以使用ldap，jira和">
 <meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-7-12_11-12-55.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
@@ -205,16 +205,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>场景: 之前介绍了jira 和confluence的账户结合，jira和confluence可以使用一个账户，有人员离职之后直接在jira吧用户禁用即可，一端操作，方便两端，但是随着公司人员越来越多，这样的方式已经不在适合这种了，来一个用户就需要去创建，对运维来说，这是重复的工作，提升不了任何效率，而且枯草无味。这里我们就可以使用ldap，jira和confluence都是支持ldap，ldap的好处，这里不阐述，下面来看看如何配置jira介入ldap。confluence还是接入jira，这样我们就只操作ladp和jira，简单省事。</p>
+<p>场景:<br>&nbsp;&nbsp;&nbsp;&nbsp;之前介绍了jira 和confluence的账户结合，jira和confluence可以使用一个账户，有人员离职之后直接在jira吧用户禁用即可，一端操作，方便两端，但是随着公司人员越来越多，这样的方式已经不在适合这种了，来一个用户就需要去创建，对运维来说，这是重复的工作，提升不了任何效率，而且枯草无味。这里我们就可以使用ldap，jira和confluence都是支持ldap，ldap的好处，这里不阐述，下面来看看如何配置jira介入ldap。confluence还是接入jira，这样我们就只操作ladp和jira，简单省事。</p>
 </blockquote>
-<ul>
-<li>问题点:<blockquote>
 <blockquote>
-<p>由于在建立jira和confluence的时候还没有ldap，ldap是后期才接入的，所以这里就存在于怎么吧以前有jira登录的账户认证切换到ldap。而且不影响之前的文档，但是用户权限会影响，问题不大，可以添加。下面开始操作</p>
+<p>问题点:<br>&nbsp;&nbsp;&nbsp;&nbsp;由于在建立jira和confluence的时候还没有ldap，ldap是后期才接入的，所以这里就存在于怎么吧以前有jira登录的账户认证切换到ldap。而且不影响之前的文档，但是用户权限会影响，问题不大，可以添加。下面开始操作</p>
 </blockquote>
-</blockquote>
-</li>
-</ul>
 <a id="more"></a>
 
 <h3 id="1、进入jira用户管理页面"><a href="#1、进入jira用户管理页面" class="headerlink" title="1、进入jira用户管理页面"></a>1、进入jira用户管理页面</h3><p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-7-12_11-12-55.png" alt="img"></p>
@@ -236,12 +231,11 @@
 <li>密码无所谓，不需要统一</li>
 </ul>
 <h3 id="查看用户信息关联"><a href="#查看用户信息关联" class="headerlink" title="查看用户信息关联"></a>查看用户信息关联</h3><p>登录jira的数据库。然后找到cwd_user表</p>
-<h4 id="cwd-user表"><a href="#cwd-user表" class="headerlink" title="cwd_user表"></a>cwd_user表</h4><p>jira的前台不能直接去更改，只有更改数据库，进入数据库，找到一张cwd_user的表，里面包含了所有用户的登录账号信息，其中有一个字段directory_id的，这个字段我们可以看到本地账户的id是1，ldap同步过来的账户是10001，如下图：<br><img src="http://pvyidozd0.bkt.clouddn.com/1566617986314.jpg" alt="img"></p>
-<p>继续看该表的credential字段，密码也有区别,本地账户是有一串加密后的字符串，ldap认证的是nopass，包括后面的external_id 也是有区别的，如下图<br><img src="http://pvyidozd0.bkt.clouddn.com/1566618124910.jpg" alt="img"></p>
-<h4 id="cwd-directory表"><a href="#cwd-directory表" class="headerlink" title="cwd_directory表"></a>cwd_directory表</h4><p>在打开cwd_directory表，里面有两条数据，一个对应的是ldap，一个对应的本地，和cwd_user是对应的，如图：<br><img src="http://pvyidozd0.bkt.clouddn.com/image2019-6-13_10-0-47.png" alt="img"></p>
-<h4 id="修改数据库"><a href="#修改数据库" class="headerlink" title="修改数据库"></a>修改数据库</h4><p>记住ldap目录的id，然后在cwd_user表里面删除ldap的相同账户的整条记录，因为要伪装原本系统自带的目录服务器，原来编辑的文件和内容为原先这个用户的id。修改directory_id 为ldap的id，还有一个需要修改的地方为CREDENTIAL的字段，把它修改为nopass。修改完成后需要重启jira，不重启不会生效，而且登录服务器还会报错。</p>
-<p>这里jira和confluence是做了关联的，jira修改以后，confluence也可以进行登录，无需在confluence在设置一次ldap</p>
-<p>修改完成后，以前用户的管理员权限有问题，重新添加一次即可。不会影响其他的。设置文档，ldap权限要选择为只读，且为本地组。然后吧jia和confluence的普通组添加进去，否则用户进来没有权限</p>
+<h4 id="cwd-user表"><a href="#cwd-user表" class="headerlink" title="cwd_user表"></a>cwd_user表</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;jira的前台不能直接去更改，只有更改数据库，进入数据库，找到一张cwd_user的表，里面包含了所有用户的登录账号信息，其中有一个字段directory_id的，这个字段我们可以看到本地账户的id是1，ldap同步过来的账户是10001，如下图：<br><img src="http://pvyidozd0.bkt.clouddn.com/1566617986314.jpg" alt="img"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;继续看该表的credential字段，密码也有区别,本地账户是有一串加密后的字符串，ldap认证的是nopass，包括后面的external_id 也是有区别的，如下图<br><img src="http://pvyidozd0.bkt.clouddn.com/1566618124910.jpg" alt="img"></p>
+<h4 id="cwd-directory表"><a href="#cwd-directory表" class="headerlink" title="cwd_directory表"></a>cwd_directory表</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;在打开cwd_directory表，里面有两条数据，一个对应的是ldap，一个对应的本地，和cwd_user是对应的，如图：<br><img src="http://pvyidozd0.bkt.clouddn.com/image2019-6-13_10-0-47.png" alt="img"></p>
+<h4 id="修改数据库"><a href="#修改数据库" class="headerlink" title="修改数据库"></a>修改数据库</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;记住ldap目录的id，然后在cwd_user表里面删除ldap的相同账户的整条记录，因为要伪装原本系统自带的目录服务器，原来编辑的文件和内容为原先这个用户的id。修改directory_id 为ldap的id，还有一个需要修改的地方为CREDENTIAL的字段，把它修改为nopass。修改完成后需要重启jira，不重启不会生效，而且登录服务器还会报错。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;这里jira和confluence是做了关联的，jira修改以后，confluence也可以进行登录，无需在confluence在设置一次ldap;修改完成后，以前用户的管理员权限有问题，重新添加一次即可。不会影响其他的。设置文档，ldap权限要选择为只读，且为本地组。然后吧jia和confluence的普通组添加进去，否则用户进来没有权限</p>
 
       
 
@@ -541,11 +535,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,15 +555,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,7 +567,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,11 +575,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,19 +607,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,18 +643,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -657,7 +651,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>

@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/4udfs93.png">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/ds832948dk.png">
-<meta property="og:updated_time" content="2019-08-22T13:04:45.528Z">
+<meta property="og:updated_time" content="2019-08-28T03:28:54.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubedns插件配置">
 <meta name="twitter:description" content="安装和配置kubedns插件1、配置文件准备下载官方的yaml文件目录：kubernetes/cluster/addons/dns。该插件直接使用kubernetes部署,yaml文件经过修改完成部署 1234567891011121314151617# git clone https://github.com/xxlaila/kubernetes-yaml.git# cd kubernetes-">
@@ -196,7 +196,7 @@
         <h1 id="安装和配置kubedns插件"><a href="#安装和配置kubedns插件" class="headerlink" title="安装和配置kubedns插件"></a>安装和配置kubedns插件</h1><h2 id="1、配置文件准备"><a href="#1、配置文件准备" class="headerlink" title="1、配置文件准备"></a>1、配置文件准备</h2><p>下载官方的yaml文件目录：kubernetes/cluster/addons/dns。该插件直接使用kubernetes部署,yaml文件经过修改完成部署</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git clone https://github.com/xxlaila/kubernetes-yaml.git</span></span><br><span class="line"><span class="comment"># cd kubernetes-yaml/coredns</span></span><br><span class="line"><span class="comment"># sed -i 's/10.96.0.10/10.254.0.2/g' coredns-service.yaml</span></span><br><span class="line"><span class="comment"># kubectl create -f ./</span></span><br><span class="line"><span class="comment"># kubectl get pods,svc,rs -n kube-system</span></span><br><span class="line">NAME                           READY   STATUS    RESTARTS   AGE</span><br><span class="line">pod/coredns-68676b6b88-l7b5g   1/1     Running   0          16m</span><br><span class="line"></span><br><span class="line">NAME              TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)         AGE</span><br><span class="line">service/coredns   ClusterIP   10.254.0.2   &lt;none&gt;        53/UDP,53/TCP   16m</span><br><span class="line"></span><br><span class="line">NAME                                       DESIRED   CURRENT   READY   AGE</span><br><span class="line">replicaset.extensions/coredns-68676b6b88   1         1         1       16m</span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl get pods -o wide -n kube-system</span></span><br><span class="line">NAME                                    READY   STATUS    RESTARTS   AGE     IP            NODE            NOMINATED NODE   READINESS GATES</span><br><span class="line">coredns-68676b6b88-l7b5g                1/1     Running   0          40m     10.254.28.2   172.21.16.248   &lt;none&gt;           &lt;none&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2、安装和配置dashboard"><a href="#2、安装和配置dashboard" class="headerlink" title="2、安装和配置dashboard"></a>2、安装和配置dashboard</h2><p>官方配置文件kubernetes/cluster/addons/dashboard，这里已经修改过了，经过测试部署，直接进入dashboard目录，修改inages参数进行部署</p>
+<h2 id="2、安装和配置dashboard"><a href="#2、安装和配置dashboard" class="headerlink" title="2、安装和配置dashboard"></a>2、安装和配置dashboard</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;官方配置文件kubernetes/cluster/addons/dashboard，这里已经修改过了，经过测试部署，直接进入dashboard目录，修改inages参数进行部署</p>
 <a id="more"></a>
 
 <h3 id="2-1、安装dashboard"><a href="#2-1、安装dashboard" class="headerlink" title="2.1、安装dashboard"></a>2.1、安装dashboard</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd ../kubernetes-dashboard</span></span><br><span class="line"><span class="comment"># kubectl create -f kubernetes-dashboard.yaml </span></span><br><span class="line">secret/kubernetes-dashboard-certs created</span><br><span class="line">serviceaccount/kubernetes-dashboard created</span><br><span class="line">role.rbac.authorization.k8s.io/kubernetes-dashboard-minimal created</span><br><span class="line">rolebinding.rbac.authorization.k8s.io/kubernetes-dashboard-minimal created</span><br><span class="line">deployment.apps/kubernetes-dashboard created</span><br><span class="line">service/kubernetes-dashboard created</span><br><span class="line"><span class="comment"># kubectl get pods -o wide -n kube-system</span></span><br><span class="line">NAME                                    READY   STATUS    RESTARTS   AGE     IP            NODE            NOMINATED NODE   READINESS GATES</span><br><span class="line">kubernetes-dashboard-6c655d9445-4557x   1/1     Running   0          6m54s   10.254.90.2   172.21.16.110   &lt;none&gt;           &lt;none&gt;</span><br></pre></td></tr></table></figure>
@@ -205,7 +205,7 @@
 
 <h2 id="3、监控安装"><a href="#3、监控安装" class="headerlink" title="3、监控安装"></a>3、监控安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd ../heapster-influxdb-grafana</span></span><br><span class="line"><span class="comment"># kubectl create -f ./</span></span><br><span class="line"><span class="comment"># kubectl get pods -o wide -n kube-system</span></span><br><span class="line">NAME                                    READY   STATUS    RESTARTS   AGE   IP            NODE            NOMINATED NODE   READINESS GATES</span><br><span class="line">heapster-658646db69-lh5tx               1/1     Running   0          11m   10.254.28.3   172.21.16.248   &lt;none&gt;           &lt;none&gt;</span><br><span class="line">monitoring-grafana-7bfc56ffcd-kgh56     1/1     Running   0          11m   10.254.90.3   172.21.16.110   &lt;none&gt;           &lt;none&gt;</span><br><span class="line">monitoring-influxdb-7478d7675c-9255v    1/1     Running   0          11m   10.254.85.2   172.21.16.244   &lt;none&gt;           &lt;none&gt;</span><br></pre></td></tr></table></figure>
 
-<p>这里遇到一个怪事情；heapster安装以后图始终无法出来，这里折腾差不多大半天。最后在dashboard的yaml文件里面添加了以下参数，图就可以了，</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;这里遇到一个怪事情；heapster安装以后图始终无法出来，这里折腾差不多大半天。最后在dashboard的yaml文件里面添加了以下参数，图就可以了，</p>
 <p><img src="http://pvyidozd0.bkt.clouddn.com/4udfs93.png" alt="img"></p>
 <p>args:<br>          - –auto-generate-certificates<br>          - –token-ttl=43200<br>          <em>- –heapster-host=<a href="http://heapster" target="_blank" rel="noopener">http://heapster</a></em></p>
 <p><img src="http://pvyidozd0.bkt.clouddn.com/ds832948dk.png" alt="img"></p>
@@ -509,11 +509,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color2">Centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,15 +529,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,7 +541,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,11 +549,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes,RBAC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,19 +581,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,18 +617,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
@@ -625,7 +625,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
             
             <div class="clearfix"></div>
