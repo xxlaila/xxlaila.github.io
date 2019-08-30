@@ -17,7 +17,7 @@
 <meta property="og:description" content="More: master节点安装请参考 1、部署kubernetes node节点Kubernetes node节点包含如下组件：  Flanneld: 之前单机节点安装没有配置TLS，现在需要在service配置文件中增加TLS配置 Docker: version 18.06.2-ce kubelet kube-proxy   node节点需要的文件  1234# ls /etc/kuberne">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/2ds.png">
-<meta property="og:updated_time" content="2019-08-30T01:26:07.842Z">
+<meta property="og:updated_time" content="2019-08-30T01:47:15.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes node节点安装">
 <meta name="twitter:description" content="More: master节点安装请参考 1、部署kubernetes node节点Kubernetes node节点包含如下组件：  Flanneld: 之前单机节点安装没有配置TLS，现在需要在service配置文件中增加TLS配置 Docker: version 18.06.2-ce kubelet kube-proxy   node节点需要的文件  1234# ls /etc/kuberne">
@@ -205,6 +205,20 @@
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls /etc/kubernetes/ssl</span></span><br><span class="line">bootstrap.kubeconfig  kube-proxy.kubeconfig  ssl  token.csv</span><br><span class="line"><span class="comment"># ls /etc/kubernetes</span></span><br><span class="line">admin-key.pem  admin.pem  ca-key.pem  ca.pem  kube-proxy-key.pem  kube-proxy.pem  kubernetes-csr.json  kubernetes-key.pem  kubernetes.pem</span><br></pre></td></tr></table></figure>
 
+<h3 id="增加docker-源"><a href="#增加docker-源" class="headerlink" title="增加docker 源"></a>增加docker 源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum-config-manager \</span></span><br><span class="line">  --add-repo \</span><br><span class="line">  https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>根据实际查找当前版本 (可选)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum list docker-ce --showduplicates | sort -r</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果确定了版本,直接安装,如果要装17。03直接修改下面数字即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install docker-ce-18.06.2.ce-3.el7  # 主意版本填写包名的格式.</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启docker服务,和开机启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start docker &amp;&amp; systemctl enable docker</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
 <h3 id="1-1、安装flanneld"><a href="#1-1、安装flanneld" class="headerlink" title="1.1、安装flanneld"></a>1.1、安装flanneld</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mv kubernetes  /etc/ &amp;&amp; chown -R root: /etc/kubernetes</span></span><br><span class="line"><span class="comment"># wget https://github.com/coreos/flannel/releases/download/v0.11.0/flannel-v0.11.0-linux-amd64.tar.gz</span></span><br><span class="line"><span class="comment"># tar zxf flannel-v0.11.0-linux-amd64.tar.gz &amp;&amp; mv flanneld mk-docker-opts.sh /usr/bin/ &amp;&amp; rm -rf flannel-v0.11.0-linux-amd64.tar.gz</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="1-1-1、flanneld启动配置文件"><a href="#1-1-1、flanneld启动配置文件" class="headerlink" title="1.1.1、flanneld启动配置文件"></a>1.1.1、flanneld启动配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /lib/systemd/system/flanneld.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=Flanneld overlay address etcd agent</span><br><span class="line">After=network.target</span><br><span class="line">After=network-online.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line">After=etcd.service</span><br><span class="line">Before=docker.service</span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">EnvironmentFile=/etc/sysconfig/flanneld</span><br><span class="line">ExecStart=/usr/bin/flanneld -etcd-endpoints=<span class="variable">$&#123;FLANNEL_ETCD&#125;</span> <span class="variable">$FLANNEL_OPTIONS</span></span><br><span class="line">ExecStartPost=/usr/bin/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/subnet.env</span><br><span class="line">Restart=on-failure</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">RequiredBy=docker.service</span><br></pre></td></tr></table></figure>

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/</loc>
+    
+    <lastmod>2019-08-30T01:47:15.386Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/08/10/haproxy-keepalived/</loc>
     
     <lastmod>2019-08-30T01:38:13.567Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://xxlaila.github.io/2019/08/29/k8s%E9%85%8D%E7%BD%AEDashboard/</loc>
     
     <lastmod>2019-08-30T01:30:13.816Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/</loc>
-    
-    <lastmod>2019-08-30T01:26:07.842Z</lastmod>
     
   </url>
   
