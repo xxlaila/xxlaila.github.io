@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>k8s配置Dashboard | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;K8S Dashboard是官方的一个基于WEB的用户界面，专门用来管理K8S集群，并可展示集群的状态。K8S集群安装好后默认没有包含Dashboard，我们需要额外创建它。 1、安装dashboard1.1、下载准备需要的文件经过修改过后的文件，已经可以正常使用的文件  创建dashboard1234567[root@k8s-master-01 d">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;K8S Dashboard是官方的一个基于WEB的用户界面，专门用来管理K8S集群，并可展示集群的状态。K8S集群安装好后默认没有包含Dashboard，我们需要额外创建它。 1、安装dashboard1.1、下载准备需要的文件经过修改过后的文件，已经可以正常使用的文件">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="k8s配置Dashboard">
 <meta property="og:url" content="https://xxlaila.github.io/2019/08/29/k8s配置Dashboard/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;K8S Dashboard是官方的一个基于WEB的用户界面，专门用来管理K8S集群，并可展示集群的状态。K8S集群安装好后默认没有包含Dashboard，我们需要额外创建它。 1、安装dashboard1.1、下载准备需要的文件经过修改过后的文件，已经可以正常使用的文件  创建dashboard1234567[root@k8s-master-01 d">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;K8S Dashboard是官方的一个基于WEB的用户界面，专门用来管理K8S集群，并可展示集群的状态。K8S集群安装好后默认没有包含Dashboard，我们需要额外创建它。 1、安装dashboard1.1、下载准备需要的文件经过修改过后的文件，已经可以正常使用的文件">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/WechatIMG28864.png">
-<meta property="og:updated_time" content="2019-08-30T01:23:49.055Z">
+<meta property="og:updated_time" content="2019-08-30T01:30:13.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s配置Dashboard">
-<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;K8S Dashboard是官方的一个基于WEB的用户界面，专门用来管理K8S集群，并可展示集群的状态。K8S集群安装好后默认没有包含Dashboard，我们需要额外创建它。 1、安装dashboard1.1、下载准备需要的文件经过修改过后的文件，已经可以正常使用的文件  创建dashboard1234567[root@k8s-master-01 d">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;K8S Dashboard是官方的一个基于WEB的用户界面，专门用来管理K8S集群，并可展示集群的状态。K8S集群安装好后默认没有包含Dashboard，我们需要额外创建它。 1、安装dashboard1.1、下载准备需要的文件经过修改过后的文件，已经可以正常使用的文件">
 <meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/WechatIMG28864.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
@@ -194,6 +194,8 @@
       
         <p>&nbsp;&nbsp;&nbsp;&nbsp;K8S Dashboard是官方的一个基于WEB的用户界面，专门用来管理K8S集群，并可展示集群的状态。K8S集群安装好后默认没有包含Dashboard，我们需要额外创建它。</p>
 <h3 id="1、安装dashboard"><a href="#1、安装dashboard" class="headerlink" title="1、安装dashboard"></a>1、安装dashboard</h3><h4 id="1-1、下载准备需要的文件"><a href="#1-1、下载准备需要的文件" class="headerlink" title="1.1、下载准备需要的文件"></a>1.1、下载准备需要的文件</h4><p>经过修改过后的文件，已经可以正常使用的<a href="https://github.com/xxlaila/kubernetes-yaml/" target="_blank" rel="noopener">文件</a></p>
+<a id="more"></a>
+
 <ul>
 <li>创建dashboard<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@k8s-master-01 dashboard]<span class="comment"># kubectl create -f kubernetes-dashboard.yaml </span></span><br><span class="line">secret/kubernetes-dashboard-certs created</span><br><span class="line">serviceaccount/kubernetes-dashboard created</span><br><span class="line">role.rbac.authorization.k8s.io/kubernetes-dashboard-minimal created</span><br><span class="line">rolebinding.rbac.authorization.k8s.io/kubernetes-dashboard-minimal created</span><br><span class="line">deployment.apps/kubernetes-dashboard created</span><br><span class="line">service/kubernetes-dashboard created</span><br></pre></td></tr></table></figure>
 
