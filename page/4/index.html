@@ -552,9 +552,9 @@
 <li><strong>kube-proxy</strong></li>
 </ul>
 <blockquote>
-<p>node节点需要的文件</p>
+<p>node节点需要的文件,一般还是全部copy过去，反正不影响。😂😂😂</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls /etc/kubernetes/ssl</span></span><br><span class="line">bootstrap.kubeconfig  kube-proxy.kubeconfig  ssl  token.csv</span><br><span class="line"><span class="comment"># ls /etc/kubernetes</span></span><br><span class="line">admin-key.pem  admin.pem  ca-key.pem  ca.pem  kube-proxy-key.pem  kube-proxy.pem  kubernetes-csr.json  kubernetes-key.pem  kubernetes.pem</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls /etc/kubernetes/</span></span><br><span class="line">bootstrap.kubeconfig  kube-proxy.kubeconfig  ssl  token.csv</span><br><span class="line"><span class="comment"># ls /etc/kubernetes/ssl</span></span><br><span class="line">admin-key.pem  admin.pem  ca-key.pem  ca.pem  kube-proxy-key.pem  kube-proxy.pem  kubernetes-csr.json  kubernetes-key.pem  kubernetes.pem</span><br></pre></td></tr></table></figure>
 
 <h3 id="增加docker-源"><a href="#增加docker-源" class="headerlink" title="增加docker 源"></a>增加docker 源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum-config-manager \</span></span><br><span class="line">  --add-repo \</span><br><span class="line">  https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
 

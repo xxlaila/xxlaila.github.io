@@ -737,7 +737,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>&nbsp;&nbsp;&nbsp;&nbsp;k8s集群中的应用通常是通过ingress实现微服务发布的，前文介绍过在K8S集群中使用traefik实现服务的自动发布，其实现方式是traefik通过集群的DNS服务来解析service对应的集群地址（clusterip），从而将用户的访问请求转发到集群地址上。因此，在部署完集群后的第一件事情应该是配置DNS服务，目前可选的方案有skydns, kube-dns, coredns。<br>&nbsp;&nbsp;&nbsp;&nbsp;kubedns是Kubernetes中的一个内置插件，目前作为一个独立的开源项目维护，见<a href="https://github.com/kubernetes/dns。该DNS服务器利用SkyDNS的库来为Kubernetes" target="_blank" rel="noopener">https://github.com/kubernetes/dns。该DNS服务器利用SkyDNS的库来为Kubernetes</a> pod和服务提供DNS请求。CoreDNS项目是SkyDNS2的作者，Miek Gieben采用更模块化，可扩展的框架构建,将此DNS服务器作为KubeDNS的替代品。CoreDNS作为CNCF中的托管的一个项目，在Kuberentes1.9版本中，使用kubeadm方式安装的集群可以通过以下命令直接安装CoreDNS。kubeadm init –feature-gates=CoreDNS=true</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>准备coredns的<a href="https://github.com/xxlaila/kubernetes-yaml/tree/master/coredns" target="_blank" rel="noopener">yaml文件</a></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>准备coredns的<a href="https://github.com/coredns/deployment.git" target="_blank" rel="noopener">yaml文件</a></p>
         
       
 
