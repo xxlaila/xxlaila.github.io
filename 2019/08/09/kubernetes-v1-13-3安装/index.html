@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="1、 环境准备   ip type docker os k8s version    172.21.17.4 master,etcd  CentOS Linux release 7.4.1708 v1.13.3   172.21.16.230 master,etcd  CentOS Linux release 7.4.1708    172.21.16.240 master,etcd  CentO">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-02T07:01:47.952Z">
+<meta property="og:updated_time" content="2019-09-02T07:56:31.164Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes v1.13.3安装">
 <meta name="twitter:description" content="1、 环境准备   ip type docker os k8s version    172.21.17.4 master,etcd  CentOS Linux release 7.4.1708 v1.13.3   172.21.16.230 master,etcd  CentOS Linux release 7.4.1708    172.21.16.240 master,etcd  CentO">
@@ -403,6 +403,12 @@
 <h4 id="4-3、复制文件"><a href="#4-3、复制文件" class="headerlink" title="4.3、复制文件"></a>4.3、复制文件</h4><p>把刚生成的文件复制到<code>/etc/kubernetes</code>目录下面</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># master 节点</span></span><br><span class="line"><span class="comment"># cp audit-policy.yaml bootstrap.kubeconfig  bootstrap.secret.yaml kube-proxy.kubeconfig  kube-scheduler.kubeconfig /etc/kubernetes</span></span><br><span class="line"><span class="comment"># scp -r audit-policy.yaml bootstrap.kubeconfig  bootstrap.secret.yaml kube-proxy.kubeconfig  kube-scheduler.kubeconfig k8s-master-02:/etc/kubernetes</span></span><br><span class="line"><span class="comment"># scp -r audit-policy.yaml bootstrap.kubeconfig  bootstrap.secret.yaml kube-proxy.kubeconfig  kube-scheduler.kubeconfig k8s-master-03:/etc/kubernetes</span></span><br><span class="line"><span class="comment"># node 节点</span></span><br><span class="line"><span class="comment"># scp -r  bootstrap.kubeconfig kube-proxy.kubeconfig node-01:/etc/kubernetes</span></span><br><span class="line"><span class="comment"># scp -r  bootstrap.kubeconfig kube-proxy.kubeconfig node-02:/etc/kubernetes</span></span><br></pre></td></tr></table></figure>
 
+<h4 id="4-4、处理-ipvs-及依赖"><a href="#4-4、处理-ipvs-及依赖" class="headerlink" title="4.4、处理 ipvs 及依赖"></a>4.4、处理 ipvs 及依赖</h4><p>&nbsp;&nbsp;&nbsp;&nbsp; 新版本目前 kube-proxy 组件全部采用 ipvs 方式负载，所以为了 kube-proxy 能正常工作需要预先处理一下 ipvs 配置以及相关依赖(每台 node 都要处理)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &gt;&gt; /etc/sysctl.conf &lt;&lt;EOF</span></span><br><span class="line">net.ipv4.ip_forward=1</span><br><span class="line">net.bridge.bridge-nf-call-iptables=1</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables=1</span><br><span class="line">EOF</span><br><span class="line"><span class="comment"># sysctl -p</span></span><br></pre></td></tr></table></figure>
+
+<p>kubernetes 中启用 ipvs,详细介绍，<a href="https://github.com/kubernetes/kubernetes/tree/master/pkg/proxy/ipvs" target="_blank" rel="noopener">官方</a>,<a href="https://juejin.im/entry/5b7e409ce51d4538b35c03df" target="_blank" rel="noopener">参考文献</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install ipvsadm</span></span><br><span class="line"><span class="comment"># cat &gt;&gt; /etc/modules &lt;&lt;EOF</span></span><br><span class="line">ip_vs</span><br><span class="line">ip_vs_lc</span><br><span class="line">ip_vs_wlc</span><br><span class="line">ip_vs_rr</span><br><span class="line">ip_vs_wrr</span><br><span class="line">ip_vs_lblc</span><br><span class="line">ip_vs_lblcr</span><br><span class="line">ip_vs_dh</span><br><span class="line">ip_vs_sh</span><br><span class="line">ip_vs_fo</span><br><span class="line">ip_vs_nq</span><br><span class="line">ip_vs_sed</span><br><span class="line">ip_vs_ftp</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
 <h2 id="5、配置和启动kube-apiserver"><a href="#5、配置和启动kube-apiserver" class="headerlink" title="5、配置和启动kube-apiserver"></a>5、配置和启动kube-apiserver</h2><h3 id="5-1、设置启动文件"><a href="#5-1、设置启动文件" class="headerlink" title="5.1、设置启动文件"></a>5.1、设置启动文件</h3><ul>
 <li><strong>kube-apiserver.service</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /usr/lib/systemd/system/kube-apiserver.service</span></span><br><span class="line">[Unit]</span><br><span class="line">  Description=Kubernetes API Service</span><br><span class="line">  Documentation=https://github.com/GoogleCloudPlatform/kubernetes</span><br><span class="line">  After=network.target</span><br><span class="line">  After=etcd.service</span><br><span class="line">[Service]</span><br><span class="line">  EnvironmentFile=-/etc/kubernetes/apiserver</span><br><span class="line">  ExecStart=/usr/bin/kube-apiserver \</span><br><span class="line">          <span class="variable">$KUBE_LOGTOSTDERR</span> \</span><br><span class="line">          <span class="variable">$KUBE_LOG_LEVEL</span> \</span><br><span class="line">          <span class="variable">$KUBE_ETCD_SERVERS</span> \</span><br><span class="line">          <span class="variable">$KUBE_API_ADDRESS</span> \</span><br><span class="line">          <span class="variable">$KUBE_API_PORT</span> \</span><br><span class="line">          <span class="variable">$KUBELET_PORT</span> \</span><br><span class="line">          <span class="variable">$KUBE_ALLOW_PRIV</span> \</span><br><span class="line">          <span class="variable">$KUBE_SERVICE_ADDRESSES</span> \</span><br><span class="line">          <span class="variable">$KUBE_ADMISSION_CONTROL</span> \</span><br><span class="line">          <span class="variable">$KUBE_API_ARGS</span></span><br><span class="line">  Restart=on-failure</span><br><span class="line">  Type=notify</span><br><span class="line">  LimitNOFILE=65536</span><br><span class="line">[Install]</span><br></pre></td></tr></table></figure>
 
@@ -778,11 +784,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -794,11 +800,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jira</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
+                <a href="javascript:void(0)" class="js-tag color5">jira</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -806,7 +812,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -815,10 +821,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -838,15 +840,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -854,15 +852,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -870,11 +860,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
               </li>
              
               <li class="article-tag-list-item">
