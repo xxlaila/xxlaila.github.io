@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;k8s集群中的应用通常是通过ingress实现微服务发布的，前文介绍过在K8S集群中使用traefik实现服务的自动发布，其实现方式是traefik通过集群的DNS服务来解析service对应的集群地址（clusterip），从而将用户的访问请求转发到集群地址上。因此，在部署完集群后的第一件事情应该是配置DNS服务，目前可选的方案有skydns, k">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-30T03:15:06.631Z">
+<meta property="og:updated_time" content="2019-09-02T08:52:16.413Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s部署coredns">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;k8s集群中的应用通常是通过ingress实现微服务发布的，前文介绍过在K8S集群中使用traefik实现服务的自动发布，其实现方式是traefik通过集群的DNS服务来解析service对应的集群地址（clusterip），从而将用户的访问请求转发到集群地址上。因此，在部署完集群后的第一件事情应该是配置DNS服务，目前可选的方案有skydns, k">
@@ -204,6 +204,19 @@
 
 </li>
 </ul>
+<h3 id="部署-DNS-自动扩容"><a href="#部署-DNS-自动扩容" class="headerlink" title="部署 DNS 自动扩容"></a>部署 DNS 自动扩容</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;在大规模集群的情况下，可能需要集群 DNS 自动扩容，具体文档请参考 DNS Horizontal Autoscaler，DNS 扩容算法可参考 Github，如有需要请自行修改；以下为具体配置</p>
+<ul>
+<li><p>dns-horizontal-autoscaler.yaml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">kind: ServiceAccount</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">  name: kube-dns-autoscaler</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  labels:</span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">---</span><br><span class="line">kind: ClusterRole</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">metadata:</span><br><span class="line">  name: system:kube-dns-autoscaler</span><br><span class="line">  labels:</span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">rules:</span><br><span class="line">  - apiGroups: [<span class="string">""</span>]</span><br><span class="line">    resources: [<span class="string">"nodes"</span>]</span><br><span class="line">    verbs: [<span class="string">"list"</span>]</span><br><span class="line">  - apiGroups: [<span class="string">""</span>]</span><br><span class="line">    resources: [<span class="string">"replicationcontrollers/scale"</span>]</span><br><span class="line">    verbs: [<span class="string">"get"</span>, <span class="string">"update"</span>]</span><br><span class="line">  - apiGroups: [<span class="string">"extensions"</span>]</span><br><span class="line">    resources: [<span class="string">"deployments/scale"</span>, <span class="string">"replicasets/scale"</span>]</span><br><span class="line">    verbs: [<span class="string">"get"</span>, <span class="string">"update"</span>]</span><br><span class="line"><span class="comment"># Remove the configmaps rule once below issue is fixed:</span></span><br><span class="line"><span class="comment"># kubernetes-incubator/cluster-proportional-autoscaler#16</span></span><br><span class="line">  - apiGroups: [<span class="string">""</span>]</span><br><span class="line">    resources: [<span class="string">"configmaps"</span>]</span><br><span class="line">    verbs: [<span class="string">"get"</span>, <span class="string">"create"</span>]</span><br><span class="line">---</span><br><span class="line">kind: ClusterRoleBinding</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">metadata:</span><br><span class="line">  name: system:kube-dns-autoscaler</span><br><span class="line">  labels:</span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">subjects:</span><br><span class="line">  - kind: ServiceAccount</span><br><span class="line">    name: kube-dns-autoscaler</span><br><span class="line">    namespace: kube-system</span><br><span class="line">roleRef:</span><br><span class="line">  kind: ClusterRole</span><br><span class="line">  name: system:kube-dns-autoscaler</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: kube-dns-autoscaler</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: kube-dns-autoscaler</span><br><span class="line">    kubernetes.io/cluster-service: <span class="string">"true"</span></span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">spec:</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      k8s-app: kube-dns-autoscaler</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        k8s-app: kube-dns-autoscaler</span><br><span class="line">      annotations:</span><br><span class="line">        scheduler.alpha.kubernetes.io/critical-pod: <span class="string">''</span></span><br><span class="line">    spec:</span><br><span class="line">      priorityClassName: system-cluster-critical</span><br><span class="line">      containers:</span><br><span class="line">      - name: autoscaler</span><br><span class="line">        image: gcr.azk8s.cn/google_containers/cluster-proportional-autoscaler-amd64:1.1.2-r2</span><br><span class="line">        resources:</span><br><span class="line">            requests:</span><br><span class="line">                cpu: <span class="string">"20m"</span></span><br><span class="line">                memory: <span class="string">"10Mi"</span></span><br><span class="line">        <span class="built_in">command</span>:</span><br><span class="line">          - /cluster-proportional-autoscaler</span><br><span class="line">          - --namespace=kube-system</span><br><span class="line">          - --configmap=kube-dns-autoscaler</span><br><span class="line">          <span class="comment"># Should keep target in sync with cluster/addons/dns/kube-dns.yaml.base</span></span><br><span class="line">          - --target=Deployment/coredns</span><br><span class="line">          <span class="comment"># When cluster is using large nodes(with more cores), "coresPerReplica" should dominate.</span></span><br><span class="line">          <span class="comment"># If using small nodes, "nodesPerReplica" should dominate.</span></span><br><span class="line">          - --default-params=&#123;<span class="string">"linear"</span>:&#123;<span class="string">"coresPerReplica"</span>:256,<span class="string">"nodesPerReplica"</span>:16,<span class="string">"preventSinglePointFailure"</span>:<span class="literal">true</span>&#125;&#125;</span><br><span class="line">          - --logtostderr=<span class="literal">true</span></span><br><span class="line">          - --v=2</span><br><span class="line">      tolerations:</span><br><span class="line">      - key: <span class="string">"CriticalAddonsOnly"</span></span><br><span class="line">        operator: <span class="string">"Exists"</span></span><br><span class="line">      serviceAccountName: kube-dns-autoscaler</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行创建</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl apply -f dns-horizontal-autoscaler.yaml </span></span><br><span class="line">serviceaccount/kube-dns-autoscaler created</span><br><span class="line">clusterrole.rbac.authorization.k8s.io/system:kube-dns-autoscaler created</span><br><span class="line">clusterrolebinding.rbac.authorization.k8s.io/system:kube-dns-autoscaler created</span><br><span class="line">deployment.apps/kube-dns-autoscaler created</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>执行创建以后我们可以看到pod 创建了两个dns</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get pods -n kube-system|grep coredns</span></span><br><span class="line">coredns-68676b6b88-pw9c2                1/1     Running   0          7m18s</span><br><span class="line">coredns-68676b6b88-tgbbv                1/1     Running   0          100m</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -390,7 +403,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署-DNS-自动扩容"><span class="toc-number">2.</span> <span class="toc-text">部署 DNS 自动扩容</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -537,15 +550,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Metric</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,10 +582,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jira</a>
               </li>
              
@@ -581,7 +590,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,7 +606,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color4">nfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,19 +626,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -625,11 +638,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,11 +662,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -17,7 +17,7 @@
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/%E5%9B%BE%E7%89%87%201.png">
-<meta property="og:updated_time" content="2019-08-28T03:27:27.159Z">
+<meta property="og:updated_time" content="2019-09-04T08:49:00.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vsftpd安装">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得">
@@ -192,7 +192,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改一个用户的权限不会影响到其他用户。<br>centos 系统版本(5.5、5.3、6.0、6.5)</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;Centos下ftp的安装一般采用的是vsftpd，但是在ftp的模式中又有几个用户配置项需要注意，有些人喜欢用本地用户去登陆FTP，虽然在建立本地用户的时候加了/sbin/nologin参数，但是这个还是不够安全，而且这样权限控制也不是很好，他们都是统一的控制权限，这里采用虚拟用户前来配置。虚拟用户配合防火墙selinux还有单个用户的权限，这使得FTP有着足够的安全。而且权限控制特别灵活，修改一个用户的权限不会影响到其他用户。<br>centos 系统版本(5.5、5.3、6.0、6.5)<br>centos 7.4 已经验证</p>
 <h3 id="首先我们安装vsftpd"><a href="#首先我们安装vsftpd" class="headerlink" title="首先我们安装vsftpd"></a>首先我们安装vsftpd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># yum –y install vsftpd</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="2、启动和加载vsftp"><a href="#2、启动和加载vsftp" class="headerlink" title="2、启动和加载vsftp"></a>2、启动和加载vsftp</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@RAID1 ~]<span class="comment"># service vsftpd restart</span></span><br><span class="line">[root@RAID1 ~]<span class="comment"># chkconfig –level 35 vsftpd on</span></span><br></pre></td></tr></table></figure>
@@ -208,7 +208,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">reverse_lookup_enable=NO <span class="comment">#添加此行，解决客户端登陆缓慢问题！重要！默认vsftpd开启了DNS反响解析！这里需要关闭，如果启动有错误，请注销！</span></span><br><span class="line">listen_port=21 <span class="comment">#默认无此行，ftp端口为21，添加listen_port=2222把默认端口修改为2222，注意：防火墙同时要开启2222端口</span></span><br><span class="line">anonymous_enable=NO　　 <span class="comment">#禁止匿名用户</span></span><br><span class="line">local_enable=YES</span><br><span class="line">设定本地用户可以访问。注意：主要是为虚拟宿主用户，如果该项目设定为NO那么所有虚拟用户将无法访问</span><br><span class="line">write_enable=YES <span class="comment">#全局设置，是否容许写入（无论是匿名用户还是本地用户，若要启用上传权限的话，就要开启他）</span></span><br><span class="line">local_umask=022 设定上传后文件的权限掩码。</span><br><span class="line">anon_upload_enable=NO 禁止匿名用户上传。</span><br><span class="line">anon_mkdir_write_enable=NO 禁止匿名用户建立目录。</span><br><span class="line">dirmessage_enable=YES 设定开启目录标语功能。</span><br><span class="line">xferlog_enable=YES 设定开启日志记录功能。</span><br><span class="line">connect_from_port_20=YES 设定端口20进行数据连接。</span><br><span class="line">chown_uploads=NO 设定禁止上传文件更改宿主。</span><br><span class="line">xferlog_file=/var/<span class="built_in">log</span>/vsftpd.log 日志保存路径（先创建好文件）</span><br><span class="line">xferlog_std_format=YES　　 <span class="comment">#使用标准格式</span></span><br><span class="line">async_abor_enable=YES 设定支持异步传输功能。</span><br><span class="line">ascii_upload_enable=YES</span><br><span class="line">ascii_download_enable=YES 设定支持ASCII模式的上传和下载功能。</span><br><span class="line">ftpd_banner=Welcome to Awei FTP servers 设定Vsftpd的登陆标语。</span><br><span class="line">chroot_local_user=YES 禁止本地用户登出自己的FTP主目录。</span><br><span class="line">pam_service_name=vsftpd 设定PAM服务下Vsftpd的验证配置文件名。因此，PAM验证将参考/etc/pam.d/下的vsftpd文件配置。</span><br><span class="line">userlist_enable=YES 设为YES的时候，如果一个用户名是在userlist_file参数指定的文件中，</span><br><span class="line"> 那么在要求他们输入密码之前，会直接拒绝他们登陆。</span><br><span class="line">tcp_wrappers=YES 是否支持tcp_wrappers</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><strong>以下是我使用的参数</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=No</span><br><span class="line">listen_port=21</span><br><span class="line">local_enable=YES</span><br><span class="line">write_enable=YES</span><br><span class="line">local_umask=022</span><br><span class="line">dirmessage_enable=YES</span><br><span class="line">xferlog_enable=YES</span><br><span class="line">connect_from_port_20=YES</span><br><span class="line"><span class="comment">#chown_uploads=YES</span></span><br><span class="line">xferlog_file=/var/<span class="built_in">log</span>/vsftpd.log</span><br><span class="line">xferlog_std_format=YES</span><br><span class="line">async_abor_enable=YES</span><br><span class="line">ascii_upload_enable=YES</span><br><span class="line">ascii_download_enable=YES</span><br><span class="line">ftpd_banner=Welcome to blah FTP service.</span><br><span class="line">chroot_list_enable=YES</span><br><span class="line">listen=YES</span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line">userlist_enable=YES</span><br><span class="line">tcp_wrappers=YES</span><br><span class="line">reverse_lookup_enable=No</span><br><span class="line">guest_enable=YES</span><br><span class="line">guest_username=vsftpd</span><br><span class="line">user_config_dir=/etc/vsftpd/vconf</span><br><span class="line">virtual_use_local_privs=YES</span><br><span class="line">pasv_min_port=9000</span><br><span class="line">pasv_max_port=9045</span><br></pre></td></tr></table></figure>
+<li><strong>以下是我使用的参数</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=No</span><br><span class="line">listen_port=21</span><br><span class="line">local_enable=YES</span><br><span class="line">write_enable=YES</span><br><span class="line">local_umask=022</span><br><span class="line">dirmessage_enable=YES</span><br><span class="line">xferlog_enable=YES</span><br><span class="line">connect_from_port_20=YES</span><br><span class="line"><span class="comment">#chown_uploads=YES</span></span><br><span class="line">xferlog_file=/var/<span class="built_in">log</span>/vsftpd.log</span><br><span class="line">xferlog_std_format=YES</span><br><span class="line">async_abor_enable=YES</span><br><span class="line">ascii_upload_enable=YES</span><br><span class="line">ascii_download_enable=YES</span><br><span class="line">ftpd_banner=Welcome to blah FTP service.</span><br><span class="line">chroot_list_enable=YES</span><br><span class="line">listen=YES</span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line">userlist_enable=YES</span><br><span class="line">tcp_wrappers=YES</span><br><span class="line">reverse_lookup_enable=No</span><br><span class="line">guest_enable=YES</span><br><span class="line">guest_username=vsftpd</span><br><span class="line">user_config_dir=/etc/vsftpd/vconf</span><br><span class="line">virtual_use_local_privs=YES</span><br><span class="line">pasv_min_port=9000</span><br><span class="line">pasv_max_port=9045</span><br><span class="line">chroot_local_user=NO</span><br><span class="line">chroot_list_enable=NO</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -552,15 +552,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Metric</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,10 +584,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jira</a>
               </li>
              
@@ -596,7 +592,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,7 +608,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color4">nfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,19 +628,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,11 +640,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,11 +664,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
