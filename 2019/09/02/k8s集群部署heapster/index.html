@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="kubernetes集群启用tls认证部署heapster，在部署期间遇到了很多的坑，走过很多雷，这里记录一下,不过在新版本中heapster被metrics-server代替了，metrics-server后篇介绍和使用 1、准备工作下载需要的文件，这里用之前k8s-heapster部署的文件拿来进行修改，文件地址 2、执行文件创建12# cd kubernetes-yaml/heapster-">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-04T09:54:22.078Z">
+<meta property="og:updated_time" content="2019-09-04T09:56:48.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s集群部署heapster">
 <meta name="twitter:description" content="kubernetes集群启用tls认证部署heapster，在部署期间遇到了很多的坑，走过很多雷，这里记录一下,不过在新版本中heapster被metrics-server代替了，metrics-server后篇介绍和使用 1、准备工作下载需要的文件，这里用之前k8s-heapster部署的文件拿来进行修改，文件地址 2、执行文件创建12# cd kubernetes-yaml/heapster-">
@@ -193,6 +193,8 @@
         <p>kubernetes集群启用tls认证部署heapster，在部署期间遇到了很多的坑，走过很多雷，这里记录一下,不过在新版本中heapster被metrics-server代替了，metrics-server后篇介绍和使用</p>
 <h2 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h2><p>下载需要的文件，这里用之前k8s-heapster部署的文件拿来进行修改，<a href="https://github.com/xxlaila/kubernetes-yaml/" target="_blank" rel="noopener">文件地址</a></p>
 <h3 id="2、执行文件创建"><a href="#2、执行文件创建" class="headerlink" title="2、执行文件创建"></a>2、执行文件创建</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd kubernetes-yaml/heapster-influxdb-grafana</span></span><br><span class="line"><span class="comment"># kubectl apply -f ./</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <ul>
 <li><strong>错误提示</strong>: 这里在执行创建后，没有图像显示，查看pods日志发现错误<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get pods -n kube-system|grep he</span></span><br><span class="line">heapster-7b7b4754d-5p7tb                1/1     Running   0          17m</span><br><span class="line"><span class="comment"># kubectl logs heapster-7b7b4754d-5p7tb -n kube-system</span></span><br><span class="line">E0902 10:57:11.804543       1 reflector.go:190] k8s.io/heapster/metrics/processors/namespace_based_enricher.go:89: Failed to list *v1.Namespace: namespaces is forbidden: User <span class="string">"system:serviceaccount:kube-system:heapster"</span> cannot list resource <span class="string">"namespaces"</span> <span class="keyword">in</span> API group <span class="string">""</span> at the cluster scope: RBAC: clusterrole.rbac.authorization.k8s.io <span class="string">"system:heapster"</span> not found</span><br><span class="line">E0902 10:57:12.071117       1 reflector.go:190] k8s.io/heapster/metrics/util/util.go:30: Failed to list *v1.Node: nodes is forbidden: User <span class="string">"system:serviceaccount:kube-system:heapster"</span> cannot list resource <span class="string">"nodes"</span> <span class="keyword">in</span> API group <span class="string">""</span> at the cluster scope: RBAC: clusterrole.rbac.authorization.k8s.io <span class="string">"system:heapster"</span> not found</span><br></pre></td></tr></table></figure>
