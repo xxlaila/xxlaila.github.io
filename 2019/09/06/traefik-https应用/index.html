@@ -6,22 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
-  <title>k8s配置Dashboard | 懒羊羊</title>
+  <title>traefik https应用 | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;K8S Dashboard是官方的一个基于WEB的用户界面，专门用来管理K8S集群，并可展示集群的状态。K8S集群安装好后默认没有包含Dashboard，我们需要额外创建它。 1、安装dashboard1.1、下载准备需要的文件经过修改过后的文件，已经可以正常使用的文件">
-<meta name="keywords" content="kubernetes">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;之前已经使用traefik服务作为入口，测试并访问了tomcat应用，之前是通过http来访问的，而我们在yaml文件里面也添加8443端口用于https访问，在实际环境中我们也是需要https来进行访问应用，通过traefik实现https，traefik http应用 操作实践 这里我用了公司的证书">
+<meta name="keywords" content="traefik">
 <meta property="og:type" content="article">
-<meta property="og:title" content="k8s配置Dashboard">
-<meta property="og:url" content="https://xxlaila.github.io/2019/08/29/k8s配置Dashboard/index.html">
+<meta property="og:title" content="traefik https应用">
+<meta property="og:url" content="https://xxlaila.github.io/2019/09/06/traefik-https应用/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;K8S Dashboard是官方的一个基于WEB的用户界面，专门用来管理K8S集群，并可展示集群的状态。K8S集群安装好后默认没有包含Dashboard，我们需要额外创建它。 1、安装dashboard1.1、下载准备需要的文件经过修改过后的文件，已经可以正常使用的文件">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;之前已经使用traefik服务作为入口，测试并访问了tomcat应用，之前是通过http来访问的，而我们在yaml文件里面也添加8443端口用于https访问，在实际环境中我们也是需要https来进行访问应用，通过traefik实现https，traefik http应用 操作实践 这里我用了公司的证书">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/WechatIMG28864.png">
-<meta property="og:updated_time" content="2019-09-03T01:38:59.145Z">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1567748749337.jpg">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1567749086159.jpg">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1567749278980.jpg">
+<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1567749309772.jpg">
+<meta property="og:updated_time" content="2019-09-06T14:41:19.086Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="k8s配置Dashboard">
-<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;K8S Dashboard是官方的一个基于WEB的用户界面，专门用来管理K8S集群，并可展示集群的状态。K8S集群安装好后默认没有包含Dashboard，我们需要额外创建它。 1、安装dashboard1.1、下载准备需要的文件经过修改过后的文件，已经可以正常使用的文件">
-<meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/WechatIMG28864.png">
+<meta name="twitter:title" content="traefik https应用">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;之前已经使用traefik服务作为入口，测试并访问了tomcat应用，之前是通过http来访问的，而我们在yaml文件里面也添加8443端口用于https访问，在实际环境中我们也是需要https来进行访问应用，通过traefik实现https，traefik http应用 操作实践 这里我用了公司的证书">
+<meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/1567748749337.jpg">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -165,20 +168,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-k8s配置Dashboard" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-traefik-https应用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      k8s配置Dashboard
+      traefik https应用
     </h1>
   
 
         
-        <a href="/2019/08/29/k8s配置Dashboard/" class="archive-article-date">
-  	<time datetime="2019-08-29T09:57:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-29</time>
+        <a href="/2019/09/06/traefik-https应用/" class="archive-article-date">
+  	<time datetime="2019-09-06T03:31:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-06</time>
 </a>
         
 
@@ -192,58 +195,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;K8S Dashboard是官方的一个基于WEB的用户界面，专门用来管理K8S集群，并可展示集群的状态。K8S集群安装好后默认没有包含Dashboard，我们需要额外创建它。</p>
-<h3 id="1、安装dashboard"><a href="#1、安装dashboard" class="headerlink" title="1、安装dashboard"></a>1、安装dashboard</h3><h4 id="1-1、下载准备需要的文件"><a href="#1-1、下载准备需要的文件" class="headerlink" title="1.1、下载准备需要的文件"></a>1.1、下载准备需要的文件</h4><p>经过修改过后的文件，已经可以正常使用的<a href="https://github.com/xxlaila/kubernetes-yaml/" target="_blank" rel="noopener">文件</a></p>
-<a id="more"></a>
-
-<ul>
-<li>创建dashboard<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@k8s-master-01 dashboard]<span class="comment"># kubectl create -f kubernetes-dashboard.yaml </span></span><br><span class="line">secret/kubernetes-dashboard-certs created</span><br><span class="line">serviceaccount/kubernetes-dashboard created</span><br><span class="line">role.rbac.authorization.k8s.io/kubernetes-dashboard-minimal created</span><br><span class="line">rolebinding.rbac.authorization.k8s.io/kubernetes-dashboard-minimal created</span><br><span class="line">deployment.apps/kubernetes-dashboard created</span><br><span class="line">service/kubernetes-dashboard created</span><br></pre></td></tr></table></figure>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;之前已经使用traefik服务作为入口，测试并访问了tomcat应用，之前是通过http来访问的，而我们在yaml文件里面也添加8443端口用于https访问，在实际环境中我们也是需要https来进行访问应用，通过traefik实现https，<a href="https://xxlaila.github.io/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/">traefik http应用</a></p>
+<h3 id="操作实践"><a href="#操作实践" class="headerlink" title="操作实践"></a>操作实践</h3><ul>
+<li>这里我用了公司的证书，就是为了贴近真实，也满足测试需求，</li>
+<li>创建一个secret，保存https证书<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls</span></span><br><span class="line">1_test.kingxunlian.com_bundle.crt  2_test.kingxunlian.com.key</span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl create secret generic traefik-cert --from-file=1_test.kingxunlian.com_bundle.crt --from-file=2_test.kingxunlian.com.key -n kube-system</span></span><br><span class="line">secret/traefik-cert created</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h4 id="1-2、查看服务状态和pod"><a href="#1-2、查看服务状态和pod" class="headerlink" title="1.2、查看服务状态和pod"></a>1.2、查看服务状态和pod</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@k8s-master-01 ~]<span class="comment"># kubectl get service --all-namespaces</span></span><br><span class="line">NAMESPACE     NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)         AGE</span><br><span class="line">default       kubernetes             ClusterIP   10.254.0.1      &lt;none&gt;        443/TCP         18h</span><br><span class="line">kube-system   coredns                ClusterIP   10.254.0.10     &lt;none&gt;        53/UDP,53/TCP   16h</span><br><span class="line">kube-system   kubernetes-dashboard   NodePort    10.254.51.226   &lt;none&gt;        443:30001/TCP   15h</span><br></pre></td></tr></table></figure>
-
+<p>把证书拷贝到k8s node节点，存放路径为/etc/kubernetes/certs。</p>
+<h3 id="创建一个configmap，保存traefix的配置"><a href="#创建一个configmap，保存traefix的配置" class="headerlink" title="创建一个configmap，保存traefix的配置"></a>创建一个configmap，保存traefix的配置</h3><p>traefix中配置了把所有http请求全部rewrite为https的规则，并配置相应的证书位置</p>
 <ul>
-<li><p>查看service描述</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@k8s-master-01 ~]<span class="comment"># kubectl describe  service kubernetes-dashboard -n kube-system</span></span><br><span class="line">Name:                     kubernetes-dashboard</span><br><span class="line">Namespace:                kube-system</span><br><span class="line">Labels:                   k8s-app=kubernetes-dashboard</span><br><span class="line">Annotations:              &lt;none&gt;</span><br><span class="line">Selector:                 k8s-app=kubernetes-dashboard</span><br><span class="line">Type:                     NodePort</span><br><span class="line">IP:                       10.254.51.226</span><br><span class="line">Port:                     &lt;<span class="built_in">unset</span>&gt;  443/TCP</span><br><span class="line">TargetPort:               8443/TCP</span><br><span class="line">NodePort:                 &lt;<span class="built_in">unset</span>&gt;  30001/TCP</span><br><span class="line">Endpoints:                10.254.39.3:8443</span><br><span class="line">Session Affinity:         None</span><br><span class="line">External Traffic Policy:  Cluster</span><br><span class="line">Events:                   &lt;none&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看pod描述</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@k8s-master-01 ~]<span class="comment"># kubectl describe pod kubernetes-dashboard-6c655d9445-6zntr --namespace=kube-system</span></span><br><span class="line">Name:           kubernetes-dashboard-6c655d9445-6zntr</span><br><span class="line">Namespace:      kube-system</span><br><span class="line">Node:           172.21.17.31/172.21.17.31</span><br><span class="line">Start Time:     Thu, 29 Aug 2019 17:47:20 +0800</span><br><span class="line">Labels:         k8s-app=kubernetes-dashboard</span><br><span class="line">                pod-template-hash=6c655d9445</span><br><span class="line">Annotations:    &lt;none&gt;</span><br><span class="line">Status:         Running</span><br><span class="line">IP:             10.254.39.3</span><br></pre></td></tr></table></figure>
+<li>traefik.toml<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">defaultEntryPoints = [<span class="string">"http"</span>,<span class="string">"https"</span>]</span><br><span class="line">[entryPoints]</span><br><span class="line">  [entryPoints.http]</span><br><span class="line">  address = <span class="string">":80"</span></span><br><span class="line">    [entryPoints.http.redirect]</span><br><span class="line">    entryPoint = <span class="string">"https"</span></span><br><span class="line">  [entryPoints.https]</span><br><span class="line">  address = <span class="string">":443"</span></span><br><span class="line">    [entryPoints.https.tls]</span><br><span class="line">      [[entryPoints.https.tls.certificates]]</span><br><span class="line">      certFile = <span class="string">"/etc/kubernetes/certs/1_test.kingxunlian.com_bundle.crt"</span></span><br><span class="line">      keyFile = <span class="string">"/etc/kubernetes/certs/2_test.kingxunlian.com.key"</span></span><br><span class="line"></span><br><span class="line">$ kubectl create configmap traefik-conf --from-file=traefik.toml -n kube-system</span><br><span class="line">configmap/traefik-conf created</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h3 id="2、授权Dashboard账户集群管理权限"><a href="#2、授权Dashboard账户集群管理权限" class="headerlink" title="2、授权Dashboard账户集群管理权限"></a>2、授权Dashboard账户集群管理权限</h3><p>若果不进行授权操作，打开dashboard会报错，如下图<br><img src="http://pvyidozd0.bkt.clouddn.com/WechatIMG28864.png" alt="img"></p>
+<p>把traefik.toml文件拷贝到k8s node节点,存放路径为/etc/kubernetes/conf。</p>
+<h3 id="重新部署Traefix"><a href="#重新部署Traefix" class="headerlink" title="重新部署Traefix"></a>重新部署Traefix</h3><p>主要是要关联创建的secret和configMap，并挂载相对应的主机目录。</p>
 <ul>
-<li><p>新建kubrnetes-dashboard-admin-rbac.yaml</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat kubernetes-dashboard-admin-rbac.yaml </span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ServiceAccount</span><br><span class="line">metadata:</span><br><span class="line">  name: admin-user</span><br><span class="line">  namespace: kube-system</span><br><span class="line">---</span><br><span class="line"><span class="comment"># Create ClusterRoleBinding</span></span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">kind: ClusterRoleBinding</span><br><span class="line">metadata:</span><br><span class="line">  name: admin-user</span><br><span class="line">roleRef:</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line">  kind: ClusterRole</span><br><span class="line">  name: cluster-admin</span><br><span class="line">subjects:</span><br><span class="line">- kind: ServiceAccount</span><br><span class="line">  name: admin-user</span><br><span class="line">  namespace: kube-system</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行创建</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f kubernetes-dashboard-admin-rbac.yaml</span></span><br></pre></td></tr></table></figure>
+<li>deployment.yaml</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">$ cat deployment.yaml</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: traefik-ingress-lb</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: traefik-ingress-lb</span><br><span class="line">spec:</span><br><span class="line">  replicas: 2 <span class="comment"># 增加行</span></span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        k8s-app: traefik-ingress-lb</span><br><span class="line">        name: traefik-ingress-lb</span><br><span class="line">    spec:</span><br><span class="line">      terminationGracePeriodSeconds: 60</span><br><span class="line">      hostNetwork: <span class="literal">true</span></span><br><span class="line">      restartPolicy: Always</span><br><span class="line">      serviceAccountName: ingress</span><br><span class="line">      containers:</span><br><span class="line">      - image: traefik</span><br><span class="line">        name: traefik-ingress-lb</span><br><span class="line">        volumeMounts:</span><br><span class="line">        - mountPath: <span class="string">"/etc/kubernetes/certs"</span></span><br><span class="line">          name: <span class="string">"ssl"</span></span><br><span class="line">        - mountPath: <span class="string">"/etc/kubernetes/conf"</span></span><br><span class="line">          name: <span class="string">"config"</span></span><br><span class="line">        resources:</span><br><span class="line">          limits:</span><br><span class="line">            cpu: 1000m</span><br><span class="line">            memory: 3000Mi</span><br><span class="line">          requests:</span><br><span class="line">            cpu: 500m</span><br><span class="line">            memory: 2000Mi</span><br><span class="line">        ports:</span><br><span class="line">        - name: http</span><br><span class="line">          containerPort: 80</span><br><span class="line">          hostPort: 80</span><br><span class="line">        - name: admin</span><br><span class="line">          containerPort: 8580</span><br><span class="line">          hostPort: 8580</span><br><span class="line">        args:</span><br><span class="line">        - --configFile=/etc/kubernetes/conf/traefik.toml</span><br><span class="line">        - --web</span><br><span class="line">        - --web.address=:8580</span><br><span class="line">        - --kubernetes</span><br><span class="line"></span><br><span class="line">$ kubectl apply -f deployment.yaml </span><br><span class="line">deployment.extensions/traefik-ingress-lb configured</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试效果"><a href="#测试效果" class="headerlink" title="测试效果"></a>测试效果</h3><p>登陆traefik-ui界面,用原本http的访问，traefik会直接给我们重定向至https。<br><img src="http://pvyidozd0.bkt.clouddn.com/1567748749337.jpg" alt="img"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于traefik-ui使用的域名不是我们证书所支持的域名，所以这里提示不安全，修改之前创建的ingress，修改其中的域名为支持证书的域名</p>
+<ul>
+<li>traefik-ui.yaml<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: traefik-web-ui</span><br><span class="line">  namespace: kube-system </span><br><span class="line">spec:</span><br><span class="line">  selector:</span><br><span class="line">    k8s-app: traefik-ingress-lb</span><br><span class="line">  ports:</span><br><span class="line">  - name: web</span><br><span class="line">    port: 80</span><br><span class="line">    targetPort: 8580</span><br><span class="line">---</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: traefik-web-ui</span><br><span class="line">  namespace: kube-system</span><br><span class="line">spec:</span><br><span class="line">  rules:</span><br><span class="line">  - host: traefik.test.kingxunlian.com</span><br><span class="line">    http:</span><br><span class="line">      paths:</span><br><span class="line">      - path: /</span><br><span class="line">        backend:</span><br><span class="line">          serviceName: traefik-web-ui</span><br><span class="line">          servicePort: web</span><br><span class="line"></span><br><span class="line">$ kubectl apply -f traefik-ui.yaml </span><br><span class="line">service/traefik-web-ui unchanged</span><br><span class="line">ingress.extensions/traefik-web-ui configured</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p>找到kubernete-dashboard-admin的token，复制token在dashboard页面进行登录，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@k8s-master-01 dashboard]<span class="comment"># kubectl -n kube-system get secret | grep admin-user</span></span><br><span class="line">admin-user-token-qv49g             kubernetes.io/service-account-token   3      15h</span><br><span class="line"></span><br><span class="line">[root@k8s-master-01 dashboard]<span class="comment"># kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '&#123;print $1&#125;')</span></span><br><span class="line">Name:         admin-user-token-qv49g</span><br><span class="line">Namespace:    kube-system</span><br><span class="line">Labels:       &lt;none&gt;</span><br><span class="line">Annotations:  kubernetes.io/service-account.name: admin-user</span><br><span class="line">              kubernetes.io/service-account.uid: ea3f0e3f-ca42-11e9-8716-fa163effd55b</span><br><span class="line"></span><br><span class="line">Type:  kubernetes.io/service-account-token</span><br><span class="line"></span><br><span class="line">Data</span><br><span class="line">====</span><br><span class="line">ca.crt:     1359 bytes</span><br><span class="line">namespace:  11 bytes</span><br><span class="line">token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLXF2NDlnIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiJlYTNmMGUzZi1jYTQyLTExZTktODcxNi1mYTE2M2VmZmQ1NWIiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06YWRtaW4tdXNlciJ9.AbdsJdgi9d0rCYrmvoJkWf32HKSMT03OyOX55aRhPptjzIjDcGxxQYecT0w58N7Z_2L2RwTBfOrm4B3wTEDfFZKgYsnGJQOzJMtZDN9w5YJg2xGQ27E3KisTbbQzd_I5DgxSZWW75GwWf756_bIQpWuXNRO_KjheyWuNNv0tSEYRiXpcboSQpb-8R-Km-vP85mxke6s5cJFSk0WLMjFWow1vOF1ns23NZ5nslEmYOMZF3_Fxybh3LbiCyrpD4c0FtfRcXaBIBqACeyCPRriYMIIJq3OJjI-DzuqUedu1x2xH2prB4mNjxlKt2-7q0M1zCuvm5JhW_LzWgveu9ni2ig</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、配置文件修改说明"><a href="#3、配置文件修改说明" class="headerlink" title="3、配置文件修改说明"></a>3、配置文件修改说明</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;dashboard 文件被修改，默认的token失效的时间是900秒，15分钟，每15分钟就要进行一次认证，这样对于运维人员来说就不是特别的方便，我们可以通过修改token-ttl参数来设置，主要是修改dashborad的yaml文件，并重新建立即可</p>
-<h4 id="3-1、在配置文件修改-添加"><a href="#3-1、在配置文件修改-添加" class="headerlink" title="3.1、在配置文件修改/添加"></a>3.1、在配置文件修改/添加</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ports:</span><br><span class="line">- containerPort: 8443</span><br><span class="line">  protocol: TCP</span><br><span class="line">args:</span><br><span class="line">  - --auto-generate-certificates</span><br><span class="line">  - --token-ttl=43200</span><br></pre></td></tr></table></figure>
-
+<p>修改hosts版定的域名进行访问<br><img src="http://pvyidozd0.bkt.clouddn.com/1567749086159.jpg" alt="img"></p>
 <ul>
-<li>重建pod<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@k8s-master-01 dashboard]<span class="comment"># kubectl apply -f kubernetes-dashboard.yaml</span></span><br></pre></td></tr></table></figure>
+<li><p>修改之前部署的tomcat程序</p>
+</li>
+<li><p>ingress-tomcat.yaml </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: tomcat-test-web</span><br><span class="line">  namespace: default</span><br><span class="line">  annotations:</span><br><span class="line">    kubernetes.io/ingress.class: traefik</span><br><span class="line">    traefik.frontend.rule.type: PathPrefixStrip</span><br><span class="line">spec:</span><br><span class="line">  rules:</span><br><span class="line">  - host: tomcat.test.kingxunlian.com</span><br><span class="line">    http:</span><br><span class="line">      paths:</span><br><span class="line">      - path: /test1/</span><br><span class="line">        backend:</span><br><span class="line">          serviceName: tomcat-test1</span><br><span class="line">          servicePort: 8080</span><br><span class="line">      - path: /test2/</span><br><span class="line">        backend:</span><br><span class="line">          serviceName: tomcat-test2</span><br><span class="line">          servicePort: 8080</span><br><span class="line"></span><br><span class="line">$ kubectl apply -f ingress-tomcat.yaml </span><br><span class="line">ingress.extensions/tomcat-test-web configured</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p>我们可以输入任意节点的ip加30001端口就可以访问dashboard, https://{ip}:30001。</p>
-<h3 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;每天我们来公司要登录dashboard的时候都要去输入一次token，每次去获取token的时候都要输入很长的一串，这里为了方便，可以写一个脚本，要token的时候执行一下脚本，就可以。</p>
+<p>访问链接测试<br><img src="http://pvyidozd0.bkt.clouddn.com/1567749278980.jpg" alt="img"><br><img src="http://pvyidozd0.bkt.clouddn.com/1567749309772.jpg" alt="img"></p>
+<h3 id="其他需求"><a href="#其他需求" class="headerlink" title="其他需求"></a>其他需求</h3><p>在我们真实的应用场景中，需求肯定有不同的，比如我所在的公司开发环境就要只是http和https，测试环境以上的就全部强制https。这就得分开进行配置</p>
+<h4 id="同时支持http和https"><a href="#同时支持http和https" class="headerlink" title="同时支持http和https"></a>同时支持http和https</h4><p>把http中的rewrite代码改掉</p>
 <ul>
-<li><p>创建脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># vim kube-token</span><br><span class="line">#!/bin/bash</span><br><span class="line">kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk &apos;&#123;print $1&#125;&apos;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置脚本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># chmod +x kube-token</span></span><br><span class="line"><span class="comment"># mv kube-token /usr/bin</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<li>traefik.toml</li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">defaultEntryPoints = [<span class="string">"http"</span>,<span class="string">"https"</span>]</span><br><span class="line">[entryPoints]</span><br><span class="line">  [entryPoints.http]</span><br><span class="line">  address = <span class="string">":80"</span></span><br><span class="line">    entryPoint = <span class="string">"https"</span></span><br><span class="line">  [entryPoints.https]</span><br><span class="line">  address = <span class="string">":443"</span></span><br><span class="line">    [entryPoints.https.tls]</span><br><span class="line">      [[entryPoints.https.tls.certificates]]</span><br><span class="line">      certFile = <span class="string">"/etc/kubernetes/certs/1_test.kingxunlian.com_bundle.crt"</span></span><br><span class="line">      keyFile = <span class="string">"/etc/kubernetes/certs/2_test.kingxunlian.com.key"</span></span><br><span class="line">      [[entryPoints.https.tls.certificates]]</span><br><span class="line">      certFile = <span class="string">"/etc/kubernetes/certs/1_dev.kingxunlian.com_bundle.crt"</span></span><br><span class="line">      keyFile = <span class="string">"/etc/kubernetes/certs/2_dev.kingxunlian.com.key"</span></span><br><span class="line"></span><br><span class="line">[file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># rules</span></span><br><span class="line">[entryPoints]</span><br><span class="line">  [entryPoints.http]</span><br><span class="line">  address = <span class="string">":80"</span></span><br><span class="line">    [entryPoints.http.redirect]</span><br><span class="line">      regex = <span class="string">"^http://traefix.test.kingxunlian.com/(.*)"</span></span><br><span class="line">      replacement = <span class="string">"https://traefix.test.kingxunlian.com/<span class="variable">$1</span>"</span></span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -257,7 +253,7 @@
     
     <br>
     <strong>本文链接：</strong>
-    https://xxlaila.github.io/2019/08/29/k8s配置Dashboard/
+    https://xxlaila.github.io/2019/09/06/traefik-https应用/
     <br>
     <strong>版权声明：</strong>
     本作品采用
@@ -311,7 +307,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">traefik</a>
         		</li>
       		
 		</ul>
@@ -378,7 +374,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://xxlaila.github.io/2019/08/29/k8s配置Dashboard/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://xxlaila.github.io/2019/09/06/traefik-https应用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -392,18 +388,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/30/k8s部署istio/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          k8s部署istio
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/29/k8s删除node重新加入/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">k8s删除node重新加入</div>
+    <a href="/2019/09/05/traefik-ingress使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">traefik ingress使用</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -430,7 +417,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、安装dashboard"><span class="toc-number">1.</span> <span class="toc-text">1、安装dashboard</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1、下载准备需要的文件"><span class="toc-number">1.1.</span> <span class="toc-text">1.1、下载准备需要的文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2、查看服务状态和pod"><span class="toc-number">1.2.</span> <span class="toc-text">1.2、查看服务状态和pod</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、授权Dashboard账户集群管理权限"><span class="toc-number">2.</span> <span class="toc-text">2、授权Dashboard账户集群管理权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、配置文件修改说明"><span class="toc-number">3.</span> <span class="toc-text">3、配置文件修改说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1、在配置文件修改-添加"><span class="toc-number">3.1.</span> <span class="toc-text">3.1、在配置文件修改/添加</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他操作"><span class="toc-number">4.</span> <span class="toc-text">其他操作</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作实践"><span class="toc-number">1.</span> <span class="toc-text">操作实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个configmap，保存traefix的配置"><span class="toc-number">2.</span> <span class="toc-text">创建一个configmap，保存traefix的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重新部署Traefix"><span class="toc-number">3.</span> <span class="toc-text">重新部署Traefix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试效果"><span class="toc-number">4.</span> <span class="toc-text">测试效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他需求"><span class="toc-number">5.</span> <span class="toc-text">其他需求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#同时支持http和https"><span class="toc-number">5.1.</span> <span class="toc-text">同时支持http和https</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

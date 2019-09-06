@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/09/06/traefik-https%E5%BA%94%E7%94%A8/</loc>
+    
+    <lastmod>2019-09-06T14:41:19.086Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/10/haproxy-keepalived/</loc>
+    
+    <lastmod>2019-09-06T03:33:05.633Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/</loc>
     
-    <lastmod>2019-09-06T03:19:12.767Z</lastmod>
+    <lastmod>2019-09-06T03:26:16.096Z</lastmod>
     
   </url>
   
@@ -75,13 +89,6 @@
     <loc>https://xxlaila.github.io/2019/08/24/k8s%E9%83%A8%E7%BD%B2coredns/</loc>
     
     <lastmod>2019-09-02T08:52:16.413Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/10/haproxy-keepalived/</loc>
-    
-    <lastmod>2019-09-02T07:59:24.484Z</lastmod>
     
   </url>
   
