@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1567739737385.jpg">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1567739822127.jpg">
 <meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/1567739856570.jpg">
-<meta property="og:updated_time" content="2019-09-06T03:26:16.096Z">
+<meta property="og:updated_time" content="2019-09-09T08:32:59.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="traefik ingress使用">
 <meta name="twitter:description" content="Traefik介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;简单的说，ingress就是从kubernetes集群外访问集群的入口，将用户的URL请求转发到不同的service上。Ingress相当于nginx、apache等负载均衡反向代理服务器，其中还包括规则定义，即URL的路由信息。 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nb">
@@ -301,9 +301,19 @@
 </li>
 <li><p>创建并查看</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl create -f ingress-tomcat.yaml </span><br><span class="line"></span><br><span class="line">$ kubectl describe ingress tomcat-test-web</span><br><span class="line">Name:             tomcat-test-web</span><br><span class="line">Namespace:        default</span><br><span class="line">Address:          </span><br><span class="line">Default backend:  default-http-backend:80 (&lt;none&gt;)</span><br><span class="line">Rules:</span><br><span class="line">  Host               Path  Backends</span><br><span class="line">  ----               ----  --------</span><br><span class="line">  tomcat.xxlaila.io  </span><br><span class="line">                     /test1/   tomcat-test1:8080 (&lt;none&gt;)</span><br><span class="line">                     /test2/   tomcat-test2:8080 (&lt;none&gt;)</span><br><span class="line">Annotations:</span><br><span class="line">  traefik.frontend.rule.type:                        PathPrefixStrip</span><br><span class="line">  kubectl.kubernetes.io/last-applied-configuration:  &#123;<span class="string">"apiVersion"</span>:<span class="string">"extensions/v1beta1"</span>,<span class="string">"kind"</span>:<span class="string">"Ingress"</span>,<span class="string">"metadata"</span>:&#123;<span class="string">"annotations"</span>:&#123;<span class="string">"kubernetes.io/ingress.class"</span>:<span class="string">"traefik"</span>,<span class="string">"traefik.frontend.rule.type"</span>:<span class="string">"PathPrefixStrip"</span>&#125;,<span class="string">"name"</span>:<span class="string">"tomcat-test-web"</span>,<span class="string">"namespace"</span>:<span class="string">"default"</span>&#125;,<span class="string">"spec"</span>:&#123;<span class="string">"rules"</span>:[&#123;<span class="string">"host"</span>:<span class="string">"tomcat.xxlaila.io"</span>,<span class="string">"http"</span>:&#123;<span class="string">"paths"</span>:[&#123;<span class="string">"backend"</span>:&#123;<span class="string">"serviceName"</span>:<span class="string">"tomcat-test1"</span>,<span class="string">"servicePort"</span>:8080&#125;,<span class="string">"path"</span>:<span class="string">"/test1/"</span>&#125;,&#123;<span class="string">"backend"</span>:&#123;<span class="string">"serviceName"</span>:<span class="string">"tomcat-test2"</span>,<span class="string">"servicePort"</span>:8080&#125;,<span class="string">"path"</span>:<span class="string">"/test2/"</span>&#125;]&#125;&#125;]&#125;&#125;</span><br><span class="line"></span><br><span class="line">  kubernetes.io/ingress.class:  traefik</span><br><span class="line">Events:                         &lt;none&gt;</span><br></pre></td></tr></table></figure>
+
 </li>
-<li><p>traefix-ui界面上可以看到<br><img src="http://pvyidozd0.bkt.clouddn.com/1567739737385.jpg" alt="img"></p>
+</ul>
+<h3 id="给节点设置label"><a href="#给节点设置label" class="headerlink" title="给节点设置label"></a>给节点设置label</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于是 Kubernetes DeamonSet 这种方式部署 Traefik，所以需要提前给节点设置 Label，这样当程序部署时 Pod 会自动调度到设置 Label 的点上。</p>
+<h4 id="节点设置-Label-标签"><a href="#节点设置-Label-标签" class="headerlink" title="节点设置 Label 标签"></a>节点设置 Label 标签</h4><ul>
+<li>格式：kubectl label nodes [节点名] [key=value]<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> kubectl get nodes</span><br><span class="line">NAME            STATUS   ROLES    AGE    VERSION</span><br><span class="line">172.21.16.204   Ready    &lt;none&gt;   7d5h   v1.13.3</span><br><span class="line">172.21.16.240   Ready    &lt;none&gt;   7d2h   v1.13.3</span><br><span class="line">172.21.16.87    Ready    &lt;none&gt;   7d2h   v1.13.3</span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl label nodes 172.21.16.204 IngressProxy=true</span></span><br><span class="line">node/172.21.16.204 labeled</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看节点label设置是否成功</span></span><br><span class="line"><span class="comment"># kubectl get nodes --show-labels</span></span><br><span class="line">NAME            STATUS   ROLES    AGE    VERSION   LABELS</span><br><span class="line">172.21.16.204   Ready    &lt;none&gt;   7d5h   v1.13.3   IngressProxy=<span class="literal">true</span>,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=172.21.16.204,node.kubernetes.io/k8s-node=<span class="literal">true</span></span><br><span class="line">172.21.16.240   Ready    &lt;none&gt;   7d2h   v1.13.3   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=172.21.16.240,node.kubernetes.io/k8s-node=<span class="literal">true</span></span><br><span class="line">172.21.16.87    Ready    &lt;none&gt;   7d2h   v1.13.3   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=172.21.16.87,node.kubernetes.io/k8s-node=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
 </li>
+</ul>
+<h4 id="修改Traefix部署文件"><a href="#修改Traefix部署文件" class="headerlink" title="修改Traefix部署文件"></a>修改Traefix部署文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat deployment.yaml</span></span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: traefik-ingress-lb</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: traefik-ingress-lb</span><br><span class="line">spec:</span><br><span class="line">  replicas: 2 <span class="comment"># 增加行</span></span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        k8s-app: traefik-ingress-lb</span><br><span class="line">        name: traefik-ingress-lb</span><br><span class="line">    spec:</span><br><span class="line">      terminationGracePeriodSeconds: 60</span><br><span class="line">      volumes:</span><br><span class="line">      - name: ssl</span><br><span class="line">        secret:</span><br><span class="line">          secretName: traefik-cert</span><br><span class="line">      - name: config</span><br><span class="line">        configMap:</span><br><span class="line">          name: traefik-conf</span><br><span class="line">      hostNetwork: <span class="literal">true</span></span><br><span class="line">      restartPolicy: Always</span><br><span class="line">      serviceAccountName: ingress</span><br><span class="line">      containers:</span><br><span class="line">      - image: traefik</span><br><span class="line">        name: traefik-ingress-lb</span><br><span class="line">        volumeMounts:</span><br><span class="line">        - mountPath: <span class="string">"/etc/kubernetes/certs"</span></span><br><span class="line">          name: <span class="string">"ssl"</span></span><br><span class="line">        - mountPath: <span class="string">"/etc/kubernetes/conf"</span></span><br><span class="line">          name: <span class="string">"config"</span></span><br><span class="line">        resources:</span><br><span class="line">          limits:</span><br><span class="line">            cpu: 1000m</span><br><span class="line">            memory: 3000Mi</span><br><span class="line">          requests:</span><br><span class="line">            cpu: 500m</span><br><span class="line">            memory: 2000Mi</span><br><span class="line">        ports:</span><br><span class="line">        - name: http</span><br><span class="line">          containerPort: 80</span><br><span class="line">          hostPort: 80</span><br><span class="line">        - name: admin</span><br><span class="line">          containerPort: 8580</span><br><span class="line">          hostPort: 8580</span><br><span class="line">        args:</span><br><span class="line">        - --configFile=/etc/kubernetes/conf/traefik.toml</span><br><span class="line">        - --web</span><br><span class="line">        - --web.address=:8580</span><br><span class="line">        - --kubernetes</span><br><span class="line">      nodeSelector:</span><br><span class="line">        IngressProxy: <span class="string">"true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行部署即可</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>traefix-ui界面上可以看到<br><img src="http://pvyidozd0.bkt.clouddn.com/1567739737385.jpg" alt="img"></li>
 </ul>
 <p>从describe信息和ui界面上可以看到，tomcat.test.k8s分别有了/test1/和/test2/的域名代理以及相对应的后端<br><img src="http://pvyidozd0.bkt.clouddn.com/1567739822127.jpg" alt="img"><br><img src="http://pvyidozd0.bkt.clouddn.com/1567739856570.jpg" alt="img"></p>
 <p><a href="https://xuchao918.github.io/2019/03/01/Kubernetes-traefik-ingress%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">参考文献2</a><br><a href="https://blog.51cto.com/icenycmh/2124502" target="_blank" rel="noopener">参考文献1</a></p>
@@ -493,7 +503,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Traefik介绍"><span class="toc-number">1.</span> <span class="toc-text">Traefik介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Traefik主要特性详解"><span class="toc-number">2.</span> <span class="toc-text">Traefik主要特性详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署Traefik-ingress"><span class="toc-number">3.</span> <span class="toc-text">部署Traefik ingress</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-number">4.</span> <span class="toc-text">测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ingress配置同域名不同路径代理web应用"><span class="toc-number">4.1.</span> <span class="toc-text">ingress配置同域名不同路径代理web应用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ingress配置同域名对应location"><span class="toc-number">4.1.1.</span> <span class="toc-text">ingress配置同域名对应location</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Traefik介绍"><span class="toc-number">1.</span> <span class="toc-text">Traefik介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Traefik主要特性详解"><span class="toc-number">2.</span> <span class="toc-text">Traefik主要特性详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署Traefik-ingress"><span class="toc-number">3.</span> <span class="toc-text">部署Traefik ingress</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-number">4.</span> <span class="toc-text">测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ingress配置同域名不同路径代理web应用"><span class="toc-number">4.1.</span> <span class="toc-text">ingress配置同域名不同路径代理web应用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ingress配置同域名对应location"><span class="toc-number">4.1.1.</span> <span class="toc-text">ingress配置同域名对应location</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给节点设置label"><span class="toc-number">5.</span> <span class="toc-text">给节点设置label</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#节点设置-Label-标签"><span class="toc-number">5.1.</span> <span class="toc-text">节点设置 Label 标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改Traefix部署文件"><span class="toc-number">5.2.</span> <span class="toc-text">修改Traefix部署文件</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -640,6 +650,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
@@ -648,15 +662,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">nfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -664,7 +670,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,15 +682,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jira</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -704,6 +714,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
@@ -712,7 +726,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -736,7 +750,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -744,23 +758,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -772,11 +778,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
               </li>
              
               <li class="article-tag-list-item">
