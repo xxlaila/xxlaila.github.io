@@ -163,6 +163,470 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-confluence-install" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/confluence-install/">confluence_install</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/24/confluence-install/" class="archive-article-date">
+  	<time datetime="2019-08-24T00:57:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;Confluence是一个专业的企业知识管理与协同软件，也可以用于构建企业wiki。使用简单，但它强大的编辑和站点管理特征能够帮助团队成员之间共享信息、文档协作、集体讨论，信息推送。为团队提供一个协作环境。在这里，团队成员齐心协力，各擅其能，协同地编写文档和管理项目。从此打破不同团队、不同部门以及个人之间信息孤岛的僵局，Confluence真正实现了组织资源共享。</p>
+<p>环境准备</p>
+<table>
+<thead>
+<tr>
+<th>系统版本</th>
+<th>插件</th>
+<th>软件</th>
+<th>版本</th>
+<th>服务配置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>centos 7.4</td>
+<td></td>
+<td>mysql</td>
+<td>5.6+</td>
+<td>2/4G/50G</td>
+</tr>
+<tr>
+<td>centos 7.4</td>
+<td>jdk 1.8</td>
+<td>confluence</td>
+<td>6.12.2</td>
+<td>4/8G/200G</td>
+</tr>
+</tbody></table>
+<p>confluence 6.12.2安装并破解，mysql 版本这里使用的是5.7.24</p>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">confluence</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/24/confluence-install/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-nexus3搭建npm私服" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/23/nexus3搭建npm私服/">nexus3搭建npm私服</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/23/nexus3搭建npm私服/" class="archive-article-date">
+  	<time datetime="2019-08-23T01:41:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;公司前端全是nodejs的，nodejs在install的时候往往是连接外网，或者是设置taobao源，即使是设置了taobao源，但是还是解决不了慢的问题，为此搭建了一个内部的npm私服，这里用google一下有很多都可以来进行搭建npm私服，然后也看到了nexus也可以来做，正好maven私服也是用的这个，都是3版本，为此选择了nexus来做npm的私服，和maven一套便于维护。</p>
+<h3 id="nexus安装"><a href="#nexus安装" class="headerlink" title="nexus安装"></a>nexus安装</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;不介绍，安装完成nexus后，在浏览器打开并进行登录，第一次安装登录nexus的默认用户<code>admin</code>,默认密码是<code>admin123</code></p>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">nexus,npm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/23/nexus3搭建npm私服/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-nginx-URL-斜杠问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/22/nginx-URL-斜杠问题/">nginx URL 斜杠问题</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/22/nginx-URL-斜杠问题/" class="archive-article-date">
+  	<time datetime="2019-08-22T07:29:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-22</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>今天公司新上的一个前端应用遇到一个问题，那就是在微信登录界面扫码登录之后，微信回调给我们的地址多加了一个斜杠;</p>
+<blockquote>
+<p>错误的地址:<a href="http://a.xxlaila.com/wx.html/?code=011amZet0h1IUf19Fvht0jg4ft0amZeN" target="_blank" rel="noopener">http://a.xxlaila.com/wx.html/?code=011amZet0h1IUf19Fvht0jg4ft0amZeN</a><br>正确的地址:<a href="http://a.xxlaila.com/wx.html?code=011amZet0h1IUf19Fvht0jg4ft0amZeN" target="_blank" rel="noopener">http://a.xxlaila.com/wx.html?code=011amZet0h1IUf19Fvht0jg4ft0amZeN</a></p>
+</blockquote>
+<p>在nginx上配置需要吧这个斜杠删除掉。用户才能正常的访问；</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>在配置文件里面增加如下配置项</p>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/22/nginx-URL-斜杠问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-kubernetes-ci-cd-四" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/20/kubernetes-ci-cd-四/">kubernetes-ci/cd-(四)</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/20/kubernetes-ci-cd-四/" class="archive-article-date">
+  	<time datetime="2019-08-20T06:54:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、Blue-Ocean"><a href="#1、Blue-Ocean" class="headerlink" title="1、Blue Ocean"></a>1、Blue Ocean</h2><p>安装Blue Ocean插件</p>
+<h3 id="1-1、创建pipeline"><a href="#1-1、创建pipeline" class="headerlink" title="1.1、创建pipeline"></a>1.1、创建pipeline</h3><p><img src="http://pvyidozd0.bkt.clouddn.com/348knfnsdlds.png" alt="img"></p>
+<ul>
+<li>配置代码库的地址</li>
+<li>然后配置授权账户</li>
+</ul>
+<p><img src="http://pvyidozd0.bkt.clouddn.com/9857jksdhfjkhdsfds.png" alt="img"></p>
+<p>在这儿之前git库里面必须存在于jenkinsfile文件，pipeline会自动去扫描代码库里面的分支，然后根据每一个分支建立一个类似于job的形式，然后我们可以根据每一个分支进行部署，可以执行定时触发，部署</p>
+<p><img src="http://pvyidozd0.bkt.clouddn.com/382dklfjdskjfs.png" alt="img"></p>
+<p>这儿，只有一个分支存在于jenkinsfile，所以只显示一个分支，如下图：</p>
+
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jenkins, ci/cd</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/20/kubernetes-ci-cd-四/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-kubernetes-ci-cd-三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/20/kubernetes-ci-cd-三/">kubernetes-ci/cd-(三)</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/20/kubernetes-ci-cd-三/" class="archive-article-date">
+  	<time datetime="2019-08-20T06:17:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;jenkins 配置完成后，最终实现的是ci/cd，在编译的过程中，经常会遇到后端java的，前端nodejs的，这里就需要进行一个k8s在调度的时候生产pod来进行指定pod进行编译</p>
+<h3 id="1、制作容器"><a href="#1、制作容器" class="headerlink" title="1、制作容器"></a>1、制作容器</h3><p>自定义一个容器，里面包含了 java，nodejs的所需要的环境，同时需要同步容器的时间，包含来jenkins的node</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># cat Dockerfile</span><br><span class="line">FROM docker.io/centos:latest</span><br><span class="line">MAINTAINER xxlaila &quot;cq_xxlaila@163.com&quot;</span><br><span class="line"># Install dependent plugin</span><br><span class="line">ENV VERSION v10.15.1</span><br><span class="line">RUN yum install -y wget \</span><br><span class="line">    git \</span><br><span class="line">    java-1.8.0-openjdk.x86_64 \</span><br><span class="line">    &amp;&amp; curl -sL https://rpm.nodesource.com/setup_11.x | bash - \</span><br><span class="line">    &amp;&amp; yum install -y gcc gcc-c++ make \</span><br><span class="line">    &amp;&amp; yum install -y nodejs \</span><br><span class="line">    &amp;&amp; yum clean all</span><br><span class="line"># System variable setting</span><br><span class="line">RUN echo &quot;LANG=zh_CN.UTF-8&quot; &gt;&gt; /etc/locale.conf \</span><br><span class="line">    &amp;&amp; source /etc/locale.conf \</span><br><span class="line">    &amp;&amp; cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span><br><span class="line">    &amp;&amp; echo &quot;Asia/shanghai&quot; &gt;&gt; /etc/timezone \</span><br><span class="line">    &amp;&amp; groupadd -g 10000 jenkins \</span><br><span class="line">    &amp;&amp; useradd -g jenkins -u 10000 jenkins</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">EXPOSE 50000</span><br></pre></td></tr></table></figure>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jenkins ci/cd</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/20/kubernetes-ci-cd-三/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-kubernetes-ci-cd-二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -647,554 +1111,6 @@
 
 
   
-    <article id="post-pvc-pv" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/12/pvc-pv/">pvc pv</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/12/pvc-pv/" class="archive-article-date">
-  	<time datetime="2019-08-12T06:04:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;PersistentVolume（pv）和PersistentVolumeClaim（pvc）是k8s提供的两种API资源，用于抽象存储细节。管理员关注于如何通过pv提供存储功能而无需关注用户如何使用，同样的用户只需要挂载pvc到容器中而不需要关注存储卷采用何种技术实现。<br>&nbsp;&nbsp;&nbsp;&nbsp;pvc和pv的关系与pod和node关系类似，前者消耗后者的资源。pvc可以向pv申请指定大小的存储资源并设置访问模式,这就可以通过Provision -&gt; Claim 的方式，来对存储资源进行控制。</p>
-<h2 id="2、生命周期"><a href="#2、生命周期" class="headerlink" title="2、生命周期"></a>2、生命周期</h2><p>pv和pvc遵循以下生命周期：</p>
-<ul>
-<li>供应准备。通过集群外的存储系统或者云平台来提供存储持久化支持。</li>
-</ul>
-<ul>
-<li><p>静态提供：管理员手动创建多个PV，供PVC使用。</p>
-</li>
-<li><p>动态提供：动态创建PVC特定的PV，并绑定。</p>
-<ul>
-<li>绑定。用户创建pvc并指定需要的资源和访问模式。在找到可用pv之前，pvc会保持未绑定状态。</li>
-<li>使用。用户可在pod中像volume一样使用pvc。</li>
-<li>释放。用户删除pvc来回收存储资源，pv将变成“released”状态。由于还保留着之前的数据，这些数据需要根据不同的策略来处理，否则这些存储资源无法被其他pvc使用。</li>
-<li>回收(Reclaiming)。pv可以设置三种回收策略：保留（Retain），回收（Recycle）和删除（Delete）。</li>
-</ul>
-</li>
-<li><p>保留策略：允许人工处理保留的数据。</p>
-</li>
-<li><p>删除策略：将删除pv和外部关联的存储资源，需要插件支持。</p>
-</li>
-<li><p>回收策略：将执行清除操作，之后可以被新的pvc使用，需要插件支持。</p>
-</li>
-</ul>
-<blockquote>
-<p><em>目前只有NFS和HostPath类型卷支持回收策略，AWS EBS,GCE PD,Azure Disk和Cinder支持删除(Delete)策略。</em></p>
-</blockquote>
-<h3 id="2-1、Provisioning"><a href="#2-1、Provisioning" class="headerlink" title="2.1、Provisioning"></a>2.1、Provisioning</h3><p>两种方式提供的PV资源供给</p>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">pvc,pv,kubernetes,存储</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/12/pvc-pv/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-kubernetes-单机安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/12/kubernetes-单机安装/">kubernetes 单机安装</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/12/kubernetes-单机安装/" class="archive-article-date">
-  	<time datetime="2019-08-12T03:06:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h2><blockquote>
-<p>一个master节点，四个node节点<br>master节点ip</p>
-<ul>
-<li>172.21.16.244<br>node节点ip</li>
-<li>172.21.16.24</li>
-<li>172.21.16.231</li>
-<li>172.21.16.202</li>
-<li>172.21.16.55</li>
-</ul>
-</blockquote>
-<ul>
-<li>以下是每一个节点上均进行操作</li>
-</ul>
-<h2 id="2、服务器添加阿里云yum源"><a href="#2、服务器添加阿里云yum源" class="headerlink" title="2、服务器添加阿里云yum源"></a>2、服务器添加阿里云yum源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg</span><br><span class="line">  http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、重新建立yum缓存"><a href="#3、重新建立yum缓存" class="headerlink" title="3、重新建立yum缓存"></a>3、重新建立yum缓存</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install epel-release &amp;&amp;yum clean all &amp;&amp;yum makecach</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>记得同步系统的时间</li>
-</ul>
-<h2 id="3、配置转发请求"><a href="#3、配置转发请求" class="headerlink" title="3、配置转发请求"></a>3、配置转发请求</h2>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernetes//" class="article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/12/kubernetes-单机安装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Centos-5-5-安装DRBD" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/11/Centos-5-5-安装DRBD/">Centos 5.5 安装DRBD</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/11/Centos-5-5-安装DRBD/" class="archive-article-date">
-  	<time datetime="2019-08-10T23:42:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Centos5.5 32bit安装DRBD</p>
-<ul>
-<li>安装前准备</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>节点类型</th>
-<th>IP地址规划</th>
-<th>主机名</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>主用节点</td>
-<td>192.168.1.101</td>
-<td>node2</td>
-</tr>
-<tr>
-<td>备用节点</td>
-<td>192.168.1.102</td>
-<td>node1</td>
-</tr>
-<tr>
-<td>磁盘</td>
-<td>两台10G磁盘</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="在主节点安装DRBD"><a href="#在主节点安装DRBD" class="headerlink" title="在主节点安装DRBD"></a>在主节点安装DRBD</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node2 ~]<span class="comment"># yum -y install kmod-drbd83 drbd83</span></span><br></pre></td></tr></table></figure>
-
-<p>安装成功之后/sbin目录下面有drbdadm，drbdmeta，drbdsetup命令，以及/etc /init.d/drbd启动脚本。</p>
-<ul>
-<li>备用节点安装DRBD</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]<span class="comment"># yum -y install kmod-drbd83 drbd83</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>安装完成后。默认配置文件/etc/drbd.conf，以下是两台的主机配置实例:</p>
-</blockquote>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">drdb</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/存储//" class="article-tag-list-link color3">存储</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/11/Centos-5-5-安装DRBD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-oracle-ORA-12519" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/oracle-ORA-12519/">oracle ORA-12519</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/10/oracle-ORA-12519/" class="archive-article-date">
-  	<time datetime="2019-08-10T09:01:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>oracle ORA-12519错误解决<br>今天遇到做系统压力测试的时候，系统报了一个错误<br>OERR: ORA-12519 TNS:no appropriate service handler found</p>
-</blockquote>
-<p><img src="http://pvyidozd0.bkt.clouddn.com/ORA-12519-error.png" alt="img"></p>
-<p>在网上搜索了一下oralc的错误信息ORA-12519，解决办法挺多的，这里记录一下</p>
-<h3 id="登陆oracle的服务器，在登陆oracle数据库"><a href="#登陆oracle的服务器，在登陆oracle数据库" class="headerlink" title="登陆oracle的服务器，在登陆oracle数据库"></a>登陆oracle的服务器，在登陆oracle数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlplus <span class="string">"/as sysdba"</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>首先检查process和session的使用情况</p>
-</blockquote>
-<p><img src="http://pvyidozd0.bkt.clouddn.com/parameter_%20processes_1.png" alt="img"><br><img src="http://pvyidozd0.bkt.clouddn.com/parameter_%20session_3.png" alt="img"></p>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ORA-12519</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/10/oracle-ORA-12519/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-nginx-https" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/nginx-https/">nginx https</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/10/nginx-https/" class="archive-article-date">
-  	<time datetime="2019-08-10T08:00:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>nginx http 强制跳转到https</p>
-<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$scheme</span> = http ) &#123;</span><br><span class="line">    <span class="built_in">return</span> 301 https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>列子</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name xxx.test.com;</span><br><span class="line">    index index.html index.php index.htm;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$scheme</span> = http ) &#123;</span><br><span class="line">        <span class="built_in">return</span> 301 https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$server_port</span> = 80 ) &#123;</span><br><span class="line">    <span class="built_in">return</span> 301 https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>列子</li>
-</ul>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/10/nginx-https/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1344,11 +1260,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">confluence</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1360,15 +1280,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jira</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1384,15 +1300,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">coredns</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1404,7 +1324,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1424,6 +1344,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
@@ -1432,27 +1356,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1464,7 +1372,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1472,7 +1396,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kuberntes v1.14</a>
               </li>
             
             <div class="clearfix"></div>

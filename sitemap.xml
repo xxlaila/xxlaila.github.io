@@ -2,9 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/09/16/k8s-v1-14-dashboard/</loc>
+    
+    <lastmod>2019-09-16T10:04:54.833Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/16/k8s-v1-14-dns%E6%8F%92%E4%BB%B6/</loc>
+    
+    <lastmod>2019-09-16T09:45:29.352Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/16/k8s-v1-14%E9%9B%86%E7%BE%A4%E9%AA%8C%E8%AF%81/</loc>
+    
+    <lastmod>2019-09-16T09:36:26.148Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/16/kubernetes-v1-14-node%E5%AE%89%E8%A3%85/</loc>
+    
+    <lastmod>2019-09-16T09:20:15.425Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/11/kubernetes-v1-14%E5%AE%89%E8%A3%85/</loc>
+    
+    <lastmod>2019-09-16T07:42:18.116Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/08/09/kubernetes-v1-13-3%E5%AE%89%E8%A3%85/</loc>
     
-    <lastmod>2019-09-10T07:44:55.592Z</lastmod>
+    <lastmod>2019-09-11T08:00:34.715Z</lastmod>
     
   </url>
   
@@ -72,7 +107,7 @@
   </url>
   
   <url>
-    <loc>https://xxlaila.github.io/2019/09/04/kubelet%E6%8F%90%E4%BE%9Bapi%E8%AF%B7%E6%B1%82%E5%80%9F%E5%8F%A3/</loc>
+    <loc>https://xxlaila.github.io/2019/09/04/kubelet%E6%8F%90%E4%BE%9Bapi%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3/</loc>
     
     <lastmod>2019-09-04T02:51:12.886Z</lastmod>
     
