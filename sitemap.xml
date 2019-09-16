@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/09/04/kubelet%E6%8F%90%E4%BE%9Bapi%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3/</loc>
+    
+    <lastmod>2019-09-16T10:11:27.945Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/09/16/k8s-v1-14-dashboard/</loc>
     
     <lastmod>2019-09-16T10:04:54.833Z</lastmod>
@@ -103,13 +110,6 @@
     <loc>https://xxlaila.github.io/2019/09/04/metrics-server%E5%AE%89%E8%A3%85%E5%AD%A3/</loc>
     
     <lastmod>2019-09-04T07:04:50.934Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/04/kubelet%E6%8F%90%E4%BE%9Bapi%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3/</loc>
-    
-    <lastmod>2019-09-04T02:51:12.886Z</lastmod>
     
   </url>
   
