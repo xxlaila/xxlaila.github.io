@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="1、安装docker1.1、增加docker 源123yum-config-manager \  --add-repo \  https://download.docker.com/linux/centos/docker-ce.repo  1.2、安装docker1#  yum -y install docker-ce">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-16T09:20:15.425Z">
+<meta property="og:updated_time" content="2019-09-17T00:38:14.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes-v1.14 node安装">
 <meta name="twitter:description" content="1、安装docker1.1、增加docker 源123yum-config-manager \  --add-repo \  https://download.docker.com/linux/centos/docker-ce.repo  1.2、安装docker1#  yum -y install docker-ce">
@@ -334,7 +334,7 @@
 <p><strong>注意:</strong></p>
 <ul>
 <li>kubelet.config.json 设置 authentication.anonymous.enabled 为 false，不允许匿名证书访问 10250 的 https 服务；</li>
-<li>参考<a href="https://xxlaila.github.io/2019/09/04/kubelet提供api请求借口/">kubelet提供api请求借口</a>.md，创建和导入相关证书，然后访问上面的 10250 端口；</li>
+<li>参考<a href="https://xxlaila.github.io/2019/09/04/kubelet提供api请求接口/">kubelet提供api请求接口</a>，创建和导入相关证书，然后访问上面的 10250 端口；</li>
 </ul>
 <h4 id="3-1、获取-kubelet-的配置"><a href="#3-1、获取-kubelet-的配置" class="headerlink" title="3.1、获取 kubelet 的配置"></a>3.1、获取 kubelet 的配置</h4><p>从 kube-apiserver 获取各节点 kubelet 的配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用部署 kubectl 命令行工具时创建的、具有最高权限的 admin 证书；</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># curl -sSL --cacert /etc/kubernetes/ssl/ca.pem --cert /etc/kubernetes/ssl/admin.pem --key /etc/kubernetes/ssl/admin-key.pem $&#123;KUBE_APISERVER&#125;/api/v1/nodes/172.21.16.87/proxy/configz | jq  '.kubeletconfig|.kind="KubeletConfiguration"|.apiVersion="kubelet.config.k8s.io/v1beta1"'</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"syncFrequency"</span>: <span class="string">"1m0s"</span>,</span><br><span class="line">  <span class="string">"fileCheckFrequency"</span>: <span class="string">"20s"</span>,</span><br><span class="line">  <span class="string">"httpCheckFrequency"</span>: <span class="string">"20s"</span>,</span><br><span class="line">  <span class="string">"address"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">  <span class="string">"port"</span>: 10250,</span><br><span class="line">  <span class="string">"rotateCertificates"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"serverTLSBootstrap"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"authentication"</span>: &#123;</span><br><span class="line">    <span class="string">"x509"</span>: &#123;</span><br><span class="line">      <span class="string">"clientCAFile"</span>: <span class="string">"/etc/kubernetes/ssl/ca.pem"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"webhook"</span>: &#123;</span><br><span class="line">      <span class="string">"enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"cacheTTL"</span>: <span class="string">"2m0s"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"anonymous"</span>: &#123;</span><br><span class="line">      <span class="string">"enabled"</span>: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"authorization"</span>: &#123;</span><br><span class="line">    <span class="string">"mode"</span>: <span class="string">"Webhook"</span>,</span><br><span class="line">    <span class="string">"webhook"</span>: &#123;</span><br><span class="line">      <span class="string">"cacheAuthorizedTTL"</span>: <span class="string">"5m0s"</span>,</span><br><span class="line">      <span class="string">"cacheUnauthorizedTTL"</span>: <span class="string">"30s"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"registryPullQPS"</span>: 0,</span><br><span class="line">  <span class="string">"registryBurst"</span>: 20,</span><br><span class="line">  <span class="string">"eventRecordQPS"</span>: 0,</span><br><span class="line">  <span class="string">"eventBurst"</span>: 20,</span><br><span class="line">  <span class="string">"enableDebuggingHandlers"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"enableContentionProfiling"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"healthzPort"</span>: 10248,</span><br><span class="line">  <span class="string">"healthzBindAddress"</span>: <span class="string">"172.21.16.87"</span>,</span><br><span class="line">  <span class="string">"oomScoreAdj"</span>: -999,</span><br><span class="line">  <span class="string">"clusterDomain"</span>: <span class="string">"cluster.local"</span>,</span><br><span class="line">  <span class="string">"clusterDNS"</span>: [</span><br><span class="line">    <span class="string">"10.254.0.2"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"streamingConnectionIdleTimeout"</span>: <span class="string">"4h0m0s"</span>,</span><br><span class="line">  <span class="string">"nodeStatusUpdateFrequency"</span>: <span class="string">"10s"</span>,</span><br><span class="line">  <span class="string">"nodeStatusReportFrequency"</span>: <span class="string">"1m0s"</span>,</span><br><span class="line">  <span class="string">"nodeLeaseDurationSeconds"</span>: 40,</span><br><span class="line">  <span class="string">"imageMinimumGCAge"</span>: <span class="string">"2m0s"</span>,</span><br><span class="line">  <span class="string">"imageGCHighThresholdPercent"</span>: 85,</span><br><span class="line">  <span class="string">"imageGCLowThresholdPercent"</span>: 80,</span><br><span class="line">  <span class="string">"volumeStatsAggPeriod"</span>: <span class="string">"1m0s"</span>,</span><br><span class="line">  <span class="string">"cgroupsPerQOS"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"cgroupDriver"</span>: <span class="string">"cgroupfs"</span>,</span><br><span class="line">  <span class="string">"cpuManagerPolicy"</span>: <span class="string">"none"</span>,</span><br><span class="line">  <span class="string">"cpuManagerReconcilePeriod"</span>: <span class="string">"10s"</span>,</span><br><span class="line">  <span class="string">"runtimeRequestTimeout"</span>: <span class="string">"10m0s"</span>,</span><br><span class="line">  <span class="string">"hairpinMode"</span>: <span class="string">"promiscuous-bridge"</span>,</span><br><span class="line">  <span class="string">"maxPods"</span>: 100,</span><br><span class="line">  <span class="string">"podCIDR"</span>: <span class="string">"172.30.0.0/16"</span>,</span><br><span class="line">  <span class="string">"podPidsLimit"</span>: -1,</span><br><span class="line">  <span class="string">"resolvConf"</span>: <span class="string">"/etc/resolv.conf"</span>,</span><br><span class="line">  <span class="string">"cpuCFSQuota"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"cpuCFSQuotaPeriod"</span>: <span class="string">"100ms"</span>,</span><br><span class="line">  <span class="string">"maxOpenFiles"</span>: 1000000,</span><br><span class="line">  <span class="string">"contentType"</span>: <span class="string">"application/vnd.kubernetes.protobuf"</span>,</span><br><span class="line">  <span class="string">"kubeAPIQPS"</span>: 1000,</span><br><span class="line">  <span class="string">"kubeAPIBurst"</span>: 2000,</span><br><span class="line">  <span class="string">"serializeImagePulls"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"evictionHard"</span>: &#123;</span><br><span class="line">    <span class="string">"memory.available"</span>: <span class="string">"100Mi"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"evictionPressureTransitionPeriod"</span>: <span class="string">"5m0s"</span>,</span><br><span class="line">  <span class="string">"enableControllerAttachDetach"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"makeIPTablesUtilChains"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"iptablesMasqueradeBit"</span>: 14,</span><br><span class="line">  <span class="string">"iptablesDropBit"</span>: 15,</span><br><span class="line">  <span class="string">"failSwapOn"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"containerLogMaxSize"</span>: <span class="string">"20Mi"</span>,</span><br><span class="line">  <span class="string">"containerLogMaxFiles"</span>: 10,</span><br><span class="line">  <span class="string">"configMapAndSecretChangeDetectionStrategy"</span>: <span class="string">"Watch"</span>,</span><br><span class="line">  <span class="string">"enforceNodeAllocatable"</span>: [</span><br><span class="line">    <span class="string">"pods"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"kind"</span>: <span class="string">"KubeletConfiguration"</span>,</span><br><span class="line">  <span class="string">"apiVersion"</span>: <span class="string">"kubelet.config.k8s.io/v1beta1"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -715,14 +715,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
@@ -731,7 +723,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nfs</a>
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,7 +731,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">nfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,7 +747,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -763,11 +763,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">helm</a>
+                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">helm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -791,43 +791,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jenkins ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -843,7 +815,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -855,19 +855,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
               </li>
              
               <li class="article-tag-list-item">
