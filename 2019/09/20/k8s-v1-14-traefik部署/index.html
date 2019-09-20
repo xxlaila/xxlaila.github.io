@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;traefix 前篇是可以使用，这里k8s v1.14 之前的拿来用不上，然后折腾了一下，参考官方的折腾起来了 基于角色的访问控制配置（仅限Kubernetes 1.6+）&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Kubernetes在1.6+中引入">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-20T05:47:25.889Z">
+<meta property="og:updated_time" content="2019-09-20T06:27:47.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s v1.14 traefik部署">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;traefix 前篇是可以使用，这里k8s v1.14 之前的拿来用不上，然后折腾了一下，参考官方的折腾起来了 基于角色的访问控制配置（仅限Kubernetes 1.6+）&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Kubernetes在1.6+中引入">
@@ -192,6 +192,8 @@
       
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;traefix 前篇是可以使用，这里k8s v1.14 之前的拿来用不上，然后折腾了一下，参考官方的折腾起来了</p>
 <h3 id="基于角色的访问控制配置（仅限Kubernetes-1-6-）"><a href="#基于角色的访问控制配置（仅限Kubernetes-1-6-）" class="headerlink" title="基于角色的访问控制配置（仅限Kubernetes 1.6+）"></a>基于角色的访问控制配置（仅限Kubernetes 1.6+）</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kubernetes在1.6+中引入了基于角色的访问控制（RBAC），以允许对Kubernetes资源和API进行细粒度控制。群集配置了RBAC，则需要授权Traefik使用Kubernetes API。有两种方法可以设置适当的权限：通过特定于命名空间的RoleBindings或单个全局ClusterRoleBinding。</p>
+<a id="more"></a>
+
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个命名空间的RoleBinding可以限制授予权限，只有Traefik正在监视的名称空间才能使用，从而遵循最小权限原则。如果Traefik不应该监视所有名称空间，并且名称空间集不会动态更改，那么这是首选方法。否则，必须使用单个ClusterRoleBinding。</p>
 <p><a href="https://xxlaila.github.io/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/">traefik学习</a><br><a href="https://docs.traefik.io/v1.7/user-guide/kubernetes/" target="_blank" rel="noopener">traefik官方</a></p>
 <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>下载trarfix代码，然后切换到v1.7的分支</p>

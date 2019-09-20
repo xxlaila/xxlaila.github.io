@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-traefik%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2019-09-20</lastmod>
+  </url>  <url>
     <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-weave-scope/</loc>
     <lastmod>2019-09-20</lastmod>
   </url>  <url>
@@ -116,9 +119,6 @@
     <lastmod>2019-09-20</lastmod>
   </url>  <url>
     <loc>https://xxlaila.github.io/2019/09/16/k8s-v1-14%E9%9B%86%E7%BE%A4%E9%AA%8C%E8%AF%81/</loc>
-    <lastmod>2019-09-20</lastmod>
-  </url>  <url>
-    <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-traefik%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2019-09-20</lastmod>
   </url>  <url>
     <loc>https://xxlaila.github.io/2019/09/17/k8s-v1-14-metrics-server/</loc>
