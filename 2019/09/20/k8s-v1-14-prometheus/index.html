@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>k8s v1.14 prometheus | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Prometheus-部署Grafana&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Grafana是一个开源的度量分析与可视化套件。经常被用作基础设施的时间序列数据和应用程序分析的可视化，我们这里用它来做Kubernetes集群监控数据的可视化。 准备工作&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbs">
+  <meta name="description" content="Prometheus、Grafana 部署&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Grafana是一个开源的度量分析与可视化套件。经常被用作基础设施的时间序列数据和应用程序分析的可视化，我们这里用它来做Kubernetes集群监控数据的可视化。 准备工作&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nb">
 <meta name="keywords" content="k8s v1.14,prometheus">
 <meta property="og:type" content="article">
 <meta property="og:title" content="k8s v1.14 prometheus">
 <meta property="og:url" content="https://xxlaila.github.io/2019/09/20/k8s-v1-14-prometheus/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="Prometheus-部署Grafana&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Grafana是一个开源的度量分析与可视化套件。经常被用作基础设施的时间序列数据和应用程序分析的可视化，我们这里用它来做Kubernetes集群监控数据的可视化。 准备工作&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbs">
+<meta property="og:description" content="Prometheus、Grafana 部署&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Grafana是一个开源的度量分析与可视化套件。经常被用作基础设施的时间序列数据和应用程序分析的可视化，我们这里用它来做Kubernetes集群监控数据的可视化。 准备工作&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nb">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://zxc.kingxunlian.com/1568968344227.jpg">
 <meta property="og:image" content="http://zxc.kingxunlian.com/1568968420655.jpg">
-<meta property="og:updated_time" content="2019-09-20T08:43:49.863Z">
+<meta property="og:updated_time" content="2019-09-20T08:48:47.410Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s v1.14 prometheus">
-<meta name="twitter:description" content="Prometheus-部署Grafana&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Grafana是一个开源的度量分析与可视化套件。经常被用作基础设施的时间序列数据和应用程序分析的可视化，我们这里用它来做Kubernetes集群监控数据的可视化。 准备工作&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbs">
+<meta name="twitter:description" content="Prometheus、Grafana 部署&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Grafana是一个开源的度量分析与可视化套件。经常被用作基础设施的时间序列数据和应用程序分析的可视化，我们这里用它来做Kubernetes集群监控数据的可视化。 准备工作&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nb">
 <meta name="twitter:image" content="http://zxc.kingxunlian.com/1568968344227.jpg">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
@@ -193,7 +193,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Prometheus-部署Grafana"><a href="#Prometheus-部署Grafana" class="headerlink" title="Prometheus-部署Grafana"></a>Prometheus-部署Grafana</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Grafana是一个开源的度量分析与可视化套件。经常被用作基础设施的时间序列数据和应用程序分析的可视化，我们这里用它来做Kubernetes集群监控数据的可视化。</p>
+        <h1 id="Prometheus、Grafana-部署"><a href="#Prometheus、Grafana-部署" class="headerlink" title="Prometheus、Grafana 部署"></a>Prometheus、Grafana 部署</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Grafana是一个开源的度量分析与可视化套件。经常被用作基础设施的时间序列数据和应用程序分析的可视化，我们这里用它来做Kubernetes集群监控数据的可视化。</p>
 <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;截至当前，prometheus、grafana均采用最新的镜像包，在在第一次部署的时候grafana报了一个错误<code>mkdir: cannot create directory &#39;/var/lib/grafana/plugins&#39;: No such file or directory</code>,这是因为Grafana启动使用的用户和用户组都是472，造成对外挂存储没有权限。<a href="https://grafana.com/docs/installation/docker/#migration-from-a-previous-version-of-the-docker-container-to-5-1-or-later" target="_blank" rel="noopener">参考官方</a></p>
 <a id="more"></a>
 
@@ -272,13 +272,13 @@
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://pvyidozd0.bkt.clouddn.com/1566964307703.jpg">
+                      <img class="reward-img" src="http://zxc.kingxunlian.com/1566964307703.jpg">
                       <span class="reward-type">支付宝</span>
                     </div>
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://pvyidozd0.bkt.clouddn.com/IMG_1567.JPG">
+                      <img class="reward-img" src="http://zxc.kingxunlian.com/IMG_1567.JPG">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -410,7 +410,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Prometheus-部署Grafana"><span class="toc-number">1.</span> <span class="toc-text">Prometheus-部署Grafana</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.0.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始部署"><span class="toc-number">1.0.2.</span> <span class="toc-text">开始部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件修改"><span class="toc-number">1.0.3.</span> <span class="toc-text">文件修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行创建"><span class="toc-number">1.0.4.</span> <span class="toc-text">执行创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查部署"><span class="toc-number">1.0.5.</span> <span class="toc-text">检查部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建Ingress"><span class="toc-number">1.0.6.</span> <span class="toc-text">创建Ingress</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#prometheus-Ingress"><span class="toc-number">1.0.6.1.</span> <span class="toc-text">prometheus Ingress</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#grafana-Ingress"><span class="toc-number">1.0.6.2.</span> <span class="toc-text">grafana Ingress</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行创建-1"><span class="toc-number">1.0.6.3.</span> <span class="toc-text">执行创建</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置grafana"><span class="toc-number">1.0.7.</span> <span class="toc-text">配置grafana</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Prometheus、Grafana-部署"><span class="toc-number">1.</span> <span class="toc-text">Prometheus、Grafana 部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.0.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始部署"><span class="toc-number">1.0.2.</span> <span class="toc-text">开始部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件修改"><span class="toc-number">1.0.3.</span> <span class="toc-text">文件修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行创建"><span class="toc-number">1.0.4.</span> <span class="toc-text">执行创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查部署"><span class="toc-number">1.0.5.</span> <span class="toc-text">检查部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建Ingress"><span class="toc-number">1.0.6.</span> <span class="toc-text">创建Ingress</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#prometheus-Ingress"><span class="toc-number">1.0.6.1.</span> <span class="toc-text">prometheus Ingress</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#grafana-Ingress"><span class="toc-number">1.0.6.2.</span> <span class="toc-text">grafana Ingress</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行创建-1"><span class="toc-number">1.0.6.3.</span> <span class="toc-text">执行创建</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置grafana"><span class="toc-number">1.0.7.</span> <span class="toc-text">配置grafana</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -573,15 +573,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">nfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,11 +581,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,10 +609,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">k8s v1.14,prometheus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Prometheus, kubernetes</a>
               </li>
              
@@ -621,11 +617,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
+                <a href="javascript:void(0)" class="js-tag color1">k8s v1.14,prometheus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,11 +629,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,7 +661,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,27 +669,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -705,11 +685,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,7 +697,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
+                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -725,11 +721,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">
