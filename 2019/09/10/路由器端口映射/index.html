@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="好记性不如烂笔头，h3c MSR3620路由器做端口映射到后端服务器,包含单个端口和端口段的映射">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-20T05:47:26.098Z">
+<meta property="og:updated_time" content="2019-09-20T06:30:30.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="路由器端口映射">
 <meta name="twitter:description" content="好记性不如烂笔头，h3c MSR3620路由器做端口映射到后端服务器,包含单个端口和端口段的映射">
@@ -198,6 +198,7 @@
 <h3 id="多端口"><a href="#多端口" class="headerlink" title="多端口"></a>多端口</h3><p>vsftp可以使用这个</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[router] interface GigabitEthernet0/2 公网ip接口</span><br><span class="line">[router] nat server protocol tcp global current-interface 9000 9045 inside 内网ip 9000 9045</span><br></pre></td></tr></table></figure>
 
+<p><strong>备注:</strong> 可以使用vsftp场景，<a href="https://xxlaila.github.io/2019/08/09/vsftpd%E5%AE%89%E8%A3%85/">vsftp安装</a> </p>
 
       
 
