@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Mongodb replica set安装加认证，这里使用的是keyFile进行认证，之前看过很多文章，坑一大堆，这里是看了两天的官方文档进行的安装，并用户生产，配置文件参数贴一部分,三个带有数据集的节点组成的复制集拥有，架构图如下，参考官方 一个主节点，两个从节点，这两个从节点都可以在选举中升级为主节点 环境三台服务器 123primary: 19">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-8-13_15-27-53.png">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-8-13_15-37-2.png">
-<meta property="og:updated_time" content="2019-08-28T03:20:34.917Z">
+<meta property="og:image" content="http://zxc.kingxunlian.com/image2018-8-13_15-27-53.png">
+<meta property="og:image" content="http://zxc.kingxunlian.com/image2018-8-13_15-37-2.png">
+<meta property="og:updated_time" content="2019-09-20T05:47:26.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongodb_replica">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Mongodb replica set安装加认证，这里使用的是keyFile进行认证，之前看过很多文章，坑一大堆，这里是看了两天的官方文档进行的安装，并用户生产，配置文件参数贴一部分,三个带有数据集的节点组成的复制集拥有，架构图如下，参考官方 一个主节点，两个从节点，这两个从节点都可以在选举中升级为主节点 环境三台服务器 123primary: 19">
-<meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/image2018-8-13_15-27-53.png">
+<meta name="twitter:image" content="http://zxc.kingxunlian.com/image2018-8-13_15-27-53.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -194,7 +194,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>&nbsp;&nbsp;&nbsp;&nbsp;Mongodb replica set安装加认证，这里使用的是keyFile进行认证，之前看过很多文章，坑一大堆，这里是看了两天的官方文档进行的安装，并用户生产，配置文件参数贴一部分,三个带有数据集的节点组成的复制集拥有，架构图如下，参考官方</p>
-<p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-8-13_15-27-53.png" alt="img"><br>一个主节点，两个从节点，这两个从节点都可以在选举中升级为主节点</p>
+<p><img src="http://zxc.kingxunlian.com/image2018-8-13_15-27-53.png" alt="img"><br>一个主节点，两个从节点，这两个从节点都可以在选举中升级为主节点</p>
 <h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>三台服务器</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">primary: 192.168.32.7</span><br><span class="line">secaodray: 192.168.32.11</span><br><span class="line">secondary: 192.168.32.14</span><br></pre></td></tr></table></figure>
 
@@ -218,7 +218,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo --shell --host 127.0.0.1</span><br></pre></td></tr></table></figure>
 
 <p>登陆进去以后可以进行一个简单的命令进行查看</p>
-<p><img src="http://pvyidozd0.bkt.clouddn.com/image2018-8-13_15-37-2.png" alt="img"></p>
+<p><img src="http://zxc.kingxunlian.com/image2018-8-13_15-37-2.png" alt="img"></p>
 <h3 id="6、把服务器加入副本集"><a href="#6、把服务器加入副本集" class="headerlink" title="6、把服务器加入副本集"></a>6、把服务器加入副本集</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MongoDB Enterprise &gt; config = &#123; _id:<span class="string">"kxlprod01"</span>,members:[ &#123;_id:0,host:<span class="string">"192.168.32.7:27017"</span>&#125;,</span><br><span class="line">...   &#123;_id:1,host:<span class="string">"192.168.32.11:27017"</span>&#125; ,&#123;_id:2,host:<span class="string">"192.168.32.14:27017"</span>&#125;] &#125;</span><br></pre></td></tr></table></figure>
 
 <p>config = { _id:”kxlprod01”,members:[ {_id:0,host:”192.168.32.7:27017”},{_id:1,host:”192.168.32.11:27017”} ,{_id:2,host:”192.168.32.14:27017”}] }，增加内容</p>
@@ -402,11 +402,6 @@
     </a>
   
   
-    <a href="/2019/08/09/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
 </nav>
 
 
@@ -564,19 +559,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Metric</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,7 +579,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,7 +591,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,6 +603,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">helm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
               </li>
              
@@ -616,19 +615,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">helm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">coredns</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
+                <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,27 +643,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jenkins ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,15 +663,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,15 +691,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">traefik</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,23 +719,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">

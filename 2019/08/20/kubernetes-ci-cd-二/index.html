@@ -16,21 +16,21 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="基于jenkins  pipeline进行部署1、jenkins pipeline介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;要实现在 Jenkins 中的构建工作，可以有多种方式，我们这里采用比较常用的 Pipeline 这种方式。Pipeline，简单来说，就是一套运行在 Jenkins 上的工作流框架，将原来独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂流程编排">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/sdsdsjid23874823ehsj.png">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/dhf482390dsfjkdsg.png">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/9374hkdhskfjsdd.png">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/23cvkndiuyriens.png">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/45ksfh9whnkxa.png">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/374kdjfkskfdsd.png">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/4ykjdbfjdshfkojdsl.png">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/56hjkshdfdksnfkldsj.png">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/3947dnfdsflskfjdsf.png">
-<meta property="og:image" content="http://pvyidozd0.bkt.clouddn.com/2846djkfhklsdjdklsd.png">
-<meta property="og:updated_time" content="2019-08-28T03:20:17.841Z">
+<meta property="og:image" content="http://zxc.kingxunlian.com/sdsdsjid23874823ehsj.png">
+<meta property="og:image" content="http://zxc.kingxunlian.com/dhf482390dsfjkdsg.png">
+<meta property="og:image" content="http://zxc.kingxunlian.com/9374hkdhskfjsdd.png">
+<meta property="og:image" content="http://zxc.kingxunlian.com/23cvkndiuyriens.png">
+<meta property="og:image" content="http://zxc.kingxunlian.com/45ksfh9whnkxa.png">
+<meta property="og:image" content="http://zxc.kingxunlian.com/374kdjfkskfdsd.png">
+<meta property="og:image" content="http://zxc.kingxunlian.com/4ykjdbfjdshfkojdsl.png">
+<meta property="og:image" content="http://zxc.kingxunlian.com/56hjkshdfdksnfkldsj.png">
+<meta property="og:image" content="http://zxc.kingxunlian.com/3947dnfdsflskfjdsf.png">
+<meta property="og:image" content="http://zxc.kingxunlian.com/2846djkfhklsdjdklsd.png">
+<meta property="og:updated_time" content="2019-09-20T05:47:25.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes-ci&#x2F;cd-(二)">
 <meta name="twitter:description" content="基于jenkins  pipeline进行部署1、jenkins pipeline介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;要实现在 Jenkins 中的构建工作，可以有多种方式，我们这里采用比较常用的 Pipeline 这种方式。Pipeline，简单来说，就是一套运行在 Jenkins 上的工作流框架，将原来独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂流程编排">
-<meta name="twitter:image" content="http://pvyidozd0.bkt.clouddn.com/sdsdsjid23874823ehsj.png">
+<meta name="twitter:image" content="http://zxc.kingxunlian.com/sdsdsjid23874823ehsj.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -230,7 +230,7 @@
 </blockquote>
 </li>
 </ul>
-<p><img src="http://pvyidozd0.bkt.clouddn.com/sdsdsjid23874823ehsj.png" alt="img"></p>
+<p><img src="http://zxc.kingxunlian.com/sdsdsjid23874823ehsj.png" alt="img"></p>
 <ul>
 <li>在 Slave 中构建任务<br>&nbsp;&nbsp;&nbsp;&nbsp;上面我们创建了一个简单的 Pipeline 任务，但是我们可以看到这个任务并没有在 Jenkins 的 Slave 中运行，那么如何让我们的任务跑在 Slave 中呢？还记得上节课我们在添加 Slave Pod 的时候，一定要记住添加的 label 吗？没错，我们就需要用到这个 label，我们重新编辑上面创建的 Pipeline 脚本，给 node 添加一个 label 属性，如下:</li>
 </ul>
@@ -239,14 +239,14 @@
 <p>这里只是给 node 添加了一个jnlp-agent这样的一个label，然后我们保存，构建之前查看下 kubernetes 集群中的 Pod：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="built_in">test</span>] [root@k8s-zxc-test-3 ~]<span class="comment"># kubectl get pods -n kube-ops</span></span><br><span class="line">NAME                        READY   STATUS              RESTARTS   AGE</span><br><span class="line">jenkins2-696b8fbdbb-q24nm   1/1     Running             0          45h</span><br><span class="line">jnlp-agent-342fv            0/1     ContainerCreating   0          0s</span><br><span class="line">[<span class="built_in">test</span>] [root@k8s-zxc-test-3 ~]<span class="comment"># kubectl get pods -n kube-ops</span></span><br><span class="line">NAME                        READY   STATUS              RESTARTS   AGE</span><br><span class="line">jenkins2-696b8fbdbb-q24nm   1/1     Running             0          45h</span><br><span class="line">jnlp-agent-342fv            0/1     ContainerCreating   0          1s</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://pvyidozd0.bkt.clouddn.com/dhf482390dsfjkdsg.png" alt="img"></p>
+<p><img src="http://zxc.kingxunlian.com/dhf482390dsfjkdsg.png" alt="img"></p>
 <ul>
-<li><p>kubernetes 界面显示<br><img src="http://pvyidozd0.bkt.clouddn.com/9374hkdhskfjsdd.png" alt="img"></p>
+<li><p>kubernetes 界面显示<br><img src="http://zxc.kingxunlian.com/9374hkdhskfjsdd.png" alt="img"></p>
 </li>
-<li><p>jenkins执行结果显示<br><img src="http://pvyidozd0.bkt.clouddn.com/23cvkndiuyriens.png" alt="img"></p>
+<li><p>jenkins执行结果显示<br><img src="http://zxc.kingxunlian.com/23cvkndiuyriens.png" alt="img"></p>
 </li>
 </ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; 证明我们当前的任务在跑在上面动态生成的这个 Pod 中，也符合我们的预期。我们回到 Job 的主界面，也可以看到大家可能比较熟悉的 Stage View 界面：<br><img src="http://pvyidozd0.bkt.clouddn.com/45ksfh9whnkxa.png" alt="img"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; 证明我们当前的任务在跑在上面动态生成的这个 Pod 中，也符合我们的预期。我们回到 Job 的主界面，也可以看到大家可能比较熟悉的 Stage View 界面：<br><img src="http://zxc.kingxunlian.com/45ksfh9whnkxa.png" alt="img"></p>
 <h5 id="部署-Kubernetes-应用"><a href="#部署-Kubernetes-应用" class="headerlink" title="部署 Kubernetes 应用"></a>部署 Kubernetes 应用</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;我们已经知道了如何在 Jenkins Slave 中构建任务了，那么如何来部署一个原生的 Kubernetes 应用呢？ 要部署 Kubernetes 应用，我们就得对我们之前部署应用的流程要非常熟悉才行，我们之前的流程是怎样的：</p>
 <ul>
 <li>1、编写代码</li>
@@ -282,14 +282,14 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">stage(<span class="string">'Push'</span>) &#123;</span><br><span class="line">      <span class="built_in">echo</span> <span class="string">"4.Push Docker Image Stage"</span></span><br><span class="line">      sh <span class="string">"docker login -u cq_xxlaila@163.com -p 111111"</span></span><br><span class="line">      sh <span class="string">"docker push xxlaila/jenkins-demo:<span class="variable">$&#123;build_tag&#125;</span>"</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;如果只是在 Jenkins 的 Web UI 界面中来完成这个任务的话，我们这里的 Pipeline 是可以这样写的，但是我们是不是推荐使用 Jenkinsfile 的形式放入源码中进行版本管理，这样的话我们直接把 docker 仓库的用户名和密码暴露给别人这样很显然是非常非常不安全的，更何况我们这里使用的是 github 的公共代码仓库，所有人都可以直接看到我们的源码，所以我们应该用一种方式来隐藏用户名和密码这种私密信息，幸运的是 Jenkins 为我们提供了解决方法。<br>&nbsp;&nbsp;&nbsp;&nbsp;在首页点击 Credentials -&gt; Stores scoped to Jenkins 下面的 Jenkins -&gt; Global credentials (凭据) -&gt;system(系统)-&gt;全局凭据 (unrestricted)-&gt; 左侧的 Add Credentials( 添加凭据)：添加一个 Username with password 类型的认证信息，如下：<br><img src="http://pvyidozd0.bkt.clouddn.com/374kdjfkskfdsd.png" alt="img"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;如果只是在 Jenkins 的 Web UI 界面中来完成这个任务的话，我们这里的 Pipeline 是可以这样写的，但是我们是不是推荐使用 Jenkinsfile 的形式放入源码中进行版本管理，这样的话我们直接把 docker 仓库的用户名和密码暴露给别人这样很显然是非常非常不安全的，更何况我们这里使用的是 github 的公共代码仓库，所有人都可以直接看到我们的源码，所以我们应该用一种方式来隐藏用户名和密码这种私密信息，幸运的是 Jenkins 为我们提供了解决方法。<br>&nbsp;&nbsp;&nbsp;&nbsp;在首页点击 Credentials -&gt; Stores scoped to Jenkins 下面的 Jenkins -&gt; Global credentials (凭据) -&gt;system(系统)-&gt;全局凭据 (unrestricted)-&gt; 左侧的 Add Credentials( 添加凭据)：添加一个 Username with password 类型的认证信息，如下：<br><img src="http://zxc.kingxunlian.com/374kdjfkskfdsd.png" alt="img"></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Add Credentials 输入 docker hub 的用户名和密码，ID 部分我们输入dockerHub，注意，这个值非常重要，在后面 Pipeline 的脚本中我们需要使用到这个 ID 值。<br>&nbsp;&nbsp;&nbsp;&nbsp;有了上面的 docker hub 的用户名和密码的认证信息，现在修改 Pipeline 中的第四部，使用这里的用户名和密码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stage(&apos;Push&apos;) &#123;</span><br><span class="line">     echo &quot;4.Push Docker Image Stage&quot;</span><br><span class="line">     withCredentials([usernamePassword(credentialsId: &apos;dockerHub&apos;, passwordVariable: &apos;dockerHubPassword&apos;, usernameVariable: &apos;dockerHubUser&apos;)]) &#123;</span><br><span class="line">         sh &quot;docker login -u $&#123;dockerHubUser&#125; -p $&#123;dockerHubPassword&#125;&quot;</span><br><span class="line">         sh &quot;docker push xxlaila/jenkins-demo:$&#123;build_tag&#125;&quot;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p><em>注意</em>:<br>&nbsp;&nbsp;&nbsp;&nbsp;我们这里在 stage 中使用了一个新的函数withCredentials，其中有一个credentialsId值就是我们刚刚创建的 ID 值，然后就可以在脚本中直接使用这里两个变量值来直接替换掉之前的登录 docker hub 的用户名和密码，这样操作就相对来说就很安全了，只是传递进去了两个变量而已，别人并不知道真正用户名和密码，只有我们自己的 Jenkins 平台上添加的才知道。<br><em>测试结果</em>:</p>
 </blockquote>
-<p><img src="http://pvyidozd0.bkt.clouddn.com/4ykjdbfjdshfkojdsl.png" alt="img"></p>
+<p><img src="http://zxc.kingxunlian.com/4ykjdbfjdshfkojdsl.png" alt="img"></p>
 <ul>
 <li>5）、更改 YAML<br>&nbsp;&nbsp;&nbsp;&nbsp;上面已经完成了镜像的打包、推送的工作，接下来我们是不是应该更新 Kubernetes 系统中应用的镜像版本了，当然为了方便维护，我们都是用 YAML 文件的形式来编写应用部署规则，比如我们这里的 YAML 文件：(k8s.yaml)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># cat k8s.yaml</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: jenkins-demo</span><br><span class="line">  namespace: default</span><br><span class="line">spec:</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: jenkins-demo</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - image: xxlaila/jenkins-demo:&lt;BUILD_TAG&gt;</span><br><span class="line">        imagePullPolicy: IfNotPresent</span><br><span class="line">        name: jenkins-demo</span><br><span class="line">        env:</span><br><span class="line">        - name: branch</span><br><span class="line">          value: &lt;BRANCH_NAME&gt;</span><br></pre></td></tr></table></figure>
 
@@ -307,12 +307,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stage(&apos;Deploy&apos;) &#123;</span><br><span class="line">      echo &quot;6. Deploy Stage&quot;</span><br><span class="line">      sh &quot;kubectl apply -f k8s.yaml&quot;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>点击jenkins进行构建<br><img src="http://pvyidozd0.bkt.clouddn.com/56hjkshdfdksnfkldsj.png" alt="img"></li>
+<li>点击jenkins进行构建<br><img src="http://zxc.kingxunlian.com/56hjkshdfdksnfkldsj.png" alt="img"></li>
 </ul>
 <blockquote>
 <p>当然，这里部署失败，先别管，证明流程是对的，可以这么走</p>
 </blockquote>
-<p><img src="http://pvyidozd0.bkt.clouddn.com/3947dnfdsflskfjdsf.png" alt="img"></p>
+<p><img src="http://zxc.kingxunlian.com/3947dnfdsflskfjdsf.png" alt="img"></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;以上的配置基本已经完成，但是我们的实际项目实践过程中，可能还需要一些人工干预的步骤，比如我们提交了一次代码，测试也通过了，镜像也打包上传了，但是这个版本并不一定就是要立刻上线到生产环境的。我们可能需要将该版本先发布到测试环境、QA 环境、或者预览环境之类的，总之直接就发布到线上环境去还是挺少见的，所以我们需要增加人工确认的环节，一般都是在 CD 的环节才需要人工干预，比如我们这里的最后两步，我们就可以在前面加上确认，比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">stage(&apos;YAML&apos;) &#123;</span><br><span class="line">      echo &quot;5. Change YAML File Stage&quot;</span><br><span class="line">      def userInput = input(</span><br><span class="line">          id: &apos;userInput&apos;,</span><br><span class="line">          message: &apos;Choose a deploy environment&apos;,</span><br><span class="line">          parameters: [</span><br><span class="line">              [</span><br><span class="line">                  #class: &apos;ChoiceParameterDefinition&apos;,</span><br><span class="line">                  choices: &quot;Dev\nTest\nUat\nDemo\nPord&quot;,</span><br><span class="line">                  name: &apos;Env&apos;</span><br><span class="line">                  ]</span><br><span class="line">              ]</span><br><span class="line">          )</span><br><span class="line">          echo &quot;This is a deploy step to $&#123;userInput.Env&#125;&quot;</span><br><span class="line">          sh &quot;sed -i &apos;s/&lt;BUILD_TAG&gt;/$&#123;build_tag&#125;/&apos; k8s.yaml&quot;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
@@ -323,7 +323,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">node(&apos;node-jnlp&apos;) &#123;</span><br><span class="line">    stage(&apos;Clone&apos;) &#123;</span><br><span class="line">        echo &quot;1.Clone Stage&quot;</span><br><span class="line">        git url: &quot;https://github.com/xxlaila/jenkins-demo.git&quot;</span><br><span class="line">        script &#123;</span><br><span class="line">            build_tag = sh(returnStdout: true, script: &apos;git rev-parse --short HEAD&apos;).trim()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    stage(&apos;Test&apos;) &#123;</span><br><span class="line">      echo &quot;2.Test Stage&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    stage(&apos;Build&apos;) &#123;</span><br><span class="line">        echo &quot;3.Build Docker Image Stage&quot;</span><br><span class="line">        sh &quot;docker build -t xxlaila/jenkins-demo:$&#123;build_tag&#125; .&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    stage(&apos;Push&apos;) &#123;</span><br><span class="line">        echo &quot;4.Push Docker Image Stage&quot;</span><br><span class="line">        withCredentials([usernamePassword(credentialsId: &apos;dockerHub&apos;, passwordVariable: &apos;dockerHubPassword&apos;, usernameVariable: &apos;dockerHubUser&apos;)]) &#123;</span><br><span class="line">            sh &quot;docker login -u $&#123;dockerHubUser&#125; -p $&#123;dockerHubPassword&#125;&quot;</span><br><span class="line">            sh &quot;docker push cnych/jenkins-demo:$&#123;build_tag&#125;&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    stage(&apos;Deploy&apos;) &#123;</span><br><span class="line">        echo &quot;5. Deploy Stage&quot;</span><br><span class="line">        def userInput = input(</span><br><span class="line">            id: &apos;userInput&apos;,</span><br><span class="line">            message: &apos;Choose a deploy environment&apos;,</span><br><span class="line">            parameters: [</span><br><span class="line">                [</span><br><span class="line">                    $class: &apos;ChoiceParameterDefinition&apos;,</span><br><span class="line">                    choices: &quot;Dev\nQA\nProd&quot;,</span><br><span class="line">                    name: &apos;Env&apos;</span><br><span class="line">                ]</span><br><span class="line">            ]</span><br><span class="line">        )</span><br><span class="line">        echo &quot;This is a deploy step to $&#123;userInput&#125;&quot;</span><br><span class="line">        sh &quot;sed -i &apos;s/&lt;BUILD_TAG&gt;/$&#123;build_tag&#125;/&apos; k8s.yaml&quot;</span><br><span class="line">        if (userInput == &quot;Dev&quot;) &#123;</span><br><span class="line">            // deploy dev stuff</span><br><span class="line">        &#125; else if (userInput == &quot;QA&quot;)&#123;</span><br><span class="line">            // deploy qa stuff</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // deploy prod stuff</span><br><span class="line">        &#125;</span><br><span class="line">        sh &quot;kubectl apply -f k8s.yaml&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><em>错误</em>: 在jenkins执行构建的时候提示:</p>
-<p><img src="http://pvyidozd0.bkt.clouddn.com/2846djkfhklsdjdklsd.png" alt="img"></p>
+<p><img src="http://zxc.kingxunlian.com/2846djkfhklsdjdklsd.png" alt="img"></p>
 <blockquote>
 <p>没有权限进行部署，下面进行权限的分配。</p>
 </blockquote>
@@ -651,19 +651,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Metric</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,7 +671,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,7 +683,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -695,6 +695,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">helm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
               </li>
              
@@ -703,19 +707,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">helm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">coredns</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
+                <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -727,27 +735,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jenkins ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -759,15 +755,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -775,15 +783,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">traefik</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -795,23 +811,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">

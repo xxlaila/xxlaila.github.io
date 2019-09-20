@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="1、安装docker1.1、增加docker 源123yum-config-manager \  --add-repo \  https://download.docker.com/linux/centos/docker-ce.repo  1.2、安装docker1#  yum -y install docker-ce">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-17T00:38:14.086Z">
+<meta property="og:updated_time" content="2019-09-20T05:47:26.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes-v1.14 node安装">
 <meta name="twitter:description" content="1、安装docker1.1、增加docker 源123yum-config-manager \  --add-repo \  https://download.docker.com/linux/centos/docker-ce.repo  1.2、安装docker1#  yum -y install docker-ce">
@@ -208,11 +208,11 @@
 
 <h4 id="1-5、检查-docker0-网桥"><a href="#1-5、检查-docker0-网桥" class="headerlink" title="1.5、检查 docker0 网桥"></a>1.5、检查 docker0 网桥</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /usr/sbin/ip addr show flannel.1 &amp;&amp; /usr/sbin/ip addr show docker0</span></span><br><span class="line">3: flannel.1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue state UNKNOWN </span><br><span class="line">    link/ether 8a:be:12:b9:ab:b8 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.30.128.0/32 scope global flannel.1</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">4: docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue state UP </span><br><span class="line">    link/ether 02:42:eb:ec:ae:94 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.30.128.1/21 brd 172.30.135.255 scope global docker0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
 
-<h4 id="1-5、查看-docker-的状态信息"><a href="#1-5、查看-docker-的状态信息" class="headerlink" title="1.5、查看 docker 的状态信息"></a>1.5、查看 docker 的状态信息</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -elfH|grep docker</span></span><br><span class="line"><span class="comment"># docker info</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-5、查看-docker-的状态信息"><a href="#1-5、查看-docker-的状态信息" class="headerlink" title="1.5、查看 docker 的状态信息"></a>1.5、查看 docker 的状态信息</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -elfH|grep docker</span></span><br><span class="line">0 S root      1436   975  0  80   0 - 28167 -      10:54 pts/0    00:00:00                 grep --color=auto docker</span><br><span class="line">4 S root      1265     1  1  80   0 - 122095 futex_ 10:54 ?       00:00:00   /usr/bin/dockerd --bip=172.30.112.1/21 --ip-masq=<span class="literal">false</span> --mtu=1450</span><br><span class="line"></span><br><span class="line"><span class="comment"># docker info</span></span><br><span class="line">vClient:</span><br><span class="line"> Debug Mode: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Containers: 0</span><br><span class="line">  Running: 0</span><br><span class="line">  Paused: 0</span><br><span class="line">  Stopped: 0</span><br><span class="line"> Images: 0</span><br><span class="line"> Server Version: 18.09.6</span><br><span class="line"> Storage Driver: overlay2</span><br><span class="line">  Backing Filesystem: xfs</span><br><span class="line">  Supports d_type: <span class="literal">true</span></span><br><span class="line">  Native Overlay Diff: <span class="literal">true</span></span><br><span class="line"> Logging Driver: json-file</span><br><span class="line"> Cgroup Driver: cgroupfs</span><br><span class="line"> Plugins:</span><br><span class="line">  Volume: <span class="built_in">local</span></span><br><span class="line">  Network: bridge host macvlan null overlay</span><br><span class="line">  Log: awslogs fluentd gcplogs gelf journald json-file <span class="built_in">local</span> logentries splunk syslog</span><br><span class="line"> Swarm: inactive</span><br><span class="line"> Runtimes: runc</span><br><span class="line"> Default Runtime: runc</span><br><span class="line"> Init Binary: docker-init</span><br><span class="line"> containerd version: 894b81a4b802e4eb2a91d1ce216b8817763c29fb</span><br><span class="line"> runc version: 425e105d5a03fabd737a126ad93d62a9eeede87f</span><br><span class="line"> init version: fec3683</span><br><span class="line"> Security Options:</span><br><span class="line">  seccomp</span><br><span class="line">   Profile: default</span><br><span class="line"> Kernel Version: 4.4.193-1.el7.elrepo.x86_64</span><br><span class="line"> Operating System: CentOS Linux 7 (Core)</span><br><span class="line"> OSType: linux</span><br><span class="line"> Architecture: x86_64</span><br><span class="line"> CPUs: 4</span><br><span class="line"> Total Memory: 7.796GiB</span><br><span class="line"> Name: k8s-node-2.kxl</span><br><span class="line"> ID: GJEA:U6PT:NMHM:KWD2:DOIJ:U6XW:6N3U:4QZN:F5PT:CQXH:MZKU:VATL</span><br><span class="line"> Docker Root Dir: /var/lib/docker</span><br><span class="line"> Debug Mode: <span class="literal">false</span></span><br><span class="line"> Registry: https://index.docker.io/v1/</span><br><span class="line"> Labels:</span><br><span class="line"> Experimental: <span class="literal">false</span></span><br><span class="line"> Insecure Registries:</span><br><span class="line">  127.0.0.0/8</span><br><span class="line"> Live Restore Enabled: <span class="literal">false</span></span><br><span class="line"> Product License: Community Engine</span><br></pre></td></tr></table></figure>
 
 <h3 id="2、部署-kubelet-组件"><a href="#2、部署-kubelet-组件" class="headerlink" title="2、部署 kubelet 组件"></a>2、部署 kubelet 组件</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kubelet 运行在每个 worker 节点上，接收 kube-apiserver 发送的请求，管理 Pod 容器，执行交互式命令，如 exec、run、logs 等。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kubelet 启动时自动向 kube-apiserver 注册节点信息，内置的 cadvisor 统计和监控节点的资源使用情况。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为确保安全，部署时关闭了 kubelet 的非安全 http 端口，对请求进行认证和授权，拒绝未授权的访问(如 apiserver、heapster 的请求)。</p>
 <h4 id="2-1、创建-kubelet-bootstrap-kubeconfig-文件"><a href="#2-1、创建-kubelet-bootstrap-kubeconfig-文件" class="headerlink" title="2.1、创建 kubelet bootstrap kubeconfig 文件"></a>2.1、创建 kubelet bootstrap kubeconfig 文件</h4><p>NODE_NAMES 里面的值是node的主机名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NODE_NAMES=(node-01 node-02 node-03)</span></span><br><span class="line"><span class="keyword">for</span> node_name <span class="keyword">in</span> <span class="variable">$&#123;NODE_NAMES[@]&#125;</span></span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&gt;&gt;&gt; <span class="variable">$&#123;node_name&#125;</span>"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建 token</span></span><br><span class="line">    <span class="built_in">export</span> BOOTSTRAP_TOKEN=$(kubeadm token create \</span><br><span class="line">      --description kubelet-bootstrap-token \</span><br><span class="line">      --groups system:bootstrappers:<span class="variable">$&#123;node_name&#125;</span> \</span><br><span class="line">      --kubeconfig ~/.kube/config)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置集群参数</span></span><br><span class="line">    kubectl config <span class="built_in">set</span>-cluster kubernetes \</span><br><span class="line">      --certificate-authority=/etc/kubernetes/cert/ca.pem \</span><br><span class="line">      --embed-certs=<span class="literal">true</span> \</span><br><span class="line">      --server=<span class="variable">$&#123;KUBE_APISERVER&#125;</span> \</span><br><span class="line">      --kubeconfig=kubelet-bootstrap-<span class="variable">$&#123;node_name&#125;</span>.kubeconfig</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置客户端认证参数</span></span><br><span class="line">    kubectl config <span class="built_in">set</span>-credentials kubelet-bootstrap \</span><br><span class="line">      --token=<span class="variable">$&#123;BOOTSTRAP_TOKEN&#125;</span> \</span><br><span class="line">      --kubeconfig=kubelet-bootstrap-<span class="variable">$&#123;node_name&#125;</span>.kubeconfig</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置上下文参数</span></span><br><span class="line">    kubectl config <span class="built_in">set</span>-context default \</span><br><span class="line">      --cluster=kubernetes \</span><br><span class="line">      --user=kubelet-bootstrap \</span><br><span class="line">      --kubeconfig=kubelet-bootstrap-<span class="variable">$&#123;node_name&#125;</span>.kubeconfig</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置默认上下文</span></span><br><span class="line">    kubectl config use-context default --kubeconfig=kubelet-bootstrap-<span class="variable">$&#123;node_name&#125;</span>.kubeconfig</span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># for node_name in $&#123;NODE_NAMES[@]&#125;</span></span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&gt;&gt;&gt; <span class="variable">$&#123;node_name&#125;</span>"</span></span><br><span class="line">    scp kubelet-bootstrap-<span class="variable">$&#123;node_name&#125;</span>.kubeconfig root@<span class="variable">$&#123;node_name&#125;</span>:/etc/kubernetes/kubelet-bootstrap.kubeconfig</span><br><span class="line">  <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NODE_NAMES=(node-01 node-02 node-03)</span></span><br><span class="line"><span class="keyword">for</span> node_name <span class="keyword">in</span> <span class="variable">$&#123;NODE_NAMES[@]&#125;</span></span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&gt;&gt;&gt; <span class="variable">$&#123;node_name&#125;</span>"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建 token</span></span><br><span class="line">    <span class="built_in">export</span> BOOTSTRAP_TOKEN=$(kubeadm token create \</span><br><span class="line">      --description kubelet-bootstrap-token \</span><br><span class="line">      --groups system:bootstrappers:<span class="variable">$&#123;node_name&#125;</span> \</span><br><span class="line">      --kubeconfig ~/.kube/config)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置集群参数</span></span><br><span class="line">    kubectl config <span class="built_in">set</span>-cluster kubernetes \</span><br><span class="line">      --certificate-authority=/etc/kubernetes/ssl/ca.pem \</span><br><span class="line">      --embed-certs=<span class="literal">true</span> \</span><br><span class="line">      --server=<span class="variable">$&#123;KUBE_APISERVER&#125;</span> \</span><br><span class="line">      --kubeconfig=kubelet-bootstrap-<span class="variable">$&#123;node_name&#125;</span>.kubeconfig</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置客户端认证参数</span></span><br><span class="line">    kubectl config <span class="built_in">set</span>-credentials kubelet-bootstrap \</span><br><span class="line">      --token=<span class="variable">$&#123;BOOTSTRAP_TOKEN&#125;</span> \</span><br><span class="line">      --kubeconfig=kubelet-bootstrap-<span class="variable">$&#123;node_name&#125;</span>.kubeconfig</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置上下文参数</span></span><br><span class="line">    kubectl config <span class="built_in">set</span>-context default \</span><br><span class="line">      --cluster=kubernetes \</span><br><span class="line">      --user=kubelet-bootstrap \</span><br><span class="line">      --kubeconfig=kubelet-bootstrap-<span class="variable">$&#123;node_name&#125;</span>.kubeconfig</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置默认上下文</span></span><br><span class="line">    kubectl config use-context default --kubeconfig=kubelet-bootstrap-<span class="variable">$&#123;node_name&#125;</span>.kubeconfig</span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># for node_name in $&#123;NODE_NAMES[@]&#125;</span></span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&gt;&gt;&gt; <span class="variable">$&#123;node_name&#125;</span>"</span></span><br><span class="line">    scp kubelet-bootstrap-<span class="variable">$&#123;node_name&#125;</span>.kubeconfig root@<span class="variable">$&#123;node_name&#125;</span>:/etc/kubernetes/kubelet-bootstrap.kubeconfig</span><br><span class="line">  <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>向 kubeconfig 写入的是 token，bootstrap 结束后 kube-controller-manager 为 kubelet 创建 client 和 server 证书；</p>
@@ -265,7 +265,7 @@
 <p>解决办法是：创建一个 clusterrolebinding，将 group system:bootstrappers 和 clusterrole system:node-bootstrapper 绑定：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create clusterrolebinding kubelet-bootstrap --clusterrole=system:node-bootstrapper --group=system:bootstrappers</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="2-5、启动-kubelet-服务"><a href="#2-5、启动-kubelet-服务" class="headerlink" title="2.5、启动 kubelet 服务"></a>2.5、启动 kubelet 服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl daemon-reload &amp;&amp; systemctl enable kubelet &amp;&amp; systemctl restart kubelet &amp;&amp; systemctl status kubelet</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-5、启动-kubelet-服务"><a href="#2-5、启动-kubelet-服务" class="headerlink" title="2.5、启动 kubelet 服务"></a>2.5、启动 kubelet 服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mkdir -p /var/log/k8s/kubelet</span></span><br><span class="line"><span class="comment"># systemctl daemon-reload &amp;&amp; systemctl enable kubelet &amp;&amp; systemctl restart kubelet &amp;&amp; systemctl status kubelet</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>启动服务前必须先创建工作目录；</li>
@@ -715,19 +715,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Metric</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,7 +735,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,7 +747,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -759,6 +759,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">helm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
               </li>
              
@@ -767,19 +771,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">helm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">coredns</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
+                <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -791,27 +799,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jenkins ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -823,15 +819,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -839,15 +847,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">traefik</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -859,23 +875,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">
