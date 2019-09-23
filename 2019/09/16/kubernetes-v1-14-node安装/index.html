@@ -17,7 +17,7 @@
 <meta property="og:description" content="1、安装docker1.1、增加docker 源123yum-config-manager \  --add-repo \  https://download.docker.com/linux/centos/docker-ce.repo  1.2、安装docker1#  yum -y install docker-ce">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://zxc.kingxunlian.com/1568624798589.jpg">
-<meta property="og:updated_time" content="2019-09-20T07:54:04.968Z">
+<meta property="og:updated_time" content="2019-09-23T06:03:46.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes-v1.14 node安装">
 <meta name="twitter:description" content="1、安装docker1.1、增加docker 源123yum-config-manager \  --add-repo \  https://download.docker.com/linux/centos/docker-ce.repo  1.2、安装docker1#  yum -y install docker-ce">
@@ -379,7 +379,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># netstat -lnpt|grep kube-prox</span></span><br><span class="line">tcp        0      0 172.21.16.87:10256      0.0.0.0:*               LISTEN      27423/kube-proxy    </span><br><span class="line">tcp        0      0 172.21.16.87:10249      0.0.0.0:*               LISTEN      27423/kube-proxy</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看 ipvs 路由规则</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">IP Virtual Server version 1.2.1 (size=4096)</span><br><span class="line">Prot LocalAddress:Port Scheduler Flags</span><br><span class="line">  -&gt; RemoteAddress:Port           Forward Weight ActiveConn InActConn</span><br><span class="line">TCP  10.254.0.1:443 rr</span><br><span class="line">  -&gt; 172.21.17.30:6443            Masq    1      0          0         </span><br><span class="line">  -&gt; 172.21.17.31:6443            Masq    1      0          0</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ipvsadm -ln</span></span><br><span class="line">IP Virtual Server version 1.2.1 (size=4096)</span><br><span class="line">Prot LocalAddress:Port Scheduler Flags</span><br><span class="line">  -&gt; RemoteAddress:Port           Forward Weight ActiveConn InActConn</span><br><span class="line">TCP  10.254.0.1:443 rr</span><br><span class="line">  -&gt; 172.21.17.30:6443            Masq    1      0          0         </span><br><span class="line">  -&gt; 172.21.17.31:6443            Masq    1      0          0 </span><br><span class="line">  -&gt; 172.21.16.110:6443           Masq    1      0          0</span><br></pre></td></tr></table></figure>
 
 
 </li>
