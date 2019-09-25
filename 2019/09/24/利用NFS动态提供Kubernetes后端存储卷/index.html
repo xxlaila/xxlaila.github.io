@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nfs-client-provisioner是一个automatic provisioner，使用NFS作为存储，自动创建PV和对应的PVC，本身不提供NFS存储，需要外部先有一套NFS存储服务。  PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-25T01:57:08.455Z">
+<meta property="og:updated_time" content="2019-09-25T01:59:01.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用NFS动态提供Kubernetes后端存储卷">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nfs-client-provisioner是一个automatic provisioner，使用NFS作为存储，自动创建PV和对应的PVC，本身不提供NFS存储，需要外部先有一套NFS存储服务。  PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器">
@@ -196,6 +196,8 @@
 <li>PV回收的时候以 archieved-${namespace}-${pvcName}-${pvName} 的命名格式（在NFS服务器上）</li>
 </ul>
 <p><a href="https://github.com/kubernetes-incubator/external-storage/tree/master/nfs-client" target="_blank" rel="noopener">官方访问地址</a></p>
+<a id="more"></a>
+
 <h3 id="1、权限体系构建"><a href="#1、权限体系构建" class="headerlink" title="1、权限体系构建"></a>1、权限体系构建</h3><h4 id="1-1、创建serviceaccount"><a href="#1-1、创建serviceaccount" class="headerlink" title="1.1、创建serviceaccount"></a>1.1、创建serviceaccount</h4><p>ServiceAccount也是一种账号, 供运行在pod中的进程使用, 为pod中的进程提供必要的身份证明</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ cat &gt; serviceaccount.yaml &lt;&lt;EOF</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ServiceAccount</span><br><span class="line">metadata:</span><br><span class="line">  name: nfs-client-provisioner</span><br><span class="line">  namespace: kube-ops</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
