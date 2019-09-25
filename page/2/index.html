@@ -163,6 +163,256 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-kubernetes-v1-14安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/11/kubernetes-v1-14安装/">kubernetes-v1.14安装</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/11/kubernetes-v1-14安装/" class="archive-article-date">
+  	<time datetime="2019-09-11T08:20:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h3><table>
+<thead>
+<tr>
+<th>ip</th>
+<th>type</th>
+<th>docker</th>
+<th>os</th>
+<th>k8s version</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>172.21.17.30</td>
+<td>master,etcd</td>
+<td></td>
+<td>CentOS Linux release 7.4.1708</td>
+<td>v1.14.6</td>
+</tr>
+<tr>
+<td>172.21.17.31</td>
+<td>master,etcd</td>
+<td></td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.110</td>
+<td>master,etcd</td>
+<td></td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.87</td>
+<td>node,flanneld</td>
+<td>18.06.2-ce</td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.240</td>
+<td>node,flanneld,ha+kee</td>
+<td>18.06.2-ce</td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.204</td>
+<td>node,flanneld,ha+kee</td>
+<td>18.06.2-ce</td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.45</td>
+<td>vip</td>
+<td></td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="2、初始化系统"><a href="#2、初始化系统" class="headerlink" title="2、初始化系统"></a>2、初始化系统</h3><h4 id="2-1、安装依赖包"><a href="#2-1、安装依赖包" class="headerlink" title="2.1、安装依赖包"></a>2.1、安装依赖包</h4>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kuberntes v1.14</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kubernetes//" class="article-tag-list-link color1">kubernetes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/11/kubernetes-v1-14安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-路由器端口映射" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/10/路由器端口映射/">路由器端口映射</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/10/路由器端口映射/" class="archive-article-date">
+  	<time datetime="2019-09-10T00:56:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>好记性不如烂笔头，h3c MSR3620路由器做端口映射到后端服务器,包含单个端口和端口段的映射</p>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MSR3620</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/网络设备//" class="article-tag-list-link color5">网络设备</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/10/路由器端口映射/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-traefik-https应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -958,200 +1208,9 @@
 
 
   
-    <article id="post-k8s配置Dashboard" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/29/k8s配置Dashboard/">k8s配置Dashboard</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/29/k8s配置Dashboard/" class="archive-article-date">
-  	<time datetime="2019-08-29T09:57:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-29</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;K8S Dashboard是官方的一个基于WEB的用户界面，专门用来管理K8S集群，并可展示集群的状态。K8S集群安装好后默认没有包含Dashboard，我们需要额外创建它。</p>
-<h3 id="1、安装dashboard"><a href="#1、安装dashboard" class="headerlink" title="1、安装dashboard"></a>1、安装dashboard</h3><h4 id="1-1、下载准备需要的文件"><a href="#1-1、下载准备需要的文件" class="headerlink" title="1.1、下载准备需要的文件"></a>1.1、下载准备需要的文件</h4><p>经过修改过后的文件，已经可以正常使用的<a href="https://github.com/xxlaila/kubernetes-yaml/" target="_blank" rel="noopener">文件</a></p>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernetes//" class="article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/29/k8s配置Dashboard/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-k8s删除node重新加入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/29/k8s删除node重新加入/">k8s删除node重新加入</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/29/k8s删除node重新加入/" class="archive-article-date">
-  	<time datetime="2019-08-29T08:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-29</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;有时候k8s node 在加入集群的时候不经意的时候弄错啦某些东西，这时候可以把这个node删除，然后重新加入，删除节点之前我们需要做一下常规化的操作，来保障运行在该节点的pod迁移到其他的node上。</p>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/常用命令//" class="article-tag-list-link color5">常用命令</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/29/k8s删除node重新加入/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1286,15 +1345,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Metric</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1314,6 +1373,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jira</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
@@ -1322,7 +1385,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jira</a>
+                <a href="javascript:void(0)" class="js-tag color5">helm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1330,7 +1393,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">helm</a>
+                <a href="javascript:void(0)" class="js-tag color3">coredns</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1338,19 +1401,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">coredns</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">k8s v1.14,prometheus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1362,7 +1413,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1398,11 +1469,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1414,23 +1493,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1442,11 +1509,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+                <a href="javascript:void(0)" class="js-tag color2">pvc,pv</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
               </li>
              
               <li class="article-tag-list-item">
