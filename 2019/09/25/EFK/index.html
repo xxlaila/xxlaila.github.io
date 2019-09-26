@@ -6,18 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
-  <title>Archives: 2019 | 懒羊羊</title>
+  <title>EFK | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="星际拾荒者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="懒羊羊">
-<meta property="og:url" content="https://xxlaila.github.io/archives/2019/page/4/index.html">
+  <meta name="description" content="初始化配置文件准备&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;将下载的 kubernetes-server-linux-amd64.tar.gz 解压后，再解压其中的 kubernetes-src.tar.gz 文件。kubernetes/cluster/addons/fluentd-elasticsearch这是文件所在的路径 &amp;nbsp;&amp;n">
+<meta name="keywords" content="efk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EFK">
+<meta property="og:url" content="https://xxlaila.github.io/2019/09/25/EFK/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="星际拾荒者">
+<meta property="og:description" content="初始化配置文件准备&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;将下载的 kubernetes-server-linux-amd64.tar.gz 解压后，再解压其中的 kubernetes-src.tar.gz 文件。kubernetes/cluster/addons/fluentd-elasticsearch这是文件所在的路径 &amp;nbsp;&amp;n">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://zxc.kingxunlian.com/1569462606884.jpg">
+<meta property="og:image" content="http://zxc.kingxunlian.com/1569464839630.jpg">
+<meta property="og:image" content="http://zxc.kingxunlian.com/1569464950776.jpg">
+<meta property="og:updated_time" content="2019-09-26T02:33:51.883Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="懒羊羊">
-<meta name="twitter:description" content="星际拾荒者">
+<meta name="twitter:title" content="EFK">
+<meta name="twitter:description" content="初始化配置文件准备&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;将下载的 kubernetes-server-linux-amd64.tar.gz 解压后，再解压其中的 kubernetes-src.tar.gz 文件。kubernetes/cluster/addons/fluentd-elasticsearch这是文件所在的路径 &amp;nbsp;&amp;n">
+<meta name="twitter:image" content="http://zxc.kingxunlian.com/1569462606884.jpg">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -161,438 +167,275 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-EFK" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      EFK
+    </h1>
+  
+
+        
+        <a href="/2019/09/25/EFK/" class="archive-article-date">
+  	<time datetime="2019-09-25T07:24:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-25</time>
+</a>
+        
+
+	
+    <span class="archive-article-date">
+        阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="初始化配置文件准备"><a href="#初始化配置文件准备" class="headerlink" title="初始化配置文件准备"></a>初始化配置文件准备</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将下载的 kubernetes-server-linux-amd64.tar.gz 解压后，再解压其中的 kubernetes-src.tar.gz 文件。<code>kubernetes/cluster/addons/fluentd-elasticsearch</code>这是文件所在的路径</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;es 数据默认的存储在docker里面，在用的是node节点的空间，而node节点我们不可能都准备很大的空间，那样很浪费资源，所以这里我们需要准备外部的nfs存储空间，然后通过<a href="#利用NFS动态提供Kubernetes后端存储">pv</a>的模式进行挂载，数据存储到nfs服务器上，这样保障了es收集数据的可用性。</p>
+<a id="more"></a>
+
+<h3 id="创建存储介质"><a href="#创建存储介质" class="headerlink" title="创建存储介质"></a>创建存储介质</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ cat &gt; pvc.yaml &lt;&lt;EOF</span><br><span class="line">---</span><br><span class="line">apiVersion: storage.k8s.io/v1</span><br><span class="line">kind: StorageClass</span><br><span class="line">metadata:</span><br><span class="line">  name: es-nfs-data</span><br><span class="line">provisioner: fuseim.pri/ifs</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">$ kubectl apply -f pvc.yaml</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><ul>
+<li><p>es-statefulset.yaml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># RBAC authn and authz</span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ServiceAccount</span><br><span class="line">metadata:</span><br><span class="line">  name: elasticsearch-logging</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: elasticsearch-logging</span><br><span class="line">    kubernetes.io/cluster-service: <span class="string">"true"</span></span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">---</span><br><span class="line">kind: ClusterRole</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">metadata:</span><br><span class="line">  name: elasticsearch-logging</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: elasticsearch-logging</span><br><span class="line">    kubernetes.io/cluster-service: <span class="string">"true"</span></span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">rules:</span><br><span class="line">- apiGroups:</span><br><span class="line">  - <span class="string">""</span></span><br><span class="line">  resources:</span><br><span class="line">  - <span class="string">"services"</span></span><br><span class="line">  - <span class="string">"namespaces"</span></span><br><span class="line">  - <span class="string">"endpoints"</span></span><br><span class="line">  verbs:</span><br><span class="line">  - <span class="string">"get"</span></span><br><span class="line">---</span><br><span class="line">kind: ClusterRoleBinding</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">metadata:</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  name: elasticsearch-logging</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: elasticsearch-logging</span><br><span class="line">    kubernetes.io/cluster-service: <span class="string">"true"</span></span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">subjects:</span><br><span class="line">- kind: ServiceAccount</span><br><span class="line">  name: elasticsearch-logging</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  apiGroup: <span class="string">""</span></span><br><span class="line">roleRef:</span><br><span class="line">  kind: ClusterRole</span><br><span class="line">  name: elasticsearch-logging</span><br><span class="line">  apiGroup: <span class="string">""</span></span><br><span class="line">---</span><br><span class="line"><span class="comment"># Elasticsearch deployment itself</span></span><br><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: StatefulSet</span><br><span class="line">metadata:</span><br><span class="line">  name: elasticsearch-logging</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: elasticsearch-logging</span><br><span class="line">    version: v6.6.1</span><br><span class="line">    kubernetes.io/cluster-service: <span class="string">"true"</span></span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">spec:</span><br><span class="line">  serviceName: elasticsearch-logging</span><br><span class="line">  replicas: 2</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      k8s-app: elasticsearch-logging</span><br><span class="line">      version: v6.6.1</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        k8s-app: elasticsearch-logging</span><br><span class="line">        version: v6.6.1</span><br><span class="line">        kubernetes.io/cluster-service: <span class="string">"true"</span></span><br><span class="line">    spec:</span><br><span class="line">      serviceAccountName: elasticsearch-logging</span><br><span class="line">      containers:</span><br><span class="line">      - image: elasticsearch:6.6.1</span><br><span class="line">        name: elasticsearch-logging</span><br><span class="line">        resources:</span><br><span class="line">          <span class="comment"># need more cpu upon initialization, therefore burstable class</span></span><br><span class="line">          limits:</span><br><span class="line">            cpu: 1000m</span><br><span class="line">          requests:</span><br><span class="line">            cpu: 100m</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 9200</span><br><span class="line">          name: db</span><br><span class="line">          protocol: TCP</span><br><span class="line">        - containerPort: 9300</span><br><span class="line">          name: transport</span><br><span class="line">          protocol: TCP</span><br><span class="line">        volumeMounts:</span><br><span class="line">        - name: elasticsearch-logging</span><br><span class="line">          mountPath: /data</span><br><span class="line">        env:</span><br><span class="line">        - name: <span class="string">"NAMESPACE"</span></span><br><span class="line">          valueFrom:</span><br><span class="line">            fieldRef:</span><br><span class="line">              fieldPath: metadata.namespace</span><br><span class="line">      <span class="comment"># Elasticsearch requires vm.max_map_count to be at least 262144.</span></span><br><span class="line">      <span class="comment"># If your OS already sets up this number to a higher value, feel free</span></span><br><span class="line">      <span class="comment"># to remove this init container.</span></span><br><span class="line">      initContainers:</span><br><span class="line">      - image: alpine:3.6</span><br><span class="line">        <span class="built_in">command</span>: [<span class="string">"/sbin/sysctl"</span>, <span class="string">"-w"</span>, <span class="string">"vm.max_map_count=262144"</span>]</span><br><span class="line">        name: elasticsearch-logging-init</span><br><span class="line">        securityContext:</span><br><span class="line">          privileged: <span class="literal">true</span></span><br><span class="line">  volumeClaimTemplates:</span><br><span class="line">  - metadata:</span><br><span class="line">      name: elasticsearch-logging</span><br><span class="line">    spec:</span><br><span class="line">      accessModes: [ <span class="string">"ReadWriteMany"</span> ]</span><br><span class="line">      storageClassName: <span class="string">"es-nfs-data"</span></span><br><span class="line">      resources:</span><br><span class="line">        requests:</span><br><span class="line">          storage: 30Gi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fluentd-es-ds.yaml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: ServiceAccount</span><br><span class="line">metadata:</span><br><span class="line">  name: fluentd-es</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: fluentd-es</span><br><span class="line">    kubernetes.io/cluster-service: <span class="string">"true"</span></span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">---</span><br><span class="line">kind: ClusterRole</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">metadata:</span><br><span class="line">  name: fluentd-es</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: fluentd-es</span><br><span class="line">    kubernetes.io/cluster-service: <span class="string">"true"</span></span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">rules:</span><br><span class="line">- apiGroups:</span><br><span class="line">  - <span class="string">""</span></span><br><span class="line">  resources:</span><br><span class="line">  - <span class="string">"namespaces"</span></span><br><span class="line">  - <span class="string">"pods"</span></span><br><span class="line">  verbs:</span><br><span class="line">  - <span class="string">"get"</span></span><br><span class="line">  - <span class="string">"watch"</span></span><br><span class="line">  - <span class="string">"list"</span></span><br><span class="line">---</span><br><span class="line">kind: ClusterRoleBinding</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">metadata:</span><br><span class="line">  name: fluentd-es</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: fluentd-es</span><br><span class="line">    kubernetes.io/cluster-service: <span class="string">"true"</span></span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">subjects:</span><br><span class="line">- kind: ServiceAccount</span><br><span class="line">  name: fluentd-es</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  apiGroup: <span class="string">""</span></span><br><span class="line">roleRef:</span><br><span class="line">  kind: ClusterRole</span><br><span class="line">  name: fluentd-es</span><br><span class="line">  apiGroup: <span class="string">""</span></span><br><span class="line">---</span><br><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: DaemonSet</span><br><span class="line">metadata:</span><br><span class="line">  name: fluentd-es-v2.4.0</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: fluentd-es</span><br><span class="line">    version: v2.4.0</span><br><span class="line">    kubernetes.io/cluster-service: <span class="string">"true"</span></span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">spec:</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      k8s-app: fluentd-es</span><br><span class="line">      version: v2.4.0</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        k8s-app: fluentd-es</span><br><span class="line">        kubernetes.io/cluster-service: <span class="string">"true"</span></span><br><span class="line">        version: v2.4.0</span><br><span class="line">      <span class="comment"># This annotation ensures that fluentd does not get evicted if the node</span></span><br><span class="line">      <span class="comment"># supports critical pod annotation based priority scheme.</span></span><br><span class="line">      <span class="comment"># Note that this does not guarantee admission on the nodes (#40573).</span></span><br><span class="line">      annotations:</span><br><span class="line">        scheduler.alpha.kubernetes.io/critical-pod: <span class="string">''</span></span><br><span class="line">        seccomp.security.alpha.kubernetes.io/pod: <span class="string">'docker/default'</span></span><br><span class="line">    spec:</span><br><span class="line">      priorityClassName: system-node-critical</span><br><span class="line">      serviceAccountName: fluentd-es</span><br><span class="line">      containers:</span><br><span class="line">      - name: fluentd-es</span><br><span class="line">        image: docker.io/xxlaila/fluentd-elasticsearch:v2.4.0</span><br><span class="line">        env:</span><br><span class="line">        - name: FLUENTD_ARGS</span><br><span class="line">          value: --no-supervisor -q</span><br><span class="line">        resources:</span><br><span class="line">          limits:</span><br><span class="line">            memory: 500Mi</span><br><span class="line">          requests:</span><br><span class="line">            cpu: 100m</span><br><span class="line">            memory: 200Mi</span><br><span class="line">        volumeMounts:</span><br><span class="line">        - name: varlog</span><br><span class="line">          mountPath: /var/<span class="built_in">log</span></span><br><span class="line">        - name: varlibdockercontainers</span><br><span class="line">          mountPath: /var/lib/docker/containers</span><br><span class="line">          readOnly: <span class="literal">true</span></span><br><span class="line">        - name: config-volume</span><br><span class="line">          mountPath: /etc/fluent/config.d</span><br><span class="line">      terminationGracePeriodSeconds: 30</span><br><span class="line">      volumes:</span><br><span class="line">      - name: varlog</span><br><span class="line">        hostPath:</span><br><span class="line">          path: /var/<span class="built_in">log</span></span><br><span class="line">      - name: varlibdockercontainers</span><br><span class="line">        hostPath:</span><br><span class="line">          path: /var/lib/docker/containers</span><br><span class="line">      - name: config-volume</span><br><span class="line">        configMap:</span><br><span class="line">          name: fluentd-es-config-v0.2.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>kibana-deployment.yaml<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注释里面的两行配置,不注释的话，打开kibana的时候会提示<code>kibana {&quot;statusCode&quot;:404,&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Not Found&quot;}</code>,参考<a href="https://github.com/kubernetes-sigs/kubespray/issues/3322" target="_blank" rel="noopener">解决方案</a>,注释配置如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- name: SERVER_BASEPATH</span><br><span class="line">  value: /api/v1/namespaces/kube-system/services/kibana-logging/proxy</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="执行创建"><a href="#执行创建" class="headerlink" title="执行创建"></a>执行创建</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl apply -f ./</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看创建"><a href="#查看创建" class="headerlink" title="查看创建"></a>查看创建</h4><ul>
+<li><p>查看pod</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get pods -n kube-system |egrep <span class="string">"kibana|elasticsearch|fluentd"</span></span><br><span class="line">elasticsearch-logging-0                       1/1     Running   0          65m</span><br><span class="line">elasticsearch-logging-1                       1/1     Running   0          61m</span><br><span class="line">fluentd-es-v2.4.0-4fp28                       1/1     Running   0          30m</span><br><span class="line">fluentd-es-v2.4.0-b7k67                       1/1     Running   0          30m</span><br><span class="line">fluentd-es-v2.4.0-f8jzp                       1/1     Running   0          30m</span><br><span class="line">fluentd-es-v2.4.0-shwzm                       1/1     Running   0          30m</span><br><span class="line">fluentd-es-v2.4.0-ww8r8                       1/1     Running   0          30m</span><br><span class="line">kibana-logging-57b55f58bc-xh5lp               1/1     Running   0          6m35s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get svc -n kube-system |egrep <span class="string">"kibana|elasticsearch"</span></span><br><span class="line">elasticsearch-logging     ClusterIP   10.254.30.110    &lt;none&gt;        9200/TCP                 9s</span><br><span class="line">kibana-logging            ClusterIP   10.254.188.5     &lt;none&gt;        5601/TCP                 16h</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看pv，pvc</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$  kubectl get pv,pvc -n kube-system</span><br><span class="line">NAME                                                        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                                       STORAGECLASS   REASON   AGE</span><br><span class="line">persistentvolume/pvc-65fdd14e-dffc-11e9-bc90-fa163e5af833   30Gi       RWX            Delete           Bound    kube-system/elasticsearch-logging-elasticsearch-logging-0   es-nfs-data             21m</span><br><span class="line">persistentvolume/pvc-fe818f55-dffc-11e9-bc90-fa163e5af833   30Gi       RWX            Delete           Bound    kube-system/elasticsearch-logging-elasticsearch-logging-1   es-nfs-data             16m</span><br><span class="line"></span><br><span class="line">NAME                                                                  STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE</span><br><span class="line">persistentvolumeclaim/elasticsearch-logging-elasticsearch-logging-0   Bound    pvc-65fdd14e-dffc-11e9-bc90-fa163e5af833   30Gi       RWX            es-nfs-data    21m</span><br><span class="line">persistentvolumeclaim/elasticsearch-logging-elasticsearch-logging-1   Bound    pvc-fe818f55-dffc-11e9-bc90-fa163e5af833   30Gi       RWX            es-nfs-data    17m</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="创建web访问"><a href="#创建web访问" class="headerlink" title="创建web访问"></a>创建web访问</h3><ul>
+<li><p>kibana-Ingress.yaml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ cat &gt; kibana-Ingress.yaml &lt;&lt;EOF</span><br><span class="line">---</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: kibana-web-ui</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  annotations:</span><br><span class="line">    kubernetes.io/ingress.class: traefik</span><br><span class="line">spec:</span><br><span class="line">  rules:</span><br><span class="line">  - host: kibana.xxlaila.cn</span><br><span class="line">    http:</span><br><span class="line">      paths:</span><br><span class="line">      - path: /</span><br><span class="line">        backend:</span><br><span class="line">          serviceName: kibana-logging</span><br><span class="line">          servicePort: 5601</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>es-Ingress.yaml </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ cat &gt; es-Ingress &lt;&lt;EOF</span><br><span class="line">---</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: es-web-ui</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  annotations:</span><br><span class="line">    kubernetes.io/ingress.class: traefik</span><br><span class="line">spec:</span><br><span class="line">  rules:</span><br><span class="line">  - host: es.xxlaila.cn</span><br><span class="line">    http:</span><br><span class="line">      paths:</span><br><span class="line">      - path: /</span><br><span class="line">        backend:</span><br><span class="line">          serviceName: elasticsearch-logging</span><br><span class="line">          servicePort: 9200</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行创建</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl apply -f es-Ingress.yaml kibana-Ingress.yaml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在浏览器访问es<br><img src="http://zxc.kingxunlian.com/1569462606884.jpg" alt="img"></p>
+</li>
+<li><p>浏览器访问kibana<br><img src="http://zxc.kingxunlian.com/1569464839630.jpg" alt="img"><br>建立索引，默认的索引是根据天来自动创建在es里面，这里我是在kibana里面是根据月来却分的<br><img src="http://zxc.kingxunlian.com/1569464950776.jpg" alt="img"></p>
+</li>
+</ul>
+
+      
+
+
+
+
+  <div class="declare">
+    <strong>本文作者：</strong>
+    
+      xxlaila
+    
+    <br>
+    <strong>本文链接：</strong>
+    https://xxlaila.github.io/2019/09/25/EFK/
+    <br>
+    <strong>版权声明：</strong>
+    本作品采用
+    <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    进行许可。转载请注明出处！
+    
+  </div>
+
+
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://zxc.kingxunlian.com/1566964307703.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://zxc.kingxunlian.com/IMG_1567.JPG">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/24/k8s部署zookeeper集群/" class="archive-article-date">
-  	<time datetime="2019-08-24T07:00:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/k8s部署zookeeper集群/">k8s部署zookeeper集群</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">efk</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/24/k8s部署coredns/" class="archive-article-date">
-  	<time datetime="2019-08-24T06:54:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/k8s部署coredns/">k8s部署coredns</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/coredns//" class="article-tag-list-link color3">coredns</a>
+        			<a href="/categories/kubernetes//" class="article-tag-list-link color1">kubernetes</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://xxlaila.github.io/2019/09/25/EFK/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/24/k8s部署mysql/" class="archive-article-date">
-  	<time datetime="2019-08-24T06:43:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/25/网络状态监控/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">网络状态监控</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/k8s部署mysql/">k8s部署mysql</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化配置文件准备"><span class="toc-number">1.</span> <span class="toc-text">初始化配置文件准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建存储介质"><span class="toc-number">2.</span> <span class="toc-text">创建存储介质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改配置文件"><span class="toc-number">3.</span> <span class="toc-text">修改配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#执行创建"><span class="toc-number">3.1.</span> <span class="toc-text">执行创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看创建"><span class="toc-number">3.2.</span> <span class="toc-text">查看创建</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建web访问"><span class="toc-number">4.</span> <span class="toc-text">创建web访问</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/24/k8s角色访问RBAC/" class="archive-article-date">
-  	<time datetime="2019-08-24T06:35:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/k8s角色访问RBAC/">k8s角色访问RBAC</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/RBAC//" class="article-tag-list-link color5">RBAC</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/24/k8s-heapster/" class="archive-article-date">
-  	<time datetime="2019-08-24T06:28:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/k8s-heapster/">k8s heapster</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">kubernetes,heapster</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/24/k8s部署常规的jar服务/" class="archive-article-date">
-  	<time datetime="2019-08-24T06:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/k8s部署常规的jar服务/">k8s部署常规的jar服务</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/24/k8s部署eureka集群/" class="archive-article-date">
-  	<time datetime="2019-08-24T06:11:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/k8s部署eureka集群/">k8s部署eureka集群</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">eureka,kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/24/jira接入LDAP/" class="archive-article-date">
-  	<time datetime="2019-08-24T03:19:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/jira接入LDAP/">jira接入LDAP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jira</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/jira//" class="article-tag-list-link color5">jira</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/24/confluence与jira账户打通/" class="archive-article-date">
-  	<time datetime="2019-08-24T02:54:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/confluence与jira账户打通/">confluence与jira账户打通</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">confluence</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/24/jira安装和配置/" class="archive-article-date">
-  	<time datetime="2019-08-24T02:21:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/jira安装和配置/">jira安装和配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jira</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><a class="page-number" href="/archives/2019/page/2/">2</a><a class="page-number" href="/archives/2019/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2019/page/5/">5</a><a class="page-number" href="/archives/2019/page/6/">6</a><a class="page-number" href="/archives/2019/page/7/">7</a><a class="extend next" rel="next" href="/archives/2019/page/5/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -648,8 +491,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
