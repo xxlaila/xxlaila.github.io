@@ -17,7 +17,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://zxc.kingxunlian.com/74D2C8DE-129F-4219-87C5-D6A771D19484.png">
 <meta property="og:image" content="http://zxc.kingxunlian.com/91D9FA70-65B1-4752-8F15-68A158E72A49.png">
-<meta property="og:updated_time" content="2019-09-25T05:40:19.128Z">
+<meta property="og:updated_time" content="2019-09-25T05:44:34.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络状态监控">
 <meta name="twitter:description" content="需求&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;监控IDC机房网络质量情况，本地区到其他地区，其他地区到本节点，或者各省市时间网络、运营商网络状态，监视网络性能，包括常规的 ping，用 fping、echoping、tracert 监视 www 服务器性能，监视 dns 查询性能，监视 ssh 性能等。底层也是 rrdtool 做支持，特点是画">
@@ -200,8 +200,7 @@
 
 <h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum –y install perl perl-Net-Telnet perl-Net-DNS perl-LDAP perl-libwww-perl perl-RadiusPerl perl-IO-Socket-SSL perl-Socket6 perl-CGI-SpeedyCGI perl-FCGI perl-CGI-SpeedCGI perl-Time-HiRes perl-ExtUtils-MakeMaker perl-RRD-Simple rrdtool rrdtool-perl curl fping echo</span></span><br><span class="line">ping  httpd httpd-devel gcc make  wget libxml2-devel libpng-devel glib pango pango-devel freetype freetype-devel fontconfig cairo cairo-devel libart_lgpl libart_lgpl-devel mod_fastcgi</span><br></pre></td></tr></table></figure>
 
-<h3 id="安装smokeping"><a href="#安装smokeping" class="headerlink" title="安装smokeping"></a>安装smokeping</h3><p>下载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># wget http://oss.oetiker.ch/smokeping/pub/smokeping-2.6.11.tar.gz 这里下载的最新版</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装smokeping"><a href="#安装smokeping" class="headerlink" title="安装smokeping"></a>安装smokeping</h3><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># wget http://oss.oetiker.ch/smokeping/pub/smokeping-2.6.11.tar.gz 这里下载的最新版</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="安装FCGI"><a href="#安装FCGI" class="headerlink" title="安装FCGI"></a>安装FCGI</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tar zxf CGI-4.33.tar.gz</span></span><br><span class="line"><span class="comment"># cd CGI-4.33</span></span><br><span class="line"><span class="comment"># perl Makefile.PL</span></span><br><span class="line"><span class="comment"># make &amp;&amp; make install</span></span><br></pre></td></tr></table></figure>
 
@@ -389,6 +388,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/09/25/EFK-md/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          EFK.md
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/09/25/Linux常用命令学习/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Linux 常用命令学习</div>
@@ -418,7 +426,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装yum源"><span class="toc-number">2.1.</span> <span class="toc-text">安装yum源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装依赖包"><span class="toc-number">2.2.</span> <span class="toc-text">安装依赖包</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装smokeping"><span class="toc-number">3.</span> <span class="toc-text">安装smokeping</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FCGI"><span class="toc-number">3.1.</span> <span class="toc-text">安装FCGI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Config-Grammar"><span class="toc-number">3.2.</span> <span class="toc-text">安装Config-Grammar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装ExtUtils-MakeMaker"><span class="toc-number">3.3.</span> <span class="toc-text">安装ExtUtils-MakeMaker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Simple"><span class="toc-number">3.4.</span> <span class="toc-text">安装Simple</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Net-OpenSSH"><span class="toc-number">3.5.</span> <span class="toc-text">安装Net-OpenSSH</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Net-SNMP"><span class="toc-number">3.6.</span> <span class="toc-text">安装Net-SNMP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装perl-ldap"><span class="toc-number">3.7.</span> <span class="toc-text">安装perl-ldap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Net-DNS"><span class="toc-number">3.8.</span> <span class="toc-text">安装Net-DNS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IO-Tty"><span class="toc-number">3.9.</span> <span class="toc-text">安装IO-Tty</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装libwww-perl"><span class="toc-number">3.10.</span> <span class="toc-text">安装libwww-perl</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装smokeping-1"><span class="toc-number">3.11.</span> <span class="toc-text">安装smokeping</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#smokeping一键安装"><span class="toc-number">4.</span> <span class="toc-text">smokeping一键安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装smokeping-2"><span class="toc-number">4.1.</span> <span class="toc-text">安装smokeping</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置smkeping"><span class="toc-number">5.</span> <span class="toc-text">配置smkeping</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建cache、data、var目录"><span class="toc-number">5.1.</span> <span class="toc-text">创建cache、data、var目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建日志文件"><span class="toc-number">5.2.</span> <span class="toc-text">创建日志文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#赋权限"><span class="toc-number">5.3.</span> <span class="toc-text">赋权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改配置文件"><span class="toc-number">5.4.</span> <span class="toc-text">修改配置文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置apache"><span class="toc-number">6.</span> <span class="toc-text">配置apache</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置httpd-conf"><span class="toc-number">6.1.</span> <span class="toc-text">配置httpd.conf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#apache登录认证"><span class="toc-number">6.2.</span> <span class="toc-text">apache登录认证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装网页支持的中文字体"><span class="toc-number">6.3.</span> <span class="toc-text">安装网页支持的中文字体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#smokeping开机脚本"><span class="toc-number">6.4.</span> <span class="toc-text">smokeping开机脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动服务"><span class="toc-number">6.5.</span> <span class="toc-text">启动服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置文件添加"><span class="toc-number">6.6.</span> <span class="toc-text">配置文件添加</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装yum源"><span class="toc-number">2.1.</span> <span class="toc-text">安装yum源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装依赖包"><span class="toc-number">2.2.</span> <span class="toc-text">安装依赖包</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装smokeping"><span class="toc-number">3.</span> <span class="toc-text">安装smokeping</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载"><span class="toc-number">3.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FCGI"><span class="toc-number">3.2.</span> <span class="toc-text">安装FCGI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Config-Grammar"><span class="toc-number">3.3.</span> <span class="toc-text">安装Config-Grammar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装ExtUtils-MakeMaker"><span class="toc-number">3.4.</span> <span class="toc-text">安装ExtUtils-MakeMaker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Simple"><span class="toc-number">3.5.</span> <span class="toc-text">安装Simple</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Net-OpenSSH"><span class="toc-number">3.6.</span> <span class="toc-text">安装Net-OpenSSH</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Net-SNMP"><span class="toc-number">3.7.</span> <span class="toc-text">安装Net-SNMP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装perl-ldap"><span class="toc-number">3.8.</span> <span class="toc-text">安装perl-ldap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Net-DNS"><span class="toc-number">3.9.</span> <span class="toc-text">安装Net-DNS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IO-Tty"><span class="toc-number">3.10.</span> <span class="toc-text">安装IO-Tty</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装libwww-perl"><span class="toc-number">3.11.</span> <span class="toc-text">安装libwww-perl</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装smokeping-1"><span class="toc-number">3.12.</span> <span class="toc-text">安装smokeping</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#smokeping一键安装"><span class="toc-number">4.</span> <span class="toc-text">smokeping一键安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装smokeping-2"><span class="toc-number">4.1.</span> <span class="toc-text">安装smokeping</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置smkeping"><span class="toc-number">5.</span> <span class="toc-text">配置smkeping</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建cache、data、var目录"><span class="toc-number">5.1.</span> <span class="toc-text">创建cache、data、var目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建日志文件"><span class="toc-number">5.2.</span> <span class="toc-text">创建日志文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#赋权限"><span class="toc-number">5.3.</span> <span class="toc-text">赋权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改配置文件"><span class="toc-number">5.4.</span> <span class="toc-text">修改配置文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置apache"><span class="toc-number">6.</span> <span class="toc-text">配置apache</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置httpd-conf"><span class="toc-number">6.1.</span> <span class="toc-text">配置httpd.conf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#apache登录认证"><span class="toc-number">6.2.</span> <span class="toc-text">apache登录认证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装网页支持的中文字体"><span class="toc-number">6.3.</span> <span class="toc-text">安装网页支持的中文字体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#smokeping开机脚本"><span class="toc-number">6.4.</span> <span class="toc-text">smokeping开机脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动服务"><span class="toc-number">6.5.</span> <span class="toc-text">启动服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置文件添加"><span class="toc-number">6.6.</span> <span class="toc-text">配置文件添加</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -601,6 +609,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
@@ -610,10 +622,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jira</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iptables</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -681,15 +689,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,7 +713,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -713,11 +725,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
+                <a href="javascript:void(0)" class="js-tag color4">efk</a>
               </li>
              
               <li class="article-tag-list-item">
