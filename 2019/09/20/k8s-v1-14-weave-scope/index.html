@@ -16,18 +16,18 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="前沿&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Kubernetes 集群并部署容器化应用只是第一步。一旦集群运行起来，我们需要确保一起正常，所有必要组件就位并各司其职，有足够的资源满足应用的需求。Kubernetes 是一个复杂系统，运维团队需要有一套工具帮助他们获知集群的实时状态，并为故障排查提供及时和准确的数据支持。 weave scope">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1568958836846.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1568958666089.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1568958913275.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1568959004395.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1568959269040.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1568959359334.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1568959467442.jpg">
-<meta property="og:updated_time" content="2019-09-20T06:24:24.126Z">
+<meta property="og:image" content="http://img.xxlaila.cn/1568958836846.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1568958666089.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1568958913275.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1568959004395.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1568959269040.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1568959359334.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1568959467442.jpg">
+<meta property="og:updated_time" content="2019-09-26T03:13:13.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s v1.14 weave-scope">
 <meta name="twitter:description" content="前沿&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Kubernetes 集群并部署容器化应用只是第一步。一旦集群运行起来，我们需要确保一起正常，所有必要组件就位并各司其职，有足够的资源满足应用的需求。Kubernetes 是一个复杂系统，运维团队需要有一套工具帮助他们获知集群的实时状态，并为故障排查提供及时和准确的数据支持。 weave scope">
-<meta name="twitter:image" content="http://zxc.kingxunlian.com/1568958836846.jpg">
+<meta name="twitter:image" content="http://img.xxlaila.cn/1568958836846.jpg">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -219,15 +219,15 @@
 
 <h3 id="创建weave-scope-ingress"><a href="#创建weave-scope-ingress" class="headerlink" title="创建weave-scope ingress"></a>创建weave-scope ingress</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat weave-scope.yaml </span></span><br><span class="line">---</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: weave-web-ui</span><br><span class="line">  namespace: weave</span><br><span class="line">  annotations:</span><br><span class="line">    kubernetes.io/ingress.class: traefik</span><br><span class="line">spec:</span><br><span class="line">  rules:</span><br><span class="line">  - host: weave-scope.xxlaila.cn</span><br><span class="line">    http:</span><br><span class="line">      paths:</span><br><span class="line">      - path: /</span><br><span class="line">        backend:</span><br><span class="line">          serviceName: weave-scope-app</span><br><span class="line">          servicePort: 80</span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl apply -f weave-scope.yaml </span></span><br><span class="line">ingress.extensions/weave-web-ui created</span><br></pre></td></tr></table></figure>
 
-<p>在浏览输入<code>weave-scope.xxlaila.cn</code>即可访问<br><img src="http://zxc.kingxunlian.com/1568958836846.jpg" alt="img"></p>
-<h4 id="拓扑结构"><a href="#拓扑结构" class="headerlink" title="拓扑结构"></a>拓扑结构</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scope 会自动构建应用和集群的逻辑拓扑。比如点击顶部 Pods，会显示所有 Pod 以及 Pod 之间的依赖关系<br><img src="http://zxc.kingxunlian.com/1568958666089.jpg" alt="img"><br>点击 Hosts，会显示各个节点之间的关系，可以在 Scope 中查看资源的 CPU 和内存使用情况。<br><img src="http://zxc.kingxunlian.com/1568958913275.jpg" alt="img"></p>
-<h3 id="在线操作"><a href="#在线操作" class="headerlink" title="在线操作"></a>在线操作</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scope 还提供了便捷的在线操作功能，比如选中某个 Host，点击 &gt;_按钮可以直接在浏览器中打开节点的命令行终端：<br><img src="http://zxc.kingxunlian.com/1568959004395.jpg" alt="img"></p>
+<p>在浏览输入<code>weave-scope.xxlaila.cn</code>即可访问<br><img src="http://img.xxlaila.cn/1568958836846.jpg" alt="img"></p>
+<h4 id="拓扑结构"><a href="#拓扑结构" class="headerlink" title="拓扑结构"></a>拓扑结构</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scope 会自动构建应用和集群的逻辑拓扑。比如点击顶部 Pods，会显示所有 Pod 以及 Pod 之间的依赖关系<br><img src="http://img.xxlaila.cn/1568958666089.jpg" alt="img"><br>点击 Hosts，会显示各个节点之间的关系，可以在 Scope 中查看资源的 CPU 和内存使用情况。<br><img src="http://img.xxlaila.cn/1568958913275.jpg" alt="img"></p>
+<h3 id="在线操作"><a href="#在线操作" class="headerlink" title="在线操作"></a>在线操作</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scope 还提供了便捷的在线操作功能，比如选中某个 Host，点击 &gt;_按钮可以直接在浏览器中打开节点的命令行终端：<br><img src="http://img.xxlaila.cn/1568959004395.jpg" alt="img"></p>
 <ul>
-<li><p>点击 Deployment 的 + 可以执行新增一个pod实列<br><img src="http://zxc.kingxunlian.com/1568959269040.jpg" alt="img"></p>
+<li><p>点击 Deployment 的 + 可以执行新增一个pod实列<br><img src="http://img.xxlaila.cn/1568959269040.jpg" alt="img"></p>
 </li>
-<li><p>查看pod的日志<br><img src="http://zxc.kingxunlian.com/1568959359334.jpg" alt="img"></p>
+<li><p>查看pod的日志<br><img src="http://img.xxlaila.cn/1568959359334.jpg" alt="img"></p>
 </li>
-<li><p>attach、restart、stop 容器，以及直接在 Scope 中排查问题<br><img src="http://zxc.kingxunlian.com/1568959467442.jpg" alt="img"></p>
+<li><p>attach、restart、stop 容器，以及直接在 Scope 中排查问题<br><img src="http://img.xxlaila.cn/1568959467442.jpg" alt="img"></p>
 </li>
 </ul>
 <p>更多功呢个请<a href="https://www.weave.works/docs/scope/latest/plugins/" target="_blank" rel="noopener">参考官方</a>,或者实操</p>
@@ -270,13 +270,13 @@
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/1566964307703.jpg">
+                      <img class="reward-img" src="http://img.xxlaila.cn/1566964307703.jpg">
                       <span class="reward-type">支付宝</span>
                     </div>
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/IMG_1567.JPG">
+                      <img class="reward-img" src="http://img.xxlaila.cn/IMG_1567.JPG">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -576,11 +576,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,19 +592,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,11 +676,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,11 +708,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -756,11 +756,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">

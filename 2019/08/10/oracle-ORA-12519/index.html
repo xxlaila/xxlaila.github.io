@@ -16,15 +16,15 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="oracle ORA-12519错误解决今天遇到做系统压力测试的时候，系统报了一个错误OERR: ORA-12519 TNS:no appropriate service handler found   在网上搜索了一下oralc的错误信息ORA-12519，解决办法挺多的，这里记录一下 登陆oracle的服务器，在登陆oracle数据库1sqlplus &quot;/as sysdba&quot;   首先检查p">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://zxc.kingxunlian.com/ORA-12519-error.png">
-<meta property="og:image" content="http://zxc.kingxunlian.com/parameter_%20processes_1.png">
-<meta property="og:image" content="http://zxc.kingxunlian.com/parameter_%20session_3.png">
-<meta property="og:image" content="http://zxc.kingxunlian.com/W.png">
-<meta property="og:updated_time" content="2019-09-20T05:47:26.059Z">
+<meta property="og:image" content="http://img.xxlaila.cn/ORA-12519-error.png">
+<meta property="og:image" content="http://img.xxlaila.cn/parameter_%20processes_1.png">
+<meta property="og:image" content="http://img.xxlaila.cn/parameter_%20session_3.png">
+<meta property="og:image" content="http://img.xxlaila.cn/W.png">
+<meta property="og:updated_time" content="2019-09-26T03:13:12.578Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="oracle ORA-12519">
 <meta name="twitter:description" content="oracle ORA-12519错误解决今天遇到做系统压力测试的时候，系统报了一个错误OERR: ORA-12519 TNS:no appropriate service handler found   在网上搜索了一下oralc的错误信息ORA-12519，解决办法挺多的，这里记录一下 登陆oracle的服务器，在登陆oracle数据库1sqlplus &quot;/as sysdba&quot;   首先检查p">
-<meta name="twitter:image" content="http://zxc.kingxunlian.com/ORA-12519-error.png">
+<meta name="twitter:image" content="http://img.xxlaila.cn/ORA-12519-error.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -198,14 +198,14 @@
         <blockquote>
 <p>oracle ORA-12519错误解决<br>今天遇到做系统压力测试的时候，系统报了一个错误<br>OERR: ORA-12519 TNS:no appropriate service handler found</p>
 </blockquote>
-<p><img src="http://zxc.kingxunlian.com/ORA-12519-error.png" alt="img"></p>
+<p><img src="http://img.xxlaila.cn/ORA-12519-error.png" alt="img"></p>
 <p>在网上搜索了一下oralc的错误信息ORA-12519，解决办法挺多的，这里记录一下</p>
 <h3 id="登陆oracle的服务器，在登陆oracle数据库"><a href="#登陆oracle的服务器，在登陆oracle数据库" class="headerlink" title="登陆oracle的服务器，在登陆oracle数据库"></a>登陆oracle的服务器，在登陆oracle数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlplus <span class="string">"/as sysdba"</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>首先检查process和session的使用情况</p>
 </blockquote>
-<p><img src="http://zxc.kingxunlian.com/parameter_%20processes_1.png" alt="img"><br><img src="http://zxc.kingxunlian.com/parameter_%20session_3.png" alt="img"></p>
+<p><img src="http://img.xxlaila.cn/parameter_%20processes_1.png" alt="img"><br><img src="http://img.xxlaila.cn/parameter_%20session_3.png" alt="img"></p>
 <a id="more"></a>
 
 <ul>
@@ -215,7 +215,7 @@
 
 <h3 id="重启数据库后参数修改完成"><a href="#重启数据库后参数修改完成" class="headerlink" title="重启数据库后参数修改完成"></a>重启数据库后参数修改完成</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; shutdown abort;</span><br><span class="line">ORACLE 例程已经关闭。</span><br><span class="line">SQL&gt; startup;</span><br><span class="line">ORACLE 例程已经启动。</span><br><span class="line">Total System Global Area  534462464 bytes</span><br><span class="line">Fixed Size                  2215064 bytes</span><br><span class="line">Variable Size             234881896 bytes</span><br><span class="line">Database Buffers          289406976 bytes</span><br><span class="line">Redo Buffers                7958528 bytes</span><br><span class="line">数据库装载完毕。</span><br><span class="line">数据库已经打开。</span><br></pre></td></tr></table></figure>
 
-<h2 id="查看并验证"><a href="#查看并验证" class="headerlink" title="查看并验证"></a>查看并验证</h2><p><img src="http://zxc.kingxunlian.com/W.png" alt="img"></p>
+<h2 id="查看并验证"><a href="#查看并验证" class="headerlink" title="查看并验证"></a>查看并验证</h2><p><img src="http://img.xxlaila.cn/W.png" alt="img"></p>
 
       
 
@@ -255,13 +255,13 @@
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/1566964307703.jpg">
+                      <img class="reward-img" src="http://img.xxlaila.cn/1566964307703.jpg">
                       <span class="reward-type">支付宝</span>
                     </div>
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/IMG_1567.JPG">
+                      <img class="reward-img" src="http://img.xxlaila.cn/IMG_1567.JPG">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -537,11 +537,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,19 +553,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,11 +637,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,11 +669,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,11 +717,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -2,16 +2,268 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-weave-scope/</loc>
+    
+    <lastmod>2019-09-26T03:13:13.186Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/20/kubernetes-ci-cd-%E5%9B%9B/</loc>
+    
+    <lastmod>2019-09-26T03:13:13.161Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/24/k8s%E9%83%A8%E7%BD%B2eureka%E9%9B%86%E7%BE%A4/</loc>
+    
+    <lastmod>2019-09-26T03:13:13.150Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/24/k8s%E9%83%A8%E7%BD%B2mysql/</loc>
+    
+    <lastmod>2019-09-26T03:13:13.135Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/20/kubernetes-ci-cd-%E4%BA%8C/</loc>
+    
+    <lastmod>2019-09-26T03:13:13.125Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/24/confluence-install/</loc>
+    
+    <lastmod>2019-09-26T03:13:13.085Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/04/k8s-helm/</loc>
+    
+    <lastmod>2019-09-26T03:13:13.045Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/10/kubedns%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2019-09-26T03:13:13.032Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/23/nexus3%E6%90%AD%E5%BB%BAnpm%E7%A7%81%E6%9C%8D/</loc>
+    
+    <lastmod>2019-09-26T03:13:13.025Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/19/%E5%B8%A7%E4%B8%AD%E7%BB%A7%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.988Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/26/k8s%E9%83%A8%E7%BD%B2Weave-Scope/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.973Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/29/k8s%E9%85%8D%E7%BD%AEDashboard/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.953Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/04/metrics-server%E5%AE%89%E8%A3%85%E5%AD%A3/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.950Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/12/kubernetes-ci-cd-%E4%B8%80/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.946Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/16/k8s-v1-14-dashboard/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.863Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/25/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%81%9A%E7%AB%AF%E5%8F%A3%E8%81%9A%E5%90%88/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.855Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/24/jira%E6%8E%A5%E5%85%A5LDAP/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.852Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/16/kubernetes-v1-14-node%E5%AE%89%E8%A3%85/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.804Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/09/mongodb-replica/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.799Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/20/zabbix%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E5%91%8A%E8%AD%A6/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.792Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.764Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/06/traefik-https%E5%BA%94%E7%94%A8/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.729Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-prometheus/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.713Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/09/jenkins-job%E7%AE%A1%E7%90%86/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.702Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/24/confluence%E4%B8%8Ejira%E8%B4%A6%E6%88%B7%E6%89%93%E9%80%9A/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.688Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/26/k8s%E9%83%A8%E7%BD%B2ingress/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.668Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/09/25/EFK/</loc>
     
-    <lastmod>2019-09-26T03:00:56.684Z</lastmod>
+    <lastmod>2019-09-26T03:13:12.627Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/12/kube-nfs-%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.615Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/09/vsftpd%E5%AE%89%E8%A3%85/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.606Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/24/jira%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.602Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/30/k8s%E9%83%A8%E7%BD%B2istio/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.582Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/10/oracle-ORA-12519/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.578Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/09/jenkins%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.565Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://xxlaila.github.io/2019/09/25/%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81%E7%9B%91%E6%8E%A7/</loc>
     
-    <lastmod>2019-09-25T05:44:34.143Z</lastmod>
+    <lastmod>2019-09-26T03:13:12.554Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/04/kubelet%E6%8F%90%E4%BE%9Bapi%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.546Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/24/k8s-heapster/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.520Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/10/k8s-prometheus/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.509Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/08/20/kubernetes-ci-cd-%E4%B8%89/</loc>
+    
+    <lastmod>2019-09-26T03:13:12.492Z</lastmod>
     
   </url>
   
@@ -37,44 +289,9 @@
   </url>
   
   <url>
-    <loc>https://xxlaila.github.io/2019/09/25/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%81%9A%E7%AB%AF%E5%8F%A3%E8%81%9A%E5%90%88/</loc>
-    
-    <lastmod>2019-09-25T02:16:05.487Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xxlaila.github.io/2019/09/25/pv-pvc/</loc>
     
     <lastmod>2019-09-25T01:59:18.795Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-prometheus/</loc>
-    
-    <lastmod>2019-09-23T06:06:26.809Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/16/kubernetes-v1-14-node%E5%AE%89%E8%A3%85/</loc>
-    
-    <lastmod>2019-09-23T06:03:46.377Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/16/k8s-v1-14-dashboard/</loc>
-    
-    <lastmod>2019-09-20T06:37:46.785Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/09/vsftpd%E5%AE%89%E8%A3%85/</loc>
-    
-    <lastmod>2019-09-20T06:32:16.361Z</lastmod>
     
   </url>
   
@@ -93,51 +310,9 @@
   </url>
   
   <url>
-    <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-weave-scope/</loc>
-    
-    <lastmod>2019-09-20T06:24:24.126Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/19/%E5%B8%A7%E4%B8%AD%E7%BB%A7%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2019-09-20T05:47:26.093Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/20/zabbix%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E5%91%8A%E8%AD%A6/</loc>
-    
-    <lastmod>2019-09-20T05:47:26.088Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/</loc>
-    
-    <lastmod>2019-09-20T05:47:26.073Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/06/traefik-https%E5%BA%94%E7%94%A8/</loc>
-    
-    <lastmod>2019-09-20T05:47:26.068Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xxlaila.github.io/2019/08/12/pvc-pv/</loc>
     
     <lastmod>2019-09-20T05:47:26.064Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/10/oracle-ORA-12519/</loc>
-    
-    <lastmod>2019-09-20T05:47:26.059Z</lastmod>
     
   </url>
   
@@ -152,27 +327,6 @@
     <loc>https://xxlaila.github.io/2019/08/22/nginx-URL-%E6%96%9C%E6%9D%A0%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2019-09-20T05:47:26.047Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/23/nexus3%E6%90%AD%E5%BB%BAnpm%E7%A7%81%E6%9C%8D/</loc>
-    
-    <lastmod>2019-09-20T05:47:26.040Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/09/mongodb-replica/</loc>
-    
-    <lastmod>2019-09-20T05:47:26.035Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/04/metrics-server%E5%AE%89%E8%A3%85%E5%AD%A3/</loc>
-    
-    <lastmod>2019-09-20T05:47:26.030Z</lastmod>
     
   </url>
   
@@ -201,55 +355,6 @@
     <loc>https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/</loc>
     
     <lastmod>2019-09-20T05:47:26.002Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/20/kubernetes-ci-cd-%E5%9B%9B/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.998Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/20/kubernetes-ci-cd-%E4%BA%8C/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.990Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/20/kubernetes-ci-cd-%E4%B8%89/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.985Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/12/kubernetes-ci-cd-%E4%B8%80/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.982Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/04/kubelet%E6%8F%90%E4%BE%9Bapi%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.978Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/10/kubedns%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.973Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/12/kube-nfs-%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.968Z</lastmod>
     
   </url>
   
@@ -289,51 +394,9 @@
   </url>
   
   <url>
-    <loc>https://xxlaila.github.io/2019/08/24/k8s%E9%83%A8%E7%BD%B2mysql/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.936Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/30/k8s%E9%83%A8%E7%BD%B2istio/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.928Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/26/k8s%E9%83%A8%E7%BD%B2ingress/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.920Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/24/k8s%E9%83%A8%E7%BD%B2eureka%E9%9B%86%E7%BE%A4/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.914Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xxlaila.github.io/2019/08/24/k8s%E9%83%A8%E7%BD%B2coredns/</loc>
     
     <lastmod>2019-09-20T05:47:25.909Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/26/k8s%E9%83%A8%E7%BD%B2Weave-Scope/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.904Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/29/k8s%E9%85%8D%E7%BD%AEDashboard/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.900Z</lastmod>
     
   </url>
   
@@ -359,55 +422,6 @@
   </url>
   
   <url>
-    <loc>https://xxlaila.github.io/2019/08/10/k8s-prometheus/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.869Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/04/k8s-helm/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.865Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/24/k8s-heapster/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.861Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/24/jira%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.857Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/24/jira%E6%8E%A5%E5%85%A5LDAP/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.853Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/09/jenkins%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.850Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/09/jenkins-job%E7%AE%A1%E7%90%86/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.846Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xxlaila.github.io/2019/08/10/haproxy-keepalived/</loc>
     
     <lastmod>2019-09-20T05:47:25.836Z</lastmod>
@@ -418,20 +432,6 @@
     <loc>https://xxlaila.github.io/2019/08/24/git%E6%B8%85%E7%A9%BAcommit%E8%AE%B0%E5%BD%95%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2019-09-20T05:47:25.833Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/24/confluence%E4%B8%8Ejira%E8%B4%A6%E6%88%B7%E6%89%93%E9%80%9A/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.829Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/24/confluence-install/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.825Z</lastmod>
     
   </url>
   

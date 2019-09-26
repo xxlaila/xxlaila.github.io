@@ -16,18 +16,18 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="kubelet 提供的 API 接口认证node安装参考 kubelet 启动后监听多个端口，用于接收 kube-apiserver 或其它客户端发送的请求： 1234[root@k8s-3 ~]#  netstat -lnpt|grep kubelettcp        0      0 127.0.0.1:46395         0.0.0.0:*               LISTE">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1567564092242.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1567564289155.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1567564393274.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1567564441293.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1567564526664.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1567563858215.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1567564733531.jpg">
-<meta property="og:updated_time" content="2019-09-20T05:47:25.978Z">
+<meta property="og:image" content="http://img.xxlaila.cn/1567564092242.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1567564289155.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1567564393274.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1567564441293.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1567564526664.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1567563858215.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1567564733531.jpg">
+<meta property="og:updated_time" content="2019-09-26T03:13:12.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubelet提供api请求接口">
 <meta name="twitter:description" content="kubelet 提供的 API 接口认证node安装参考 kubelet 启动后监听多个端口，用于接收 kube-apiserver 或其它客户端发送的请求： 1234[root@k8s-3 ~]#  netstat -lnpt|grep kubelettcp        0      0 127.0.0.1:46395         0.0.0.0:*               LISTE">
-<meta name="twitter:image" content="http://zxc.kingxunlian.com/1567564092242.jpg">
+<meta name="twitter:image" content="http://img.xxlaila.cn/1567564092242.jpg">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -247,20 +247,20 @@
 <blockquote>
 <p>在访问api-server安全端口之前，我们需要做一些操作才能访问，否则无法进行访问</p>
 </blockquote>
-<h5 id="在浏览器访问kube-apiserver安全端口"><a href="#在浏览器访问kube-apiserver安全端口" class="headerlink" title="在浏览器访问kube-apiserver安全端口"></a>在浏览器访问kube-apiserver安全端口</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;提示证书不被信任,这是因为 kube-apiserver 的 server 证书是我们创建的根证书 ca.pem 签名的，需要将根证书 ca.pem 导入操作系统，并设置永久信任。<br><img src="http://zxc.kingxunlian.com/1567564092242.jpg" alt="img"></p>
+<h5 id="在浏览器访问kube-apiserver安全端口"><a href="#在浏览器访问kube-apiserver安全端口" class="headerlink" title="在浏览器访问kube-apiserver安全端口"></a>在浏览器访问kube-apiserver安全端口</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;提示证书不被信任,这是因为 kube-apiserver 的 server 证书是我们创建的根证书 ca.pem 签名的，需要将根证书 ca.pem 导入操作系统，并设置永久信任。<br><img src="http://img.xxlaila.cn/1567564092242.jpg" alt="img"></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;给浏览器生成一个 client 证书，访问 apiserver 的 6443 https 端口时使用。这里使用部署 kubectl 命令行工具时创建的 admin 证书、私钥和上面的 ca 证书，创建一个浏览器可以使用 PKCS#12/PFX 格式的证书：</p>
 <ul>
 <li><p>会提示输入密码，这里密码需要记住，一会倒入证书到浏览器的时候需要</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># openssl pkcs12 -export -out admin.pfx -inkey admin-key.pem -in admin.pem -certfile kubernetes-ca.pem</span></span><br><span class="line">Enter Export Password:</span><br><span class="line">Verifying - Enter Export Password:</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>将创建的 admin.pfx 导入到系统的证书中,<br><img src="http://zxc.kingxunlian.com/1567564289155.jpg" alt="img"></p>
+<li><p>将创建的 admin.pfx 导入到系统的证书中,<br><img src="http://img.xxlaila.cn/1567564289155.jpg" alt="img"></p>
 </li>
 </ul>
-<p>再次访问 apiserver 地址，提示选择一个浏览器证书，这里选中上面导入的 admin.pfx<br><img src="http://zxc.kingxunlian.com/1567564393274.jpg" alt="img"></p>
+<p>再次访问 apiserver 地址，提示选择一个浏览器证书，这里选中上面导入的 admin.pfx<br><img src="http://img.xxlaila.cn/1567564393274.jpg" alt="img"></p>
 <ul>
-<li><p>提示需要输入系统的密码,这里是mac的电脑<br><img src="http://zxc.kingxunlian.com/1567564441293.jpg" alt="img"></p>
+<li><p>提示需要输入系统的密码,这里是mac的电脑<br><img src="http://img.xxlaila.cn/1567564441293.jpg" alt="img"></p>
 </li>
-<li><p>被授权访问 kube-apiserver 的安全端口<br><img src="http://zxc.kingxunlian.com/1567564526664.jpg" alt="img"></p>
+<li><p>被授权访问 kube-apiserver 的安全端口<br><img src="http://img.xxlaila.cn/1567564526664.jpg" alt="img"></p>
 </li>
 </ul>
 <h5 id="客户端选择证书的原理"><a href="#客户端选择证书的原理" class="headerlink" title="客户端选择证书的原理"></a>客户端选择证书的原理</h5><ul>
@@ -269,7 +269,7 @@
 <li>客户端查找它的证书列表(一般是操作系统的证书，对于 Mac 为 keychain)，看有没有被 CA 签名的证书，如果有，则将它们提供给用户选择（证书的私钥）；</li>
 <li>用户选择一个证书私钥，然后客户端将使用它和服务端通信；</li>
 </ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;在浏览器访问 <a href="https://172.21.16.204:10250/metrics" target="_blank" rel="noopener">https://172.21.16.204:10250/metrics</a> 和 <a href="https://172.21.16.204:10250/metrics/cadvisor" target="_blank" rel="noopener">https://172.21.16.204:10250/metrics/cadvisor</a> 分别返回 kubelet 和 cadvisor 的 metrics。<br><img src="http://zxc.kingxunlian.com/1567563858215.jpg" alt="img"><br><img src="http://zxc.kingxunlian.com/1567564733531.jpg" alt="img"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;在浏览器访问 <a href="https://172.21.16.204:10250/metrics" target="_blank" rel="noopener">https://172.21.16.204:10250/metrics</a> 和 <a href="https://172.21.16.204:10250/metrics/cadvisor" target="_blank" rel="noopener">https://172.21.16.204:10250/metrics/cadvisor</a> 分别返回 kubelet 和 cadvisor 的 metrics。<br><img src="http://img.xxlaila.cn/1567563858215.jpg" alt="img"><br><img src="http://img.xxlaila.cn/1567564733531.jpg" alt="img"></p>
 <ul>
 <li><strong>原因</strong>: kubelet配置文件设置<code>--anonymous-auth=false</code>不允许匿名证书访问 10250 的 https 服务,所以我们才需要配置证书来进行访问</li>
 </ul>
@@ -312,13 +312,13 @@
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/1566964307703.jpg">
+                      <img class="reward-img" src="http://img.xxlaila.cn/1566964307703.jpg">
                       <span class="reward-type">支付宝</span>
                     </div>
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/IMG_1567.JPG">
+                      <img class="reward-img" src="http://img.xxlaila.cn/IMG_1567.JPG">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -618,11 +618,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,19 +634,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -718,11 +718,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,11 +750,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -798,11 +798,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -16,15 +16,15 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;jenkins 配置完成后，最终实现的是ci/cd，在编译的过程中，经常会遇到后端java的，前端nodejs的，这里就需要进行一个k8s在调度的时候生产pod来进行指定pod进行编译 1、制作容器自定义一个容器，里面包含了 java，nodejs的所需要的环境，同时需要同步容器的时间，包含来jenkins的node 1234567891011121">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://zxc.kingxunlian.com/489kdngkdhfkodsmf.png">
-<meta property="og:image" content="http://zxc.kingxunlian.com/83jknfkdslfds.png">
-<meta property="og:image" content="http://zxc.kingxunlian.com/42clkdsjfkldsfs.png">
-<meta property="og:image" content="http://zxc.kingxunlian.com/3486238kmxnfksd.png">
-<meta property="og:updated_time" content="2019-09-20T05:47:25.985Z">
+<meta property="og:image" content="http://img.xxlaila.cn/489kdngkdhfkodsmf.png">
+<meta property="og:image" content="http://img.xxlaila.cn/83jknfkdslfds.png">
+<meta property="og:image" content="http://img.xxlaila.cn/42clkdsjfkldsfs.png">
+<meta property="og:image" content="http://img.xxlaila.cn/3486238kmxnfksd.png">
+<meta property="og:updated_time" content="2019-09-26T03:13:12.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes-ci&#x2F;cd-(三)">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;jenkins 配置完成后，最终实现的是ci/cd，在编译的过程中，经常会遇到后端java的，前端nodejs的，这里就需要进行一个k8s在调度的时候生产pod来进行指定pod进行编译 1、制作容器自定义一个容器，里面包含了 java，nodejs的所需要的环境，同时需要同步容器的时间，包含来jenkins的node 1234567891011121">
-<meta name="twitter:image" content="http://zxc.kingxunlian.com/489kdngkdhfkodsmf.png">
+<meta name="twitter:image" content="http://img.xxlaila.cn/489kdngkdhfkodsmf.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -210,10 +210,10 @@
 
 </li>
 </ul>
-<h3 id="2、jenkins的配置"><a href="#2、jenkins的配置" class="headerlink" title="2、jenkins的配置"></a>2、jenkins的配置</h3><h4 id="2-1、系统配置"><a href="#2-1、系统配置" class="headerlink" title="2.1、系统配置"></a>2.1、系统配置</h4><p>jenkins——&gt;系统管理——&gt;系统设置<br><strong>名称</strong>：kubernetes<br><strong>地址</strong>：<a href="https://kubernetes.default.svc.cluster.local" target="_blank" rel="noopener">https://kubernetes.default.svc.cluster.local</a><br><strong>jenkins地址</strong>：<a href="http://jenkins2.kube-ops.svc.cluster.local:8080" target="_blank" rel="noopener">http://jenkins2.kube-ops.svc.cluster.local:8080</a><br><img src="http://zxc.kingxunlian.com/489kdngkdhfkodsmf.png" alt="img"></p>
-<h4 id="2-2、增加一个kubenetes-pod-templates"><a href="#2-2、增加一个kubenetes-pod-templates" class="headerlink" title="2.2、增加一个kubenetes pod templates"></a>2.2、增加一个kubenetes pod templates</h4><p><img src="http://zxc.kingxunlian.com/83jknfkdslfds.png" alt="img"></p>
-<h4 id="2-3、配置容器环境"><a href="#2-3、配置容器环境" class="headerlink" title="2.3、配置容器环境"></a>2.3、配置容器环境</h4><p><img src="http://zxc.kingxunlian.com/42clkdsjfkldsfs.png" alt="img"></p>
-<h4 id="2-4、配置权限"><a href="#2-4、配置权限" class="headerlink" title="2.4、配置权限"></a>2.4、配置权限</h4><p><img src="http://zxc.kingxunlian.com/3486238kmxnfksd.png" alt="img"></p>
+<h3 id="2、jenkins的配置"><a href="#2、jenkins的配置" class="headerlink" title="2、jenkins的配置"></a>2、jenkins的配置</h3><h4 id="2-1、系统配置"><a href="#2-1、系统配置" class="headerlink" title="2.1、系统配置"></a>2.1、系统配置</h4><p>jenkins——&gt;系统管理——&gt;系统设置<br><strong>名称</strong>：kubernetes<br><strong>地址</strong>：<a href="https://kubernetes.default.svc.cluster.local" target="_blank" rel="noopener">https://kubernetes.default.svc.cluster.local</a><br><strong>jenkins地址</strong>：<a href="http://jenkins2.kube-ops.svc.cluster.local:8080" target="_blank" rel="noopener">http://jenkins2.kube-ops.svc.cluster.local:8080</a><br><img src="http://img.xxlaila.cn/489kdngkdhfkodsmf.png" alt="img"></p>
+<h4 id="2-2、增加一个kubenetes-pod-templates"><a href="#2-2、增加一个kubenetes-pod-templates" class="headerlink" title="2.2、增加一个kubenetes pod templates"></a>2.2、增加一个kubenetes pod templates</h4><p><img src="http://img.xxlaila.cn/83jknfkdslfds.png" alt="img"></p>
+<h4 id="2-3、配置容器环境"><a href="#2-3、配置容器环境" class="headerlink" title="2.3、配置容器环境"></a>2.3、配置容器环境</h4><p><img src="http://img.xxlaila.cn/42clkdsjfkldsfs.png" alt="img"></p>
+<h4 id="2-4、配置权限"><a href="#2-4、配置权限" class="headerlink" title="2.4、配置权限"></a>2.4、配置权限</h4><p><img src="http://img.xxlaila.cn/3486238kmxnfksd.png" alt="img"></p>
 <h3 id="3、测试job"><a href="#3、测试job" class="headerlink" title="3、测试job"></a>3、测试job</h3><p>建立一个test job 的pipeline来进行容器是否正常</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">node (<span class="string">'agent-node'</span>)&#123;</span><br><span class="line">    container(<span class="string">'nodejs'</span>) &#123;</span><br><span class="line">        sh <span class="string">'whoami'</span></span><br><span class="line">        sh <span class="string">'hostname'</span></span><br><span class="line">        sh <span class="string">'echo $PATH'</span></span><br><span class="line">        sh <span class="string">'npm version'</span></span><br><span class="line">        sh <span class="string">'node -v'</span></span><br><span class="line">        sh <span class="string">'npx -v'</span></span><br><span class="line">        sh <span class="string">'java -version'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -260,13 +260,13 @@
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/1566964307703.jpg">
+                      <img class="reward-img" src="http://img.xxlaila.cn/1566964307703.jpg">
                       <span class="reward-type">支付宝</span>
                     </div>
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/IMG_1567.JPG">
+                      <img class="reward-img" src="http://img.xxlaila.cn/IMG_1567.JPG">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -542,11 +542,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,19 +558,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,11 +642,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -674,11 +674,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -722,11 +722,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">

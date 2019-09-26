@@ -16,16 +16,16 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="Prometheus是一个集数据收集存储、数据查询和数据图表显示于一身的开源监控组件。本文主要讲解如何搭建Prometheus，并使用它监控Kubernetes集群。 1、下载相关yaml1234567891011# https://github.com/xxlaila/kubernetes-yaml/tree/master/prometheus-grafana# ls -lconfigmap.y">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://zxc.kingxunlian.com/46ds9824.png">
-<meta property="og:image" content="http://zxc.kingxunlian.com/8764kjfnks.png">
-<meta property="og:image" content="http://zxc.kingxunlian.com/skd9234342.png">
-<meta property="og:image" content="http://zxc.kingxunlian.com/sld023423.png">
-<meta property="og:image" content="http://zxc.kingxunlian.com/kf24skdsfds.png">
-<meta property="og:updated_time" content="2019-09-20T05:47:25.869Z">
+<meta property="og:image" content="http://img.xxlaila.cn/46ds9824.png">
+<meta property="og:image" content="http://img.xxlaila.cn/8764kjfnks.png">
+<meta property="og:image" content="http://img.xxlaila.cn/skd9234342.png">
+<meta property="og:image" content="http://img.xxlaila.cn/sld023423.png">
+<meta property="og:image" content="http://img.xxlaila.cn/kf24skdsfds.png">
+<meta property="og:updated_time" content="2019-09-26T03:13:12.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s-prometheus">
 <meta name="twitter:description" content="Prometheus是一个集数据收集存储、数据查询和数据图表显示于一身的开源监控组件。本文主要讲解如何搭建Prometheus，并使用它监控Kubernetes集群。 1、下载相关yaml1234567891011# https://github.com/xxlaila/kubernetes-yaml/tree/master/prometheus-grafana# ls -lconfigmap.y">
-<meta name="twitter:image" content="http://zxc.kingxunlian.com/46ds9824.png">
+<meta name="twitter:image" content="http://img.xxlaila.cn/46ds9824.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -221,15 +221,15 @@
 
 <h3 id="2-4、WEB界面配置"><a href="#2-4、WEB界面配置" class="headerlink" title="2.4、WEB界面配置"></a>2.4、WEB界面配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get svc,pods -n kube-ops</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://zxc.kingxunlian.com/46ds9824.png" alt="img"></p>
-<h4 id="2-4-1-查看node-exporter"><a href="#2-4-1-查看node-exporter" class="headerlink" title="2.4.1 查看node-exporter"></a>2.4.1 查看node-exporter</h4><p><img src="http://zxc.kingxunlian.com/8764kjfnks.png" alt="img"></p>
+<p><img src="http://img.xxlaila.cn/46ds9824.png" alt="img"></p>
+<h4 id="2-4-1-查看node-exporter"><a href="#2-4-1-查看node-exporter" class="headerlink" title="2.4.1 查看node-exporter"></a>2.4.1 查看node-exporter</h4><p><img src="http://img.xxlaila.cn/8764kjfnks.png" alt="img"></p>
 <h4 id="2-4-2、查看promethues"><a href="#2-4-2、查看promethues" class="headerlink" title="2.4.2、查看promethues"></a>2.4.2、查看promethues</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;prometheus对应的nodeport端口为30005，通过访问<a href="http://172.21.17.4:30005/targets" target="_blank" rel="noopener">http://172.21.17.4:30005/targets</a> 可以看到prometheus已经成功连接上了k8s的apiserver,这里我们前面增加了prometheus的ingress，这里可以直接通过域名进行访问</p>
-<p><img src="http://zxc.kingxunlian.com/skd9234342.png" alt="img"></p>
-<h4 id="2-4-3、访问grafana"><a href="#2-4-3、访问grafana" class="headerlink" title="2.4.3、访问grafana"></a>2.4.3、访问grafana</h4><p>通过域名访问grafana，默认用户名密码均为admin，配置数据源<br><img src="http://zxc.kingxunlian.com/sld023423.png" alt="img"></p>
+<p><img src="http://img.xxlaila.cn/skd9234342.png" alt="img"></p>
+<h4 id="2-4-3、访问grafana"><a href="#2-4-3、访问grafana" class="headerlink" title="2.4.3、访问grafana"></a>2.4.3、访问grafana</h4><p>通过域名访问grafana，默认用户名密码均为admin，配置数据源<br><img src="http://img.xxlaila.cn/sld023423.png" alt="img"></p>
 <ul>
 <li>到grafana官方<a href="https://grafana.com/dashboards/315" target="_blank" rel="noopener">下载模版</a>，导入json模版</li>
 </ul>
-<p><img src="http://zxc.kingxunlian.com/kf24skdsfds.png" alt="img"></p>
+<p><img src="http://img.xxlaila.cn/kf24skdsfds.png" alt="img"></p>
 
       
 
@@ -269,13 +269,13 @@
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/1566964307703.jpg">
+                      <img class="reward-img" src="http://img.xxlaila.cn/1566964307703.jpg">
                       <span class="reward-type">支付宝</span>
                     </div>
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/IMG_1567.JPG">
+                      <img class="reward-img" src="http://img.xxlaila.cn/IMG_1567.JPG">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -551,11 +551,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,19 +567,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,11 +651,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,11 +683,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -731,11 +731,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">

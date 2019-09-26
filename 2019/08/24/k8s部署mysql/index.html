@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;后端存储利用nfs来进行存储数据，nfs安装不阐述，需要注意注意的是在创建mysql 的共享目录的时候参数设定/data/mysql *(rw,sync,no_root_squash,no_subtree_check) 12$ sudo systemctl  restart nfs.service$ sudo exportfs -arv  1、创建m">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://zxc.kingxunlian.com/8364iqhkdaskda.png">
-<meta property="og:image" content="http://zxc.kingxunlian.com/42joud02jef24.png">
-<meta property="og:image" content="http://zxc.kingxunlian.com/2348wndssmadklj3.png">
-<meta property="og:updated_time" content="2019-09-20T05:47:25.936Z">
+<meta property="og:image" content="http://img.xxlaila.cn/8364iqhkdaskda.png">
+<meta property="og:image" content="http://img.xxlaila.cn/42joud02jef24.png">
+<meta property="og:image" content="http://img.xxlaila.cn/2348wndssmadklj3.png">
+<meta property="og:updated_time" content="2019-09-26T03:13:13.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s部署mysql">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;后端存储利用nfs来进行存储数据，nfs安装不阐述，需要注意注意的是在创建mysql 的共享目录的时候参数设定/data/mysql *(rw,sync,no_root_squash,no_subtree_check) 12$ sudo systemctl  restart nfs.service$ sudo exportfs -arv  1、创建m">
-<meta name="twitter:image" content="http://zxc.kingxunlian.com/8364iqhkdaskda.png">
+<meta name="twitter:image" content="http://img.xxlaila.cn/8364iqhkdaskda.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -207,15 +207,15 @@
 
 <h3 id="4、查看pod部署"><a href="#4、查看pod部署" class="headerlink" title="4、查看pod部署"></a>4、查看pod部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get pod -n kube-ops</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://zxc.kingxunlian.com/8364iqhkdaskda.png" alt="img"></p>
+<p><img src="http://img.xxlaila.cn/8364iqhkdaskda.png" alt="img"></p>
 <h3 id="5、查看mysql部署哪个node节点"><a href="#5、查看mysql部署哪个node节点" class="headerlink" title="5、查看mysql部署哪个node节点"></a>5、查看mysql部署哪个node节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get pod -o wide -n kube-ops</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://zxc.kingxunlian.com/42joud02jef24.png" alt="img"></p>
+<p><img src="http://img.xxlaila.cn/42joud02jef24.png" alt="img"></p>
 <h3 id="6、进入mysql容器"><a href="#6、进入mysql容器" class="headerlink" title="6、进入mysql容器"></a>6、进入mysql容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker ps -a</span><br><span class="line">$ sudo docker <span class="built_in">exec</span> -it ded7f2990db5 /bin/bash</span><br><span class="line">root@mysql-deploy-6dc5d9786b-lgkxk:/<span class="comment"># mysql -h127.0.0.1 -uroot -pnoc-mysql</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="6-1、设置mysql"><a href="#6-1、设置mysql" class="headerlink" title="6.1、设置mysql"></a>6.1、设置mysql</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; alter user <span class="string">'root'</span>@<span class="string">'%'</span> identified with mysql_native_password by<span class="string">'root'</span>;</span><br><span class="line">mysql&gt; alter  user <span class="string">'root'</span>@<span class="string">'%'</span> identified by <span class="string">'mysql'</span>;</span><br><span class="line">mysql&gt; alter  user <span class="string">'root'</span>@<span class="string">'%'</span> identified by <span class="string">'noc-mysql'</span>;</span><br></pre></td></tr></table></figure>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;退出mysql和容器，执行quit;退出mysql，按ctrl+p+q从容器中返回node主机。利用navicat 通过node主机的ip地址和端口30003连接mysql数据库<br><img src="http://zxc.kingxunlian.com/2348wndssmadklj3.png" alt="img"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;退出mysql和容器，执行quit;退出mysql，按ctrl+p+q从容器中返回node主机。利用navicat 通过node主机的ip地址和端口30003连接mysql数据库<br><img src="http://img.xxlaila.cn/2348wndssmadklj3.png" alt="img"></p>
 
       
 
@@ -255,13 +255,13 @@
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/1566964307703.jpg">
+                      <img class="reward-img" src="http://img.xxlaila.cn/1566964307703.jpg">
                       <span class="reward-type">支付宝</span>
                     </div>
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/IMG_1567.JPG">
+                      <img class="reward-img" src="http://img.xxlaila.cn/IMG_1567.JPG">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -537,11 +537,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,19 +553,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,11 +637,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,11 +669,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,11 +717,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">

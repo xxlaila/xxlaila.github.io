@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="kuberntes 自带插件的 manifests yaml 文件使用 gcr.io 的 docker registry，国内被墙，需要手动替换为其它 registry 地址 修改配置文件将下载的 kubernetes-server-linux-amd64.tar.gz 解压后，再解压其中的 kubernetes-src.tar.gz 文件。 12# cd kubernetes# tar -xzv">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1568961339763.jpg">
-<meta property="og:image" content="http://zxc.kingxunlian.com/1568961447890.jpg">
-<meta property="og:updated_time" content="2019-09-20T06:37:46.785Z">
+<meta property="og:image" content="http://img.xxlaila.cn/1568961339763.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1568961447890.jpg">
+<meta property="og:updated_time" content="2019-09-26T03:13:12.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s v1.14 dashboard">
 <meta name="twitter:description" content="kuberntes 自带插件的 manifests yaml 文件使用 gcr.io 的 docker registry，国内被墙，需要手动替换为其它 registry 地址 修改配置文件将下载的 kubernetes-server-linux-amd64.tar.gz 解压后，再解压其中的 kubernetes-src.tar.gz 文件。 12# cd kubernetes# tar -xzv">
-<meta name="twitter:image" content="http://zxc.kingxunlian.com/1568961339763.jpg">
+<meta name="twitter:image" content="http://img.xxlaila.cn/1568961339763.jpg">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -216,14 +216,14 @@
 <h3 id="查看-dashboard-支持的命令行参数"><a href="#查看-dashboard-支持的命令行参数" class="headerlink" title="查看 dashboard 支持的命令行参数"></a>查看 dashboard 支持的命令行参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl exec --namespace kube-system -it kubernetes-dashboard-6cc78dfc99-hb4l5  -- /dashboard --help</span></span><br><span class="line">2019/09/16 09:51:33 Starting overwatch</span><br><span class="line">Usage of /dashboard:</span><br><span class="line">      --alsologtostderr                  <span class="built_in">log</span> to standard error as well as files</span><br><span class="line">      --api-log-level string             Level of API request logging. Should be one of <span class="string">'INFO|NONE|DEBUG'</span>. Default: <span class="string">'INFO'</span>. (default <span class="string">"INFO"</span>)</span><br><span class="line">      --apiserver-host string            The address of the Kubernetes Apiserver to connect to <span class="keyword">in</span> the format of protocol://address:port, e.g., http://localhost:8080. If not specified, the assumption is that the binary runs inside a Kubernetes cluster and <span class="built_in">local</span> discovery is attempted.</span><br><span class="line">      --authentication-mode strings      Enables authentication options that will be reflected on login screen. Supported values: token, basic. Default: token.Note that basic option should only be used <span class="keyword">if</span> apiserver has <span class="string">'--authorization-mode=ABAC'</span> and <span class="string">'--basic-auth-file'</span> flags <span class="built_in">set</span>. (default [token])</span><br><span class="line">      --auto-generate-certificates       When <span class="built_in">set</span> to <span class="literal">true</span>, Dashboard will automatically generate certificates used to serve HTTPS. Default: <span class="literal">false</span>.</span><br><span class="line">      --<span class="built_in">bind</span>-address ip                  The IP address on <span class="built_in">which</span> to serve the --secure-port (<span class="built_in">set</span> to 0.0.0.0 <span class="keyword">for</span> all interfaces). (default 0.0.0.0)</span><br><span class="line">      --default-cert-dir string          Directory path containing <span class="string">'--tls-cert-file'</span> and <span class="string">'--tls-key-file'</span> files. Used also when auto-generating certificates flag is <span class="built_in">set</span>. (default <span class="string">"/certs"</span>)</span><br><span class="line">      --<span class="built_in">disable</span>-settings-authorizer      When enabled, Dashboard settings page will not require user to be logged <span class="keyword">in</span> and authorized to access settings page.</span><br><span class="line">      --<span class="built_in">disable</span>-skip                     When enabled, the skip button on the login page will not be shown. Default: <span class="literal">false</span>.</span><br><span class="line">      --<span class="built_in">enable</span>-insecure-login            When enabled, Dashboard login view will also be shown when Dashboard is not served over HTTPS. Default: <span class="literal">false</span>.</span><br><span class="line">      --heapster-host string             The address of the Heapster Apiserver to connect to <span class="keyword">in</span> the format of protocol://address:port, e.g., http://localhost:8082. If not specified, the assumption is that the binary runs inside a Kubernetes cluster and service proxy will be used.</span><br><span class="line">      --insecure-bind-address ip         The IP address on <span class="built_in">which</span> to serve the --port (<span class="built_in">set</span> to 0.0.0.0 <span class="keyword">for</span> all interfaces). (default 127.0.0.1)</span><br><span class="line">      --insecure-port int                The port to listen to <span class="keyword">for</span> incoming HTTP requests. (default 9090)</span><br><span class="line">      --kubeconfig string                Path to kubeconfig file with authorization and master location information.</span><br><span class="line">      --log_backtrace_at traceLocation   when logging hits line file:N, emit a stack trace (default :0)</span><br><span class="line">      --log_dir string                   If non-empty, write <span class="built_in">log</span> files <span class="keyword">in</span> this directory</span><br><span class="line">      --logtostderr                      <span class="built_in">log</span> to standard error instead of files</span><br><span class="line">      --metric-client-check-period int   Time <span class="keyword">in</span> seconds that defines how often configured metric client health check should be run. Default: 30 seconds. (default 30)</span><br><span class="line">      --port int                         The secure port to listen to <span class="keyword">for</span> incoming HTTPS requests. (default 8443)</span><br><span class="line">      --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)</span><br><span class="line">      --system-banner string             When non-empty displays message to Dashboard users. Accepts simple HTML tags. Default: <span class="string">''</span>.</span><br><span class="line">      --system-banner-severity string    Severity of system banner. Should be one of <span class="string">'INFO|WARNING|ERROR'</span>. Default: <span class="string">'INFO'</span>. (default <span class="string">"INFO"</span>)</span><br><span class="line">      --tls-cert-file string             File containing the default x509 Certificate <span class="keyword">for</span> HTTPS.</span><br><span class="line">      --tls-key-file string              File containing the default x509 private key matching --tls-cert-file.</span><br><span class="line">      --token-ttl int                    Expiration time (<span class="keyword">in</span> seconds) of JWE tokens generated by dashboard. Default: 15 min. 0 - never expires (default 900)</span><br><span class="line">  -v, --v Level                          <span class="built_in">log</span> level <span class="keyword">for</span> V logs</span><br><span class="line">      --vmodule moduleSpec               comma-separated list of pattern=N settings <span class="keyword">for</span> file-filtered logging</span><br><span class="line">pflag: <span class="built_in">help</span> requested</span><br><span class="line"><span class="built_in">command</span> terminated with <span class="built_in">exit</span> code 2</span><br></pre></td></tr></table></figure>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dashboard 的 –authentication-mode 支持 token、basic，默认为 token。如果使用 basic，则 kube-apiserver 必须配置 –authorization-mode=ABAC 和 –basic-auth-file 参数</p>
-<h3 id="访问-dashboard"><a href="#访问-dashboard" class="headerlink" title="访问 dashboard"></a>访问 dashboard</h3><p>使用https协议，在浏览器输入任意node的ip加端口即可访问<br><img src="http://zxc.kingxunlian.com/1568961339763.jpg" alt="img"></p>
+<h3 id="访问-dashboard"><a href="#访问-dashboard" class="headerlink" title="访问 dashboard"></a>访问 dashboard</h3><p>使用https协议，在浏览器输入任意node的ip加端口即可访问<br><img src="http://img.xxlaila.cn/1568961339763.jpg" alt="img"></p>
 <h3 id="创建登录-Dashboard-的-token-和-kubeconfig-配置文件"><a href="#创建登录-Dashboard-的-token-和-kubeconfig-配置文件" class="headerlink" title="创建登录 Dashboard 的 token 和 kubeconfig 配置文件"></a>创建登录 Dashboard 的 token 和 kubeconfig 配置文件</h3><p>dashboard 默认只支持 token 认证（不支持 client 证书认证），所以如果使用 Kubeconfig 文件，需要将 token 写入到该文件。</p>
 <h4 id="创建登录-token"><a href="#创建登录-token" class="headerlink" title="创建登录 token"></a>创建登录 token</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create sa dashboard-admin -n kube-system</span></span><br><span class="line"><span class="comment"># kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin</span></span><br><span class="line"><span class="comment"># ADMIN_SECRET=$(kubectl get secrets -n kube-system | grep dashboard-admin | awk '&#123;print $1&#125;')</span></span><br><span class="line"><span class="comment"># DASHBOARD_LOGIN_TOKEN=$(kubectl describe secret -n kube-system $&#123;ADMIN_SECRET&#125; | grep -E '^token' | awk '&#123;print $2&#125;')</span></span><br><span class="line"><span class="comment"># echo $&#123;DASHBOARD_LOGIN_TOKEN&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>使用输出的 token 登录 Dashboard。</p>
 <h3 id="创建使用-token-的-KubeConfig-文件"><a href="#创建使用-token-的-KubeConfig-文件" class="headerlink" title="创建使用 token 的 KubeConfig 文件"></a>创建使用 token 的 KubeConfig 文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置集群参数</span></span><br><span class="line">kubectl config <span class="built_in">set</span>-cluster kubernetes \</span><br><span class="line">  --certificate-authority=/etc/kubernetes/ssl/ca.pem \</span><br><span class="line">  --embed-certs=<span class="literal">true</span> \</span><br><span class="line">  --server=<span class="variable">$&#123;KUBE_APISERVER&#125;</span> \</span><br><span class="line">  --kubeconfig=dashboard.kubeconfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置客户端认证参数，使用上面创建的 Token</span></span><br><span class="line">kubectl config <span class="built_in">set</span>-credentials dashboard_user \</span><br><span class="line">  --token=<span class="variable">$&#123;DASHBOARD_LOGIN_TOKEN&#125;</span> \</span><br><span class="line">  --kubeconfig=dashboard.kubeconfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置上下文参数</span></span><br><span class="line">kubectl config <span class="built_in">set</span>-context default \</span><br><span class="line">  --cluster=kubernetes \</span><br><span class="line">  --user=dashboard_user \</span><br><span class="line">  --kubeconfig=dashboard.kubeconfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置默认上下文</span></span><br><span class="line">kubectl config use-context default --kubeconfig=dashboard.kubeconfig</span><br></pre></td></tr></table></figure>
 
-<p>如图:<br><img src="http://zxc.kingxunlian.com/1568961447890.jpg" alt="img"></p>
+<p>如图:<br><img src="http://img.xxlaila.cn/1568961447890.jpg" alt="img"></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用生成的 dashboard.kubeconfig 登录 Dashboard。由于k8s 默认的Dashboard 15分钟后就会弹出，又要重新登录和获取token麻烦，可以参考之前的<a href="https://xxlaila.github.io/2019/08/29/k8s配置Dashboard/">k8s配置Dashboard</a></p>
 
       
@@ -264,13 +264,13 @@
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/1566964307703.jpg">
+                      <img class="reward-img" src="http://img.xxlaila.cn/1566964307703.jpg">
                       <span class="reward-type">支付宝</span>
                     </div>
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://zxc.kingxunlian.com/IMG_1567.JPG">
+                      <img class="reward-img" src="http://img.xxlaila.cn/IMG_1567.JPG">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -570,11 +570,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,19 +586,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -670,11 +670,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,11 +702,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,11 +750,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">
