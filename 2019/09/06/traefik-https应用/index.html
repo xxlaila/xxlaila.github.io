@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://img.xxlaila.cn/1567749086159.jpg">
 <meta property="og:image" content="http://img.xxlaila.cn/1567749278980.jpg">
 <meta property="og:image" content="http://img.xxlaila.cn/1567749309772.jpg">
-<meta property="og:updated_time" content="2019-09-26T03:13:12.729Z">
+<meta property="og:updated_time" content="2019-09-26T05:21:16.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="traefik https应用">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;之前已经使用traefik服务作为入口，测试并访问了tomcat应用，之前是通过http来访问的，而我们在yaml文件里面也添加8443端口用于https访问，在实际环境中我们也是需要https来进行访问应用，通过traefik实现https，traefik http应用 操作实践 这里我用了公司的证书">
@@ -202,12 +202,12 @@
 </ul>
 <a id="more"></a>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls</span></span><br><span class="line">1_test.kingxunlian.com_bundle.crt  2_test.kingxunlian.com.key</span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl create secret generic traefik-cert --from-file=1_test.kingxunlian.com_bundle.crt --from-file=2_test.kingxunlian.com.key -n kube-system</span></span><br><span class="line">secret/traefik-cert created</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls</span></span><br><span class="line">1_test.xxlaila.cn_bundle.crt  2_test.xxlaila.cn.key</span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl create secret generic traefik-cert --from-file=1_test.xxlaila.cn_bundle.crt --from-file=2_test.xxlaila.cn.key -n kube-system</span></span><br><span class="line">secret/traefik-cert created</span><br></pre></td></tr></table></figure>
 
 <p>把证书拷贝到k8s node节点，存放路径为/etc/kubernetes/certs。</p>
 <h3 id="创建一个configmap，保存traefix的配置"><a href="#创建一个configmap，保存traefix的配置" class="headerlink" title="创建一个configmap，保存traefix的配置"></a>创建一个configmap，保存traefix的配置</h3><p>traefix中配置了把所有http请求全部rewrite为https的规则，并配置相应的证书位置</p>
 <ul>
-<li>traefik.toml<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">defaultEntryPoints = [<span class="string">"http"</span>,<span class="string">"https"</span>]</span><br><span class="line">[entryPoints]</span><br><span class="line">  [entryPoints.http]</span><br><span class="line">  address = <span class="string">":80"</span></span><br><span class="line">    [entryPoints.http.redirect]</span><br><span class="line">    entryPoint = <span class="string">"https"</span></span><br><span class="line">  [entryPoints.https]</span><br><span class="line">  address = <span class="string">":443"</span></span><br><span class="line">    [entryPoints.https.tls]</span><br><span class="line">      [[entryPoints.https.tls.certificates]]</span><br><span class="line">      certFile = <span class="string">"/etc/kubernetes/certs/1_test.kingxunlian.com_bundle.crt"</span></span><br><span class="line">      keyFile = <span class="string">"/etc/kubernetes/certs/2_test.kingxunlian.com.key"</span></span><br><span class="line"></span><br><span class="line">$ kubectl create configmap traefik-conf --from-file=traefik.toml -n kube-system</span><br><span class="line">configmap/traefik-conf created</span><br></pre></td></tr></table></figure>
+<li>traefik.toml<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">defaultEntryPoints = [<span class="string">"http"</span>,<span class="string">"https"</span>]</span><br><span class="line">[entryPoints]</span><br><span class="line">  [entryPoints.http]</span><br><span class="line">  address = <span class="string">":80"</span></span><br><span class="line">    [entryPoints.http.redirect]</span><br><span class="line">    entryPoint = <span class="string">"https"</span></span><br><span class="line">  [entryPoints.https]</span><br><span class="line">  address = <span class="string">":443"</span></span><br><span class="line">    [entryPoints.https.tls]</span><br><span class="line">      [[entryPoints.https.tls.certificates]]</span><br><span class="line">      certFile = <span class="string">"/etc/kubernetes/certs/1_test.xxlaila.cn_bundle.crt"</span></span><br><span class="line">      keyFile = <span class="string">"/etc/kubernetes/certs/2_test.xxlaila.cn.key"</span></span><br><span class="line"></span><br><span class="line">$ kubectl create configmap traefik-conf --from-file=traefik.toml -n kube-system</span><br><span class="line">configmap/traefik-conf created</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -221,7 +221,7 @@
 <h3 id="测试效果"><a href="#测试效果" class="headerlink" title="测试效果"></a>测试效果</h3><p>登陆traefik-ui界面,用原本http的访问，traefik会直接给我们重定向至https。<br><img src="http://img.xxlaila.cn/1567748749337.jpg" alt="img"></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于traefik-ui使用的域名不是我们证书所支持的域名，所以这里提示不安全，修改之前创建的ingress，修改其中的域名为支持证书的域名</p>
 <ul>
-<li>traefik-ui.yaml<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: traefik-web-ui</span><br><span class="line">  namespace: kube-system </span><br><span class="line">spec:</span><br><span class="line">  selector:</span><br><span class="line">    k8s-app: traefik-ingress-lb</span><br><span class="line">  ports:</span><br><span class="line">  - name: web</span><br><span class="line">    port: 80</span><br><span class="line">    targetPort: 8580</span><br><span class="line">---</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: traefik-web-ui</span><br><span class="line">  namespace: kube-system</span><br><span class="line">spec:</span><br><span class="line">  rules:</span><br><span class="line">  - host: traefik.test.kingxunlian.com</span><br><span class="line">    http:</span><br><span class="line">      paths:</span><br><span class="line">      - path: /</span><br><span class="line">        backend:</span><br><span class="line">          serviceName: traefik-web-ui</span><br><span class="line">          servicePort: web</span><br><span class="line"></span><br><span class="line">$ kubectl apply -f traefik-ui.yaml </span><br><span class="line">service/traefik-web-ui unchanged</span><br><span class="line">ingress.extensions/traefik-web-ui configured</span><br></pre></td></tr></table></figure>
+<li>traefik-ui.yaml<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: traefik-web-ui</span><br><span class="line">  namespace: kube-system </span><br><span class="line">spec:</span><br><span class="line">  selector:</span><br><span class="line">    k8s-app: traefik-ingress-lb</span><br><span class="line">  ports:</span><br><span class="line">  - name: web</span><br><span class="line">    port: 80</span><br><span class="line">    targetPort: 8580</span><br><span class="line">---</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: traefik-web-ui</span><br><span class="line">  namespace: kube-system</span><br><span class="line">spec:</span><br><span class="line">  rules:</span><br><span class="line">  - host: traefik.test.xxlaila.cn</span><br><span class="line">    http:</span><br><span class="line">      paths:</span><br><span class="line">      - path: /</span><br><span class="line">        backend:</span><br><span class="line">          serviceName: traefik-web-ui</span><br><span class="line">          servicePort: web</span><br><span class="line"></span><br><span class="line">$ kubectl apply -f traefik-ui.yaml </span><br><span class="line">service/traefik-web-ui unchanged</span><br><span class="line">ingress.extensions/traefik-web-ui configured</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -230,7 +230,7 @@
 <li><p>修改之前部署的tomcat程序</p>
 </li>
 <li><p>ingress-tomcat.yaml </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: tomcat-test-web</span><br><span class="line">  namespace: default</span><br><span class="line">  annotations:</span><br><span class="line">    kubernetes.io/ingress.class: traefik</span><br><span class="line">    traefik.frontend.rule.type: PathPrefixStrip</span><br><span class="line">spec:</span><br><span class="line">  rules:</span><br><span class="line">  - host: tomcat.test.kingxunlian.com</span><br><span class="line">    http:</span><br><span class="line">      paths:</span><br><span class="line">      - path: /test1/</span><br><span class="line">        backend:</span><br><span class="line">          serviceName: tomcat-test1</span><br><span class="line">          servicePort: 8080</span><br><span class="line">      - path: /test2/</span><br><span class="line">        backend:</span><br><span class="line">          serviceName: tomcat-test2</span><br><span class="line">          servicePort: 8080</span><br><span class="line"></span><br><span class="line">$ kubectl apply -f ingress-tomcat.yaml </span><br><span class="line">ingress.extensions/tomcat-test-web configured</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: tomcat-test-web</span><br><span class="line">  namespace: default</span><br><span class="line">  annotations:</span><br><span class="line">    kubernetes.io/ingress.class: traefik</span><br><span class="line">    traefik.frontend.rule.type: PathPrefixStrip</span><br><span class="line">spec:</span><br><span class="line">  rules:</span><br><span class="line">  - host: tomcat.test.xxlaila.cn</span><br><span class="line">    http:</span><br><span class="line">      paths:</span><br><span class="line">      - path: /test1/</span><br><span class="line">        backend:</span><br><span class="line">          serviceName: tomcat-test1</span><br><span class="line">          servicePort: 8080</span><br><span class="line">      - path: /test2/</span><br><span class="line">        backend:</span><br><span class="line">          serviceName: tomcat-test2</span><br><span class="line">          servicePort: 8080</span><br><span class="line"></span><br><span class="line">$ kubectl apply -f ingress-tomcat.yaml </span><br><span class="line">ingress.extensions/tomcat-test-web configured</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -240,7 +240,7 @@
 <ul>
 <li>traefik.toml</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">defaultEntryPoints = [<span class="string">"http"</span>,<span class="string">"https"</span>]</span><br><span class="line">[entryPoints]</span><br><span class="line">  [entryPoints.http]</span><br><span class="line">  address = <span class="string">":80"</span></span><br><span class="line">    entryPoint = <span class="string">"https"</span></span><br><span class="line">  [entryPoints.https]</span><br><span class="line">  address = <span class="string">":443"</span></span><br><span class="line">    [entryPoints.https.tls]</span><br><span class="line">      [[entryPoints.https.tls.certificates]]</span><br><span class="line">      certFile = <span class="string">"/etc/kubernetes/certs/1_test.kingxunlian.com_bundle.crt"</span></span><br><span class="line">      keyFile = <span class="string">"/etc/kubernetes/certs/2_test.kingxunlian.com.key"</span></span><br><span class="line">      [[entryPoints.https.tls.certificates]]</span><br><span class="line">      certFile = <span class="string">"/etc/kubernetes/certs/1_dev.kingxunlian.com_bundle.crt"</span></span><br><span class="line">      keyFile = <span class="string">"/etc/kubernetes/certs/2_dev.kingxunlian.com.key"</span></span><br><span class="line"></span><br><span class="line">[file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># rules</span></span><br><span class="line">[entryPoints]</span><br><span class="line">  [entryPoints.http]</span><br><span class="line">  address = <span class="string">":80"</span></span><br><span class="line">    [entryPoints.http.redirect]</span><br><span class="line">      regex = <span class="string">"^http://traefix.test.kingxunlian.com/(.*)"</span></span><br><span class="line">      replacement = <span class="string">"https://traefix.test.kingxunlian.com/<span class="variable">$1</span>"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">defaultEntryPoints = [<span class="string">"http"</span>,<span class="string">"https"</span>]</span><br><span class="line">[entryPoints]</span><br><span class="line">  [entryPoints.http]</span><br><span class="line">  address = <span class="string">":80"</span></span><br><span class="line">    entryPoint = <span class="string">"https"</span></span><br><span class="line">  [entryPoints.https]</span><br><span class="line">  address = <span class="string">":443"</span></span><br><span class="line">    [entryPoints.https.tls]</span><br><span class="line">      [[entryPoints.https.tls.certificates]]</span><br><span class="line">      certFile = <span class="string">"/etc/kubernetes/certs/1_test.xxlaila.cn_bundle.crt"</span></span><br><span class="line">      keyFile = <span class="string">"/etc/kubernetes/certs/2_test.xxlaila.cn.key"</span></span><br><span class="line">      [[entryPoints.https.tls.certificates]]</span><br><span class="line">      certFile = <span class="string">"/etc/kubernetes/certs/1_dev.xxlaila.cn_bundle.crt"</span></span><br><span class="line">      keyFile = <span class="string">"/etc/kubernetes/certs/2_dev.xxlaila.cn.key"</span></span><br><span class="line"></span><br><span class="line">[file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># rules</span></span><br><span class="line">[entryPoints]</span><br><span class="line">  [entryPoints.http]</span><br><span class="line">  address = <span class="string">":80"</span></span><br><span class="line">    [entryPoints.http.redirect]</span><br><span class="line">      regex = <span class="string">"^http://traefix.test.xxlaila.cn/(.*)"</span></span><br><span class="line">      replacement = <span class="string">"https://traefix.test.xxlaila.cn/<span class="variable">$1</span>"</span></span><br></pre></td></tr></table></figure>
 
 
       
@@ -575,6 +575,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
@@ -583,15 +587,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,19 +603,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,15 +647,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -687,15 +687,47 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -723,39 +755,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
+                <a href="javascript:void(0)" class="js-tag color2">pvc,pv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -763,15 +763,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pvc,pv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">

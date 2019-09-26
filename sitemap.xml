@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/09/06/traefik-https%E5%BA%94%E7%94%A8/</loc>
+    
+    <lastmod>2019-09-26T05:21:16.587Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-weave-scope/</loc>
     
     <lastmod>2019-09-26T03:13:13.186Z</lastmod>
@@ -145,13 +152,6 @@
     <loc>https://xxlaila.github.io/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2019-09-26T03:13:12.764Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/06/traefik-https%E5%BA%94%E7%94%A8/</loc>
-    
-    <lastmod>2019-09-26T03:13:12.729Z</lastmod>
     
   </url>
   
