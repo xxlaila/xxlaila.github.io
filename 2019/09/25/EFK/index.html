@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://zxc.kingxunlian.com/1569462606884.jpg">
 <meta property="og:image" content="http://zxc.kingxunlian.com/1569464839630.jpg">
 <meta property="og:image" content="http://zxc.kingxunlian.com/1569464950776.jpg">
-<meta property="og:updated_time" content="2019-09-26T02:33:51.883Z">
+<meta property="og:updated_time" content="2019-09-26T03:00:56.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EFK">
 <meta name="twitter:description" content="初始化配置文件准备&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;将下载的 kubernetes-server-linux-amd64.tar.gz 解压后，再解压其中的 kubernetes-src.tar.gz 文件。kubernetes/cluster/addons/fluentd-elasticsearch这是文件所在的路径 &amp;nbsp;&amp;n">
@@ -195,7 +195,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="初始化配置文件准备"><a href="#初始化配置文件准备" class="headerlink" title="初始化配置文件准备"></a>初始化配置文件准备</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将下载的 kubernetes-server-linux-amd64.tar.gz 解压后，再解压其中的 kubernetes-src.tar.gz 文件。<code>kubernetes/cluster/addons/fluentd-elasticsearch</code>这是文件所在的路径</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;es 数据默认的存储在docker里面，在用的是node节点的空间，而node节点我们不可能都准备很大的空间，那样很浪费资源，所以这里我们需要准备外部的nfs存储空间，然后通过<a href="#利用NFS动态提供Kubernetes后端存储">pv</a>的模式进行挂载，数据存储到nfs服务器上，这样保障了es收集数据的可用性。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;es 数据默认的存储在docker里面，在用的是node节点的空间，而node节点我们不可能都准备很大的空间，那样很浪费资源，所以这里我们需要准备外部的nfs存储空间，然后通过<a href="https://xxlaila.github.io/2019/09/24/%E5%88%A9%E7%94%A8NFS%E5%8A%A8%E6%80%81%E6%8F%90%E4%BE%9BKubernetes%E5%90%8E%E7%AB%AF%E5%AD%98%E5%82%A8%E5%8D%B7/">pv</a>的模式进行挂载，数据存储到nfs服务器上，这样保障了es收集数据的可用性。</p>
 <a id="more"></a>
 
 <h3 id="创建存储介质"><a href="#创建存储介质" class="headerlink" title="创建存储介质"></a>创建存储介质</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ cat &gt; pvc.yaml &lt;&lt;EOF</span><br><span class="line">---</span><br><span class="line">apiVersion: storage.k8s.io/v1</span><br><span class="line">kind: StorageClass</span><br><span class="line">metadata:</span><br><span class="line">  name: es-nfs-data</span><br><span class="line">provisioner: fuseim.pri/ifs</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">$ kubectl apply -f pvc.yaml</span><br></pre></td></tr></table></figure>
