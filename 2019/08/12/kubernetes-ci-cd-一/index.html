@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://img.xxlaila.cn/324768ksdjsfhds.png">
 <meta property="og:image" content="http://img.xxlaila.cn/2372837934232.png">
 <meta property="og:image" content="http://img.xxlaila.cn/djfjsr3897493432.png">
-<meta property="og:updated_time" content="2019-09-26T03:13:12.946Z">
+<meta property="og:updated_time" content="2019-09-27T01:19:18.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes ci&#x2F;cd(一)">
 <meta name="twitter:description" content="基于jenkins的CI/CD安装  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; jenkins一个流行的持续集成/发布工具，在Kubernetes使用,持续构建与发布是我们日常工作中必不可少的一个步骤，目前大多公司都采用 Jenkins 集群来搭建符合需求的 CI/CD 流程，然而传统的 Jenkins Slave 一主多从方式会存在一些痛点，比如：主 Master 发生单点故障时，整个">
@@ -263,7 +263,7 @@
 </li>
 </ul>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;这里通过 ingress的形式来访问Jenkins 的 web 服务，Jenkins 服务端口为8080，50000 端口为agent，这个端口主要是用于 Jenkins 的 master 和 slave 之间通信使用的。(jenkins-ingress.yaml)</p>
-<h3 id="1-4-Jenkins-对外提供访问"><a href="#1-4-Jenkins-对外提供访问" class="headerlink" title="1.4 Jenkins 对外提供访问"></a>1.4 Jenkins 对外提供访问</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># cat jenkins-ingress.yaml</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: jenkins-ingress</span><br><span class="line">  namespace: kube-ops</span><br><span class="line">  annotations:</span><br><span class="line">    kubernetes.io/ingress.class: &quot;nginx&quot;</span><br><span class="line">spec:</span><br><span class="line">  rules:</span><br><span class="line">  - host: jenkins-k8s.jiedai361.com</span><br><span class="line">    http:</span><br><span class="line">      paths:</span><br><span class="line">      - backend:</span><br><span class="line">          serviceName: jenkins2</span><br><span class="line">          servicePort: 8080</span><br></pre></td></tr></table></figure>
+<h3 id="1-4-Jenkins-对外提供访问"><a href="#1-4-Jenkins-对外提供访问" class="headerlink" title="1.4 Jenkins 对外提供访问"></a>1.4 Jenkins 对外提供访问</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># cat jenkins-ingress.yaml</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Ingress</span><br><span class="line">metadata:</span><br><span class="line">  name: jenkins-ingress</span><br><span class="line">  namespace: kube-ops</span><br><span class="line">  annotations:</span><br><span class="line">    kubernetes.io/ingress.class: &quot;nginx&quot;</span><br><span class="line">spec:</span><br><span class="line">  rules:</span><br><span class="line">  - host: ci.xxlaila.cn</span><br><span class="line">    http:</span><br><span class="line">      paths:</span><br><span class="line">      - backend:</span><br><span class="line">          serviceName: jenkins2</span><br><span class="line">          servicePort: 8080</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>创建 Jenkins 服务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># kubectl create -f jenkins-deployment.yaml</span><br></pre></td></tr></table></figure>
@@ -674,19 +674,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Metric</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,19 +706,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iptables</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
+                <a href="javascript:void(0)" class="js-tag color4">iptables</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jira</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,11 +742,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
+                <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
+                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -762,11 +762,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -779,50 +779,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -846,15 +802,47 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pvc,pv</a>
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -862,11 +850,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pvc,pv</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
               </li>
              
               <li class="article-tag-list-item">
