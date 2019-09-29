@@ -17,7 +17,7 @@
 <meta property="og:description" content="Pod健康检测机制对于Pod的健康状态检测，kubernetes提供了两类探针(Probe)来执行对Pod的健康状态检测:  LivenessProbe探针:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;用于判断容器是否存活，即Pod是否为running状态，如果LivenessProbe探针探测到容器不健康，则kubelet将kill掉容器，并根">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://img.xxlaila.cn/15008WechatIMG.png">
-<meta property="og:updated_time" content="2019-09-29T03:07:04.445Z">
+<meta property="og:updated_time" content="2019-09-29T03:25:26.771Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s pod健康检测">
 <meta name="twitter:description" content="Pod健康检测机制对于Pod的健康状态检测，kubernetes提供了两类探针(Probe)来执行对Pod的健康状态检测:  LivenessProbe探针:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;用于判断容器是否存活，即Pod是否为running状态，如果LivenessProbe探针探测到容器不健康，则kubelet将kill掉容器，并根">
@@ -211,9 +211,9 @@
 </ul>
 <p>探针探测的结果有以下三者之一:</p>
 <ul>
-<li>Success: Container通过了检查</li>
-<li>Failure: Container未通过检查</li>
-<li>Unknown: 未能执行检查，因此不采取任何措施</li>
+<li><strong>Success</strong>: Container通过了检查</li>
+<li><strong>Failure</strong>: Container未通过检查</li>
+<li><strong>Unknown</strong>: 未能执行检查，因此不采取任何措施</li>
 </ul>
 <h3 id="LivenessProbe探针配置"><a href="#LivenessProbe探针配置" class="headerlink" title="LivenessProbe探针配置"></a>LivenessProbe探针配置</h3><h4 id="例一：通过exec方式做健康探测"><a href="#例一：通过exec方式做健康探测" class="headerlink" title="例一：通过exec方式做健康探测"></a>例一：通过exec方式做健康探测</h4><ul>
 <li>exec-liveness.yaml<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ cat &gt; <span class="built_in">exec</span>-liveness.yaml &lt;&lt;EOF</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  labels:</span><br><span class="line">    <span class="built_in">test</span>: liveness</span><br><span class="line">  name: liveness-exec</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - name: liveness</span><br><span class="line">    image: busybox</span><br><span class="line">    args:</span><br><span class="line">    - /bin/sh</span><br><span class="line">    - -c</span><br><span class="line">    - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600</span><br><span class="line">    livenessProbe:</span><br><span class="line">      <span class="built_in">exec</span>:</span><br><span class="line">        <span class="built_in">command</span>:</span><br><span class="line">        - cat</span><br><span class="line">        - /tmp/healthy</span><br><span class="line">      initialDelaySeconds: 5</span><br><span class="line">      periodSeconds: 5</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
@@ -289,7 +289,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">$ cat &gt; k8s.yaml &lt;&lt; EOF</span><br><span class="line">---</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: biz-gateway</span><br><span class="line">  labels:</span><br><span class="line">    app: biz-gateway</span><br><span class="line">  namespace:</span><br><span class="line">spec:</span><br><span class="line">  ports:</span><br><span class="line">  - port: 9093</span><br><span class="line">    name: biz-gateway</span><br><span class="line">  selector:</span><br><span class="line">    app: biz-gateway</span><br><span class="line">---</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: biz-gateway</span><br><span class="line">  namespace:</span><br><span class="line">spec:</span><br><span class="line">  replicas: 1</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: biz-gateway</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: biz-gateway</span><br><span class="line">        image: docker.io/xxlaila/biz-gateway:dev-08c8a4e</span><br><span class="line">        imagePullPolicy: IfNotPresent</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 9093</span><br><span class="line">        env:</span><br><span class="line">        - name: RUN_ENV</span><br><span class="line">          value: dev</span><br><span class="line">        - name: CONFIG_API_SERVER</span><br><span class="line">          value: http://api.conf.xxlaila.cn</span><br><span class="line">        - name: RUN_CLUSTER</span><br><span class="line">          value: default</span><br><span class="line">        - name: RUN_MODE</span><br><span class="line">          value: AUTO</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>执行创建</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl apply -f JavaApp.yaml </span><br><span class="line">service/biz-gateway created</span><br><span class="line">deployment.extensions/biz-gateway created</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl apply -f k8s.yaml </span><br><span class="line">service/biz-gateway created</span><br><span class="line">deployment.extensions/biz-gateway created</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>刚创建后，等一会后，查看Pod状态，记着要给image留下pull的时间</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get pods  |grep <span class="string">"biz-gateway"</span></span><br><span class="line">NAME                          READY   STATUS    RESTARTS   AGE</span><br><span class="line">biz-gateway-95f6b677f-rnz22   1/1     Running   0          2m8s</span><br></pre></td></tr></table></figure>
@@ -298,11 +298,11 @@
 </ul>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以看到，整个过程Pod用了2m8s，自身状态已Running，其READ字段，1/1 表示1个容器状态已准备就绪了，此时，对于kubernetes而言，已经可以接收请求了,而实际上服务还无法访问，因为JAVA程序还尚启动起来，2m8ss后方可正常访问，所以针对此类程序，必须配置ReadinessProbe。</p>
 <ul>
-<li>加入readinessProbe<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: biz-gateway</span><br><span class="line">  labels:</span><br><span class="line">    app: biz-gateway</span><br><span class="line">  namespace:</span><br><span class="line">spec:</span><br><span class="line">  ports:</span><br><span class="line">  - protocol: TCP</span><br><span class="line">    port: 9093</span><br><span class="line">    name: biz-gateway</span><br><span class="line">  selector:</span><br><span class="line">    app: biz-gateway</span><br><span class="line">---</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: biz-gateway</span><br><span class="line">  namespace:</span><br><span class="line">spec:</span><br><span class="line">  replicas: 1</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: biz-gateway</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: biz-gateway</span><br><span class="line">        image: docker.io/xxlaila/biz-gateway:dev-08c8a4e</span><br><span class="line">        imagePullPolicy: IfNotPresent</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 9093</span><br><span class="line">        readinessProbe:</span><br><span class="line">          tcpSocket:</span><br><span class="line">            port: 9093</span><br><span class="line">          initialDelaySeconds: 140</span><br><span class="line">          periodSeconds: 10</span><br><span class="line">        env:</span><br><span class="line">        - name: RUN_ENV</span><br><span class="line">          value: dev</span><br><span class="line">        - name: CONFIG_API_SERVER</span><br><span class="line">          value: http://api.conf.xxlaila.cn</span><br><span class="line">        - name: RUN_CLUSTER</span><br><span class="line">          value: default</span><br><span class="line">        - name: RUN_MODE</span><br><span class="line">          value: AUTO</span><br></pre></td></tr></table></figure>
+<li>加入readinessProbe<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">$ cat &gt; k8s.yaml &lt;&lt; EOF</span><br><span class="line">---</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: biz-gateway</span><br><span class="line">  labels:</span><br><span class="line">    app: biz-gateway</span><br><span class="line">  namespace:</span><br><span class="line">spec:</span><br><span class="line">  ports:</span><br><span class="line">  - protocol: TCP</span><br><span class="line">    port: 9093</span><br><span class="line">    name: biz-gateway</span><br><span class="line">  selector:</span><br><span class="line">    app: biz-gateway</span><br><span class="line">---</span><br><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: biz-gateway</span><br><span class="line">  namespace:</span><br><span class="line">spec:</span><br><span class="line">  replicas: 1</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: biz-gateway</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: biz-gateway</span><br><span class="line">        image: docker.io/xxlaila/biz-gateway:dev-08c8a4e</span><br><span class="line">        imagePullPolicy: IfNotPresent</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 9093</span><br><span class="line">        readinessProbe:</span><br><span class="line">          tcpSocket:</span><br><span class="line">            port: 9093</span><br><span class="line">          initialDelaySeconds: 140</span><br><span class="line">          periodSeconds: 10</span><br><span class="line">        env:</span><br><span class="line">        - name: RUN_ENV</span><br><span class="line">          value: dev</span><br><span class="line">        - name: CONFIG_API_SERVER</span><br><span class="line">          value: http://api.conf.xxlaila.cn</span><br><span class="line">        - name: RUN_CLUSTER</span><br><span class="line">          value: default</span><br><span class="line">        - name: RUN_MODE</span><br><span class="line">          value: AUTO</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在该配置文件中，ReadinessProbe探针的探测方式为tcpSocket，因为程序监听在9093端口，所以这里探测为对9093建立连接。程序启动时间大概50多秒，所以这里第一次探测时间是在Pod Runing后60秒后，间隔10秒后执行第二次探测。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在该配置文件中，ReadinessProbe探针的探测方式为tcpSocket，因为程序监听在9093端口，所以这里探测为对9093建立连接,这里第一次探测时间是在Pod Runing后140秒后，间隔10秒后执行第二次探测。</p>
 <ul>
 <li><p>创建</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f ./</span><br><span class="line">service/biz-gateway created</span><br><span class="line">deployment.extensions/biz-gateway created</span><br></pre></td></tr></table></figure>
@@ -326,7 +326,7 @@
 <li>successThreshold：探测失败后认为成功的最小连接成功次数，默认为1，在Liveness探针中必须为1，最小值为1。</li>
 <li>failureThreshold：探测失败的重试次数，重试一定次数后将认为失败，在readiness探针中，Pod会被标记为未就绪，默认为3，最小值为1。</li>
 </ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>之前错误参考排查介绍</strong>: 在之前安装jenkins的时候，创建pod就一值处于<code>running</code>,但是过一会，界面就报错，入错如下图<br><img src="http://img.xxlaila.cn/15008WechatIMG.png" alt="img"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后查看pod日志和系统系统，都没有任何问题，pod日志如下，然后就问了朋友，就说有可能是pod的健康检测机制，最后就修改了pod的健康检测机制，jenkins服务器部署ok。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>之前错误参考排查介绍</strong>: 在之前安装jenkins的时候，创建pod就一值处于<code>running</code>,但是过一会，界面就报错，错误如下图<br><img src="http://img.xxlaila.cn/15008WechatIMG.png" alt="img"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后查看pod日志和系统系统，都没有任何问题，pod日志如下，然后就问了朋友，就说有可能是pod的健康检测机制，最后就修改了pod的健康检测机制，jenkins服务器部署ok。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">kubectl <span class="built_in">log</span> $(kubectl get pods -n kube-ops | awk <span class="string">'&#123;print $1&#125;'</span> | grep jenkins) -n kube-ops</span><br><span class="line"><span class="built_in">log</span> is DEPRECATED and will be removed <span class="keyword">in</span> a future version. Use logs instead.</span><br><span class="line">VM settings:</span><br><span class="line">    Max. Heap Size: 3.00G</span><br><span class="line">    Ergonomics Machine Class: server</span><br><span class="line">    Using VM: OpenJDK 64-Bit Server VM</span><br><span class="line"></span><br><span class="line">Running from: /usr/share/jenkins/jenkins.war</span><br><span class="line">webroot: EnvVars.masterEnvVars.get(<span class="string">"JENKINS_HOME"</span>)</span><br><span class="line">2019-09-27 03:02:24.133+0000 [id=1] INFO org.eclipse.jetty.util.log.Log<span class="comment">#initialized: Logging initialized @429ms to org.eclipse.jetty.util.log.JavaUtilLog</span></span><br><span class="line">2019-09-27 03:02:24.247+0000 [id=1] INFO winstone.Logger<span class="comment">#logInternal: Beginning extraction from war file</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>后续</strong>: 虽然健康检测可以取消，不加入，但是当我们在上生产环境的时候还是要加上，正如例四介绍的那样。如果我们在生产环境错故障自愈、轮询发布等。都需要这个东西，加入再升级的时候，服务器都还没起来，k8s就吧流量给调度过来，升级下一个pod，外部用户访问就会报错，那就是很尴尬</p>
@@ -654,15 +654,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Metric</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,23 +682,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">haproxy,keepalived, haproxy+keepalived,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iptables</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,11 +690,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
+                <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jira</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,heapster</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,15 +726,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -770,10 +770,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
               </li>
              
@@ -782,31 +778,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -834,11 +806,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pvc,pv</a>
+                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -847,6 +839,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pvc,pv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
               </li>
              
               <li class="article-tag-list-item">
