@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/09/27/k8s-pod%E5%81%A5%E5%BA%B7%E6%A3%80%E6%B5%8B/</loc>
+    
+    <lastmod>2019-09-29T03:07:04.445Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/08/12/kubernetes-ci-cd-%E4%B8%80/</loc>
     
-    <lastmod>2019-09-27T01:19:18.405Z</lastmod>
+    <lastmod>2019-09-27T05:39:45.867Z</lastmod>
     
   </url>
   
