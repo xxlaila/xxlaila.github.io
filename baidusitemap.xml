@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xxlaila.github.io/2019/10/09/hpa/</loc>
+    <lastmod>2019-10-09</lastmod>
+  </url>  <url>
+    <loc>https://xxlaila.github.io/2019/10/09/Deployment%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2019-10-09</lastmod>
+  </url>  <url>
     <loc>https://xxlaila.github.io/2019/09/30/harbor%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E9%83%A8%E7%BD%B2/</loc>
-    <lastmod>2019-09-30</lastmod>
+    <lastmod>2019-10-09</lastmod>
   </url>  <url>
     <loc>https://xxlaila.github.io/2019/09/27/k8s-pod%E5%81%A5%E5%BA%B7%E6%A3%80%E6%B5%8B/</loc>
     <lastmod>2019-09-29</lastmod>
