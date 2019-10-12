@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="https://xxlaila.github.io">
   <title>harbor 使用 | 懒羊羊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="harbor使用days(2019-10-10)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前面文章介绍了harbor的部署，今天第一次学习入门使用。">
+  <meta name="description" content="days(2019-10-10)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前面文章介绍了harbor的部署，今天第一次学习入门使用。">
 <meta name="keywords" content="harbor">
 <meta property="og:type" content="article">
 <meta property="og:title" content="harbor 使用">
 <meta property="og:url" content="https://xxlaila.github.io/2019/10/10/harbor-使用/index.html">
 <meta property="og:site_name" content="懒羊羊">
-<meta property="og:description" content="harbor使用days(2019-10-10)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前面文章介绍了harbor的部署，今天第一次学习入门使用。">
+<meta property="og:description" content="days(2019-10-10)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前面文章介绍了harbor的部署，今天第一次学习入门使用。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://img.xxlaila.cn/1570697850857.jpg">
 <meta property="og:image" content="http://img.xxlaila.cn/1570698233987.jpg">
 <meta property="og:image" content="http://img.xxlaila.cn/1570698681073.jpg">
-<meta property="og:updated_time" content="2019-10-10T09:11:54.074Z">
+<meta property="og:updated_time" content="2019-10-10T10:01:13.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="harbor 使用">
-<meta name="twitter:description" content="harbor使用days(2019-10-10)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前面文章介绍了harbor的部署，今天第一次学习入门使用。">
+<meta name="twitter:description" content="days(2019-10-10)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前面文章介绍了harbor的部署，今天第一次学习入门使用。">
 <meta name="twitter:image" content="http://img.xxlaila.cn/1570697850857.jpg">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
@@ -194,7 +194,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="harbor使用"><a href="#harbor使用" class="headerlink" title="harbor使用"></a>harbor使用</h3><h4 id="days-2019-10-10"><a href="#days-2019-10-10" class="headerlink" title="days(2019-10-10)"></a>days(2019-10-10)</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前面文章介绍了harbor的部署，今天第一次学习入门使用。</p>
+        <h4 id="days-2019-10-10"><a href="#days-2019-10-10" class="headerlink" title="days(2019-10-10)"></a>days(2019-10-10)</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前面文章介绍了harbor的部署，今天第一次学习入门使用。</p>
 <a id="more"></a>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服务器安装docker以后，我们怎么吧镜像push到我们的私有仓库，和怎么吧镜像pull到本地，首先在服务器上装备docker环境</p>
@@ -202,11 +202,14 @@
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里第一次连接报错，Docker自从1.3.X之后docker registry交互默认使用的是HTTPS，但是我们搭建私有镜像默认使用的是HTTP服务，所以与私有镜像交时出现以上错误。</p>
 <h5 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h5><ul>
-<li><p>修改或添加配置</p>
+<li><p>方法一: 修改或添加配置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/docker/daemon.json </span></span><br><span class="line">&#123;</span><br><span class="line"><span class="string">"insecure-registries"</span> : [<span class="string">"reg.xxlaila.cn"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重新启动docker，并重新登录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl restart docker</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#  docker login reg.xxlaila.cn</span></span><br><span class="line">Username: admin</span><br><span class="line">Password: </span><br><span class="line">Login Succeeded</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法二：修改启动文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /usr/lib/systemd/system/docker.service  </span></span><br><span class="line">ExecStart=/usr/bin/dockerd --insecure-registry reg.xxlaila.cn <span class="variable">$DOCKER_NETWORK_OPTIONS</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># systemctl daemon-reload</span></span><br><span class="line"><span class="comment"># systemctl restart docker</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -374,6 +377,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/10/12/java应用部署/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          java应用部署
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/10/09/hpa/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">HPA认识</div>
@@ -403,7 +415,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#harbor使用"><span class="toc-number">1.</span> <span class="toc-text">harbor使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#days-2019-10-10"><span class="toc-number">1.1.</span> <span class="toc-text">days(2019-10-10)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#连接harbor"><span class="toc-number">1.1.1.</span> <span class="toc-text">连接harbor</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#解决问题"><span class="toc-number">1.1.2.</span> <span class="toc-text">解决问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Harbor上创建新项目供上传使用"><span class="toc-number">1.1.3.</span> <span class="toc-text">Harbor上创建新项目供上传使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Docker服务器给镜像打标签"><span class="toc-number">1.1.4.</span> <span class="toc-text">Docker服务器给镜像打标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#上传镜像"><span class="toc-number">1.1.5.</span> <span class="toc-text">上传镜像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#下载镜像"><span class="toc-number">1.1.6.</span> <span class="toc-text">下载镜像</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#days-2019-10-10"><span class="toc-number">1.</span> <span class="toc-text">days(2019-10-10)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#连接harbor"><span class="toc-number">1.1.</span> <span class="toc-text">连接harbor</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#解决问题"><span class="toc-number">1.2.</span> <span class="toc-text">解决问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Harbor上创建新项目供上传使用"><span class="toc-number">1.3.</span> <span class="toc-text">Harbor上创建新项目供上传使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Docker服务器给镜像打标签"><span class="toc-number">1.4.</span> <span class="toc-text">Docker服务器给镜像打标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#上传镜像"><span class="toc-number">1.5.</span> <span class="toc-text">上传镜像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#下载镜像"><span class="toc-number">1.6.</span> <span class="toc-text">下载镜像</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -550,15 +562,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,7 +574,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,7 +586,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">harbor</a>
+                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,15 +598,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iptables</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jira</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,6 +618,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jira</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">helm</a>
               </li>
              
@@ -618,11 +630,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">coredns</a>
+                <a href="javascript:void(0)" class="js-tag color2">harbor</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">k8s v1.14,prometheus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,19 +654,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s v1.14, traefik</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,35 +666,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Deployment</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">efk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">hpa</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jenkins ci/cd</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">coredns</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -718,15 +710,47 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+                <a href="javascript:void(0)" class="js-tag color1">Deployment</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+                <a href="javascript:void(0)" class="js-tag color4">hpa</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">efk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14 dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">metrics-server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,11 +766,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes v13.3安装</a>
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,15 +774,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">
