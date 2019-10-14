@@ -19,7 +19,15 @@
 <meta property="og:image" content="http://img.xxlaila.cn/1570697850857.jpg">
 <meta property="og:image" content="http://img.xxlaila.cn/1570698233987.jpg">
 <meta property="og:image" content="http://img.xxlaila.cn/1570698681073.jpg">
-<meta property="og:updated_time" content="2019-10-10T10:01:13.997Z">
+<meta property="og:image" content="http://img.xxlaila.cn/1571019665079.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1571019741060.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1570873497729.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1571019859287.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1571023069387.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1571023177214.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1571023223796.jpg">
+<meta property="og:image" content="http://img.xxlaila.cn/1571023451423.jpg">
+<meta property="og:updated_time" content="2019-10-14T03:24:27.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="harbor 使用">
 <meta name="twitter:description" content="days(2019-10-10)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前面文章介绍了harbor的部署，今天第一次学习入门使用。">
@@ -229,6 +237,12 @@
 </li>
 </ul>
 <p><img src="http://img.xxlaila.cn/1570698681073.jpg" alt="img"></p>
+<h4 id="days-2019-10-12"><a href="#days-2019-10-12" class="headerlink" title="days(2019-10-12)"></a>days(2019-10-12)</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于公司需求，开发人员比较多，又不想研发用一个账号，也不想给研发一个个的开账号，位置harbor支持了ldap。有了这么一个东西，我们就能很好的为研发创建账号支持研发随时查看docker的镜像。</p>
+<h4 id="配置harbor-ldap"><a href="#配置harbor-ldap" class="headerlink" title="配置harbor ldap"></a>配置harbor ldap</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新版本的harbor很多东西都可以直接在界面配置，不需要去修改文件，省去了大量的工作，web界面配置更加方便快捷，登录harbor平台，点击配置管理——&gt;修改认证模式，认证模式支持很多类型，这里选择ldap。<br><img src="http://img.xxlaila.cn/1571019665079.jpg" alt="img"><br><strong>注</strong>: 在密码这栏填写需要填写管理员的密码，普通用户的密码是不行的，即使是在管理员的用户也是不行的。<br>点击测试ldap，提示连接成功后保存<br><img src="http://img.xxlaila.cn/1571019741060.jpg" alt="img"></p>
+<h4 id="配置邮箱"><a href="#配置邮箱" class="headerlink" title="配置邮箱"></a>配置邮箱</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在配置ldap页面旁边有一个邮箱配置，邮件服务器用于向请求重设密码的用户发送响应。<br><img src="http://img.xxlaila.cn/1570873497729.jpg" alt="img"><br>点击测试，测试没问题之后点击保存。</p>
+<h4 id="测试ladp连接"><a href="#测试ladp连接" class="headerlink" title="测试ladp连接"></a>测试ladp连接</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新打开一个一个浏览器窗口，利用ladp账户进行登录。<br><img src="http://img.xxlaila.cn/1571019859287.jpg" alt="img"><br><strong>注释</strong>: 新版本的在登录界面没有什么选择ldap登录，直接使用ldap账号登录就ok</p>
+<h4 id="将项目角色分配给LDAP-AD组"><a href="#将项目角色分配给LDAP-AD组" class="headerlink" title="将项目角色分配给LDAP / AD组"></a>将项目角色分配给LDAP / AD组</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改之前的ldap配置，增加组的配置<br><img src="http://img.xxlaila.cn/1571023069387.jpg" alt="img"><br>在项目-&gt;成员-&gt; +组中。<br><img src="http://img.xxlaila.cn/1571023177214.jpg" alt="img"><br><img src="http://img.xxlaila.cn/1571023223796.jpg" alt="img"></p>
+<h4 id="设置ldap账户的权限"><a href="#设置ldap账户的权限" class="headerlink" title="设置ldap账户的权限"></a>设置ldap账户的权限</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当ldap配置以后，ldap账户登录没有管理员权限，我们管理harbor还的使用<code>harbor</code>的admin账户登录，这样无疑对运维人员维护带来了不便利。当ldap用户登录，harbor就会记录该用户，我们设置运维用户为超级管理员，这样就实现了一个账号登录，维护的时候也不用账号切换<br><img src="http://img.xxlaila.cn/1571023451423.jpg" alt="img"></p>
 
       
 
@@ -415,7 +429,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#days-2019-10-10"><span class="toc-number">1.</span> <span class="toc-text">days(2019-10-10)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#连接harbor"><span class="toc-number">1.1.</span> <span class="toc-text">连接harbor</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#解决问题"><span class="toc-number">1.2.</span> <span class="toc-text">解决问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Harbor上创建新项目供上传使用"><span class="toc-number">1.3.</span> <span class="toc-text">Harbor上创建新项目供上传使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Docker服务器给镜像打标签"><span class="toc-number">1.4.</span> <span class="toc-text">Docker服务器给镜像打标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#上传镜像"><span class="toc-number">1.5.</span> <span class="toc-text">上传镜像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#下载镜像"><span class="toc-number">1.6.</span> <span class="toc-text">下载镜像</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#days-2019-10-10"><span class="toc-number">1.</span> <span class="toc-text">days(2019-10-10)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#连接harbor"><span class="toc-number">1.1.</span> <span class="toc-text">连接harbor</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#解决问题"><span class="toc-number">1.2.</span> <span class="toc-text">解决问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Harbor上创建新项目供上传使用"><span class="toc-number">1.3.</span> <span class="toc-text">Harbor上创建新项目供上传使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Docker服务器给镜像打标签"><span class="toc-number">1.4.</span> <span class="toc-text">Docker服务器给镜像打标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#上传镜像"><span class="toc-number">1.5.</span> <span class="toc-text">上传镜像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#下载镜像"><span class="toc-number">1.6.</span> <span class="toc-text">下载镜像</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#days-2019-10-12"><span class="toc-number">2.</span> <span class="toc-text">days(2019-10-12)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置harbor-ldap"><span class="toc-number">3.</span> <span class="toc-text">配置harbor ldap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置邮箱"><span class="toc-number">4.</span> <span class="toc-text">配置邮箱</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试ladp连接"><span class="toc-number">5.</span> <span class="toc-text">测试ladp连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#将项目角色分配给LDAP-AD组"><span class="toc-number">6.</span> <span class="toc-text">将项目角色分配给LDAP / AD组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置ldap账户的权限"><span class="toc-number">7.</span> <span class="toc-text">设置ldap账户的权限</span></a></li></ol>
                     </div>
                 </span>
             </div>
