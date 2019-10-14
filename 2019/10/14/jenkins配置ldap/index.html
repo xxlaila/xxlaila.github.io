@@ -25,7 +25,8 @@
 <meta property="og:image" content="http://img.xxlaila.cn/1571038684383.jpg">
 <meta property="og:image" content="http://img.xxlaila.cn/1571037187865.jpg">
 <meta property="og:image" content="http://img.xxlaila.cn/1571037604678.jpg">
-<meta property="og:updated_time" content="2019-10-14T07:52:57.047Z">
+<meta property="og:image" content="http://img.xxlaila.cn/1571041499340.jpg">
+<meta property="og:updated_time" content="2019-10-14T08:36:33.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jenkins配置ldap">
 <meta name="twitter:description" content="背景&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;公司研发人员和测试人员，还有运维人员有时候登录jenkins去查看一些job的状态或者是其他的东西，虽然有企业微信的通知，但是感觉还是不能满足，比如job错误了，企业微信虽然吧错误发给了研发人员，但是研发还是要登录jenkins上去看，就感觉要舒服一点，测试上做的一些自动化测试，有时候失败了他们也会">
@@ -207,7 +208,11 @@
 <p><a href="https://wiki.jenkins.io/display/JENKINS/LDAP+Plugin" target="_blank" rel="noopener">官方参考</a></p>
 <h3 id="配置ldap的账户权限"><a href="#配置ldap的账户权限" class="headerlink" title="配置ldap的账户权限"></a>配置ldap的账户权限</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上面我们虽然吧ldap配置完成，但是我们需要对用户进行权限的配置，不可能每个人登录都能对我们jenkins进行无限制的操作，这不符合我们之前的意图。安装<code>Role-based Authorization Strategy</code>插件</p>
 <ul>
-<li>在系统管理——&gt;全局安全配置,可以看到下面选项，每项介<a href="https://xxlaila.github.io/2019/08/09/jenkins%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/">参考</a><br><img src="http://img.xxlaila.cn/1571034253089.jpg" alt="img"><br>保存以后，返回系统管理界面就可以看到多处一个<code>Manage and Assign Roles</code><br><img src="http://img.xxlaila.cn/1571034433352.jpg" alt="img"><br>点击进去<br><img src="http://img.xxlaila.cn/1571034507945.jpg" alt="img"></li>
+<li>在系统管理——&gt;全局安全配置,可以看到下面选项，每项介<a href="https://xxlaila.github.io/2019/08/09/jenkins%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/">参考</a><br><img src="http://img.xxlaila.cn/1571034253089.jpg" alt="img"></li>
+</ul>
+<p>保存以后，返回系统管理界面就可以看到多处一个<code>Manage and Assign Roles</code><br><img src="http://img.xxlaila.cn/1571034433352.jpg" alt="img"><br>点击进去</p>
+<p><img src="http://img.xxlaila.cn/1571034507945.jpg" alt="img"></p>
+<ul>
 <li><strong>Manage Roles</strong>: 角色分为Global和Project，可创建角色分组和添加项目。</li>
 <li><strong>Assign Roles</strong>: 增加具体的用户，分配到角色组，指定项目权限。</li>
 </ul>
@@ -216,8 +221,20 @@
 <li>下面我的配置，和之前的大同小异<br><img src="http://img.xxlaila.cn/1571038684383.jpg" alt="img"></li>
 </ul>
 <p><strong>注</strong>:  这里有一个小问题，这样配置以后，新用户登录进来以后就会提示没有权限，<code>Access Denied,xxxx没有全部/Read权限</code>，这是因为在打开jenkins后，没有创建用户前，先不要勾选系统设置中启用安全选项，如果勾选了，就会出现无法进入jenkins的现象<br><img src="http://img.xxlaila.cn/1571037187865.jpg" alt="img"></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在网上看到有这种的解决办法，有几种方案，一个是修改confing.xml的文件，修改config.xml文件的三种方式感觉都不太切合实际的业务；还有一种就是利用项目矩阵，这种方式更不适合了；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里目前我的操作是，在<code>Assign Roles</code>吧用户添加进来，然后勾选权限，<br>系统管理——&gt;Manage and Assign Roles——&gt;Assign Roles<br><img src="http://img.xxlaila.cn/1571037604678.jpg" alt="img"></p>
-<p>后续有好办法，在来更新</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在网上看到有这种的解决办法，有几种方案，一个是修改confing.xml的文件，修改config.xml文件的三种方式感觉都不太切合实际的业务；下面是我做的两种办法，推荐使用第二种</p>
+<ul>
+<li><p>Role-Based Strategy<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在<code>Assign Roles</code>吧用户添加进来，然后勾选权限，<br>系统管理——&gt;Manage and Assign Roles——&gt;Assign Roles<br><img src="http://img.xxlaila.cn/1571037604678.jpg" alt="img"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是这有一个弊端，就是每次新来一个用户就得去添加一次用户权限，虽然满足了业务需求，但是不科学</p>
+</li>
+<li><p>项目矩阵授权策略<br><img src="http://img.xxlaila.cn/1571041499340.jpg" alt="img"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是一个全局的配置，特定组只能按照最小的权限授权，额外的权限可以在具体的项目权限矩阵里面在添加。 默认只有<code>Anonymous Users</code>和<code>Authenticated Users</code>，管理员组是需要添加的<code>admin</code></p>
+</li>
+<li><p>Anonymous Users: 匿名用户，显然不能</p>
+</li>
+<li><p>Authenticated Users: 认证用户，就是只要是认证的账号都可以拥有的权限</p>
+</li>
+<li><p>admin: 就是拥有所有的权限了，这个组一般只能运维人员和部门老大加入。</p>
+</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加入admin组以后，他会自动去同步ldap的组用户，如果用户在ldap是admin组，那么在这里就会是管理员权限，如果用户是普通组，那么就是<code>Authenticated Users</code>组赋予的权限，使用这种方式只要用户是ldap里面的，就可以登录查看。这样就满足了业务场景需求</p>
 
       
 
