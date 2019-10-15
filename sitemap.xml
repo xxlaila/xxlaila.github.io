@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/10/15/jenkins%E9%85%8D%E7%BD%AE%E5%A4%87%E4%BB%BD/</loc>
+    
+    <lastmod>2019-10-15T01:22:21.696Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/10/14/jenkins%E9%85%8D%E7%BD%AEldap/</loc>
     
     <lastmod>2019-10-14T08:36:33.824Z</lastmod>
@@ -411,13 +418,6 @@
     <loc>https://xxlaila.github.io/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/</loc>
     
     <lastmod>2019-09-20T05:47:26.002Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/24/k8s%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%84%E7%9A%84jar%E6%9C%8D%E5%8A%A1/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.963Z</lastmod>
     
   </url>
   
