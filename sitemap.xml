@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://xxlaila.github.io/2019/10/15/jenkins%E9%85%8D%E7%BD%AE%E5%A4%87%E4%BB%BD/</loc>
+    <loc>https://xxlaila.github.io/2019/10/12/java%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/</loc>
     
-    <lastmod>2019-10-15T01:22:21.696Z</lastmod>
+    <lastmod>2019-10-15T02:18:36.026Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://xxlaila.github.io/2019/10/14/jenkins%E9%85%8D%E7%BD%AEldap/</loc>
     
-    <lastmod>2019-10-14T08:36:33.824Z</lastmod>
+    <lastmod>2019-10-15T02:18:25.482Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/10/15/jenkins%E9%85%8D%E7%BD%AE%E5%A4%87%E4%BB%BD/</loc>
+    
+    <lastmod>2019-10-15T01:22:21.696Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>https://xxlaila.github.io/2019/10/10/harbor-%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2019-10-14T03:24:27.988Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/10/12/java%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/</loc>
-    
-    <lastmod>2019-10-12T05:55:26.043Z</lastmod>
     
   </url>
   
