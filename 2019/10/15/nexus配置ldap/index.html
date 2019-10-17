@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://img.xxlaila.cn/1571298167348.jpg">
 <meta property="og:image" content="http://img.xxlaila.cn/1571298224331.jpg">
 <meta property="og:image" content="http://img.xxlaila.cn/1571298260091.jpg">
-<meta property="og:updated_time" content="2019-10-17T07:57:46.503Z">
+<meta property="og:updated_time" content="2019-10-17T08:11:44.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nexus配置ldap">
 <meta name="twitter:description" content="配置nexus&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;登录nexus在设置页，点击ldap，">
@@ -247,41 +247,27 @@
 <ul>
 <li><p>创建nexus relos本地角色<br><img src="http://img.xxlaila.cn/1571296771150.jpg" alt="img"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建完成后，我们需要对他赋予权限，对用户进行权限控制，没有权限控制，就没办法达成我们上面的目标。下面是我赋予的权限，可以结合实际需求来进行赋予。</p>
 </li>
-<li><p>ng-component-upload: 有上传的权限，比如java依赖的一些第三方库，研发可以自己进行上传</p>
-</li>
-<li><p>ng-repository-admin-<em>-</em>-browse: 浏览所有的repository</p>
-</li>
-<li><p>ng-repository-admin-<em>-</em>-read: 可以所有读取repository的配置信息</p>
-</li>
-<li><p>ng-repository-view-maven2-maven-central-browse: 具有浏览maven-central内容</p>
-</li>
-<li><p>ng-repository-view-maven2-maven-central-read: 读取maven-central内容，在maven编译的时候具有下载的权限，(后面不一一介绍)</p>
-</li>
-<li><p>ng-repository-view-maven2-maven-public-browse</p>
-</li>
-<li><p>ng-repository-view-maven2-maven-public-read</p>
-</li>
-<li><p>ng-repository-view-maven2-maven-releases-browse</p>
-</li>
-<li><p>ng-repository-view-maven2-maven-releases-read</p>
-</li>
-<li><p>ng-repository-view-maven2-maven-snapshots-browse</p>
-</li>
-<li><p>ng-repository-view-maven2-maven-snapshots-read</p>
-</li>
-<li><p>ng-repository-view-npm-npm-kxl-all-browse: 以下是自己做的npm代理缓存，可以参考之前的<a href="https://xxlaila.github.io/2019/08/23/nexus3搭建npm私服/">nexus3搭建npm私服</a></p>
-</li>
-<li><p>ng-repository-view-npm-npm-kxl-all-read</p>
-</li>
-<li><p>ng-repository-view-npm-npm-external-browse</p>
-</li>
-<li><p>ng-repository-view-npm-npm-external-read</p>
-</li>
-<li><p>ng-repository-view-npm-npm-internal-browse</p>
-</li>
-<li><p>ng-repository-view-npm-npm-internal-read</p>
-</li>
-<li><p>ng-search-read: 让用户具有所有权限，没有此权限，研发查找一个包，估计会死</p>
+<li><p>权限介绍:</p>
+<ul>
+<li>ng-component-upload: 有上传的权限，比如java依赖的一些第三方库，研发可以自己进行上传</li>
+<li>ng-repository-admin-<em>-</em>-browse: 浏览所有的repository</li>
+<li>ng-repository-admin-<em>-</em>-read: 可以所有读取repository的配置信息</li>
+<li>ng-repository-view-maven2-maven-central-browse: 具有浏览maven-central内容</li>
+<li>ng-repository-view-maven2-maven-central-read: 读取maven-central内容，在maven编译的时候具有下载的权限，(后面不一一介绍)</li>
+<li>ng-repository-view-maven2-maven-public-browse</li>
+<li>ng-repository-view-maven2-maven-public-read</li>
+<li>ng-repository-view-maven2-maven-releases-browse</li>
+<li>ng-repository-view-maven2-maven-releases-read</li>
+<li>ng-repository-view-maven2-maven-snapshots-browse</li>
+<li>ng-repository-view-maven2-maven-snapshots-read</li>
+<li>ng-repository-view-npm-npm-kxl-all-browse: 以下是自己做的npm代理缓存，可以参考之前的<a href="https://xxlaila.github.io/2019/08/23/nexus3搭建npm私服/">nexus3搭建npm私服</a></li>
+<li>ng-repository-view-npm-npm-kxl-all-read</li>
+<li>ng-repository-view-npm-npm-external-browse</li>
+<li>ng-repository-view-npm-npm-external-read</li>
+<li>ng-repository-view-npm-npm-internal-browse</li>
+<li>ng-repository-view-npm-npm-internal-read</li>
+<li>ng-search-read: 让用户具有所有权限，没有此权限，研发查找一个包，估计会死</li>
+</ul>
 </li>
 <li><p>创建是External roles mapping外部映射<br><img src="http://img.xxlaila.cn/1571134166780.jpg" alt="img"><br><img src="http://img.xxlaila.cn/1571297568491.jpg" alt="img"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在进行Roles ID 这栏目，需要填写的是Users，这个Users会在ldap上同步Users的一个用户组。根据自己的ldap账户组设置来进行填写。下图是ldap的组设置<br><img src="http://img.xxlaila.cn/1571298567078.jpg" alt="img"></p>
 </li>
