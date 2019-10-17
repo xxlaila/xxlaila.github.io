@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xxlaila.github.io/2019/10/17/elasticserch%E6%97%A5%E5%B8%B8%E7%BB%B4%E6%8A%A4/</loc>
+    <lastmod>2019-10-17</lastmod>
+  </url>  <url>
+    <loc>https://xxlaila.github.io/2019/10/15/nexus%E9%85%8D%E7%BD%AEldap/</loc>
+    <lastmod>2019-10-17</lastmod>
+  </url>  <url>
+    <loc>https://xxlaila.github.io/2019/08/23/nexus3%E6%90%AD%E5%BB%BAnpm%E7%A7%81%E6%9C%8D/</loc>
+    <lastmod>2019-10-15</lastmod>
+  </url>  <url>
     <loc>https://xxlaila.github.io/2019/10/12/java%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2019-10-15</lastmod>
   </url>  <url>
@@ -56,9 +65,6 @@
     <lastmod>2019-09-26</lastmod>
   </url>  <url>
     <loc>https://xxlaila.github.io/2019/08/10/kubedns%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2019-09-26</lastmod>
-  </url>  <url>
-    <loc>https://xxlaila.github.io/2019/08/23/nexus3%E6%90%AD%E5%BB%BAnpm%E7%A7%81%E6%9C%8D/</loc>
     <lastmod>2019-09-26</lastmod>
   </url>  <url>
     <loc>https://xxlaila.github.io/2019/08/19/%E5%B8%A7%E4%B8%AD%E7%BB%A7%E9%85%8D%E7%BD%AE/</loc>
