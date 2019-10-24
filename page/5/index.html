@@ -163,6 +163,179 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-k8s部署ingress" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/26/k8s部署ingress/">k8s部署ingress</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/26/k8s部署ingress/" class="archive-article-date">
+  	<time datetime="2019-08-26T08:24:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在kubernetes 集群中，一个服务安装以后怎么对外提供访问，外部用户怎么来访问我们容器中业务。</p>
+<p><img src="http://img.xxlaila.cn/2373874sds43.png" alt="img"></p>
+<h3 id="1、Ingress-介绍"><a href="#1、Ingress-介绍" class="headerlink" title="1、Ingress 介绍"></a>1、Ingress 介绍</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Kubernetes 暴露服务的方式目前只有三种：LoadBlancer Service、NodePort Service、Ingress；本文主要通过Ingress来访问</p>
+<h3 id="2、Ingress-是什么"><a href="#2、Ingress-是什么" class="headerlink" title="2、Ingress 是什么"></a>2、Ingress 是什么</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Ingress 就是能利用 Nginx、Haproxy 啥的负载均衡器暴露集群内服务的工具问题来了，集群内服务想要暴露出去面临着几个问题：</p>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">kubernetes, Ingress</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/26/k8s部署ingress/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-k8s部署Weave-Scope" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/26/k8s部署Weave-Scope/">k8s部署Weave Scope</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/26/k8s部署Weave-Scope/" class="archive-article-date">
+  	<time datetime="2019-08-26T08:08:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1、Weave-Scope介绍"><a href="#1、Weave-Scope介绍" class="headerlink" title="1、Weave Scope介绍"></a>1、Weave Scope介绍</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;weave scope 是Docker和Kubernetes的故障排除和监控，自动生成应用程序的地图，能够直观地了解，监控和控制基于容器的，基于微服务的应用程序。可以实时的了解docker容器，选择容器基础架构的概述，或关注特定的微服务。轻松识别和纠正问题，确保集装箱化应用的稳定性和性能，查看容器的上下文指标，标记和元数据。轻松地在容器内的进程之间导航，以运行容器，在可扩展的可排序表中进行排列。使用给定主机或服务的最大CPU或内存轻松找到容器。直接与您的容器交互：暂停，重新启动和停止容器。启动命令行。全部不离开范围浏览器窗口。</p>
+<p><img src="http://img.xxlaila.cn/378246bsjfhsajkdq.png" alt="img"></p>
+<h3 id="2、部署weave-scope"><a href="#2、部署weave-scope" class="headerlink" title="2、部署weave scope"></a>2、部署weave scope</h3><p>初次学习，直接下载官方配置文件，没有经过任何修改，不过相信自己随着学习的进步，会逐渐深入。<a href="https://github.com/weaveworks/scope" target="_blank" rel="noopener">github地址</a>，<a href="https://www.weave.works/docs/cloud/latest/overview/" target="_blank" rel="noopener">官方地址</a></p>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">kubernetes,Weave Scope</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/26/k8s部署Weave-Scope/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-k8s部署zookeeper集群" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -889,217 +1062,6 @@
 
 
   
-    <article id="post-jira安装和配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/24/jira安装和配置/">jira安装和配置</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/24/jira安装和配置/" class="archive-article-date">
-  	<time datetime="2019-08-24T02:21:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;JIRA是Atlassian公司出品的项目与事务跟踪工具，被广泛应用于缺陷跟踪、客户服务、需求收集、流程审批、任务跟踪、项目跟踪和敏捷管理等工作领域。</p>
-<ul>
-<li>环境准备</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>应用</th>
-<th>服务器配置</th>
-<th>操作系统</th>
-<th>插件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>mysql 5.6 +</td>
-<td>2/4G/50G</td>
-<td>centos 7.4</td>
-<td></td>
-</tr>
-<tr>
-<td>jira</td>
-<td>4/8G/200G</td>
-<td>centos 7.4</td>
-<td>jdk1.8</td>
-</tr>
-</tbody></table>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jira</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/24/jira安装和配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-git清空commit记录方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/24/git清空commit记录方法/">git清空commit记录方法</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/24/git清空commit记录方法/" class="archive-article-date">
-  	<time datetime="2019-08-24T01:36:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>说明:<br>&nbsp;&nbsp;&nbsp;&nbsp;例如将代码提交到git仓库，将一些敏感信息提交，所以需要删除提交记录以彻底清除提交信息，以得到一个干净的仓库且代码不变</p>
-</blockquote>
-<h3 id="1-Checkout"><a href="#1-Checkout" class="headerlink" title="1.Checkout"></a>1.Checkout</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout --orphan latest_branch</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-Add-all-the-files"><a href="#2-Add-all-the-files" class="headerlink" title="2. Add all the files"></a>2. Add all the files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add -A</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-Commit-the-changes"><a href="#3-Commit-the-changes" class="headerlink" title="3. Commit the changes"></a>3. Commit the changes</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -am <span class="string">"commit message"</span></span><br></pre></td></tr></table></figure>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="//categories/git//" class="article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/24/git清空commit记录方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1233,6 +1195,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
@@ -1245,19 +1211,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">nfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1269,7 +1231,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1281,7 +1243,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1321,7 +1291,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jenkins ci/cd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1345,43 +1343,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jenkins ci/cd</a>
+                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1405,6 +1375,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
@@ -1413,11 +1387,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+                <a href="javascript:void(0)" class="js-tag color4">pipeline</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1425,7 +1399,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1437,11 +1411,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1449,23 +1419,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pvc,pv</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">

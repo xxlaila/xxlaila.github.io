@@ -163,6 +163,264 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-kubernetes-node节点安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/10/kubernetes-node节点安装/">kubernetes node节点安装</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/10/kubernetes-node节点安装/" class="archive-article-date">
+  	<time datetime="2019-08-09T22:56:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>More: <a href="https://xxlaila.github.io/2019/08/09/kubernetes-v1-13-3%E5%AE%89%E8%A3%85/">master节点安装请参考</a></p>
+<h2 id="1、部署kubernetes-node节点"><a href="#1、部署kubernetes-node节点" class="headerlink" title="1、部署kubernetes node节点"></a>1、部署kubernetes node节点</h2><p>Kubernetes node节点包含如下组件：</p>
+<ul>
+<li><strong>Flanneld</strong>: 之前单机节点安装没有配置TLS，现在需要在service配置文件中增加TLS配置</li>
+<li><strong>Docker</strong>: version 18.06.2-ce</li>
+<li><strong>kubelet</strong></li>
+<li><strong>kube-proxy</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls /etc/kubernetes/</span></span><br><span class="line">bootstrap.kubeconfig  kubelet   kube-proxy.kubeconfig  proxy  ssl</span><br><span class="line"><span class="comment"># ls /etc/kubernetes/ssl</span></span><br><span class="line">admin-key.pem  kube-apiserver-key.pem  kube-controller-manager-key.pem  kubelet-api-admin-key.pem   kube-proxy-key.pem  kubernetes-ca-key.pem  kube-scheduler-key.pem</span><br><span class="line">admin.pem      kube-apiserver.pem      kube-controller-manager.pem      kubelet-api-admin.pem       kube-proxy.pem      kubernetes-ca.pem      kube-scheduler.pem</span><br></pre></td></tr></table></figure>
+
+<h3 id="增加docker-源"><a href="#增加docker-源" class="headerlink" title="增加docker 源"></a>增加docker 源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum-config-manager \</span></span><br><span class="line">  --add-repo \</span><br><span class="line">  https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>根据实际查找当前版本 (可选)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum list docker-ce --showduplicates | sort -r</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果确定了版本,直接安装,如果要装17。03直接修改下面数字即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install docker-ce-18.06.2.ce-3.el7  # 主意版本填写包名的格式.</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启docker服务,和开机启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start docker &amp;&amp; systemctl enable docker</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="1-1、安装flanneld"><a href="#1-1、安装flanneld" class="headerlink" title="1.1、安装flanneld"></a>1.1、安装flanneld</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mv kubernetes  /etc/ &amp;&amp; chown -R root: /etc/kubernetes</span></span><br><span class="line"><span class="comment"># wget https://github.com/coreos/flannel/releases/download/v0.11.0/flannel-v0.11.0-linux-amd64.tar.gz</span></span><br><span class="line"><span class="comment"># tar zxf flannel-v0.11.0-linux-amd64.tar.gz &amp;&amp; mv flanneld mk-docker-opts.sh /usr/bin/ &amp;&amp; rm -rf flannel-v0.11.0-linux-amd64.tar.gz</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-1-1、flanneld启动配置文件"><a href="#1-1-1、flanneld启动配置文件" class="headerlink" title="1.1.1、flanneld启动配置文件"></a>1.1.1、flanneld启动配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /lib/systemd/system/flanneld.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=Flanneld overlay address etcd agent</span><br><span class="line">After=network.target</span><br><span class="line">After=network-online.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line">After=etcd.service</span><br><span class="line">Before=docker.service</span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">EnvironmentFile=/etc/sysconfig/flanneld</span><br><span class="line">ExecStart=/usr/bin/flanneld -etcd-endpoints=<span class="variable">$&#123;FLANNEL_ETCD&#125;</span> <span class="variable">$FLANNEL_OPTIONS</span></span><br><span class="line">ExecStartPost=/usr/bin/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/subnet.env</span><br><span class="line">Restart=on-failure</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">RequiredBy=docker.service</span><br></pre></td></tr></table></figure>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes, kubernetes v13.3安装</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/10/kubernetes-node节点安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-kubernetes-v1-13-3安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/09/kubernetes-v1-13-3安装/">kubernetes v1.13.3安装</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/09/kubernetes-v1-13-3安装/" class="archive-article-date">
+  	<time datetime="2019-08-09T14:18:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、-环境准备"><a href="#1、-环境准备" class="headerlink" title="1、 环境准备"></a>1、 环境准备</h2><table>
+<thead>
+<tr>
+<th>ip</th>
+<th>type</th>
+<th>docker</th>
+<th>os</th>
+<th>k8s version</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>172.21.17.4</td>
+<td>master,etcd</td>
+<td></td>
+<td>CentOS Linux release 7.4.1708</td>
+<td>v1.13.3</td>
+</tr>
+<tr>
+<td>172.21.16.230</td>
+<td>master,etcd</td>
+<td></td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.240</td>
+<td>master,etcd</td>
+<td></td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.244</td>
+<td>node,flanneld,ha+kee</td>
+<td>18.06.2-ce</td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.248</td>
+<td>node,flanneld,ha+kee</td>
+<td>18.06.2-ce</td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+<tr>
+<td>172.21.16.45</td>
+<td>vip</td>
+<td></td>
+<td>CentOS Linux release 7.4.1708</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="2、部署ETC集群"><a href="#2、部署ETC集群" class="headerlink" title="2、部署ETC集群"></a>2、部署ETC集群</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;etcd的正常运行是k8s集群运行的提前条件，因此部署k8s集群首先部署etcd集群。安装CA证书，安装CFSSL证书管理工具。直接下载二进制安装包</p>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes, kubernetes 安装</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="//categories/kubernetes//" class="article-tag-list-link color1">kubernetes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/09/kubernetes-v1-13-3安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-vsftpd安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -773,6 +1031,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
@@ -785,19 +1047,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">nfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -809,7 +1067,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -821,7 +1079,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -861,7 +1127,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jenkins ci/cd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -885,43 +1179,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jenkins ci/cd</a>
+                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -945,6 +1211,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
@@ -953,11 +1223,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+                <a href="javascript:void(0)" class="js-tag color4">pipeline</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -965,7 +1235,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -977,11 +1247,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -989,23 +1255,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pvc,pv</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">

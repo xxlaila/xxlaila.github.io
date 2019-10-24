@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="days 1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-17T08:15:20.761Z">
+<meta property="og:updated_time" content="2019-10-21T09:05:41.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="elasticserch">
 <meta name="twitter:description" content="days 1">
@@ -210,6 +210,24 @@
 
 </li>
 </ul>
+<h4 id="elasticserch验证集群"><a href="#elasticserch验证集群" class="headerlink" title="elasticserch验证集群"></a>elasticserch验证集群</h4><ul>
+<li><p>集群相关API</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">$ curl http://127.0.0.1:9200/_cat</span><br><span class="line">=^.^=</span><br><span class="line">/_cat/allocation</span><br><span class="line">/_cat/shards</span><br><span class="line">/_cat/shards/&#123;index&#125;</span><br><span class="line">/_cat/master</span><br><span class="line">/_cat/nodes</span><br><span class="line">/_cat/tasks</span><br><span class="line">/_cat/indices</span><br><span class="line">/_cat/indices/&#123;index&#125;</span><br><span class="line">/_cat/segments</span><br><span class="line">/_cat/segments/&#123;index&#125;</span><br><span class="line">/_cat/count</span><br><span class="line">/_cat/count/&#123;index&#125;</span><br><span class="line">/_cat/recovery</span><br><span class="line">/_cat/recovery/&#123;index&#125;</span><br><span class="line">/_cat/health</span><br><span class="line">/_cat/pending_tasks</span><br><span class="line">/_cat/aliases</span><br><span class="line">/_cat/aliases/&#123;<span class="built_in">alias</span>&#125;</span><br><span class="line">/_cat/thread_pool</span><br><span class="line">/_cat/thread_pool/&#123;thread_pools&#125;</span><br><span class="line">/_cat/plugins</span><br><span class="line">/_cat/fielddata</span><br><span class="line">/_cat/fielddata/&#123;fields&#125;</span><br><span class="line">/_cat/nodeattrs</span><br><span class="line">/_cat/repositories</span><br><span class="line">/_cat/snapshots/&#123;repository&#125;</span><br><span class="line">/_cat/templates</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看集群名称等信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ curl http://127.0.0.1:9200</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="string">"elk_elasticsearch_data_2"</span>,</span><br><span class="line">  <span class="string">"cluster_name"</span> : <span class="string">"elk_elasticsearch"</span>,</span><br><span class="line">  <span class="string">"cluster_uuid"</span> : <span class="string">"T47wQwa6TT-6MHJVFM40Tw"</span>,</span><br><span class="line">  <span class="string">"version"</span> : &#123;</span><br><span class="line">    <span class="string">"number"</span> : <span class="string">"6.4.0"</span>,</span><br><span class="line">    <span class="string">"build_flavor"</span> : <span class="string">"default"</span>,</span><br><span class="line">    <span class="string">"build_type"</span> : <span class="string">"rpm"</span>,</span><br><span class="line">    <span class="string">"build_hash"</span> : <span class="string">"595516e"</span>,</span><br><span class="line">    <span class="string">"build_date"</span> : <span class="string">"2018-08-17T23:18:47.308994Z"</span>,</span><br><span class="line">    <span class="string">"build_snapshot"</span> : <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"lucene_version"</span> : <span class="string">"7.4.0"</span>,</span><br><span class="line">    <span class="string">"minimum_wire_compatibility_version"</span> : <span class="string">"5.6.0"</span>,</span><br><span class="line">    <span class="string">"minimum_index_compatibility_version"</span> : <span class="string">"5.0.0"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"tagline"</span> : <span class="string">"You Know, for Search"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看集群节点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl http://127.0.0.1:9200/_cat/nodes?v</span><br><span class="line">ip            heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name</span><br><span class="line">172.21.16.198           29          85   0    0.10    0.04     0.05 mdi       -      elk_elasticsearch_data_2</span><br><span class="line">172.21.16.187           48          85   0    0.00    0.01     0.05 mdi       *      elk_elasticsearch_master</span><br><span class="line">172.21.16.206           25          86   0    0.08    0.03     0.05 mdi       -      elk_elasticsearch_data_3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证集群磁盘分配情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl http://127.0.0.1:9200/_cat/allocation?v</span><br><span class="line">shards disk.indices disk.used disk.avail disk.total disk.percent host          ip            node</span><br><span class="line">    98          1gb     3.6gb     96.3gb     99.9gb            3 172.21.16.198 172.21.16.198 elk_elasticsearch_data_2</span><br><span class="line">    99      887.1mb     4.5gb     95.4gb     99.9gb            4 172.21.16.187 172.21.16.187 elk_elasticsearch_master</span><br><span class="line">    99        957mb     3.5gb     96.4gb     99.9gb            3 172.21.16.206 172.21.16.206 elk_elasticsearch_data_3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证集群健康状况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ curl http://127.0.0.1:9200/_cat/health?v </span><br><span class="line">epoch      timestamp cluster           status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent</span><br><span class="line">1571648406 17:00:06  elk_elasticsearch green           3         3    296 148    0    0        0             0                  -                100.0%</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
 
       
 
@@ -358,6 +376,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/10/21/pipeline语法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          pipeline语法
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/10/15/nexus配置ldap/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">nexus配置ldap</div>
@@ -387,7 +414,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#days-1"><span class="toc-number">1.</span> <span class="toc-text">days 1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#elasticserch-索引和数据操作"><span class="toc-number">1.1.</span> <span class="toc-text">elasticserch 索引和数据操作</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#days-1"><span class="toc-number">1.</span> <span class="toc-text">days 1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#elasticserch-索引和数据操作"><span class="toc-number">1.1.</span> <span class="toc-text">elasticserch 索引和数据操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#elasticserch验证集群"><span class="toc-number">1.2.</span> <span class="toc-text">elasticserch验证集群</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -534,6 +561,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
@@ -546,19 +577,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">drdb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">nfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,7 +597,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,7 +609,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jenkins, jenkins job,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,7 +657,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">k8s v1.14, weave-scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jenkins ci/cd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,43 +709,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">v1.14</a>
+                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubernetes,Weave Scope</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kube-dns,kubernetes, dashboard, kube-dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jenkins ci/cd</a>
+                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,6 +741,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
               </li>
              
@@ -714,11 +753,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+                <a href="javascript:void(0)" class="js-tag color4">pipeline</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,7 +765,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -738,11 +777,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">eureka,kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kubelet</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,23 +785,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pvc,pv</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
+                <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kubernetes, kubernetes 安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">v1.14 node安装</a>
               </li>
              
               <li class="article-tag-list-item">
