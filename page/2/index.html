@@ -163,6 +163,107 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Deployment使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/09/Deployment使用/">Deployment使用</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/09/Deployment使用/" class="archive-article-date">
+  	<time datetime="2019-10-09T01:59:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-09</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Deployment和rc的对比"><a href="#Deployment和rc的对比" class="headerlink" title="Deployment和rc的对比"></a>Deployment和rc的对比</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先RC是Kubernetes的一个核心概念，当我们把应用部署到集群之后，需要保证应用能够持续稳定的运行，RC就是这个保证的关键，主要功能如:</p>
+<ul>
+<li>确保Pod数量: 它会确保Kubernetes中有指定数量的Pod在运行，如果少于指定数量的Pod，RC就会创建新的，反之这会删除多余的，保证Pod的副本数量不变。</li>
+<li>确保Pod健康: 当Pod不健康，比如运行出错了，总之无法提供正常服务时，RC也会杀死不健康的Pod，重新创建新的。</li>
+<li>弹性伸缩: 在业务高峰或者低峰的时候，可以用过RC来动态的调整Pod数量来提供资源的利用率，当然我们也提到过如果使用HPA这种资源对象的话可以做到自动伸缩。</li>
+<li>滚动升级: 滚动升级是一种平滑的升级方式，通过逐步替换的策略，保证整体系统的稳定性</li>
+</ul>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Deployment</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="//categories/kubernetes//" class="article-tag-list-link color1">kubernetes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/09/Deployment使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-harbor私有仓库部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1003,102 +1104,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/24/利用NFS动态提供Kubernetes后端存储卷/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-k8s-v1-14-prometheus" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/20/k8s-v1-14-prometheus/">k8s v1.14 prometheus</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/20/k8s-v1-14-prometheus/" class="archive-article-date">
-  	<time datetime="2019-09-20T08:12:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-20</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Prometheus、Grafana-部署"><a href="#Prometheus、Grafana-部署" class="headerlink" title="Prometheus、Grafana 部署"></a>Prometheus、Grafana 部署</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Grafana是一个开源的度量分析与可视化套件。经常被用作基础设施的时间序列数据和应用程序分析的可视化，我们这里用它来做Kubernetes集群监控数据的可视化。</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;截至当前，prometheus、grafana均采用最新的镜像包，在在第一次部署的时候grafana报了一个错误<code>mkdir: cannot create directory &#39;/var/lib/grafana/plugins&#39;: No such file or directory</code>,这是因为Grafana启动使用的用户和用户组都是472，造成对外挂存储没有权限。<a href="https://grafana.com/docs/installation/docker/#migration-from-a-previous-version-of-the-docker-container-to-5-1-or-later" target="_blank" rel="noopener">参考官方</a></p>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">k8s v1.14,prometheus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="//categories/kubenertes//" class="article-tag-list-link color1">kubenertes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/20/k8s-v1-14-prometheus/">展开全文 >></a>
         </p>
       
 

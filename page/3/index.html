@@ -163,6 +163,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-k8s-v1-14-prometheus" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/20/k8s-v1-14-prometheus/">k8s v1.14 prometheus</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/20/k8s-v1-14-prometheus/" class="archive-article-date">
+  	<time datetime="2019-09-20T08:12:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-20</time>
+</a>
+        
+
+	
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Prometheus、Grafana-部署"><a href="#Prometheus、Grafana-部署" class="headerlink" title="Prometheus、Grafana 部署"></a>Prometheus、Grafana 部署</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Grafana是一个开源的度量分析与可视化套件。经常被用作基础设施的时间序列数据和应用程序分析的可视化，我们这里用它来做Kubernetes集群监控数据的可视化。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;截至当前，prometheus、grafana均采用最新的镜像包，在在第一次部署的时候grafana报了一个错误<code>mkdir: cannot create directory &#39;/var/lib/grafana/plugins&#39;: No such file or directory</code>,这是因为Grafana启动使用的用户和用户组都是472，造成对外挂存储没有权限。<a href="https://grafana.com/docs/installation/docker/#migration-from-a-previous-version-of-the-docker-container-to-5-1-or-later" target="_blank" rel="noopener">参考官方</a></p>
+        
+      
+
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+
+      
+    </div>
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">k8s v1.14,prometheus</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="//categories/kubenertes//" class="article-tag-list-link color1">kubenertes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/20/k8s-v1-14-prometheus/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-k8s-v1-14-weave-scope" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1069,105 +1165,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/10/路由器端口映射/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-traefik-https应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/06/traefik-https应用/">traefik https应用</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/06/traefik-https应用/" class="archive-article-date">
-  	<time datetime="2019-09-06T03:31:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-06</time>
-</a>
-        
-
-	
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;之前已经使用traefik服务作为入口，测试并访问了tomcat应用，之前是通过http来访问的，而我们在yaml文件里面也添加8443端口用于https访问，在实际环境中我们也是需要https来进行访问应用，通过traefik实现https，<a href="https://xxlaila.github.io/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/">traefik http应用</a></p>
-<h3 id="操作实践"><a href="#操作实践" class="headerlink" title="操作实践"></a>操作实践</h3><ul>
-<li>这里我用了公司的证书，就是为了贴近真实，也满足测试需求，</li>
-<li>创建一个secret，保存https证书</li>
-</ul>
-        
-      
-
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-
-      
-    </div>
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">traefik</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="//categories/kubernetes//" class="article-tag-list-link color1">kubernetes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/06/traefik-https应用/">展开全文 >></a>
         </p>
       
 
