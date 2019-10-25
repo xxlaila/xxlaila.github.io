@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://img.xxlaila.cn/1571996378764.jpg">
 <meta property="og:image" content="http://img.xxlaila.cn/1571996257688.jpg">
 <meta property="og:image" content="http://img.xxlaila.cn/1571990331005.jpg">
-<meta property="og:updated_time" content="2019-10-25T09:42:51.931Z">
+<meta property="og:updated_time" content="2019-10-25T09:45:01.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pipeline语法">
 <meta name="twitter:description" content="pipeline&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最近在测试k8s上的ci/cd，之前的ci/cd其实也能满足目前先业务的需求，但是想尝试改进一下，优化以前的job，希望在登录ci的时候更加的简洁，而且查找job的时候，点击一个job就能查看完整的信息，不需要job之间的来回切换，等等各种理由，😁😁。这里使用jenkins pipe">
@@ -299,7 +299,7 @@
 </ul>
 <p><strong>注</strong>:  这里孤儿策略pipeline 需要另外一种方式来支持，<a href="https://gitee.com/jenkins-zh/gitlab-branch-source-plugin" target="_blank" rel="noopener">Setting up GitLab Server Configuration on Jenkins</a>，这里没有用到这个，不做过多的阐述。<a href="https://github.com/jenkinsci/job-dsl-plugin/wiki/Migration" target="_blank" rel="noopener">github参考</a></p>
 <h3 id="多分支的自动触发"><a href="#多分支的自动触发" class="headerlink" title="多分支的自动触发"></a>多分支的自动触发</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;nbsp分支的触好处是多多的，自然在多分支面前自动触发肯定也少不了。多分支的触发有两种模式，分别是前面提到的Gitlab trigger和Generic Webhook Trigger。下面分别对两种模式进行阐述和实际的测试</p>
-<h4 id="Generic-Webhook-Trigger"><a href="#Generic-Webhook-Trigger" class="headerlink" title="Generic Webhook Trigger"></a>Generic Webhook Trigger</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;nbspGeneric Webhook Trigger 插件需要提前安装，GenericTrigger触发条件是由GWT插件提供，GenericTrigger触发的条件分为5个部分。</p>
+<h4 id="Generic-Webhook-Trigger"><a href="#Generic-Webhook-Trigger" class="headerlink" title="Generic Webhook Trigger"></a>Generic Webhook Trigger</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;nbspGeneric Webhook Trigger 插件需要提前安装，GenericTrigger触发条件是由GWT插件提供，GenericTrigger触发的条件分为5个部分。<a href="https://wiki.jenkins.io/display/JENKINS/Generic+Webhook+Trigger+Plugin" target="_blank" rel="noopener">GenericTrigger官方参考</a></p>
 <ul>
 <li>从HTTP POST请求中提取参数</li>
 <li>token，GWT插件用于标识jenkins项目的唯一性</li>
