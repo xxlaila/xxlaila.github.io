@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://xxlaila.github.io/2019/10/14/jenkins%E9%85%8D%E7%BD%AEldap/</loc>
+    <loc>https://xxlaila.github.io/2019/10/26/pipeline%E9%AB%98%E7%BA%A7%E7%AF%87/</loc>
     
-    <lastmod>2019-10-26T03:24:05.243Z</lastmod>
+    <lastmod>2019-10-26T09:41:51.736Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xxlaila.github.io/2019/10/26/pipeline%E9%AB%98%E7%BA%A7%E7%AF%87/</loc>
+    <loc>https://xxlaila.github.io/2019/09/03/centos-nfs-512%E9%94%99%E8%AF%AF/</loc>
     
-    <lastmod>2019-10-26T02:05:29.765Z</lastmod>
+    <lastmod>2019-10-26T07:28:34.055Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/10/14/jenkins%E9%85%8D%E7%BD%AEldap/</loc>
+    
+    <lastmod>2019-10-26T03:24:05.243Z</lastmod>
     
   </url>
   
@@ -530,13 +537,6 @@
     <loc>https://xxlaila.github.io/2019/08/24/git%E6%B8%85%E7%A9%BAcommit%E8%AE%B0%E5%BD%95%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2019-09-20T05:47:25.833Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/03/centos-nfs-512%E9%94%99%E8%AF%AF/</loc>
-    
-    <lastmod>2019-09-20T05:47:25.819Z</lastmod>
     
   </url>
   

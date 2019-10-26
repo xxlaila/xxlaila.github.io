@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="nfs 错误kernel: NFS: nfs4_discover_server_trunking unhandled error -512. Exiting with error EIO &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;很久没挂载过nfs，忘记客户端怎么挂在nfs的了，服务端很早就安装好了，今天一台客户机需要挂载nfs，然后居然报错了，然后找了一圈居然没找到怎么解决，然后又重新看了">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-20T05:47:25.819Z">
+<meta property="og:updated_time" content="2019-10-26T07:28:34.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos-nfs-512错误">
 <meta name="twitter:description" content="nfs 错误kernel: NFS: nfs4_discover_server_trunking unhandled error -512. Exiting with error EIO &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;很久没挂载过nfs，忘记客户端怎么挂在nfs的了，服务端很早就安装好了，今天一台客户机需要挂载nfs，然后居然报错了，然后找了一圈居然没找到怎么解决，然后又重新看了">
@@ -198,12 +198,12 @@
 <a id="more"></a>
 
 <h3 id="1、在客户端查看rpcbind-service"><a href="#1、在客户端查看rpcbind-service" class="headerlink" title="1、在客户端查看rpcbind.service"></a>1、在客户端查看rpcbind.service</h3><p>在客户端查看<code>rpcbind.service</code>是否正常启动，没有正常启动，就需要启动，没有安装服务，就需要安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum -y install rpcbind.service</span><br><span class="line">$ sudo systemctl start rpcbind.service &amp;&amp; sudo systemctl <span class="built_in">enable</span> rpcbind.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum -y install rpcbind</span><br><span class="line">$ sudo systemctl start rpcbind.service &amp;&amp; sudo systemctl <span class="built_in">enable</span> rpcbind.service</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>再次挂载的时候还是挂载补上，因为第一次挂载的时候客户端向服务器端发送了数据请求，而且还没有正常的断开链接，可以在服务端用<code>netstat -anp|grep tcp</code>查看有没有客户端的链接信息,状态是<code>ESTABLISHED</code>，有的话，我们需要把它结束掉</li>
 </ul>
-<h3 id="2、linux-结束tcp会话"><a href="#2、linux-结束tcp会话" class="headerlink" title="2、linux 结束tcp会话"></a>2、linux 结束tcp会话</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 目前不知道什么命令,后期更新</span></span><br><span class="line"><span class="comment"># 重启nfs服务</span></span><br><span class="line">$ sudo restart nfs.service</span><br></pre></td></tr></table></figure>
+<h3 id="2、linux-结束tcp会话"><a href="#2、linux-结束tcp会话" class="headerlink" title="2、linux 结束tcp会话"></a>2、linux 结束tcp会话</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 目前不知道什么命令,后期更新</span></span><br><span class="line"><span class="comment"># 重启nfs服务</span></span><br><span class="line">$ sudo systemctl restart nfs.service</span><br></pre></td></tr></table></figure>
 
 <h3 id="3、客户端挂载"><a href="#3、客户端挂载" class="headerlink" title="3、客户端挂载"></a>3、客户端挂载</h3><p>再次来到客户机挂载，可以成功的挂载</p>
 <h3 id="4、rpcbind服务介绍"><a href="#4、rpcbind服务介绍" class="headerlink" title="4、rpcbind服务介绍"></a>4、rpcbind服务介绍</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;共享和加载NFS文件系统需要服务，红帽企业Linux使用核心级的支持和守护进程的组合来提供NFS文件共享.NFS依靠远程过程调用(RPC)在客户端和服务器端路由请求。在Linux下RPC服务由portmap服务控制。</p>
