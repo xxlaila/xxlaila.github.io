@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前面的两篇文章介绍了pipeline的基本使用和一些实际使用的例子，看似很不错，但是在实际应用也会出现很多的不足和问题，随之系统的庞大、服务的增加、人员的参差不齐会导致很多的问题。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://img.xxlaila.cn/1572064519037.jpg">
-<meta property="og:image" content="http://img.xxlaila.cn/1572081425995.jpg">
-<meta property="og:updated_time" content="2019-10-27T06:18:20.948Z">
+<meta property="og:image" content="https://img.xxlaila.cn/1572064519037.jpg">
+<meta property="og:image" content="https://img.xxlaila.cn/1572081425995.jpg">
+<meta property="og:updated_time" content="2019-10-28T02:35:40.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pipeline核心高级篇">
 <meta name="twitter:description" content="介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前面的两篇文章介绍了pipeline的基本使用和一些实际使用的例子，看似很不错，但是在实际应用也会出现很多的不足和问题，随之系统的庞大、服务的增加、人员的参差不齐会导致很多的问题。">
-<meta name="twitter:image" content="http://img.xxlaila.cn/1572064519037.jpg">
+<meta name="twitter:image" content="https://img.xxlaila.cn/1572064519037.jpg">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -195,7 +195,7 @@
       
         <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前面的两篇文章介绍了pipeline的基本使用和一些实际使用的例子，看似很不错，但是在实际应用也会出现很多的不足和问题，随之系统的庞大、服务的增加、人员的参差不齐会导致很多的问题。<a id="more"></a>届时会带来很大的维护成本和一些改动，所以我们在做事情之前就要考虑进去，一些意外事件的发生、或者是在将来即将会发生和需要改变的事情我们都要想到或者是预留口子，这样才在今后扩展、修改、引入都能有很好可塑性。</p>
 <h3 id="jenkins-job介绍"><a href="#jenkins-job介绍" class="headerlink" title="jenkins job介绍"></a>jenkins job介绍</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大多数情况下我们都是使用jenkins的普通job，普通的job好处是配置简单，结构化可以复杂，也可以单一。在使用jenkins job的时候我们分为两种：一种是单一job，一种是具有耦合性的。下面对两种情况进行对比和比较。</p>
-<h4 id="jenkins-单一job"><a href="#jenkins-单一job" class="headerlink" title="jenkins 单一job"></a>jenkins 单一job</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在jenkins的传统模式下，单一的的job可以让维护人员可以很好的查看里面的逻辑步骤，job里面所有的任务都在这个所属的空间里面执行，它里面包含了：代码pull、编译、打包、复制包、发布包（使用内置的shell模块来写shell，这种应该不存在）。种单一job服务算得上是服务周到，不影响其他人，自己管理好自己的一亩三分地。好处是当出错以后影响范围小，容易控制。如下图：<br><img src="http://img.xxlaila.cn/1572064519037.jpg" alt="img"></p>
+<h4 id="jenkins-单一job"><a href="#jenkins-单一job" class="headerlink" title="jenkins 单一job"></a>jenkins 单一job</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在jenkins的传统模式下，单一的的job可以让维护人员可以很好的查看里面的逻辑步骤，job里面所有的任务都在这个所属的空间里面执行，它里面包含了：代码pull、编译、打包、复制包、发布包（使用内置的shell模块来写shell，这种应该不存在）。种单一job服务算得上是服务周到，不影响其他人，自己管理好自己的一亩三分地。好处是当出错以后影响范围小，容易控制。如下图：<br><img src="https://img.xxlaila.cn/1572064519037.jpg" alt="img"></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在这中模式下，维护人员前期用看似比较轻松的工作建立起了整个发布流程。但是到了后期就不行了。之前我在的这家公司前期也是这么这么做的。开发完成后提交git，然后自动触发、构建、制品库、发布，在一个job里面就完成了。后来我们准备推行更好的devops方案的时候；发现以前的这个job建立有问题，一想到几百个微服务，几百个job需要去进行改造。顿时我们运维脸线一黑，虽然我们自己写了一个快速在jenkins上建立job，但是一想到几百个还是不好。为了解决这个问题，我们使用了job之间的任务关联，然后通过参数传递完成整个流程服务。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这种模式下的弊端就如上面所说的一样，但什么时候好的服务呢？好的服务又是什么样子的呢？这里也可以嵌套一些微服务的概念理论。如果我们要做到什么时候好的服务，我们得了解了解一下: 低耦合和高内聚。了解这个东西有助于我们在接下来的pipeline 流水线的设计，包括在后期devops的设计以及撸码都有很大的帮助。</p>
 <h3 id="耦合性"><a href="#耦合性" class="headerlink" title="耦合性"></a>耦合性</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先我们来了解这一概念: “高内聚低耦合”。在软件设计中通常用耦合度和内聚度作为衡量模块独立程度的标准。划分模块的一个准则是高内聚低耦合。从模块粒度来看，高内聚：尽可能类的每个成员方法只完成一件事（最大限度的聚合）；低耦合：减少类内部，一个成员方法调用另一个成员方法。从类角度来看，高内聚低耦合：减少类内部，对其他类的调用；从功能块来看，高内聚低耦合：减少模块之间的交互复杂度（接口数量，参数数据）即横向：类与类之间、模块与模块之间；纵向：层次之间；尽可能，内容内聚，数据耦合。</p>
@@ -216,40 +216,36 @@
 <li>可重用性: 具有集中功能不会被无用的干扰</li>
 </ul>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内聚性低意味着组成某些功能的代码会散布在您的整个代码库中。不仅很难发现与您的模块相关的代码，而且很难在不同的模块之间跳转并跟踪的所有代码。  </p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通俗的来讲，内聚是从功能角度来度量模块内的联系，好的内聚模块应恰好做一件事。描述的是模块内的功能联系。耦合是软件结构中各模块之间相互连接的一种度量，耦合&gt;强弱取决于模块间接口的复杂程度、进入或访问一个模块点以及通过接口的数据。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通俗的来讲，内聚是从功能角度来度量模块内的联系，好的内聚模块应恰好做一件事。描述的是模块内的功能联系。耦合是软件结构中各模块之间相互连接的一种度量，耦合强弱取决于模块间接口的复杂程度、进入或访问一个模块点以及通过接口的数据。</p>
 <h4 id="可维护的代码"><a href="#可维护的代码" class="headerlink" title="可维护的代码"></a>可维护的代码</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一般在编写可维护的代码有助于提高开发人员的生产力。具有高度可维护的代码使设计新功能和编写代码变得更加容易。模块化，基于组件的分层代码可提高生产率并降低进行更改时的风险。通过使代码保持松散耦合，可以在一个模块内编写代码，而不会影响其他模块。通过保持代码的内聚性，我们可以更轻松地编写易于使用的DRY代码。  </p>
 <p><strong>问题</strong>: 当我们遇到问题时，请评估修复、修改程序的程度。是更改一个模块，还是更改分散在整个系统中中？在进行更改时，它是否可以解决所有的问题，还是会产生其他一些不可预知的问题？  </p>
-<p>在编写盒使用代码库时:</p>
+<p>在编写和使用代码库时:</p>
 <ul>
 <li>我要修复和创建的此功能模块时多少？</li>
 <li>此更改是要在几个不同的地方进行？</li>
 <li>我能否独立测试代码，测试整个代码有多难？</li>
 <li>我们是否可以使代码更松散地耦合来改善？可以使用高内聚来改善我们的代码吗？</li>
 </ul>
-<h3 id="Jenkins-设计"><a href="#Jenkins-设计" class="headerlink" title="Jenkins 设计"></a>Jenkins 设计</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有了上面的的理论与概念。根据这里理论和概念我们就可以设计出一套更好的devops流程。本文将kubernetes平台上来做这一套设计，并在实际的环境中应用。涉及的功能如下: pull代码、编译、获取version、制品库、发布和通知六大功能，三个pipeline任务来进行设计。每一个环境有错误，就会执行告警任务模块，告警目前使用的是<a href="https://github.com/xxlaila/jenkins-wechat-notice" target="_blank" rel="noopener">企业微信</a>。job之间需要传递JOB_NAME，env，version三个参数。在之前的devops设计里面整个job的调用设计还要多。形成了一个通用体系。设计图如下：<br><img src="http://img.xxlaila.cn/1572081425995.jpg" alt="img"></p>
-<h4 id="第一job"><a href="#第一job" class="headerlink" title="第一job"></a>第一job</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此job一般就是服务，job名称以服务的名称进行命名。里面包含了四个功能.</p>
+<h3 id="Jenkins-设计"><a href="#Jenkins-设计" class="headerlink" title="Jenkins 设计"></a>Jenkins 设计</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有了上面的的理论与概念。根据这里理论和概念我们就可以设计出一套更好的devops流程。本文将kubernetes平台上来做这一套设计，并在实际的环境中应用。涉及的功能如下: 服务 Job、Code Job、Release、Notice四个功能，四个任务来进行设计介绍。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每一个环境有错误，就会执行告警任务模块，告警目前使用的是<a href="https://github.com/xxlaila/jenkins-wechat-notice" target="_blank" rel="noopener">企业微信</a>。job之间需要传递JOB_NAME，env，version三个参数。在之前的devops设计里面整个job的调用设计还要多。形成了一个通用体系。在这个设计里面，当还需要增加一个任务流程，我们只需要修改pipeline，然后增加一个job，在下次构建的时候就会把我们新增加的流程给加进去，非常的方便。设计图如下：<br><img src="https://img.xxlaila.cn/1572081425995.jpg" alt="img"></p>
+<h4 id="Project-Name"><a href="#Project-Name" class="headerlink" title="Project Name"></a>Project Name</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此job一般就是服务，job名称以服务的名称进行命名。里面包含了四个功能.</p>
 <ul>
-<li>clone: pull代码，在pipeline里面定义了多git仓库的路径，里面包含了两类源代码。<ul>
-<li>ops code: 运维书写的Jenkinsfile、Dockerfile、k8s.yaml等所需要的资源</li>
-<li>dev code: 开发人员提交的代码，java、nodejs等</li>
+<li>Clone Code: clone 代码。</li>
+<li>Build Code: 就是对开发提交的代码进行编译。</li>
+<li>Env Version: 获取本次提交的hash，以hash为版本，结合环境来做一个版本记录，这里需要进行判断。uat/prod环境不需要env前缀。</li>
+<li>Build Docker: 把编译完成后的二进制文件，打包成一个docker镜像。</li>
 </ul>
-</li>
-<li>build code: 就是对开发提交的代码进行编译</li>
-<li>env version: 获取本次提交的hash，以hash为版本，结合环境来做一个版本记录，这里需要进行判断。uat/prod环境不需要env前缀</li>
-<li>build docker: 把编译完成后的制品库，制作docker镜像仓库，push到harbor</li>
-</ul>
-<h4 id="第二job"><a href="#第二job" class="headerlink" title="第二job"></a>第二job</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此job主要是进行发布服务。当接受到第一个job成后传递来的信息，结合变量来进行对应的发布到kubernetes中，主要包含了两个功能</p>
+<h4 id="Code-Test"><a href="#Code-Test" class="headerlink" title="Code Test"></a>Code Test</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用于测试进行对代码的自动化测试；自动化流程、性能等测试</p>
+<h4 id="Release"><a href="#Release" class="headerlink" title="Release"></a>Release</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要是进行发布服务。当接受到上游job传递来的参数信息后，结合参数信息来进行对应的发布到kubernetes中namespace中，主要包含了以下功能</p>
 <ul>
-<li>edit release: 修改发布的脚本</li>
-<li>release: 执行<code>kubectl</code>进行发布<ul>
+<li>Push Docker: 把前面打包的docker镜像推送到harbor</li>
+<li>Edit Files: 修改发布的脚本</li>
+<li>Release: 执行<code>kubectl</code>进行发布<ul>
 <li>当发布到kubernetes中，kubernetes 会执行<a href="https://xxlaila.github.io/2019/09/27/k8s-pod%E5%81%A5%E5%BA%B7%E6%A3%80%E6%B5%8B/">health检测</a>，如果启动失败，会进行通知</li>
 </ul>
 </li>
 </ul>
-<h4 id="第三job"><a href="#第三job" class="headerlink" title="第三job"></a>第三job</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此job主要用于通知。当接受到规则的告警通知以后，就会进行触发通知相关的人员。</p>
-<ul>
-<li>例1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当job 1 失败后，就回去触发notification job，会把对应的JOB_NAME、env、version传递给notification，当notification job 接受到这些信息以后，就回去jenkins拉取对应的build，在对应的build日志里面去匹配对应的触发job 1 的人员，然后把改信息发给改开发人员。当job 2 失败以后就会把job 1 步骤重复一次，使用pipeline的模式一点开，就会知道在哪里出错，很直观。之前我们使用普通的job，这里就有一个小bug，没修改，将就用的；当job 1 和 job 2 都成功，且在部署kuberntes的时候失败了，那么就会调用改job 通知对应的开发人员，同时通知运维组成员；这里可能是服务没有启动或者是部署的时候出现一些其他的错误。两方人员齐头并进，自己解决自己的错误，以提高效率。当kubernetes 部署成功后，就会通知对应的开发人员和测试组人员。</li>
-</ul>
+<h4 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此job主要用于通知。当接受到规则的告警通知以后，就会进行触发通知相关的人员。</p>
 
       
 
@@ -427,7 +423,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jenkins-job介绍"><span class="toc-number">2.</span> <span class="toc-text">jenkins job介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#jenkins-单一job"><span class="toc-number">2.1.</span> <span class="toc-text">jenkins 单一job</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#耦合性"><span class="toc-number">3.</span> <span class="toc-text">耦合性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#低耦合"><span class="toc-number">3.1.</span> <span class="toc-text">低耦合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#高耦合"><span class="toc-number">3.2.</span> <span class="toc-text">高耦合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#高内聚"><span class="toc-number">3.3.</span> <span class="toc-text">高内聚</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可维护的代码"><span class="toc-number">3.4.</span> <span class="toc-text">可维护的代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jenkins-设计"><span class="toc-number">4.</span> <span class="toc-text">Jenkins 设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一job"><span class="toc-number">4.1.</span> <span class="toc-text">第一job</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二job"><span class="toc-number">4.2.</span> <span class="toc-text">第二job</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三job"><span class="toc-number">4.3.</span> <span class="toc-text">第三job</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jenkins-job介绍"><span class="toc-number">2.</span> <span class="toc-text">jenkins job介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#jenkins-单一job"><span class="toc-number">2.1.</span> <span class="toc-text">jenkins 单一job</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#耦合性"><span class="toc-number">3.</span> <span class="toc-text">耦合性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#低耦合"><span class="toc-number">3.1.</span> <span class="toc-text">低耦合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#高耦合"><span class="toc-number">3.2.</span> <span class="toc-text">高耦合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#高内聚"><span class="toc-number">3.3.</span> <span class="toc-text">高内聚</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可维护的代码"><span class="toc-number">3.4.</span> <span class="toc-text">可维护的代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jenkins-设计"><span class="toc-number">4.</span> <span class="toc-text">Jenkins 设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Project-Name"><span class="toc-number">4.1.</span> <span class="toc-text">Project Name</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Code-Test"><span class="toc-number">4.2.</span> <span class="toc-text">Code Test</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Release"><span class="toc-number">4.3.</span> <span class="toc-text">Release</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Notice"><span class="toc-number">4.4.</span> <span class="toc-text">Notice</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -586,11 +582,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -598,11 +594,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
+                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
+                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,7 +630,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,7 +638,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,11 +686,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,6 +703,54 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nexus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -738,63 +782,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nexus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pod</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -803,6 +791,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pod</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">

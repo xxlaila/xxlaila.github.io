@@ -16,15 +16,15 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="jenkins 可视化构建&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在之前遇到过开发提交代码后，完全不管提交的代码是否发布成功，及时后来加入了企业微信的告警机制，但是依然有人不会去关注这个。只有在测试人员在反馈xxx你的代码提交了没有，这时候研发人员才回去看，有时候一个触发构建失败了，摆在那里很久，如有下一个开发人员要对这个工程修改提交的时候发">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://img.xxlaila.cn/1571707794737.jpg">
-<meta property="og:image" content="http://img.xxlaila.cn/1571708048469.jpg">
-<meta property="og:image" content="http://img.xxlaila.cn/1571708499625.jpg">
-<meta property="og:image" content="http://img.xxlaila.cn/1571708561404.jpg">
-<meta property="og:updated_time" content="2019-10-22T02:26:30.845Z">
+<meta property="og:image" content="https://img.xxlaila.cn/1571707794737.jpg">
+<meta property="og:image" content="https://img.xxlaila.cn/1571708048469.jpg">
+<meta property="og:image" content="https://img.xxlaila.cn/1571708499625.jpg">
+<meta property="og:image" content="https://img.xxlaila.cn/1571708561404.jpg">
+<meta property="og:updated_time" content="2019-10-28T02:35:40.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jenkins运维篇">
 <meta name="twitter:description" content="jenkins 可视化构建&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在之前遇到过开发提交代码后，完全不管提交的代码是否发布成功，及时后来加入了企业微信的告警机制，但是依然有人不会去关注这个。只有在测试人员在反馈xxx你的代码提交了没有，这时候研发人员才回去看，有时候一个触发构建失败了，摆在那里很久，如有下一个开发人员要对这个工程修改提交的时候发">
-<meta name="twitter:image" content="http://img.xxlaila.cn/1571707794737.jpg">
+<meta name="twitter:image" content="https://img.xxlaila.cn/1571707794737.jpg">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -198,12 +198,12 @@
         <h3 id="jenkins-可视化构建"><a href="#jenkins-可视化构建" class="headerlink" title="jenkins 可视化构建"></a>jenkins 可视化构建</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在之前遇到过开发提交代码后，完全不管提交的代码是否发布成功，及时后来加入了企业微信的告警机制，但是依然有人不会去关注这个。只有在测试人员在反馈xxx你的代码提交了没有，这时候研发人员才回去看，有时候一个触发构建失败了，摆在那里很久，如有下一个开发人员要对这个工程修改提交的时候发现过不了，这时候再来解决，成本就有点大。这里可以借助看板的形式让研发人员可以随时关注到自己的提交的工程，结合告警来做，效果还是不错的。</p>
 <a id="more"></a>
 
-<h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装Build Monitor View 插件，然后在主页面添加<code>+</code>一个视图<br><img src="http://img.xxlaila.cn/1571707794737.jpg" alt="img"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以根据job的类型或者根据自己的条件进行<a href="https://xxlaila.github.io/2019/08/09/jenkins-job%E7%AE%A1%E7%90%86/">过滤job</a>来生成看板。</p>
+<h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装Build Monitor View 插件，然后在主页面添加<code>+</code>一个视图<br><img src="https://img.xxlaila.cn/1571707794737.jpg" alt="img"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以根据job的类型或者根据自己的条件进行<a href="https://xxlaila.github.io/2019/08/09/jenkins-job%E7%AE%A1%E7%90%86/">过滤job</a>来生成看板。</p>
 <ul>
-<li>Build Monitor - View Settings: 根据job的一些状态来进行排序<br><img src="http://img.xxlaila.cn/1571708048469.jpg" alt="img"></li>
+<li>Build Monitor - View Settings: 根据job的一些状态来进行排序<br><img src="https://img.xxlaila.cn/1571708048469.jpg" alt="img"></li>
 </ul>
-<h3 id="jenkins-监控"><a href="#jenkins-监控" class="headerlink" title="jenkins 监控"></a>jenkins 监控</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有时候我们没有监控，但是有时候需要看看jenkins的一些监控信息，如：内存、cpu、系统负债、http响应时间、系统进程数、线程数等，有懒得安装监控，这时候我们可以借助jenkins自带的一个插件<code>Monitoring</code>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;插件安装完成后，我们可以在系统管理菜单下面看到<code>Monitoring of Jenkins master</code><br><img src="http://img.xxlaila.cn/1571708499625.jpg" alt="img"></p>
-<p>点击进入以后我们可以看到<br><img src="http://img.xxlaila.cn/1571708561404.jpg" alt="img"><br>页面显示乱码，这个可以自己google解决</p>
+<h3 id="jenkins-监控"><a href="#jenkins-监控" class="headerlink" title="jenkins 监控"></a>jenkins 监控</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有时候我们没有监控，但是有时候需要看看jenkins的一些监控信息，如：内存、cpu、系统负债、http响应时间、系统进程数、线程数等，有懒得安装监控，这时候我们可以借助jenkins自带的一个插件<code>Monitoring</code>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;插件安装完成后，我们可以在系统管理菜单下面看到<code>Monitoring of Jenkins master</code><br><img src="https://img.xxlaila.cn/1571708499625.jpg" alt="img"></p>
+<p>点击进入以后我们可以看到<br><img src="https://img.xxlaila.cn/1571708561404.jpg" alt="img"><br>页面显示乱码，这个可以自己google解决</p>
 
       
 
@@ -549,11 +549,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,11 +561,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
+                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
+                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,7 +597,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,7 +605,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,11 +653,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -670,6 +670,54 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nexus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,63 +749,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nexus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pod</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -766,6 +758,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pod</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">

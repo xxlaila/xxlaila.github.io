@@ -16,31 +16,31 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="基于jenkins的CI/CD安装  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;jenkins一个流行的持续集成/发布工具，在Kubernetes使用,持续构建与发布是我们日常工作中必不可少的一个步骤，目前大多公司都采用 Jenkins 集群来搭建符合需求的 CI/CD 流程，然而传统的 Jenkins Slave 一主多从方式会存在一些痛点">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://img.xxlaila.cn/xjfhs84we.png">
-<meta property="og:image" content="http://img.xxlaila.cn/sfdsfdsf38432.png">
-<meta property="og:image" content="http://img.xxlaila.cn/isdy823723894324.png">
-<meta property="og:image" content="http://img.xxlaila.cn/di32sdsf.png">
-<meta property="og:image" content="http://img.xxlaila.cn/897kdfhgdkjb4.png">
-<meta property="og:image" content="http://img.xxlaila.cn/kjgsadsad8234632.png">
-<meta property="og:image" content="http://img.xxlaila.cn/khsdif28734knsdfkds.png">
-<meta property="og:image" content="http://img.xxlaila.cn/s94uskljdslfd.png">
-<meta property="og:image" content="http://img.xxlaila.cn/sakhd89234klmds.png">
-<meta property="og:image" content="http://img.xxlaila.cn/nslkfhio3rsd.png">
-<meta property="og:image" content="http://img.xxlaila.cn/skajdh823648uesd.png">
-<meta property="og:image" content="http://img.xxlaila.cn/8243ihkdfnklsads.png">
-<meta property="og:image" content="http://img.xxlaila.cn/2864jksfhjdsh.png">
-<meta property="og:image" content="http://img.xxlaila.cn/xnks94uoildsfs.png">
-<meta property="og:image" content="http://img.xxlaila.cn/382468365324.png">
-<meta property="og:image" content="http://img.xxlaila.cn/fnijwy4nkdsfkhdsf.png">
-<meta property="og:image" content="http://img.xxlaila.cn/dkjfsg328943242.png">
-<meta property="og:image" content="http://img.xxlaila.cn/324768ksdjsfhds.png">
-<meta property="og:image" content="http://img.xxlaila.cn/2372837934232.png">
-<meta property="og:image" content="http://img.xxlaila.cn/djfjsr3897493432.png">
-<meta property="og:updated_time" content="2019-09-27T05:39:45.867Z">
+<meta property="og:image" content="https://img.xxlaila.cn/xjfhs84we.png">
+<meta property="og:image" content="https://img.xxlaila.cn/sfdsfdsf38432.png">
+<meta property="og:image" content="https://img.xxlaila.cn/isdy823723894324.png">
+<meta property="og:image" content="https://img.xxlaila.cn/di32sdsf.png">
+<meta property="og:image" content="https://img.xxlaila.cn/897kdfhgdkjb4.png">
+<meta property="og:image" content="https://img.xxlaila.cn/kjgsadsad8234632.png">
+<meta property="og:image" content="https://img.xxlaila.cn/khsdif28734knsdfkds.png">
+<meta property="og:image" content="https://img.xxlaila.cn/s94uskljdslfd.png">
+<meta property="og:image" content="https://img.xxlaila.cn/sakhd89234klmds.png">
+<meta property="og:image" content="https://img.xxlaila.cn/nslkfhio3rsd.png">
+<meta property="og:image" content="https://img.xxlaila.cn/skajdh823648uesd.png">
+<meta property="og:image" content="https://img.xxlaila.cn/8243ihkdfnklsads.png">
+<meta property="og:image" content="https://img.xxlaila.cn/2864jksfhjdsh.png">
+<meta property="og:image" content="https://img.xxlaila.cn/xnks94uoildsfs.png">
+<meta property="og:image" content="https://img.xxlaila.cn/382468365324.png">
+<meta property="og:image" content="https://img.xxlaila.cn/fnijwy4nkdsfkhdsf.png">
+<meta property="og:image" content="https://img.xxlaila.cn/dkjfsg328943242.png">
+<meta property="og:image" content="https://img.xxlaila.cn/324768ksdjsfhds.png">
+<meta property="og:image" content="https://img.xxlaila.cn/2372837934232.png">
+<meta property="og:image" content="https://img.xxlaila.cn/djfjsr3897493432.png">
+<meta property="og:updated_time" content="2019-10-28T02:35:40.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes ci&#x2F;cd(一)">
 <meta name="twitter:description" content="基于jenkins的CI/CD安装  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;jenkins一个流行的持续集成/发布工具，在Kubernetes使用,持续构建与发布是我们日常工作中必不可少的一个步骤，目前大多公司都采用 Jenkins 集群来搭建符合需求的 CI/CD 流程，然而传统的 Jenkins Slave 一主多从方式会存在一些痛点">
-<meta name="twitter:image" content="http://img.xxlaila.cn/xjfhs84we.png">
+<meta name="twitter:image" content="https://img.xxlaila.cn/xjfhs84we.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -225,7 +225,7 @@
 <li>E 资源有浪费，每台 Slave 可能是物理机或者虚拟机，当 Slave 处于空闲状态时，也不会完全释放掉资源。</li>
 </ul>
 </li>
-<li>正因为这些种种痛点，我们渴望一种更高效更可靠的方式来完成这个 CI/CD 流程，而 Docker 虚拟化容器技术能很好的解决这个痛点，又特别是在 Kubernetes 集群环境下面能够更好来解决上面的问题，下图是基于 Kubernetes 搭建 Jenkins 集群的简单示意图<br><img src="http://img.xxlaila.cn/xjfhs84we.png" alt="img"></li>
+<li>正因为这些种种痛点，我们渴望一种更高效更可靠的方式来完成这个 CI/CD 流程，而 Docker 虚拟化容器技术能很好的解决这个痛点，又特别是在 Kubernetes 集群环境下面能够更好来解决上面的问题，下图是基于 Kubernetes 搭建 Jenkins 集群的简单示意图<br><img src="https://img.xxlaila.cn/xjfhs84we.png" alt="img"></li>
 </ul>
 </li>
 </ul>
@@ -273,70 +273,70 @@
 <p>创建完成后docke回去拉去镜像，需要等待一会，我们可以通过命令来进行查看jenkins是否部署成功</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># kubectl get pods -n kube-ops</span><br><span class="line">NAME                       READY   STATUS    RESTARTS   AGE</span><br><span class="line">jenkins2-84f476cbb-vz4b2   1/1     Running   0          2d19h</span><br></pre></td></tr></table></figure>
 
-<p>部署完成以后我么可以通过在jenkins-ingress.yaml里面绑定过的域名进行访问，然后进行安装配置：<br><img src="http://img.xxlaila.cn/sfdsfdsf38432.png" alt="img"></p>
+<p>部署完成以后我么可以通过在jenkins-ingress.yaml里面绑定过的域名进行访问，然后进行安装配置：<br><img src="https://img.xxlaila.cn/sfdsfdsf38432.png" alt="img"></p>
 <blockquote>
 <p>初始化的密码我们可以在 jenkins 的容器的日志中进行查看，也可以直接在 nfs 的共享数据目录中查看</p>
 <p>$ cat /data/jenkins/jenkins2/secrets/initialAdminPassword</p>
 </blockquote>
-<p>完成配置，就可以到jenkins的界面，就和我们在vm下安装的jenkins没有任何的区别。<br><img src="http://img.xxlaila.cn/isdy823723894324.png" alt="img"></p>
+<p>完成配置，就可以到jenkins的界面，就和我们在vm下安装的jenkins没有任何的区别。<br><img src="https://img.xxlaila.cn/isdy823723894324.png" alt="img"></p>
 <h2 id="2-配置jenkins"><a href="#2-配置jenkins" class="headerlink" title="2 配置jenkins"></a>2 配置jenkins</h2><p>接下来我们需要来配置 Jenkins，让他能够动态的生成 Slave 的 Pod，安装jenkins的插件清单</p>
 <p><code>Kubernetes
 This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkins的结合<br>&nbsp;&nbsp;&nbsp;&nbsp;点击 系统管理(Manage Jenkins) —&gt; 系统配置(Configure System) —&gt; (拖到最下方)Add a new cloud —&gt; 选择 Kubernetes，然后填写 Kubernetes 和 Jenkins 配置信息。</p>
-<p><img src="http://img.xxlaila.cn/di32sdsf.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/di32sdsf.png" alt="img"></p>
 <blockquote>
 <p>注意 namespace，我们这里填 kube-ops，然后点击Test Connection，如果出现 Connection test successful 的提示信息证明Jenkins 已经可以和 Kubernetes 系统正常通信了，然后下方的 Jenkins URL 地址：<a href="http://jenkins2.kube-ops.svc.cluster.local:8080，这里的格式为服务名.namespace.svc.cluster.local:8080，根据上面创建的jenkins的服务名填写，我这里是之前创建的名为jenkins，如果是用上面我们创建的就应该是jenkins2" target="_blank" rel="noopener">http://jenkins2.kube-ops.svc.cluster.local:8080，这里的格式为服务名.namespace.svc.cluster.local:8080，根据上面创建的jenkins的服务名填写，我这里是之前创建的名为jenkins，如果是用上面我们创建的就应该是jenkins2</a></p>
 </blockquote>
-<h3 id="2-2、配置-Pod-Template"><a href="#2-2、配置-Pod-Template" class="headerlink" title="2.2、配置 Pod Template"></a>2.2、配置 Pod Template</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;配置 Jenkins Slave 运行的 Pod 模板，命名空间我们同样是用kube-ops，Labels 这里也非常重要，对于后面执行 Job 的时候需要用到该值，然后我们这里使用的是 cnych/jenkins:jnlp 这个镜像，这个镜像是在官方的 jnlp 镜像基础上定制的，加入了 kubectl 等一些实用的工具。<br><img src="http://img.xxlaila.cn/897kdfhgdkjb4.png" alt="img"><br><img src="http://img.xxlaila.cn/kjgsadsad8234632.png" alt="img"></p>
+<h3 id="2-2、配置-Pod-Template"><a href="#2-2、配置-Pod-Template" class="headerlink" title="2.2、配置 Pod Template"></a>2.2、配置 Pod Template</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;配置 Jenkins Slave 运行的 Pod 模板，命名空间我们同样是用kube-ops，Labels 这里也非常重要，对于后面执行 Job 的时候需要用到该值，然后我们这里使用的是 cnych/jenkins:jnlp 这个镜像，这个镜像是在官方的 jnlp 镜像基础上定制的，加入了 kubectl 等一些实用的工具。<br><img src="https://img.xxlaila.cn/897kdfhgdkjb4.png" alt="img"><br><img src="https://img.xxlaila.cn/kjgsadsad8234632.png" alt="img"></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;另外需要注意我们这里需要在下面挂载一个主机目录，一个是 /var/run/docker.sock，该文件是用于 Pod 中的容器能够共享宿主机的 Docker，这就是说的 docker in docker 的方式，Docker 二进制文件我们已经打包到上面的镜像中了。如果在slave agent中想要访问kubernetes 集群中其他资源，我们还需要绑定之前创建的Service Account 账号:jenkins2</p>
-<p><img src="http://img.xxlaila.cn/khsdif28734knsdfkds.png" alt="img"><br>&nbsp;&nbsp;&nbsp;&nbsp;另外还有几个参数需要注意，上图有一个pod寿命代理的空闲存活时间（分），意思是当处于空闲状态的时候保留 Slave Pod多长时间，这个参数最好我们保存默认就行了，如果你设置过大的话，Job 任务执行完成后，对应的 Slave Pod 就不会立即被销毁删除。到这里我们的 Kubernetes Plugin插件就算配置完成了</p>
+<p><img src="https://img.xxlaila.cn/khsdif28734knsdfkds.png" alt="img"><br>&nbsp;&nbsp;&nbsp;&nbsp;另外还有几个参数需要注意，上图有一个pod寿命代理的空闲存活时间（分），意思是当处于空闲状态的时候保留 Slave Pod多长时间，这个参数最好我们保存默认就行了，如果你设置过大的话，Job 任务执行完成后，对应的 Slave Pod 就不会立即被销毁删除。到这里我们的 Kubernetes Plugin插件就算配置完成了</p>
 <h3 id="2-3-Jenkins-测试"><a href="#2-3-Jenkins-测试" class="headerlink" title="2.3 Jenkins 测试"></a>2.3 Jenkins 测试</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Kubernetes 插件的配置工作完成了，接下来我们就来添加一个 Job 任务，看是否能够在 Slave Pod 中执行，任务执行完成后看 Pod 是否会被销毁在 Jenkins 首页点击create new jobs，创建一个测试的任务，输入任务名称，然后我们选择 Freestyle project 类型的任务<br>&nbsp;&nbsp;&nbsp;&nbsp;新建一个job为simple-test，增加一个shell模块，shell模块里面增加简单的echo来测试slave的动态部署：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;测试 Kubernetes 动态生成 jenkins slave&quot;</span><br><span class="line">echo &quot;==============docker in docker===========&quot;</span><br><span class="line">docker info</span><br><span class="line">echo &quot;=============kubectl=============&quot;</span><br><span class="line">kubectl get pods -n kube-system</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://img.xxlaila.cn/s94uskljdslfd.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/s94uskljdslfd.png" alt="img"></p>
 <p>现在我们直接在页面点击做成的 Build now 触发构建即可，然后观察 Kubernetes 集群中 Pod 的变化</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># kubectl get pods -n kube-ops</span><br></pre></td></tr></table></figure>
 
 <p>Kubernetes 界面也会出现jenkins agent的进行pod的进行部署。部署完成后随及删除pod。</p>
-<p><img src="http://img.xxlaila.cn/sakhd89234klmds.png" alt="img"><br><img src="http://img.xxlaila.cn/nslkfhio3rsd.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/sakhd89234klmds.png" alt="img"><br><img src="https://img.xxlaila.cn/nslkfhio3rsd.png" alt="img"></p>
 <h2 id="3、Jenkins错误解决"><a href="#3、Jenkins错误解决" class="headerlink" title="3、Jenkins错误解决"></a>3、Jenkins错误解决</h2><p>第一次学习安装jenkins踩了很多坑，但是同时也学习了很多的，下面是在k8s上安装jenkins遇到的一些错误：</p>
 <ul>
 <li>打开jenkins页面的时候提示dns不能解析，洁面如下图：</li>
 </ul>
-<p><img src="http://img.xxlaila.cn/skajdh823648uesd.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/skajdh823648uesd.png" alt="img"></p>
 <ul>
 <li>查看jenkins的日志提示</li>
 </ul>
-<p><img src="http://img.xxlaila.cn/8243ihkdfnklsads.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/8243ihkdfnklsads.png" alt="img"></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;导致的问题有https、网络连接不通畅，这里我们需要吧https修改为http，需要修改jenkins的配置文件。然后再重新建立jenkins的pod。进入jenkins的目录修改hudson.model.UpdateCenter.xml文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ cat hudson.model.UpdateCenter.xml</span><br><span class="line">&lt;?xml version=&apos;1.1&apos; encoding=&apos;UTF-8&apos;?&gt;</span><br><span class="line">&lt;sites&gt;</span><br><span class="line">  &lt;site&gt;</span><br><span class="line">    &lt;id&gt;default&lt;/id&gt;</span><br><span class="line">    &lt;url&gt;http://updates.jenkins.io/update-center.json&lt;/url&gt;</span><br><span class="line">  &lt;/site&gt;</span><br></pre></td></tr></table></figure>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;在做k8s的时候一定要用证书，不然后期在做各种服务的时候都会遇到错误，因为docker默认去私有registory要https，kuber-api要https。当然没有使用https都可以换成http，在次重新部署jenkins以后提示系列信息。访问目录没有权限。</p>
-<p><img src="http://img.xxlaila.cn/2864jksfhjdsh.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/2864jksfhjdsh.png" alt="img"></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;进入nfs目录，需要修改下目录权限, 因为当映射本地数据卷时，/home/docker/jenkins目录的拥有者为root用户，而容器中jenkins user的uid为1000</p>
 <p><code>$ sudo chown -R 1000:1000 /data/jenkins</code></p>
 <blockquote>
 <p>这里吧https解决了还是遇到提示网络不通。下图</p>
 </blockquote>
-<p><img src="http://img.xxlaila.cn/xnks94uoildsfs.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/xnks94uoildsfs.png" alt="img"></p>
 <blockquote>
 <p>这里是dns的不能解析的问题，以下排错思路：登陆jenkins的容器里面查看路由是否正确</p>
 </blockquote>
-<p><img src="http://img.xxlaila.cn/382468365324.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/382468365324.png" alt="img"></p>
 <blockquote>
-<p>然后在确认容器是否可以联通外网，还是dns不能解析<br><img src="http://img.xxlaila.cn/fnijwy4nkdsfkhdsf.png" alt="img"></p>
+<p>然后在确认容器是否可以联通外网，还是dns不能解析<br><img src="https://img.xxlaila.cn/fnijwy4nkdsfkhdsf.png" alt="img"></p>
 </blockquote>
 <blockquote>
 <p>这里ping 114没有问题，ping域名不能解析，说明是dns解析有问题。接着我们在查看容器的dns配置</p>
 </blockquote>
-<p><img src="http://img.xxlaila.cn/dkjfsg328943242.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/dkjfsg328943242.png" alt="img"></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;这里是dns问题。这里不阐述dns，参考第二章k8s dns,jenkins 在执行编译的时候提示: <code>‘Jenkins’ doesn’t have label ‘jnlp-agent’</code>,在系统配置配置里面进行测试连接k8s 的api提示如下错误</p>
-<p><img src="http://img.xxlaila.cn/324768ksdjsfhds.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/324768ksdjsfhds.png" alt="img"></p>
 <ul>
 <li>添加jenkins的secret认证</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># kubectl get secret  -n kube-ops</span><br><span class="line">NAME                     TYPE                                  DATA   AGE</span><br><span class="line">default-token-4gzkv      kubernetes.io/service-account-token   3      13d</span><br><span class="line">jenkins2-token-mjnw4     kubernetes.io/service-account-token   3      14m</span><br><span class="line">prometheus-token-84p87   kubernetes.io/service-account-token   3      13d</span><br><span class="line"># kubectl describe secret jenkins2-token-mjnw4 -n kube-ops</span><br><span class="line">Name:         jenkins2-token-mjnw4</span><br><span class="line">Namespace:    kube-ops</span><br><span class="line">Labels:       &lt;none&gt;</span><br><span class="line">Annotations:  kubernetes.io/service-account.name: jenkins2</span><br><span class="line">              kubernetes.io/service-account.uid: ffced652-2f6c-11e9-98a4-fa163e14c5bd</span><br><span class="line"></span><br><span class="line">Type:  kubernetes.io/service-account-token</span><br><span class="line"></span><br><span class="line">Data</span><br><span class="line">====</span><br><span class="line">ca.crt:     1025 bytes</span><br><span class="line">namespace:  8 bytes</span><br><span class="line">token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLW9wcyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJqZW5raW5zMi10b2tlbi1tam53NCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJqZW5raW5zMiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImZmY2VkNjUyLTJmNmMtMTFlOS05OGE0LWZhMTYzZTE0YzViZCIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLW9wczpqZW5raW5zMiJ9.PlPvO_AST4Q6tJJ2i2zGFfufFN1xjWLlHZ5ipTK0aU5CdR49OAropPQhQ0TjLRWf4Z66h847g28OCABmxO1cSG_-8UpwVsohFROTCOjx9Ka3KACmaIkw9Bvihm_lPQlaLykdyXxVDrfI6TobtG0Y5KnKPFj8CjkIFPk5ewTKpOm5pDKVDKu4W_4uOhSnISfLVUvHp8A_ojK_JCVnBBr0Py3UeuEF8vjJES0_yKNxPUtXQq-vkWEZecnAC_x5sfFJTA5aB18sEnxCaeMzgUxzi4IflNxxyVjdZrbq0UdS8llmfnGg5Ur7Zf-lu2ajdOlRdQp6VRPMcQmQaWoHUuoevg</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://img.xxlaila.cn/2372837934232.png" alt="img"><br><img src="http://img.xxlaila.cn/djfjsr3897493432.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/2372837934232.png" alt="img"><br><img src="https://img.xxlaila.cn/djfjsr3897493432.png" alt="img"></p>
 
       
 
@@ -682,11 +682,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -694,11 +694,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
+                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
+                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -730,7 +730,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -738,7 +738,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -786,11 +786,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -803,6 +803,54 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nexus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -834,63 +882,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nexus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pod</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -899,6 +891,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pod</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">

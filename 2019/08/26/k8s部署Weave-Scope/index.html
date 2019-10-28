@@ -16,17 +16,17 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="1、Weave Scope介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;weave scope 是Docker和Kubernetes的故障排除和监控，自动生成应用程序的地图，能够直观地了解，监控和控制基于容器的，基于微服务的应用程序。可以实时的了解docker容器，选择容器基础架构的概述，或关注特定的微服务。轻松识别和纠正问题，确保集装箱化应用的稳定性和性能，查看容器的上下文指标，标记和元数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://img.xxlaila.cn/378246bsjfhsajkdq.png">
-<meta property="og:image" content="http://img.xxlaila.cn/3489hdnsjkhd8324sd.png">
-<meta property="og:image" content="http://img.xxlaila.cn/287346jskbdjy784kjs.png">
-<meta property="og:image" content="http://img.xxlaila.cn/3o4wndk9234sd.png">
-<meta property="og:image" content="http://img.xxlaila.cn/34873i24dfsd.png">
-<meta property="og:image" content="http://img.xxlaila.cn/458dskjfhu2y4skdsds.png">
-<meta property="og:updated_time" content="2019-09-26T03:13:12.973Z">
+<meta property="og:image" content="https://img.xxlaila.cn/378246bsjfhsajkdq.png">
+<meta property="og:image" content="https://img.xxlaila.cn/3489hdnsjkhd8324sd.png">
+<meta property="og:image" content="https://img.xxlaila.cn/287346jskbdjy784kjs.png">
+<meta property="og:image" content="https://img.xxlaila.cn/3o4wndk9234sd.png">
+<meta property="og:image" content="https://img.xxlaila.cn/34873i24dfsd.png">
+<meta property="og:image" content="https://img.xxlaila.cn/458dskjfhu2y4skdsds.png">
+<meta property="og:updated_time" content="2019-10-28T02:35:40.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s部署Weave Scope">
 <meta name="twitter:description" content="1、Weave Scope介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;weave scope 是Docker和Kubernetes的故障排除和监控，自动生成应用程序的地图，能够直观地了解，监控和控制基于容器的，基于微服务的应用程序。可以实时的了解docker容器，选择容器基础架构的概述，或关注特定的微服务。轻松识别和纠正问题，确保集装箱化应用的稳定性和性能，查看容器的上下文指标，标记和元数">
-<meta name="twitter:image" content="http://img.xxlaila.cn/378246bsjfhsajkdq.png">
+<meta name="twitter:image" content="https://img.xxlaila.cn/378246bsjfhsajkdq.png">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -198,7 +198,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="1、Weave-Scope介绍"><a href="#1、Weave-Scope介绍" class="headerlink" title="1、Weave Scope介绍"></a>1、Weave Scope介绍</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;weave scope 是Docker和Kubernetes的故障排除和监控，自动生成应用程序的地图，能够直观地了解，监控和控制基于容器的，基于微服务的应用程序。可以实时的了解docker容器，选择容器基础架构的概述，或关注特定的微服务。轻松识别和纠正问题，确保集装箱化应用的稳定性和性能，查看容器的上下文指标，标记和元数据。轻松地在容器内的进程之间导航，以运行容器，在可扩展的可排序表中进行排列。使用给定主机或服务的最大CPU或内存轻松找到容器。直接与您的容器交互：暂停，重新启动和停止容器。启动命令行。全部不离开范围浏览器窗口。</p>
-<p><img src="http://img.xxlaila.cn/378246bsjfhsajkdq.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/378246bsjfhsajkdq.png" alt="img"></p>
 <h3 id="2、部署weave-scope"><a href="#2、部署weave-scope" class="headerlink" title="2、部署weave scope"></a>2、部署weave scope</h3><p>初次学习，直接下载官方配置文件，没有经过任何修改，不过相信自己随着学习的进步，会逐渐深入。<a href="https://github.com/weaveworks/scope" target="_blank" rel="noopener">github地址</a>，<a href="https://www.weave.works/docs/cloud/latest/overview/" target="_blank" rel="noopener">官方地址</a></p>
 <a id="more"></a>
 
@@ -212,7 +212,7 @@
 </ul>
 <h4 id="2-2、查看部署"><a href="#2-2、查看部署" class="headerlink" title="2.2、查看部署"></a>2.2、查看部署</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get svc,pods -n weave</span></span><br><span class="line">NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE</span><br><span class="line">service/weave-scope-app   ClusterIP   10.99.252.207   &lt;none&gt;        80/TCP    25m</span><br><span class="line"></span><br><span class="line">NAME                                   READY   STATUS    RESTARTS   AGE</span><br><span class="line">pod/weave-scope-agent-gpwmw            1/1     Running   0          24m</span><br><span class="line">pod/weave-scope-agent-lmf22            1/1     Running   0          24m</span><br><span class="line">pod/weave-scope-agent-r8vft            1/1     Running   0          24m</span><br><span class="line">pod/weave-scope-agent-rph5p            1/1     Running   0          24m</span><br><span class="line">pod/weave-scope-agent-zfrnc            1/1     Running   0          24m</span><br><span class="line">pod/weave-scope-app-5c46dd7467-s8cp8   1/1     Running   0          24m</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://img.xxlaila.cn/3489hdnsjkhd8324sd.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/3489hdnsjkhd8324sd.png" alt="img"></p>
 <h4 id="2-3、查看服务状态"><a href="#2-3、查看服务状态" class="headerlink" title="2.3、查看服务状态"></a>2.3、查看服务状态</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl get services -n weave</span></span><br><span class="line">NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE</span><br><span class="line">weave-scope-app   ClusterIP   10.99.252.207   &lt;none&gt;        80/TCP    27m</span><br></pre></td></tr></table></figure>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;到这里weave-scope部署完成，但是我们需要进行访问，这里我们通过之前学习的nginx Ingress来对scope配置一个域名，然后吧域名解析到制定的ip地址上进行访问</p>
@@ -222,7 +222,7 @@
 <blockquote>
 <p>通过域名访问：<a href="http://scope.xxlaila.io" target="_blank" rel="noopener">http://scope.xxlaila.io</a></p>
 </blockquote>
-<p><img src="http://img.xxlaila.cn/287346jskbdjy784kjs.png" alt="img"><br><img src="http://img.xxlaila.cn/3o4wndk9234sd.png" alt="img"><br><img src="http://img.xxlaila.cn/34873i24dfsd.png" alt="img"><br><img src="http://img.xxlaila.cn/458dskjfhu2y4skdsds.png" alt="img"></p>
+<p><img src="https://img.xxlaila.cn/287346jskbdjy784kjs.png" alt="img"><br><img src="https://img.xxlaila.cn/3o4wndk9234sd.png" alt="img"><br><img src="https://img.xxlaila.cn/34873i24dfsd.png" alt="img"><br><img src="https://img.xxlaila.cn/458dskjfhu2y4skdsds.png" alt="img"></p>
 
       
 
@@ -544,11 +544,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,11 +556,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
+                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
+                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,7 +592,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,7 +600,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,11 +648,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,6 +665,54 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nexus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,63 +744,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nexus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pod</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -761,6 +753,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pod</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">

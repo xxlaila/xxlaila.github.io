@@ -16,19 +16,19 @@
 <meta property="og:site_name" content="懒羊羊">
 <meta property="og:description" content="jenkins 备份&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;当jenkins在用起来的时候，我们难保他不会出故障，但是出了故障我们怎么做到快速的恢复呢，这时备份就显得尤为重要了。但jenkins本身不提供备份的功能，所以这里就需要借助外力。备份可以多样化，一种是我们直接到jenkins的目录下面手动备份jenkins目录。一种是我们就jenk">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://img.xxlaila.cn/1571101180571.jpg">
-<meta property="og:image" content="http://img.xxlaila.cn/1571101557754.jpg">
-<meta property="og:image" content="http://img.xxlaila.cn/1571101640273.jpg">
-<meta property="og:image" content="http://img.xxlaila.cn/1571102057919.jpg">
-<meta property="og:image" content="http://img.xxlaila.cn/1571102188007.jpg">
-<meta property="og:image" content="http://img.xxlaila.cn/1571709136813.jpg">
-<meta property="og:image" content="http://img.xxlaila.cn/1571709270639.jpg">
-<meta property="og:image" content="http://img.xxlaila.cn/1571709879768.jpg">
-<meta property="og:updated_time" content="2019-10-26T01:32:39.432Z">
+<meta property="og:image" content="https://img.xxlaila.cn/1571101180571.jpg">
+<meta property="og:image" content="https://img.xxlaila.cn/1571101557754.jpg">
+<meta property="og:image" content="https://img.xxlaila.cn/1571101640273.jpg">
+<meta property="og:image" content="https://img.xxlaila.cn/1571102057919.jpg">
+<meta property="og:image" content="https://img.xxlaila.cn/1571102188007.jpg">
+<meta property="og:image" content="https://img.xxlaila.cn/1571709136813.jpg">
+<meta property="og:image" content="https://img.xxlaila.cn/1571709270639.jpg">
+<meta property="og:image" content="https://img.xxlaila.cn/1571709879768.jpg">
+<meta property="og:updated_time" content="2019-10-28T02:35:39.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jenkins配置备份">
 <meta name="twitter:description" content="jenkins 备份&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;当jenkins在用起来的时候，我们难保他不会出故障，但是出了故障我们怎么做到快速的恢复呢，这时备份就显得尤为重要了。但jenkins本身不提供备份的功能，所以这里就需要借助外力。备份可以多样化，一种是我们直接到jenkins的目录下面手动备份jenkins目录。一种是我们就jenk">
-<meta name="twitter:image" content="http://img.xxlaila.cn/1571101180571.jpg">
+<meta name="twitter:image" content="https://img.xxlaila.cn/1571101180571.jpg">
   
     <link rel="alternative" href="/atom.xml" title="懒羊羊" type="application/atom+xml">
   
@@ -202,16 +202,16 @@
         <h3 id="jenkins-备份"><a href="#jenkins-备份" class="headerlink" title="jenkins 备份"></a>jenkins 备份</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当jenkins在用起来的时候，我们难保他不会出故障，但是出了故障我们怎么做到快速的恢复呢，这时备份就显得尤为重要了。但jenkins本身不提供备份的功能，所以这里就需要借助外力。备份可以多样化，一种是我们直接到jenkins的目录下面手动备份jenkins目录。一种是我们就jenkins自带的插件<code>thinBackup</code>和<code>Periodic Backup</code>进行备份恢复，下面进行分别介绍</p>
 <a id="more"></a>
 
-<h3 id="thinBackup备份"><a href="#thinBackup备份" class="headerlink" title="thinBackup备份"></a>thinBackup备份</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录jenkins——&gt;系统管理——&gt;插件管理<br><img src="http://img.xxlaila.cn/1571101180571.jpg" alt="img"><br>安装完成之后重启jenkins服务，登录jenkins在系统管理界面可以看到<br><img src="http://img.xxlaila.cn/1571101557754.jpg" alt="img"></p>
+<h3 id="thinBackup备份"><a href="#thinBackup备份" class="headerlink" title="thinBackup备份"></a>thinBackup备份</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录jenkins——&gt;系统管理——&gt;插件管理<br><img src="https://img.xxlaila.cn/1571101180571.jpg" alt="img"><br>安装完成之后重启jenkins服务，登录jenkins在系统管理界面可以看到<br><img src="https://img.xxlaila.cn/1571101557754.jpg" alt="img"></p>
 <h4 id="配置ThinBackup"><a href="#配置ThinBackup" class="headerlink" title="配置ThinBackup"></a>配置ThinBackup</h4><ul>
-<li>点击ThinBackup<br><img src="http://img.xxlaila.cn/1571101640273.jpg" alt="img"><br>可以看到有三个选项:</li>
+<li>点击ThinBackup<br><img src="https://img.xxlaila.cn/1571101640273.jpg" alt="img"><br>可以看到有三个选项:</li>
 <li>Backup Now: 手动立即备份</li>
 <li>Restore: 恢复备份</li>
 <li>Settings: 备份参数的设置</li>
 </ul>
-<h5 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下面是我的备份参数，可以根据自己的需要自己设定备份参数，设置好友save即可，<code>Backup schedule for full backups</code>意思是周一到周五每天凌晨两点进行备份<br><img src="http://img.xxlaila.cn/1571102057919.jpg" alt="img"></p>
-<h5 id="Restore"><a href="#Restore" class="headerlink" title="Restore"></a>Restore</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备份文件是以日期+时间节点组成的文件名，我们恢复什么时间段的，点击进行恢复，<br><img src="http://img.xxlaila.cn/1571102188007.jpg" alt="img"></p>
-<h3 id="Periodic-Backup"><a href="#Periodic-Backup" class="headerlink" title="Periodic Backup"></a>Periodic Backup</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备份除了上面提到的插件还有一个插件是<code>Periodic Backup</code>，安装<code>Periodic Backup</code>不阐述，安装完成后可以在系统管理菜单下面有一个<code>Periodic Backup Manager</code>菜单<br><img src="http://img.xxlaila.cn/1571709136813.jpg" alt="img"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;打开<code>Periodic Backup Manager</code>，第一次打开是没有任何东西的，需要我们自己去建立一个规则，点击<code>Configure</code><br><img src="http://img.xxlaila.cn/1571709270639.jpg" alt="img"></p>
+<h5 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下面是我的备份参数，可以根据自己的需要自己设定备份参数，设置好友save即可，<code>Backup schedule for full backups</code>意思是周一到周五每天凌晨两点进行备份<br><img src="https://img.xxlaila.cn/1571102057919.jpg" alt="img"></p>
+<h5 id="Restore"><a href="#Restore" class="headerlink" title="Restore"></a>Restore</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备份文件是以日期+时间节点组成的文件名，我们恢复什么时间段的，点击进行恢复，<br><img src="https://img.xxlaila.cn/1571102188007.jpg" alt="img"></p>
+<h3 id="Periodic-Backup"><a href="#Periodic-Backup" class="headerlink" title="Periodic Backup"></a>Periodic Backup</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备份除了上面提到的插件还有一个插件是<code>Periodic Backup</code>，安装<code>Periodic Backup</code>不阐述，安装完成后可以在系统管理菜单下面有一个<code>Periodic Backup Manager</code>菜单<br><img src="https://img.xxlaila.cn/1571709136813.jpg" alt="img"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;打开<code>Periodic Backup Manager</code>，第一次打开是没有任何东西的，需要我们自己去建立一个规则，点击<code>Configure</code><br><img src="https://img.xxlaila.cn/1571709270639.jpg" alt="img"></p>
 <p>配置项很简单:</p>
 <ul>
 <li>Temporary Directory: 临时目录</li>
@@ -224,7 +224,7 @@
 </ul>
 </li>
 <li>Storage Strategy: 存储策略，就是是否需要进行压缩存储</li>
-<li>Backup Location: 备份的位置，都是本地目录<br><img src="http://img.xxlaila.cn/1571709879768.jpg" alt="img"></li>
+<li>Backup Location: 备份的位置，都是本地目录<br><img src="https://img.xxlaila.cn/1571709879768.jpg" alt="img"></li>
 </ul>
 
       
@@ -571,11 +571,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">TeamViewer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,11 +583,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
+                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">confluence</a>
+                <a href="javascript:void(0)" class="js-tag color3">elasticserch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,7 +619,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
+                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,7 +627,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jenkins,jenkins用户权限</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins ldap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,11 +675,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">heapster</a>
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes,nfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -692,6 +692,54 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jenkins, ci/cd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nexus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -723,63 +771,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nexus,npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nexus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mongodb,mongodb副本集,mongodb高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ORA-12519</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pv, pvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pvc,pv,kubernetes,存储</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">traefik</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vsftpd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">交换机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MSR3620</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pod</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -788,6 +780,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">帧中继, 网络设备</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pod</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kubernetes, Ingress</a>
               </li>
              
               <li class="article-tag-list-item">
