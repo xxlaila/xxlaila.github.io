@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/10/14/jenkins%E9%85%8D%E7%BD%AEldap/</loc>
+    
+    <lastmod>2019-10-28T13:57:30.688Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/10/22/jenkins%E8%BF%90%E7%BB%B4%E7%AF%87/</loc>
+    
+    <lastmod>2019-10-28T13:57:20.321Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io//about.html</loc>
+    
+    <lastmod>2019-10-28T13:30:24.207Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/10/25/pipeline%E5%A4%9A%E5%88%86%E6%94%AFgitlab%E8%A7%A6%E5%8F%91/</loc>
     
     <lastmod>2019-10-28T08:42:04.528Z</lastmod>
@@ -16,23 +37,9 @@
   </url>
   
   <url>
-    <loc>https://xxlaila.github.io/2019/10/22/jenkins%E8%BF%90%E7%BB%B4%E7%AF%87/</loc>
-    
-    <lastmod>2019-10-28T03:35:41.096Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xxlaila.github.io/2019/10/21/pipeline%E8%AF%AD%E6%B3%95/</loc>
     
     <lastmod>2019-10-28T03:35:08.785Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/10/14/jenkins%E9%85%8D%E7%BD%AEldap/</loc>
-    
-    <lastmod>2019-10-28T03:33:52.740Z</lastmod>
     
   </url>
   
