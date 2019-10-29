@@ -398,7 +398,7 @@
         <category>nexus</category>
       </categories>
       <tags>
-        <tag>nexus</tag>
+        <tag>ldap</tag>
       </tags>
   </entry>
   <entry>
@@ -484,7 +484,7 @@
         <category>jenkins</category>
       </categories>
       <tags>
-        <tag>jenkins ldap</tag>
+        <tag>ldap</tag>
       </tags>
   </entry>
   <entry>
@@ -1080,6 +1080,9 @@
       <categories>
         <category>监控</category>
       </categories>
+      <tags>
+        <tag>Smokeping</tag>
+      </tags>
   </entry>
   <entry>
     <title>Linux 常用命令学习</title>
@@ -1169,7 +1172,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>linux</category>
+        <category>Centos</category>
       </categories>
       <tags>
         <tag>shell</tag>
@@ -1670,7 +1673,7 @@
         <category>kubernetes</category>
       </categories>
       <tags>
-        <tag>v1.14 dashboard</tag>
+        <tag>dashboard</tag>
       </tags>
   </entry>
   <entry>
@@ -1703,7 +1706,7 @@
         <category>kubernetes</category>
       </categories>
       <tags>
-        <tag>coredns</tag>
+        <tag>v1.14 coredns</tag>
       </tags>
   </entry>
   <entry>
@@ -2923,7 +2926,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>centos</category>
+        <category>Centos</category>
       </categories>
       <tags>
         <tag>nfs</tag>
@@ -3066,10 +3069,10 @@
 <p><a href="https://jruels.github.io/fun-istio/labs/07-istio1/" target="_blank" rel="noopener">安装部署参考</a><br><a href="https://bbs.huaweicloud.com/blogs/112543" target="_blank" rel="noopener">排错参考</a></p>
 ]]></content>
       <categories>
-        <category>istio</category>
+        <category>kubernetes</category>
       </categories>
       <tags>
-        <tag>kubernetes</tag>
+        <tag>istio</tag>
       </tags>
   </entry>
   <entry>
@@ -3132,7 +3135,7 @@
         <category>kubernetes</category>
       </categories>
       <tags>
-        <tag>kubernetes</tag>
+        <tag>dashboard</tag>
       </tags>
   </entry>
   <entry>
@@ -3171,10 +3174,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>常用命令</category>
+        <category>kubernetes</category>
       </categories>
       <tags>
-        <tag>kubernetes</tag>
+        <tag>node</tag>
       </tags>
   </entry>
   <entry>
@@ -3305,8 +3308,11 @@
 <li>ingress-control 使用hostnetwork 模式 性能比使用service nodePort 性能好很多。因为hostnetwork 是直接获取pod 的IP？</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
-        <tag>kubernetes, Ingress</tag>
+        <tag>Ingress</tag>
       </tags>
   </entry>
   <entry>
@@ -3339,8 +3345,11 @@
 </blockquote>
 <p><img src="https://img.xxlaila.cn/287346jskbdjy784kjs.png" alt="img"><br><img src="https://img.xxlaila.cn/3o4wndk9234sd.png" alt="img"><br><img src="https://img.xxlaila.cn/34873i24dfsd.png" alt="img"><br><img src="https://img.xxlaila.cn/458dskjfhu2y4skdsds.png" alt="img"></p>
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
-        <tag>kubernetes,Weave Scope</tag>
+        <tag>Weave Scope</tag>
       </tags>
   </entry>
   <entry>
@@ -3365,8 +3374,11 @@
 <h3 id="7、集群的访问地址"><a href="#7、集群的访问地址" class="headerlink" title="7、集群的访问地址"></a>7、集群的访问地址</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server.1=zk-0.zk-hs.kube-dev.svc.cluster.local.:2888:3888</span><br><span class="line">server.2=zk-1.zk-hs.kube-dev.svc.cluster.local.:2888:3888</span><br><span class="line">server.3=zk-2.zk-hs.kube-dev.svc.cluster.local.:2888:3888</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
-        <tag>kubernetes</tag>
+        <tag>zookeeper</tag>
       </tags>
   </entry>
   <entry>
@@ -3401,10 +3413,10 @@
 
 ]]></content>
       <categories>
-        <category>coredns</category>
+        <category>kubernetes</category>
       </categories>
       <tags>
-        <tag>kubernetes</tag>
+        <tag>coredns</tag>
       </tags>
   </entry>
   <entry>
@@ -3433,8 +3445,11 @@
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;退出mysql和容器，执行quit;退出mysql，按ctrl+p+q从容器中返回node主机。利用navicat 通过node主机的ip地址和端口30003连接mysql数据库<br><img src="https://img.xxlaila.cn/2348wndssmadklj3.png" alt="img"></p>
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
-        <tag>kubernetes</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -3517,10 +3532,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>RBAC</category>
+        <category>kubernetes</category>
       </categories>
       <tags>
-        <tag>kubernetes</tag>
+        <tag>RBAC</tag>
       </tags>
   </entry>
   <entry>
@@ -3545,8 +3560,11 @@
 <h4 id="3-1、访问grafana是否正常"><a href="#3-1、访问grafana是否正常" class="headerlink" title="3.1、访问grafana是否正常"></a>3.1、访问grafana是否正常</h4><p>前面在grafana文件里面增加了nodePoer: 30003的端口，我们可以通过任意节点ip:30003进行访问grafana界面。</p>
 <p><img src="https://img.xxlaila.cn/453847sndkniuy234wds.png" alt="img"><br><strong>可以进行配置grafana。</strong></p>
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
-        <tag>kubernetes,heapster</tag>
+        <tag>heapster</tag>
       </tags>
   </entry>
   <entry>
@@ -3583,8 +3601,11 @@
 <p><img src="https://img.xxlaila.cn/453khskdha324.png" alt="img"><br><img src="https://img.xxlaila.cn/3746dfnks324.png" alt="img"></p>
 <p><em>后续持续优化</em></p>
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
-        <tag>eureka,kubernetes</tag>
+        <tag>eureka</tag>
       </tags>
   </entry>
   <entry>
@@ -3627,7 +3648,7 @@
         <category>jira</category>
       </categories>
       <tags>
-        <tag>jira</tag>
+        <tag>ldap</tag>
       </tags>
   </entry>
   <entry>
@@ -3647,8 +3668,11 @@
 <p><img src="https://img.xxlaila.cn/1566615580951.jpg" alt="img"><br><img src="https://img.xxlaila.cn/1566616502650.jpg" alt="img"><br><img src="https://img.xxlaila.cn/1566616536151.jpg" alt="img"></p>
 <p>点击测试连接，连接成功以后，点击测试保存。回到界面可以点击同步<br><img src="https://img.xxlaila.cn/1566616609967.jpg" alt="img"></p>
 ]]></content>
+      <categories>
+        <category>confluence</category>
+      </categories>
       <tags>
-        <tag>confluence</tag>
+        <tag>confluence,jira</tag>
       </tags>
   </entry>
   <entry>
@@ -3705,6 +3729,9 @@
 <p>配置完成后点击最下面的测试连接</p>
 <p><img src="https://img.xxlaila.cn/1524710027432-202.png" alt="img"></p>
 ]]></content>
+      <categories>
+        <category>jira</category>
+      </categories>
       <tags>
         <tag>jira</tag>
       </tags>
@@ -3938,6 +3965,9 @@
 
 <p><img src="https://img.xxlaila.cn/EEB25C9704F4C76C30E1DF32A2E1EDE0.jpg" alt="img"></p>
 ]]></content>
+      <categories>
+        <category>confluence</category>
+      </categories>
       <tags>
         <tag>confluence</tag>
       </tags>
@@ -3998,8 +4028,11 @@
 <p>至此，使用 Nexus Repository Manager 3 搭建 npm 私服结束。整体流程并不复杂，文档很详尽,直接读文档可能会遗漏一些东西。可以参考<a href="https://help.sonatype.com/repomanager3/formats/npm-registry" target="_blank" rel="noopener">官方文档</a></p>
 <p><a href="https://xxlaila.github.io/2019/10/15/nexus配置ldap/" target="_blank" rel="noopener">nexus ldap配置</a></p>
 ]]></content>
+      <categories>
+        <category>nexus</category>
+      </categories>
       <tags>
-        <tag>nexus,npm</tag>
+        <tag>npm</tag>
       </tags>
   </entry>
   <entry>
@@ -4032,6 +4065,9 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  charset utf-8;</span><br><span class="line">  server_name  a.xxlaila.com;</span><br><span class="line">  rewrite ^/(.*)/$ /<span class="variable">$1</span> permanent;</span><br><span class="line">  index index.html index.htm index.jsp index.php;</span><br><span class="line">  root /opt/webapps/a.xxlaila.com;</span><br><span class="line"></span><br><span class="line">  location ~* / &#123;</span><br><span class="line">    <span class="keyword">if</span> (!-e <span class="variable">$request_filename</span>) &#123;</span><br><span class="line">       rewrite ^(.*)$ /<span class="variable">$1</span>.html last;</span><br><span class="line">       <span class="built_in">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  access_log   /var/<span class="built_in">log</span>/nginx/a.xxlaila.com.access.log main;</span><br><span class="line"><span class="comment">#  error_log   /var/log/nginx/a.xxlaila.com.error.log debug;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
       <tags>
         <tag>nginx</tag>
       </tags>
@@ -4050,6 +4086,9 @@
 <p><img src="https://img.xxlaila.cn/382dklfjdskjfs.png" alt="img"></p>
 <p>这儿，只有一个分支存在于jenkinsfile，所以只显示一个分支，如下图：</p>
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
         <tag>jenkins, ci/cd</tag>
       </tags>
@@ -4084,8 +4123,11 @@
 <h4 id="3-1-2、建立一个前端"><a href="#3-1-2、建立一个前端" class="headerlink" title="3.1.2、建立一个前端"></a>3.1.2、建立一个前端</h4><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">node(<span class="string">'agent-build'</span>) &#123;</span><br><span class="line">    stage(<span class="string">'Clone'</span>) &#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">"1.Clone Stage"</span></span><br><span class="line">      git credentialsId:<span class="string">'gitlabUser'</span>, ur<span class="variable">l:</span> <span class="string">'http://gitlab.xxlaila.com/front-end/portal/kts-platform.git'</span></span><br><span class="line">    &#125;</span><br><span class="line">    stage(<span class="string">'install'</span>) &#123;</span><br><span class="line">        container(<span class="string">'nodejs'</span>)&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"2. Start install $&#123;JOB_NAME&#125;"</span></span><br><span class="line">            <span class="keyword">sh</span> <span class="string">'node -v'</span></span><br><span class="line">            <span class="keyword">sh</span> <span class="string">'npm install'</span></span><br><span class="line">            <span class="keyword">sh</span> <span class="string">'npm run build production'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    stage(<span class="string">'show package'</span>) &#123;</span><br><span class="line">        <span class="keyword">sh</span> <span class="string">'pwd'</span></span><br><span class="line">        <span class="keyword">sh</span> <span class="string">'ls -ltrh'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
-        <tag>jenkins ci/cd</tag>
+        <tag>ci/cd</tag>
       </tags>
   </entry>
   <entry>
@@ -4233,8 +4275,11 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
-        <tag>jenkins, ci/cd</tag>
+        <tag>ci/cd</tag>
       </tags>
   </entry>
   <entry>
@@ -4276,6 +4321,9 @@
 <h4 id="3-3、为用户添加告警类型"><a href="#3-3、为用户添加告警类型" class="headerlink" title="3.3、为用户添加告警类型"></a>3.3、为用户添加告警类型</h4><p><img src="https://img.xxlaila.cn/image2018-8-23_16-21-58.png" alt="img"><br>这里为admin用户添加的 告警方式。注意一下send to 这个参数，这里一定要是@all。否则不成功</p>
 <h3 id="4、企业微信测试"><a href="#4、企业微信测试" class="headerlink" title="4、企业微信测试"></a>4、企业微信测试</h3><p><img src="https://img.xxlaila.cn/image2018-8-23_16-23-14.png" alt="img"></p>
 ]]></content>
+      <categories>
+        <category>监控</category>
+      </categories>
       <tags>
         <tag>zabbix</tag>
       </tags>
@@ -4349,8 +4397,11 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>网络设备</category>
+      </categories>
       <tags>
-        <tag>帧中继, 网络设备</tag>
+        <tag>帧中继</tag>
       </tags>
   </entry>
   <entry>
@@ -4484,10 +4535,10 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 <p><img src="https://img.xxlaila.cn/2372837934232.png" alt="img"><br><img src="https://img.xxlaila.cn/djfjsr3897493432.png" alt="img"></p>
 ]]></content>
       <categories>
-        <category>ci/cd</category>
+        <category>kubernetes</category>
       </categories>
       <tags>
-        <tag>kubernetes</tag>
+        <tag>ci/cd</tag>
       </tags>
   </entry>
   <entry>
@@ -4543,8 +4594,11 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
-        <tag>kubernetes,nfs</tag>
+        <tag>nfs</tag>
       </tags>
   </entry>
   <entry>
@@ -4817,7 +4871,7 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Dw是磁盘写信息;Dr是磁盘读信息;启动DRBD后设置主次节点，选择需要设置主机的主节点，然后执行如下命令: 这里我设置是node2</p>
 ]]></content>
       <categories>
-        <category>存储</category>
+        <category>存储,Centos</category>
       </categories>
       <tags>
         <tag>drdb</tag>
@@ -4848,6 +4902,9 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 
 <h2 id="查看并验证"><a href="#查看并验证" class="headerlink" title="查看并验证"></a>查看并验证</h2><p><img src="https://img.xxlaila.cn/W.png" alt="img"></p>
 ]]></content>
+      <categories>
+        <category>oracle</category>
+      </categories>
       <tags>
         <tag>ORA-12519</tag>
       </tags>
@@ -4889,8 +4946,11 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 <h2 id="方法五"><a href="#方法五" class="headerlink" title="方法五"></a>方法五</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name test.com www.test.com;</span><br><span class="line">    <span class="built_in">return</span> 301 https://<span class="variable">$server_name</span><span class="variable">$request_uri</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
       <tags>
-        <tag>nginx</tag>
+        <tag>https</tag>
       </tags>
   </entry>
   <entry>
@@ -4916,8 +4976,11 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># systemctl enable haproxy &amp;&amp;systemctl enable keepalived</span></span><br><span class="line"><span class="comment"># systemctl start keepalived &amp;&amp;systemctl start haproxy</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>haproxy,keepalived,kubernetes</category>
+      </categories>
       <tags>
-        <tag>haproxy,keepalived, haproxy+keepalived,kubernetes</tag>
+        <tag>haproxy,keepalived</tag>
       </tags>
   </entry>
   <entry>
@@ -4958,8 +5021,11 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 </ul>
 <p><img src="https://img.xxlaila.cn/kf24skdsfds.png" alt="img"></p>
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
-        <tag>Prometheus, kubernetes</tag>
+        <tag>Prometheus</tag>
       </tags>
   </entry>
   <entry>
@@ -4983,8 +5049,11 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 <p><img src="https://img.xxlaila.cn/ds832948dk.png" alt="img"></p>
 <p>Prometheus的安装请参考<a href="http://xxlaila.github.io/2019/08/10/k8s-prometheus/" target="_blank" rel="noopener">《Prometheus 入门》</a>文章，grafana不需要重复部署。只需要在grafana里面增加目录挂在，吧kube-ops 修改kube-system即可</p>
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
-        <tag>kube-dns,kubernetes, dashboard, kube-dashboard</tag>
+        <tag>kube-dns,dashboard</tag>
       </tags>
   </entry>
   <entry>
@@ -5115,8 +5184,11 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 
 <p>部署完成后，通过任意node节点IP的地址加端口48713即可访问<br><a href="http://node-ip:48713/" target="_blank" rel="noopener">http://node-ip:48713/</a></p>
 ]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
       <tags>
-        <tag>kubernetes, kubernetes v13.3安装</tag>
+        <tag>kubernetes v13.3 node</tag>
       </tags>
   </entry>
   <entry>
@@ -5385,7 +5457,7 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
         <category>kubernetes</category>
       </categories>
       <tags>
-        <tag>kubernetes, kubernetes 安装</tag>
+        <tag>kubernetes v1.13.3</tag>
       </tags>
   </entry>
   <entry>
@@ -5445,6 +5517,9 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 </ul>
 <p>测试用户登录虚拟用户只能看到自己本身的目录 ，不能去其他目录查看(到这里vsftpd配置结束)</p>
 ]]></content>
+      <categories>
+        <category>Centos</category>
+      </categories>
       <tags>
         <tag>vsftpd</tag>
       </tags>
@@ -5459,6 +5534,9 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vim TeamViewer-id-changer.py</span><br><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @Time    : 2019/8/1 14:57</span></span><br><span class="line"><span class="comment"># @Author  : xxlaila</span></span><br><span class="line"><span class="comment"># @Site    : </span></span><br><span class="line"><span class="comment"># @File    : TeamViewer-id-changer.py</span></span><br><span class="line"><span class="comment"># @Software: PyCharm</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import platform</span><br><span class="line">import random</span><br><span class="line">import re</span><br><span class="line">import string</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">--------------------------------</span></span><br><span class="line"><span class="string">TeamViewer 14 ID Changer for MAC OS</span></span><br><span class="line"><span class="string">Version: 0.2 2019</span></span><br><span class="line"><span class="string">--------------------------------</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> platform.system() != <span class="string">"Darwin"</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"This script can be run only on MAC OS."</span>)</span><br><span class="line">    sys.exit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> os.geteuid() != 0:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"This script must be run form root."</span>)</span><br><span class="line">    sys.exit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">"SUDO_USER"</span> <span class="keyword">in</span> os.environ:</span><br><span class="line">    USERNAME = os.environ[<span class="string">"SUDO_USER"</span>]</span><br><span class="line">    <span class="keyword">if</span> USERNAME == <span class="string">"root"</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Can not find user name. Run this script via sudo from regular user"</span>)</span><br><span class="line">        sys.exit()</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Can not find user name. Run this script via sudo from regular user"</span>)</span><br><span class="line">    sys.exit()</span><br><span class="line"></span><br><span class="line">HOMEDIRLIB = <span class="string">"/Users/"</span> + USERNAME + <span class="string">"/library/preferences/"</span></span><br><span class="line">GLOBALLIB = <span class="string">"/library/preferences/"</span></span><br><span class="line"></span><br><span class="line">CONFIGS = []</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Find config files</span></span><br><span class="line"></span><br><span class="line">def listdir_fullpath(d):</span><br><span class="line">    <span class="built_in">return</span> [os.path.join(d, f) <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(d)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> listdir_fullpath(HOMEDIRLIB):</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'teamviewer'</span> <span class="keyword">in</span> file.lower():</span><br><span class="line">        CONFIGS.append(file)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> listdir_fullpath(GLOBALLIB):</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'teamviewer'</span> <span class="keyword">in</span> file.lower():</span><br><span class="line">        CONFIGS.append(file)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> not CONFIGS:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">            There is no TemViewer configs found.</span></span><br><span class="line"><span class="string">            Maybe you have deleted it manualy or never run TeamViewer after installation.</span></span><br><span class="line"><span class="string">            Nothing to delete.</span></span><br><span class="line"><span class="string">            '</span><span class="string">''</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># Delete config files</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Configs found:\n"</span>)</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> CONFIGS:</span><br><span class="line">        <span class="built_in">print</span>(file)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">        This files will be DELETED permanently.</span></span><br><span class="line"><span class="string">        All TeamViewer settings will be lost</span></span><br><span class="line"><span class="string">        '</span><span class="string">''</span>)</span><br><span class="line">        raw_input(<span class="string">"Press Enter to continue or CTR+C to abort..."</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> CONFIGS:</span><br><span class="line">        try:</span><br><span class="line">            os.remove(file)</span><br><span class="line">        except:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"Cannot delete config files. Permission denied?"</span>)</span><br><span class="line">            sys.exit()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Done."</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Find binaryes</span></span><br><span class="line"></span><br><span class="line">TMBINARYES = [</span><br><span class="line">    <span class="string">'/Applications/TeamViewer.app/Contents/MacOS/TeamViewer'</span>,</span><br><span class="line">    <span class="string">'/Applications/TeamViewer.app/Contents/MacOS/TeamViewer_Service'</span>,</span><br><span class="line">    <span class="string">'/Applications/TeamViewer.app/Contents/Helpers/TeamViewer_Desktop'</span>,</span><br><span class="line">    <span class="string">'/Applications/TeamViewer.app/Contents/Helpers/TeamViewer_Assignment'</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> TMBINARYES:</span><br><span class="line">    <span class="keyword">if</span> os.path.exists(file):</span><br><span class="line">        pass</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"File not found: "</span> + file)</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"Install TeamViewer correctly"</span>)</span><br><span class="line">        sys.exit()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Patch files</span></span><br><span class="line"></span><br><span class="line">def idpatch(fpath, platf, serial):</span><br><span class="line">    file = open(fpath, <span class="string">'r+b'</span>)</span><br><span class="line">    binary = file.read()</span><br><span class="line">    PlatformPattern = <span class="string">"IOPlatformExpert.&#123;6&#125;"</span></span><br><span class="line">    SerialPattern = <span class="string">"IOPlatformSerialNumber%s%s%s"</span></span><br><span class="line"></span><br><span class="line">    binary = re.sub(PlatformPattern, platf, binary)</span><br><span class="line">    binary = re.sub(SerialPattern % (chr(0), <span class="string">"[0-9a-zA-Z]&#123;8,8&#125;"</span>, chr(0)), SerialPattern % (chr(0), serial, chr(0)), binary)</span><br><span class="line"></span><br><span class="line">    file = open(fpath, <span class="string">'wb'</span>).write(binary)</span><br><span class="line">    <span class="built_in">return</span> True</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def random_generator(size=8, chars=string.ascii_uppercase + string.ascii_lowercase + string.digits):</span><br><span class="line">    <span class="built_in">return</span> <span class="string">''</span>.join(random.choice(chars) <span class="keyword">for</span> _ <span class="keyword">in</span> range(size))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">RANDOMSERIAL = random_generator(8)</span><br><span class="line">RANDOMPLATFORM = <span class="string">"IOPlatformExpert"</span> + random_generator(6)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> TMBINARYES:</span><br><span class="line">    try:</span><br><span class="line">        idpatch(file, RANDOMPLATFORM, RANDOMSERIAL)</span><br><span class="line">    except:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Error: can not patch file "</span> + file)</span><br><span class="line">        sys.exit()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"PlatformDevice: "</span> + RANDOMPLATFORM)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"PlatformSerial: "</span> + RANDOMSERIAL)</span><br><span class="line"></span><br><span class="line">os.system(<span class="string">"sudo codesign -f -s - /Applications/TeamViewer.app/"</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">ID changed sucessfully.</span></span><br><span class="line"><span class="string">!!! Restart computer before using TeamViewer !!!!</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span>)</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>TeamViewer</category>
+      </categories>
       <tags>
         <tag>TeamViewer</tag>
       </tags>
@@ -5482,8 +5560,11 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 <h2 id="后端java程序"><a href="#后端java程序" class="headerlink" title="后端java程序"></a>后端java程序</h2><p>dev环境为例子</p>
 <p><img src="https://img.xxlaila.cn/image2018-5-29_10-54-54.png" alt="img"></p>
 ]]></content>
+      <categories>
+        <category>jenkins</category>
+      </categories>
       <tags>
-        <tag>jenkins, jenkins job,</tag>
+        <tag>jenkins job</tag>
       </tags>
   </entry>
   <entry>
@@ -5515,10 +5596,10 @@ This plugin integrates Jenkins with Kubernetes</code><br>2.1 Kubernetes和Jenkin
 <h3 id="6、配置角色"><a href="#6、配置角色" class="headerlink" title="6、配置角色"></a>6、配置角色</h3><p>选择Assign Roles,用户新建以后，根据用户不同类型的勾选不同的权限,</p>
 ]]></content>
       <categories>
-        <category>jenkins, ci/cd</category>
+        <category>jenkins</category>
       </categories>
       <tags>
-        <tag>jenkins,jenkins用户权限</tag>
+        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
