@@ -2,6 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/10/29/istio%E9%83%A8%E7%BD%B2/</loc>
+    
+    <lastmod>2019-11-01T07:57:30.612Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/04/k8s-helm/</loc>
+    
+    <lastmod>2019-11-01T02:22:46.942Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/10/10/harbor-%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2019-10-31T09:34:27.208Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-prometheus/</loc>
+    
+    <lastmod>2019-10-30T13:59:22.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/02/k8s%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2heapster/</loc>
+    
+    <lastmod>2019-10-30T01:44:51.410Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/about/index.html</loc>
+    
+    <lastmod>2019-10-29T02:56:18.731Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/08/26/k8s%E9%83%A8%E7%BD%B2ingress/</loc>
     
     <lastmod>2019-10-29T02:04:29.847Z</lastmod>
@@ -184,13 +226,6 @@
   </url>
   
   <url>
-    <loc>https://xxlaila.github.io/2019/09/02/k8s%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2heapster/</loc>
-    
-    <lastmod>2019-10-29T01:48:57.144Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xxlaila.github.io/2019/08/09/TeamViewer-mac%E7%A0%B4%E8%A7%A3/</loc>
     
     <lastmod>2019-10-29T01:48:34.890Z</lastmod>
@@ -303,13 +338,6 @@
   </url>
   
   <url>
-    <loc>https://xxlaila.github.io/2019/08/30/k8s%E9%83%A8%E7%BD%B2istio/</loc>
-    
-    <lastmod>2019-10-29T01:42:11.830Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xxlaila.github.io/2019/08/11/Centos-5-5-%E5%AE%89%E8%A3%85DRBD/</loc>
     
     <lastmod>2019-10-29T01:41:22.637Z</lastmod>
@@ -320,13 +348,6 @@
     <loc>https://xxlaila.github.io/2019/10/22/jenkins%E8%BF%90%E7%BB%B4%E7%AF%87/</loc>
     
     <lastmod>2019-10-28T13:57:20.321Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io//about.html</loc>
-    
-    <lastmod>2019-10-28T13:30:24.207Z</lastmod>
     
   </url>
   
@@ -369,13 +390,6 @@
     <loc>https://xxlaila.github.io/2019/09/27/k8s-pod%E5%81%A5%E5%BA%B7%E6%A3%80%E6%B5%8B/</loc>
     
     <lastmod>2019-10-28T02:35:40.698Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/04/k8s-helm/</loc>
-    
-    <lastmod>2019-10-28T02:35:40.528Z</lastmod>
     
   </url>
   
@@ -425,20 +439,6 @@
     <loc>https://xxlaila.github.io/2019/09/06/traefik-https%E5%BA%94%E7%94%A8/</loc>
     
     <lastmod>2019-10-28T02:35:40.141Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-prometheus/</loc>
-    
-    <lastmod>2019-10-28T02:35:40.124Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/10/10/harbor-%E4%BD%BF%E7%94%A8/</loc>
-    
-    <lastmod>2019-10-28T02:35:39.956Z</lastmod>
     
   </url>
   
