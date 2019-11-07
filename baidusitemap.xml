@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xxlaila.cn/2019/11/07/mysql8.0%E9%94%99%E8%AF%AF/</loc>
+    <lastmod>2019-11-07</lastmod>
+  </url>  <url>
     <loc>https://www.xxlaila.cn/2019/10/29/istio%E9%83%A8%E7%BD%B2/</loc>
-    <lastmod>2019-11-04</lastmod>
+    <lastmod>2019-11-06</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/11/kubernetes-v1-14%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2019-11-04</lastmod>
