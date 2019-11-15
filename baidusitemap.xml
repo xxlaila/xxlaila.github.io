@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xxlaila.cn/2019/11/14/mongodb%E8%AF%AD%E6%B3%95%E5%AE%9E%E8%B7%B5/</loc>
+    <lastmod>2019-11-15</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/11/07/mysql8.0%E9%94%99%E8%AF%AF/</loc>
+    <lastmod>2019-11-15</lastmod>
+  </url>  <url>
     <loc>https://www.xxlaila.cn/2019/11/08/istio%E9%83%A8%E7%BD%B2-%E4%BA%8C/</loc>
     <lastmod>2019-11-15</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/03/centos-nfs-512%E9%94%99%E8%AF%AF/</loc>
     <lastmod>2019-11-15</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/11/14/mongodb%E8%AF%AD%E6%B3%95%E5%AE%9E%E8%B7%B5/</loc>
-    <lastmod>2019-11-14</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/09/mongodb%E5%89%AF%E6%9C%AC%E9%9B%86/</loc>
     <lastmod>2019-11-14</lastmod>
@@ -20,9 +23,6 @@
     <lastmod>2019-11-09</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/10/oracle-ORA-12519/</loc>
-    <lastmod>2019-11-07</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/11/07/mysql8.0%E9%94%99%E8%AF%AF/</loc>
     <lastmod>2019-11-07</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/10/29/istio%E9%83%A8%E7%BD%B2/</loc>
