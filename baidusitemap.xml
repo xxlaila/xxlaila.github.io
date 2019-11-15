@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xxlaila.cn/2019/11/08/istio%E9%83%A8%E7%BD%B2-%E4%BA%8C/</loc>
+    <lastmod>2019-11-15</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/09/03/centos-nfs-512%E9%94%99%E8%AF%AF/</loc>
+    <lastmod>2019-11-15</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/11/14/mongodb%E8%AF%AD%E6%B3%95%E5%AE%9E%E8%B7%B5/</loc>
+    <lastmod>2019-11-14</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/08/09/mongodb%E5%89%AF%E6%9C%AC%E9%9B%86/</loc>
+    <lastmod>2019-11-14</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/08/09/vsftpd%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2019-11-10</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/09/25/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2019-11-09</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/08/10/oracle-ORA-12519/</loc>
+    <lastmod>2019-11-07</lastmod>
+  </url>  <url>
     <loc>https://www.xxlaila.cn/2019/11/07/mysql8.0%E9%94%99%E8%AF%AF/</loc>
     <lastmod>2019-11-07</lastmod>
   </url>  <url>
@@ -64,9 +85,6 @@
     <loc>https://www.xxlaila.cn/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2019-10-29</lastmod>
   </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/08/09/vsftpd%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2019-10-29</lastmod>
-  </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/20/kubernetes-ci-cd-%E5%9B%9B/</loc>
     <lastmod>2019-10-29</lastmod>
   </url>  <url>
@@ -103,22 +121,13 @@
     <loc>https://www.xxlaila.cn/2019/08/12/kube-nfs-%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8/</loc>
     <lastmod>2019-10-29</lastmod>
   </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/09/03/centos-nfs-512%E9%94%99%E8%AF%AF/</loc>
-    <lastmod>2019-10-29</lastmod>
-  </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/09/TeamViewer-mac%E7%A0%B4%E8%A7%A3/</loc>
-    <lastmod>2019-10-29</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/09/25/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2019-10-29</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/24/k8s-heapster/</loc>
     <lastmod>2019-10-29</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/24/k8s%E8%A7%92%E8%89%B2%E8%AE%BF%E9%97%AERBAC/</loc>
-    <lastmod>2019-10-29</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/08/10/oracle-ORA-12519/</loc>
     <lastmod>2019-10-29</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/10/nginx-https/</loc>
@@ -179,9 +188,6 @@
     <lastmod>2019-10-28</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/04/metrics-server%E5%AE%89%E8%A3%85%E5%AD%A3/</loc>
-    <lastmod>2019-10-28</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/08/09/mongodb%E5%89%AF%E6%9C%AC%E9%9B%86/</loc>
     <lastmod>2019-10-28</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/25/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%81%9A%E7%AB%AF%E5%8F%A3%E8%81%9A%E5%90%88/</loc>
