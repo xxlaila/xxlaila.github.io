@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xxlaila.cn/2019/11/21/logstash%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2019-11-27</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/09/11/kubernetes-v1-14%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2019-11-26</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/09/16/kubernetes-v1-14-node%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2019-11-25</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/11/15/elk%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2019-11-21</lastmod>
+  </url>  <url>
     <loc>https://www.xxlaila.cn/2019/11/14/mongodb%E8%AF%AD%E6%B3%95%E5%AE%9E%E8%B7%B5/</loc>
-    <lastmod>2019-11-15</lastmod>
+    <lastmod>2019-11-19</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/11/19/logstash%E7%9B%91%E6%8E%A7/</loc>
+    <lastmod>2019-11-19</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/11/07/mysql8.0%E9%94%99%E8%AF%AF/</loc>
     <lastmod>2019-11-15</lastmod>
@@ -27,9 +42,6 @@
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/10/29/istio%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2019-11-06</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/09/11/kubernetes-v1-14%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2019-11-04</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/10/09/Deployment%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2019-11-04</lastmod>
@@ -191,9 +203,6 @@
     <lastmod>2019-10-28</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/25/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%81%9A%E7%AB%AF%E5%8F%A3%E8%81%9A%E5%90%88/</loc>
-    <lastmod>2019-10-28</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/09/16/kubernetes-v1-14-node%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2019-10-28</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/</loc>
