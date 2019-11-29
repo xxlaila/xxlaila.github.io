@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.xxlaila.cn/2019/11/21/logstash%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2019-11-27</lastmod>
-  </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/11/kubernetes-v1-14%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2019-11-26</lastmod>
+    <lastmod>2019-11-29</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/16/kubernetes-v1-14-node%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2019-11-25</lastmod>
+    <lastmod>2019-11-29</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/09/20/k8s-v1-14-weave-scope/</loc>
+    <lastmod>2019-11-29</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/11/28/k8s-dashboard-v2-0-0%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2019-11-29</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/11/29/flannel-cni%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2019-11-29</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/09/20/k8s-v1-14-traefik%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2019-11-29</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/09/17/k8s-v1-14-metrics-server/</loc>
+    <lastmod>2019-11-29</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/08/09/vsftpd%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2019-11-27</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/11/21/logstash%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2019-11-27</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/11/15/elk%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2019-11-21</lastmod>
@@ -30,9 +48,6 @@
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/09/mongodb%E5%89%AF%E6%9C%AC%E9%9B%86/</loc>
     <lastmod>2019-11-14</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/08/09/vsftpd%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2019-11-10</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/25/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2019-11-09</lastmod>
@@ -193,9 +208,6 @@
     <loc>https://www.xxlaila.cn/2019/10/26/pipeline%E9%AB%98%E7%BA%A7%E7%AF%87/</loc>
     <lastmod>2019-10-28</lastmod>
   </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/09/20/k8s-v1-14-weave-scope/</loc>
-    <lastmod>2019-10-28</lastmod>
-  </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/30/harbor%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2019-10-28</lastmod>
   </url>  <url>
@@ -238,9 +250,6 @@
     <loc>https://www.xxlaila.cn/2019/09/10/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</loc>
     <lastmod>2019-09-20</lastmod>
   </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/09/20/k8s-v1-14-traefik%E9%83%A8%E7%BD%B2/</loc>
-    <lastmod>2019-09-20</lastmod>
-  </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/12/pvc-pv/</loc>
     <lastmod>2019-09-20</lastmod>
   </url>  <url>
@@ -248,9 +257,6 @@
     <lastmod>2019-09-20</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/16/k8s-v1-14%E9%9B%86%E7%BE%A4%E9%AA%8C%E8%AF%81/</loc>
-    <lastmod>2019-09-20</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/09/17/k8s-v1-14-metrics-server/</loc>
     <lastmod>2019-09-20</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/24/git%E6%B8%85%E7%A9%BAcommit%E8%AE%B0%E5%BD%95%E6%96%B9%E6%B3%95/</loc>
