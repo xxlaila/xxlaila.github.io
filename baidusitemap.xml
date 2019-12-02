@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xxlaila.cn/2019/11/28/k8s-dashboard-v2-0-0%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2019-12-02</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/08/12/kubernetes-ci-cd-%E4%B8%80/</loc>
+    <lastmod>2019-12-02</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/08/20/kubernetes-ci-cd-%E5%9B%9B/</loc>
+    <lastmod>2019-12-02</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/08/20/kubernetes-ci-cd-%E4%B8%89/</loc>
+    <lastmod>2019-12-02</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/08/20/kubernetes-ci-cd-%E4%BA%8C/</loc>
+    <lastmod>2019-12-02</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/09/24/%E5%88%A9%E7%94%A8NFS%E5%8A%A8%E6%80%81%E6%8F%90%E4%BE%9BKubernetes%E5%90%8E%E7%AB%AF%E5%AD%98%E5%82%A8%E5%8D%B7/</loc>
+    <lastmod>2019-11-29</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/09/25/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2019-11-29</lastmod>
+  </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/20/k8s-v1-14-traefik%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2019-11-29</lastmod>
   </url>  <url>
@@ -11,9 +32,6 @@
     <lastmod>2019-11-29</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/20/k8s-v1-14-weave-scope/</loc>
-    <lastmod>2019-11-29</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/11/28/k8s-dashboard-v2-0-0%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2019-11-29</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/11/29/flannel-cni%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/</loc>
@@ -49,9 +67,6 @@
     <loc>https://www.xxlaila.cn/2019/08/09/mongodb%E5%89%AF%E6%9C%AC%E9%9B%86/</loc>
     <lastmod>2019-11-14</lastmod>
   </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/09/25/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2019-11-09</lastmod>
-  </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/10/oracle-ORA-12519/</loc>
     <lastmod>2019-11-07</lastmod>
   </url>  <url>
@@ -71,9 +86,6 @@
     <lastmod>2019-10-31</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/20/k8s-v1-14-prometheus/</loc>
-    <lastmod>2019-10-30</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/09/02/k8s%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2heapster/</loc>
     <lastmod>2019-10-30</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/26/k8s%E9%83%A8%E7%BD%B2ingress/</loc>
@@ -112,22 +124,10 @@
     <loc>https://www.xxlaila.cn/2019/08/10/kubernetes-node%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2019-10-29</lastmod>
   </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/08/20/kubernetes-ci-cd-%E5%9B%9B/</loc>
-    <lastmod>2019-10-29</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/08/20/kubernetes-ci-cd-%E4%BA%8C/</loc>
-    <lastmod>2019-10-29</lastmod>
-  </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/16/k8s-v1-14-dns%E6%8F%92%E4%BB%B6/</loc>
     <lastmod>2019-10-29</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/10/haproxy-keepalived/</loc>
-    <lastmod>2019-10-29</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/08/20/kubernetes-ci-cd-%E4%B8%89/</loc>
-    <lastmod>2019-10-29</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/08/12/kubernetes-ci-cd-%E4%B8%80/</loc>
     <lastmod>2019-10-29</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/16/k8s-v1-14-dashboard/</loc>
@@ -237,9 +237,6 @@
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/28/Centos-route%E7%AD%96%E7%95%A5/</loc>
     <lastmod>2019-10-10</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/09/24/%E5%88%A9%E7%94%A8NFS%E5%8A%A8%E6%80%81%E6%8F%90%E4%BE%9BKubernetes%E5%90%8E%E7%AB%AF%E5%AD%98%E5%82%A8%E5%8D%B7/</loc>
-    <lastmod>2019-09-25</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/25/iptables/</loc>
     <lastmod>2019-09-25</lastmod>
