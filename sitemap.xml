@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/12/19/traefik-https%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2019-12-23T07:15:39.232Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/12/23/nfs%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%82%E5%B8%B8/</loc>
+    
+    <lastmod>2019-12-23T03:15:53.971Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/16/k8s-v1-14-dns%E6%8F%92%E4%BB%B6/</loc>
+    
+    <lastmod>2019-12-19T02:19:03.175Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-traefik%E9%83%A8%E7%BD%B2/</loc>
+    
+    <lastmod>2019-12-19T02:17:43.266Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/12/13/istio%E9%83%A8%E7%BD%B2%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</loc>
     
-    <lastmod>2019-12-16T08:05:29.587Z</lastmod>
+    <lastmod>2019-12-18T07:42:29.373Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://xxlaila.github.io/2019/12/16/kube-eventer%E4%BA%8B%E4%BB%B6%E5%8F%91%E5%B0%84%E5%99%A8/</loc>
     
-    <lastmod>2019-12-16T03:12:30.176Z</lastmod>
+    <lastmod>2019-12-18T03:58:03.236Z</lastmod>
     
   </url>
   
@@ -54,13 +82,6 @@
     <loc>https://xxlaila.github.io/2019/12/04/k8s-v1-14-prometheus%E4%B8%8Egrafana%E9%83%A8%E7%BD%B2/</loc>
     
     <lastmod>2019-12-11T05:50:28.208Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-traefik%E9%83%A8%E7%BD%B2/</loc>
-    
-    <lastmod>2019-12-10T03:51:15.521Z</lastmod>
     
   </url>
   
@@ -352,13 +373,6 @@
   </url>
   
   <url>
-    <loc>https://xxlaila.github.io/2019/09/16/k8s-v1-14-dns%E6%8F%92%E4%BB%B6/</loc>
-    
-    <lastmod>2019-10-29T01:56:19.788Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xxlaila.github.io/2019/09/16/k8s-v1-14-dashboard/</loc>
     
     <lastmod>2019-10-29T01:52:42.379Z</lastmod>
@@ -551,13 +565,6 @@
     <loc>https://xxlaila.github.io/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2019-10-28T02:35:40.181Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/06/traefik-https%E5%BA%94%E7%94%A8/</loc>
-    
-    <lastmod>2019-10-28T02:35:40.141Z</lastmod>
     
   </url>
   
