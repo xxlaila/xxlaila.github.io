@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.xxlaila.cn/2019/12/30/Elasticsearch%E7%B4%A2%E5%BC%95%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2019-12-30</lastmod>
+    <loc>https://www.xxlaila.cn/2020/01/09/traefik%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/</loc>
+    <lastmod>2020-01-09</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2020/01/08/traefik2-0%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2020-01-09</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2019-12-25</lastmod>
+    <lastmod>2020-01-09</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/12/19/traefik-https%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2019-12-24</lastmod>
+    <lastmod>2020-01-09</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/12/23/nfs%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%82%E5%B8%B8/</loc>
+    <lastmod>2020-01-02</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/12/30/Elasticsearch%E7%B4%A2%E5%BC%95%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2019-12-30</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/12/23/centos-%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93%E4%B8%89%E6%AD%A5%E6%9B%B2/</loc>
     <lastmod>2019-12-23</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/12/16/kube-eventer%E4%BA%8B%E4%BB%B6%E5%8F%91%E5%B0%84%E5%99%A8/</loc>
-    <lastmod>2019-12-23</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/12/23/nfs%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%82%E5%B8%B8/</loc>
     <lastmod>2019-12-23</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/16/k8s-v1-14-dns%E6%8F%92%E4%BB%B6/</loc>
