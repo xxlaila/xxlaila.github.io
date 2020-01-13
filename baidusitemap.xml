@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.xxlaila.cn/2020/01/09/traefik%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/</loc>
-    <lastmod>2020-01-09</lastmod>
-  </url>  <url>
     <loc>https://www.xxlaila.cn/2020/01/08/traefik2-0%E9%83%A8%E7%BD%B2/</loc>
-    <lastmod>2020-01-09</lastmod>
+    <lastmod>2020-01-13</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2020/01/09/traefik%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/</loc>
+    <lastmod>2020-01-10</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2020-01-09</lastmod>
