@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xxlaila.cn/2019/08/10/haproxy-keepalived/</loc>
+    <lastmod>2020-02-14</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/10/09/Deployment%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2020-02-14</lastmod>
+  </url>  <url>
     <loc>https://www.xxlaila.cn/2020/01/13/traefik2-0-%E5%8A%A8%E6%80%81%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2020-01-20</lastmod>
   </url>  <url>
@@ -41,9 +47,6 @@
     <lastmod>2019-12-18</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/10/29/istio%E9%83%A8%E7%BD%B2/</loc>
-    <lastmod>2019-12-13</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/08/10/haproxy-keepalived/</loc>
     <lastmod>2019-12-13</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/12/13/master%E5%8A%A0%E5%85%A5node%E8%8A%82%E7%82%B9/</loc>
@@ -126,9 +129,6 @@
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/10/oracle-ORA-12519/</loc>
     <lastmod>2019-11-07</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/10/09/Deployment%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2019-11-04</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/27/k8s-pod%E5%81%A5%E5%BA%B7%E6%A3%80%E6%B5%8B/</loc>
     <lastmod>2019-11-02</lastmod>

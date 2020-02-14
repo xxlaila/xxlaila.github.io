@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/08/10/haproxy-keepalived/</loc>
+    
+    <lastmod>2020-02-14T08:07:08.624Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/10/09/Deployment%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2020-02-14T07:52:18.994Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2020/01/13/traefik2-0-%E5%8A%A8%E6%80%81%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2020-01-20T03:51:50.649Z</lastmod>
@@ -96,13 +110,6 @@
     <loc>https://xxlaila.github.io/2019/10/29/istio%E9%83%A8%E7%BD%B2/</loc>
     
     <lastmod>2019-12-13T09:16:04.899Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/10/haproxy-keepalived/</loc>
-    
-    <lastmod>2019-12-13T08:48:03.750Z</lastmod>
     
   </url>
   
@@ -292,13 +299,6 @@
     <loc>https://xxlaila.github.io/2019/08/10/oracle-ORA-12519/</loc>
     
     <lastmod>2019-11-07T02:55:44.904Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/10/09/Deployment%E4%BD%BF%E7%94%A8/</loc>
-    
-    <lastmod>2019-11-04T01:25:27.289Z</lastmod>
     
   </url>
   
