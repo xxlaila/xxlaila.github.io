@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2020/02/17/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%BA%94%E7%94%A8%E5%9C%A8Kubernetes%E4%B8%8A%E7%9A%84%E4%BC%98%E9%9B%85%E8%90%BD%E5%9C%B0/</loc>
+    
+    <lastmod>2020-02-17T08:08:03.761Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2020/02/17/traefik%E6%94%AF%E6%8C%81socketio%E4%BC%9A%E8%AF%9D/</loc>
+    
+    <lastmod>2020-02-17T08:07:50.875Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2020/02/17/%E7%99%BD%E8%AF%9DKubernetes%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</loc>
+    
+    <lastmod>2020-02-17T08:02:20.106Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2020-02-15T07:46:13.403Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2019/08/10/haproxy-keepalived/</loc>
     
     <lastmod>2020-02-14T08:07:08.624Z</lastmod>
@@ -40,13 +68,6 @@
     <loc>https://xxlaila.github.io/2019/09/25/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/</loc>
     
     <lastmod>2020-01-16T03:45:39.847Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/</loc>
-    
-    <lastmod>2020-01-09T08:53:34.349Z</lastmod>
     
   </url>
   
