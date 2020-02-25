@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://xxlaila.github.io/2019/11/29/flannel-cni%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/</loc>
+    <loc>https://xxlaila.github.io/2020/02/20/Elasticsearch%E9%9B%86%E7%BE%A4%E8%A7%84%E5%88%92/</loc>
     
-    <lastmod>2020-02-22T12:00:52.934Z</lastmod>
+    <lastmod>2020-02-25T07:08:29.146Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xxlaila.github.io/2020/02/20/Elasticsearch%E9%9B%86%E7%BE%A4%E8%A7%84%E5%88%92/</loc>
+    <loc>https://xxlaila.github.io/2019/12/13/istio%E9%83%A8%E7%BD%B2%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</loc>
     
-    <lastmod>2020-02-22T06:52:22.172Z</lastmod>
+    <lastmod>2020-02-25T03:28:19.489Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/09/30/harbor%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E9%83%A8%E7%BD%B2/</loc>
+    
+    <lastmod>2020-02-24T03:06:36.862Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/11/29/flannel-cni%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/</loc>
+    
+    <lastmod>2020-02-22T12:00:52.934Z</lastmod>
     
   </url>
   
@@ -145,13 +159,6 @@
     <loc>https://xxlaila.github.io/2019/09/20/k8s-v1-14-traefik%E9%83%A8%E7%BD%B2/</loc>
     
     <lastmod>2019-12-19T02:17:43.266Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/12/13/istio%E9%83%A8%E7%BD%B2%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</loc>
-    
-    <lastmod>2019-12-18T07:42:29.373Z</lastmod>
     
   </url>
   
@@ -614,13 +621,6 @@
     <loc>https://xxlaila.github.io/2019/10/26/pipeline%E9%AB%98%E7%BA%A7%E7%AF%87/</loc>
     
     <lastmod>2019-10-28T02:40:59.762Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/30/harbor%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E9%83%A8%E7%BD%B2/</loc>
-    
-    <lastmod>2019-10-28T02:35:40.427Z</lastmod>
     
   </url>
   
