@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xxlaila.cn/2020/03/01/Kubernetes%E9%87%8C%E7%9A%84Service%E7%A9%B6%E7%AB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2020/02/17/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%BA%94%E7%94%A8%E5%9C%A8Kubernetes%E4%B8%8A%E7%9A%84%E4%BC%98%E9%9B%85%E8%90%BD%E5%9C%B0/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2020/02/17/%E7%99%BD%E8%AF%9DKubernetes%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>  <url>
     <loc>https://www.xxlaila.cn/2020/02/20/Elasticsearch%E9%9B%86%E7%BE%A4%E8%A7%84%E5%88%92/</loc>
-    <lastmod>2020-02-25</lastmod>
+    <lastmod>2020-03-01</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/12/13/istio%E9%83%A8%E7%BD%B2%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</loc>
     <lastmod>2020-02-25</lastmod>
@@ -26,12 +35,6 @@
     <lastmod>2020-02-20</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2020/02/17/traefik%E6%94%AF%E6%8C%81socketio%E4%BC%9A%E8%AF%9D/</loc>
-    <lastmod>2020-02-17</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2020/02/17/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%BA%94%E7%94%A8%E5%9C%A8Kubernetes%E4%B8%8A%E7%9A%84%E4%BC%98%E9%9B%85%E8%90%BD%E5%9C%B0/</loc>
-    <lastmod>2020-02-17</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2020/02/17/%E7%99%BD%E8%AF%9DKubernetes%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</loc>
     <lastmod>2020-02-17</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/05/traefik-ingress%E4%BD%BF%E7%94%A8/</loc>
