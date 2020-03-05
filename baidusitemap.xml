@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xxlaila.cn/2020/01/08/traefik2-0%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2020-03-05</lastmod>
+  </url>  <url>
     <loc>https://www.xxlaila.cn/2020/03/01/Kubernetes%E9%87%8C%E7%9A%84Service%E7%A9%B6%E7%AB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C/</loc>
     <lastmod>2020-03-01</lastmod>
   </url>  <url>
@@ -48,9 +51,6 @@
   </url>  <url>
     <loc>https://www.xxlaila.cn/2020/01/09/traefik%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/</loc>
     <lastmod>2020-01-19</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2020/01/08/traefik2-0%E9%83%A8%E7%BD%B2/</loc>
-    <lastmod>2020-01-17</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/25/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2020-01-16</lastmod>
