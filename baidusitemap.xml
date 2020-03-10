@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xxlaila.cn/2020/03/10/openvpn%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2020-03-10</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/09/10/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</loc>
+    <lastmod>2020-03-10</lastmod>
+  </url>  <url>
     <loc>https://www.xxlaila.cn/2020/01/08/traefik2-0%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2020-03-05</lastmod>
   </url>  <url>
@@ -291,9 +297,6 @@
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/25/pv-pvc/</loc>
     <lastmod>2019-09-25</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/09/10/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</loc>
-    <lastmod>2019-09-20</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/12/pvc-pv/</loc>
     <lastmod>2019-09-20</lastmod>
