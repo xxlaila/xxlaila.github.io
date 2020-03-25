@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xxlaila.cn/2020/03/11/openvpn%E9%85%8D%E7%BD%AEldap/</loc>
+    <lastmod>2020-03-25</lastmod>
+  </url>  <url>
     <loc>https://www.xxlaila.cn/2020/03/10/openvpn%E9%83%A8%E7%BD%B2/</loc>
-    <lastmod>2020-03-14</lastmod>
+    <lastmod>2020-03-25</lastmod>
+  </url>  <url>
+    <loc>https://www.xxlaila.cn/2019/12/03/centos-7-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/</loc>
+    <lastmod>2020-03-20</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/10/haproxy-keepalived/</loc>
     <lastmod>2020-03-13</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/09/10/%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</loc>
     <lastmod>2020-03-13</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2020/03/11/openvpn%E9%85%8D%E7%BD%AEldap/</loc>
-    <lastmod>2020-03-11</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2020/01/08/traefik2-0%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2020-03-05</lastmod>
@@ -89,9 +92,6 @@
     <lastmod>2019-12-13</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/29/k8s%E5%88%A0%E9%99%A4node%E9%87%8D%E6%96%B0%E5%8A%A0%E5%85%A5/</loc>
-    <lastmod>2019-12-12</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2019/12/03/centos-7-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/</loc>
     <lastmod>2019-12-12</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/12/04/k8s-v1-14-prometheus%E4%B8%8Egrafana%E9%83%A8%E7%BD%B2/</loc>
