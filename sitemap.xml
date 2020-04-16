@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/09/30/harbor%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E9%83%A8%E7%BD%B2/</loc>
+    
+    <lastmod>2020-04-15T01:33:05.690Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xxlaila.github.io/2019/10/22/jenkins%E8%BF%90%E7%BB%B4%E7%AF%87/</loc>
+    
+    <lastmod>2020-04-13T09:33:20.706Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2020/04/13/etcd%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/</loc>
     
     <lastmod>2020-04-13T02:44:54.456Z</lastmod>
@@ -117,13 +131,6 @@
     <loc>https://xxlaila.github.io/2019/12/13/istio%E9%83%A8%E7%BD%B2%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</loc>
     
     <lastmod>2020-02-25T03:28:19.489Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/09/30/harbor%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E9%83%A8%E7%BD%B2/</loc>
-    
-    <lastmod>2020-02-24T03:06:36.862Z</lastmod>
     
   </url>
   
@@ -649,13 +656,6 @@
     <loc>https://xxlaila.github.io/2019/08/11/Centos-5-5-%E5%AE%89%E8%A3%85DRBD/</loc>
     
     <lastmod>2019-10-29T01:41:22.637Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/10/22/jenkins%E8%BF%90%E7%BB%B4%E7%AF%87/</loc>
-    
-    <lastmod>2019-10-28T13:57:20.321Z</lastmod>
     
   </url>
   
