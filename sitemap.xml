@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2019/08/09/mongodb%E5%89%AF%E6%9C%AC%E9%9B%86/</loc>
+    
+    <lastmod>2020-04-29T09:51:52.987Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2020/04/12/Prometheus%E7%9B%91%E6%8E%A7%E5%BA%94%E7%94%A8/</loc>
     
     <lastmod>2020-04-20T01:05:01.832Z</lastmod>
@@ -404,13 +411,6 @@
     <loc>https://xxlaila.github.io/2019/09/03/centos-nfs-512%E9%94%99%E8%AF%AF/</loc>
     
     <lastmod>2019-11-15T06:14:33.782Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2019/08/09/mongodb%E5%89%AF%E6%9C%AC%E9%9B%86/</loc>
-    
-    <lastmod>2019-11-14T01:13:23.041Z</lastmod>
     
   </url>
   
