@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xxlaila.cn/2020/05/07/elasticsearch%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/</loc>
+    <lastmod>2020-05-09</lastmod>
+  </url>  <url>
     <loc>https://www.xxlaila.cn/2020/05/09/redis-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/</loc>
     <lastmod>2020-05-09</lastmod>
   </url>  <url>
@@ -9,9 +12,6 @@
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/11/14/mongodb%E8%AF%AD%E6%B3%95%E5%AE%9E%E8%B7%B5/</loc>
     <lastmod>2020-05-09</lastmod>
-  </url>  <url>
-    <loc>https://www.xxlaila.cn/2020/05/07/elasticsearch%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/</loc>
-    <lastmod>2020-05-08</lastmod>
   </url>  <url>
     <loc>https://www.xxlaila.cn/2019/08/09/mongodb%E5%89%AF%E6%9C%AC%E9%9B%86/</loc>
     <lastmod>2020-04-29</lastmod>

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xxlaila.github.io/2020/05/07/elasticsearch%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/</loc>
+    
+    <lastmod>2020-05-09T16:13:15.328Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xxlaila.github.io/2020/05/09/redis-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/</loc>
     
     <lastmod>2020-05-09T11:27:21.483Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://xxlaila.github.io/2019/11/14/mongodb%E8%AF%AD%E6%B3%95%E5%AE%9E%E8%B7%B5/</loc>
     
     <lastmod>2020-05-09T05:41:28.364Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xxlaila.github.io/2020/05/07/elasticsearch%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/</loc>
-    
-    <lastmod>2020-05-08T05:36:44.114Z</lastmod>
     
   </url>
   
